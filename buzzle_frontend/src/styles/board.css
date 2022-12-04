@@ -1,6 +1,7 @@
 .table {
     display: flex;
     flex-direction: column;
+    background-color: black;
 }
 
 .ligns {
@@ -9,8 +10,20 @@
 
 .pos {
     font-size: 9px;
+    color: white;
     width: 9px;
     height: 9px;
-    background-color: aquamarine;
-    border: solid black 1px;
+    width: 1rem;
+    height: 1rem;
+    box-sizing: border-box;
 }
+
+@keyframes pulse {
+    from {
+        overflow: inherit;
+        box-shadow: 0 0 0 0rem rgba(234, 178, 11, 1);
+    }
+    to { 
+        box-shadow: 0 0 0 4px rgba(234, 178, 11, 0.01);
+    }
+  }
