@@ -236,6 +236,8 @@ function App() {
             baseObjects.push([L, o, "mg"]);
           } else if (pos === "B") {
             baseObjects.push([L, o, "Bs"]);
+          } else if (pos === "p") {
+            baseObjects.push([L, o, "pg"]);
           }
           if (pos === "a") {
             basePlayer.push(L, o);
