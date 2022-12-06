@@ -14,18 +14,23 @@ const Pos = ({ o }) => {
     }
     if (oStrict === "W") {
       style["backgroundColor"] = "gray";
-    } else if (oStrict === "D") {
-      if (oObj === "Dv") {
-        style["borderLeft"] = "solid black 6px";
-        style["borderRight"] = "solid black 6px";
-        style["backgroundColor"] = "brown";
-      } else if (oObj === "Dh") {
-        style["borderTop"] = "solid black 6px";
-        style["borderBottom"] = "solid black 6px";
-        style["backgroundColor"] = "brown";
-      }
-    }
-    if (oObj === "Bg" || oObj === "Bh") {
+    } else if (oObj === "Dv") {
+      style["borderLeft"] = "solid black 6px";
+      style["borderRight"] = "solid black 6px";
+      style["backgroundColor"] = "brown";
+    } else if (oObj === "Dh") {
+      style["borderTop"] = "solid black 6px";
+      style["borderBottom"] = "solid black 6px";
+      style["backgroundColor"] = "brown";
+    } else if (oObj === "Lv") {
+      style["borderLeft"] = "solid black 6px";
+      style["borderRight"] = "solid black 6px";
+      style["backgroundColor"] = "gold";
+    } else if (oObj === "Lh") {
+      style["borderTop"] = "solid black 6px";
+      style["borderBottom"] = "solid black 6px";
+      style["backgroundColor"] = "gold";
+    } else if (oObj === "Bs" || oObj === "bs") {
       style["border"] = "solid black 2px";
       style["backgroundColor"] = "green";
     }
