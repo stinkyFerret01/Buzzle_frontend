@@ -20,7 +20,7 @@ function App() {
     let oStrict = o.slice(0, 1);
     let oObj = o.slice(0, 2);
     // let act = o.slice(o.length - 1);
-    let blocker = ["W", "B", "D"];
+    let blocker = ["W", "B", "D", "K", "L", "M"];
     let exept = ["Bh"];
     let blockerTest = blocker.findIndex((block) => block === oStrict);
     let exeptTest = exept.findIndex((exep) => exep === oObj);
@@ -37,14 +37,26 @@ function App() {
       ["Dv", "dv"],
       ["Dh", "dh"],
       ["Bs", "bs"],
+      ["kg", "ki"],
+      ["lg", "li"],
+      ["mg", "mi"],
     ];
     let mod = pairs.find((pair) => pair[0] === obj || pair[1] === obj);
-    if (obj === mod[0]) {
-      // return mod[1];
+    if (mod && obj === mod[0]) {
       return [player[2], player[3], mod[1]];
-    } else if (obj === mod[1]) {
-      // return mod[0];
+    } else if (mod && obj === mod[1]) {
       return [player[2], player[3], mod[0]];
+    }
+    let oStrict = obj.slice(0, 1);
+    let oAxe = obj.slice(1, 2);
+    let locked = ["K", "L", "M"];
+    let goodKey = locked.find((lock) => lock === oStrict).toLowerCase();
+    if (goodKey !== undefined) {
+      if (objects.find((obj) => obj[2] === `${goodKey}i`) !== undefined) {
+        return [player[2], player[3], `d${oAxe}`];
+      } else {
+        return [player[2], player[3], `${oStrict}${oAxe}`];
+      }
     }
   };
 
@@ -167,15 +179,15 @@ function App() {
     const level = [
       "....................",
       "WWWWWWWWWWWWWWWWWWWW",
-      "W...........W...W..W",
-      "W.B.........W...W..W",
-      "W...........W...W..W",
-      "W...........WWHWW..W",
-      "W.Pa...............W",
-      "W..............WWWWW",
-      "W....B.........W...W",
-      "W..............V...W",
       "W..............W...W",
+      "W..............W.3.W",
+      "W.Pa.....1.....W...W",
+      "W..............WWLWW",
+      "W..................W",
+      "WWWWW..........WWKWW",
+      "W...W..........W...W",
+      "W.B.m.....2....W.B.W",
+      "W...W..........W...W",
       "WWWWWWWWWWWWWWWWWWWW",
       "....................",
     ];
@@ -196,34 +208,34 @@ function App() {
           }
           if (pos === "P") {
             basePlayer.unshift(L, o);
-          }
-          if (pos === "V") {
+          } else if (pos === "V") {
             baseObjects.push([L, o, "Dv"]);
-          }
-          if (pos === "v") {
+          } else if (pos === "v") {
             baseObjects.push([L, o, "dv"]);
-          }
-          if (pos === "H") {
+          } else if (pos === "H") {
             baseObjects.push([L, o, "Dh"]);
-          }
-          if (pos === "h") {
+          } else if (pos === "h") {
             baseObjects.push([L, o, "dh"]);
-          }
-          if (pos === "B") {
-            baseObjects.push([L, o, "Bs"]);
-          }
-          if (pos === "k") {
-            baseObjects.push([L, o, "Lv1"]);
+          } else if (pos === "k") {
+            baseObjects.push([L, o, "Kv"]);
           } else if (pos === "K") {
-            baseObjects.push([L, o, "Lh1"]);
+            baseObjects.push([L, o, "Kh"]);
           } else if (pos === "l") {
-            baseObjects.push([L, o, "Lv2"]);
+            baseObjects.push([L, o, "Lv"]);
           } else if (pos === "L") {
-            baseObjects.push([L, o, "Lh2"]);
+            baseObjects.push([L, o, "Lh"]);
           } else if (pos === "m") {
-            baseObjects.push([L, o, "Lv3"]);
+            baseObjects.push([L, o, "Mv"]);
           } else if (pos === "M") {
-            baseObjects.push([L, o, "Lh3"]);
+            baseObjects.push([L, o, "Mh"]);
+          } else if (pos === "1") {
+            baseObjects.push([L, o, "kg"]);
+          } else if (pos === "2") {
+            baseObjects.push([L, o, "lg"]);
+          } else if (pos === "3") {
+            baseObjects.push([L, o, "mg"]);
+          } else if (pos === "B") {
+            baseObjects.push([L, o, "Bs"]);
           }
           if (pos === "a") {
             basePlayer.push(L, o);

@@ -22,6 +22,14 @@ const Pos = ({ o }) => {
       style["borderTop"] = "solid black 6px";
       style["borderBottom"] = "solid black 6px";
       style["backgroundColor"] = "brown";
+    } else if (oObj === "Kv") {
+      style["borderLeft"] = "solid black 6px";
+      style["borderRight"] = "solid black 6px";
+      style["backgroundColor"] = "orange";
+    } else if (oObj === "Kh") {
+      style["borderTop"] = "solid black 6px";
+      style["borderBottom"] = "solid black 6px";
+      style["backgroundColor"] = "orange";
     } else if (oObj === "Lv") {
       style["borderLeft"] = "solid black 6px";
       style["borderRight"] = "solid black 6px";
@@ -30,6 +38,29 @@ const Pos = ({ o }) => {
       style["borderTop"] = "solid black 6px";
       style["borderBottom"] = "solid black 6px";
       style["backgroundColor"] = "gold";
+    } else if (oObj === "Mv") {
+      style["borderLeft"] = "solid black 6px";
+      style["borderRight"] = "solid black 6px";
+      style["backgroundColor"] = "yellow";
+    } else if (oObj === "Mh") {
+      style["borderTop"] = "solid black 6px";
+      style["borderBottom"] = "solid black 6px";
+      style["backgroundColor"] = "yellow";
+    } else if (oObj === "kg") {
+      style["border"] = "solid orange 2px";
+      style["margin"] = "4px";
+      style["width"] = "8px";
+      style["height"] = "8px";
+    } else if (oObj === "lg") {
+      style["border"] = "solid gold 2px";
+      style["margin"] = "4px";
+      style["width"] = "8px";
+      style["height"] = "8px";
+    } else if (oObj === "mg") {
+      style["border"] = "solid yellow 2px";
+      style["margin"] = "4px";
+      style["width"] = "8px";
+      style["height"] = "8px";
     } else if (oObj === "Bs" || oObj === "bs") {
       style["border"] = "solid black 2px";
       style["backgroundColor"] = "green";
