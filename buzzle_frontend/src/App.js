@@ -2,6 +2,7 @@
 //-- import style et librairie
 import "./App.css";
 import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 //-- import des composants
 import Pos from "./components/pos";
@@ -341,25 +342,27 @@ function App() {
 
   ///-- RENDER --///
   return (
-    <div className="App">
-      <section>
-        {grid !== "loading" ? (
-          <div className="table">
-            {grid.map((L, indexL) => {
-              return (
-                <div className="ligns" key={indexL}>
-                  {L.map((o, indexo) => {
-                    return <Pos o={o} key={indexo} />;
-                  })}
-                </div>
-              );
-            })}
-          </div>
-        ) : (
-          <div>yo</div>
-        )}
-      </section>
-    </div>
+    <Router>
+      <div className="App">
+        <section>
+          {grid !== "loading" ? (
+            <div className="table">
+              {grid.map((L, indexL) => {
+                return (
+                  <div className="ligns" key={indexL}>
+                    {L.map((o, indexo) => {
+                      return <Pos o={o} key={indexo} />;
+                    })}
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div>yo</div>
+          )}
+        </section>
+      </div>
+    </Router>
   );
 }
 
