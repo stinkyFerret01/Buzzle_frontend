@@ -2,6 +2,7 @@
 // chaque composant Pos incarne une "position" sur la grille du jeu
 // cette position est représentée par une <div> dont le style est défini ici
 const Pos = ({ o }) => {
+  ///-- FONCTIONS --///
   //-- styleMaker détermine le style des Pos en fonctions de leurs valeurs
   const styleMaker = (o) => {
     let oStrict = o.slice(0, 1);

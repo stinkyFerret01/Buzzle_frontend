@@ -1,4 +1,5 @@
 ///-- CONFIG --///
+//-- import librairie
 import { useState, useEffect } from "react";
 
 //-- import des composants
@@ -318,6 +319,7 @@ const GamePage = ({ level }) => {
     setGrid(newGrid);
   }, [base, player, objects]);
 
+  ///-- RENDER --///
   return (
     <main>
       {level !== "none" && grid !== "loading" ? (
@@ -333,7 +335,7 @@ const GamePage = ({ level }) => {
           })}
         </div>
       ) : (
-        <div>yo</div>
+        <div>chargement du niveau</div>
       )}
     </main>
   );
