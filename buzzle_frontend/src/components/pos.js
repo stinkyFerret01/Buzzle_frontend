@@ -14,6 +14,10 @@ const Pos = ({ o }) => {
     }
     if (oStrict === "W") {
       style["backgroundColor"] = "gray";
+    } else if (oStrict === "E") {
+      style["backgroundColor"] = "gray";
+    } else if (oStrict === "e") {
+      style["backgroundColor"] = "lime";
     } else if (oObj === "Dv") {
       style["borderLeft"] = "solid black 6px";
       style["borderRight"] = "solid black 6px";
@@ -64,6 +68,13 @@ const Pos = ({ o }) => {
     } else if (oObj === "Bs" || oObj === "bs") {
       style["border"] = "solid black 2px";
       style["backgroundColor"] = "green";
+    } else if (oObj === "pg") {
+      style["borderRadius"] = "50%";
+      style["border"] = "solid gray 2px";
+      style["backgroundColor"] = "red";
+      style["margin"] = "2px";
+      style["width"] = "12px";
+      style["height"] = "12px";
     }
     if (act === "a") {
       style["animation"] = "pulse infinite 1.3s";

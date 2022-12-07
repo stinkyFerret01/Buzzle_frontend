@@ -33,6 +33,7 @@ function App() {
 
   //-- actioner défini la nouvelle valeur d'un object après une action du joueur
   const actioner = (obj) => {
+    console.log(obj);
     let pairs = [
       ["Dv", "dv"],
       ["Dh", "dh"],
@@ -44,12 +45,12 @@ function App() {
     let mod = pairs.find((pair) => pair[0] === obj || pair[1] === obj);
     if (mod && obj === mod[0]) {
       return [player[2], player[3], mod[1]];
-    } else if (mod && obj === mod[1]) {
+    } else if (mod && obj === mod[1] && obj.slice(1, 2) !== "i") {
       return [player[2], player[3], mod[0]];
     }
     let oStrict = obj.slice(0, 1);
     let oAxe = obj.slice(1, 2);
-    let locked = ["K", "L", "M"];
+    let locked = ["K", "L", "M", "p"];
     let goodKey = locked.find((lock) => lock === oStrict).toLowerCase();
     if (goodKey !== undefined) {
       if (objects.find((obj) => obj[2] === `${goodKey}i`) !== undefined) {
@@ -141,15 +142,21 @@ function App() {
         }
       }
       if (event.key === "a") {
-        let objIndex = objects.findIndex(
-          (obj) => obj[0] === player[2] && obj[1] === player[3]
-        );
-        let object = objects.find(
-          (obj) => obj[0] === player[2] && obj[1] === player[3]
-        );
+        let objIndex = objects.findIndex((obj) => obj[2] === "bs");
+        let object = objects.find((obj) => obj[2] === "bs");
         if (object === undefined) {
-          objIndex = objects.findIndex((obj) => obj[2] === "bs");
-          object = objects.find((obj) => obj[2] === "bs");
+          objIndex = objects.findIndex(
+            (obj) =>
+              obj[0] === player[2] &&
+              obj[1] === player[3] &&
+              obj[2].slice(1, 2) !== "i"
+          );
+          object = objects.find(
+            (obj) =>
+              obj[0] === player[2] &&
+              obj[1] === player[3] &&
+              obj[2].slice(1, 2) !== "i"
+          );
         }
         if (objIndex >= 0) {
           let newObjects = [...objects];
@@ -163,6 +170,7 @@ function App() {
   ///--USEEFFECT --///
   //-- keyboardListener (reçois et transmet les commandes claviers)
   useEffect(() => {
+    console.log("use1");
     window.removeEventListener("keydown", handleKeyDown);
     window.addEventListener("keydown", handleKeyDown);
     return () => {
@@ -179,16 +187,16 @@ function App() {
     const level = [
       "....................",
       "WWWWWWWWWWWWWWWWWWWW",
-      "W..............W...W",
+      "W.BBBBBBB......W...W",
       "W..............W.3.W",
       "W.Pa.....1.....W...W",
       "W..............WWLWW",
-      "W..................W",
+      "W......p...........W",
       "WWWWW..........WWKWW",
       "W...W..........W...W",
       "W.B.m.....2....W.B.W",
       "W...W..........W...W",
-      "WWWWWWWWWWWWWWWWWWWW",
+      "WWEWWWWWWWWWWWWWWWWW",
       "....................",
     ];
     ////////////////////////////
@@ -208,6 +216,10 @@ function App() {
           }
           if (pos === "P") {
             basePlayer.unshift(L, o);
+          } else if (pos === "a") {
+            basePlayer.push(L, o);
+          } else if (pos === "E") {
+            baseObjects.push([L, o, "E"]);
           } else if (pos === "V") {
             baseObjects.push([L, o, "Dv"]);
           } else if (pos === "v") {
@@ -235,12 +247,9 @@ function App() {
           } else if (pos === "3") {
             baseObjects.push([L, o, "mg"]);
           } else if (pos === "B") {
-            baseObjects.push([L, o, "Bs"]);
+            baseObjects.unshift([L, o, "Bs"]);
           } else if (pos === "p") {
             baseObjects.push([L, o, "pg"]);
-          }
-          if (pos === "a") {
-            basePlayer.push(L, o);
           }
         }
         base.push(lign);
@@ -251,6 +260,45 @@ function App() {
     };
     setBase(baseBuilder(level));
   }, []);
+
+  //-- pressChecker (vérifie la présence d'un objet sur la presse)
+  useEffect(() => {
+    //-- pressChecker vérifie la présence d'un objet sur la presse
+    const pressChecker = () => {
+      let press = objects.find((obj) => obj[2] === "pg");
+      let onPressIndex = objects.findIndex(
+        (obj) =>
+          obj[0] === press[0] &&
+          obj[1] === press[1] &&
+          obj[2] !== press[2] &&
+          obj[2] !== "bs"
+      );
+      if (onPressIndex >= 0) {
+        return true;
+      } else if (player[0] === press[0] && player[1] === press[1]) {
+        return true;
+      } else {
+        return false;
+      }
+    };
+    if (objects !== "loading" && pressChecker()) {
+      let exitIndex = objects.findIndex((obj) => obj[2] === "E");
+      let exit = objects.find((obj) => obj[2] === "E");
+      if (exitIndex >= 0) {
+        let newObjects = [...objects];
+        newObjects.splice(exitIndex, 1, [exit[0], exit[1], "e"]);
+        setObjects(newObjects);
+      }
+    } else if (objects !== "loading" && !pressChecker()) {
+      let exitIndex = objects.findIndex((obj) => obj[2] === "e");
+      let exit = objects.find((obj) => obj[2] === "e");
+      if (exitIndex >= 0) {
+        let newObjects = [...objects];
+        newObjects.splice(exitIndex, 1, [exit[0], exit[1], "E"]);
+        setObjects(newObjects);
+      }
+    }
+  }, [player, objects]);
 
   //-- gridDrawer (dessine le niveau à chaque changement de valeur)
   useEffect(() => {
@@ -267,8 +315,10 @@ function App() {
       for (let o = 0; o < base[0].length; o++) {
         let pos = base[L][o];
         if (objects !== "loading") {
-          let obj = objects.find((obj) => obj[0] === L && obj[1] === o);
-          if (obj !== undefined && obj[2] !== activity) {
+          let obj = objects.find(
+            (obj) => obj[0] === L && obj[1] === o && obj[2] !== activity
+          );
+          if (obj !== undefined) {
             pos = obj[2];
           }
         }
