@@ -17,7 +17,7 @@ const Pos = ({ o }) => {
     } else if (oStrict === "E") {
       style["backgroundColor"] = "gray";
     } else if (oStrict === "e") {
-      style["backgroundColor"] = "lime";
+      style["backgroundColor"] = "black";
     } else if (oObj === "Dv") {
       style["borderLeft"] = "solid black 6px";
       style["borderRight"] = "solid black 6px";
