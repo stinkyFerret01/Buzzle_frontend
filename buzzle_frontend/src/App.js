@@ -10,23 +10,36 @@ import HomePage from "./components/homePage";
 import GamePage from "./components/gamePage";
 import EditorPage from "./components/editorPage";
 import Footer from "./components/footer";
+import AreYouSure from "./components/areYouSure";
 
 ///-- START --///
 function App() {
   ///-- STATES --///
+  const online = "https://buzzlebackend.onrender.com";
+  const local = "http://localhost:3000";
+  const [backend] = useState(online || local);
+  // const [pData, setPData] = useState("none");
   const [level, setLevel] = useState("none");
+  const [displayAys, setDisplayAys] = useState("none");
 
   ///-- RENDER --///
   return (
     <div className="App">
       <Router>
-        <Header level={level} setLevel={setLevel} />
+        <Header
+          backend={backend}
+          setLevel={setLevel}
+          setDisplayAys={setDisplayAys}
+        />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/game" element={<GamePage level={level} />} />
           <Route path="/editor" element={<EditorPage />} />
         </Routes>
         <Footer />
+        {displayAys !== "none" && (
+          <AreYouSure displayAys={displayAys} setDisplayAys={setDisplayAys} />
+        )}
       </Router>
     </div>
   );
