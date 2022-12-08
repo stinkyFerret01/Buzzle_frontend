@@ -2,13 +2,14 @@
 //-- import librairie
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 ///-- START --///
 const Header = ({ backend, setLevel, setDisplayAys }) => {
   ///-- STATES --///
   const [levels, setLevels] = useState("loading");
 
+  const navigate = useNavigate();
   const location = useLocation();
 
   //-- USEEFFECT
@@ -40,6 +41,7 @@ const Header = ({ backend, setLevel, setDisplayAys }) => {
           onClick={() => {
             setDisplayAys("");
           }}
+          style={{ left: "1.2%" }}
           className="headerSectionGhost"
         >
           HOME
@@ -68,10 +70,12 @@ const Header = ({ backend, setLevel, setDisplayAys }) => {
       </section>
       {location.pathname !== "/game" && (
         <section
-          onClick={() => {
-            setDisplayAys("game");
-          }}
-          style={{ left: "33%" }}
+          onClick={
+            location.pathname === "/"
+              ? () => navigate("/game")
+              : () => setDisplayAys("game")
+          }
+          style={{ left: "33.8%" }}
           className="headerSectionGhost"
         >
           GAME
@@ -81,10 +85,12 @@ const Header = ({ backend, setLevel, setDisplayAys }) => {
       <section className="headerSection"></section>
       {location.pathname !== "/editor" && (
         <section
-          onClick={() => {
-            setDisplayAys("editor");
-          }}
-          style={{ left: "66%" }}
+          onClick={
+            location.pathname === "/"
+              ? () => navigate("/editor")
+              : () => setDisplayAys("editor")
+          }
+          style={{ left: "66.4%" }}
           className="headerSectionGhost"
         >
           EDITOR

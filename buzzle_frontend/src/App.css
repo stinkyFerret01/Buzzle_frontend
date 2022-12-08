@@ -21,9 +21,8 @@ header {
   height: 6rem;
   border:solid rgb(102, 61, 222) 4px;
   display: flex;
-  /* padding-left: 1%;
-  padding-right: 1%; */
-  /* box-sizing: border-box; */
+  padding-left: 1%;
+  box-sizing: border-box;
 }
 
 main {
