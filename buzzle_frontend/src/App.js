@@ -20,6 +20,7 @@ function App() {
   const [backend] = useState(online || local);
   // const [pData, setPData] = useState("none");
   const [level, setLevel] = useState("none");
+  const [edited, setEdited] = useState("none");
   const [displayAys, setDisplayAys] = useState("none");
 
   ///-- RENDER --///
@@ -29,12 +30,16 @@ function App() {
         <Header
           backend={backend}
           setLevel={setLevel}
+          edited={edited}
           setDisplayAys={setDisplayAys}
         />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/game" element={<GamePage level={level} />} />
-          <Route path="/editor" element={<EditorPage />} />
+          <Route
+            path="/editor"
+            element={<EditorPage setEdited={setEdited} />}
+          />
         </Routes>
         <Footer />
         {displayAys !== "none" && (

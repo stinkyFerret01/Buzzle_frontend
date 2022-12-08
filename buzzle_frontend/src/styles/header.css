@@ -1,7 +1,7 @@
 /* HEADER */
 
 .headerSection {
-    width: 33%;
+    width: 33.33%;
     height: 100%;
     border: solid gold 2px;
     box-sizing: border-box;
@@ -11,7 +11,7 @@
     position: absolute;
     z-index: 1;
     /*  */
-    width: 32.7%;
+    width: 33.33%;
     height: 100%;
     background-color: rgba(15, 10, 30, 0.7);
     display: flex;

@@ -168,7 +168,6 @@ const GamePage = ({ level }) => {
   ///--USEEFFECT --///
   //-- keyboardListener (reçois et transmet les commandes claviers)
   useEffect(() => {
-    console.log("use1");
     window.removeEventListener("keydown", handleKeyDown);
     window.addEventListener("keydown", handleKeyDown);
     return () => {

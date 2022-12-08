@@ -41,7 +41,7 @@ const Header = ({ backend, setLevel, setDisplayAys }) => {
           onClick={() => {
             setDisplayAys("");
           }}
-          style={{ left: "1.2%" }}
+          style={{ left: "0%" }}
           className="headerSectionGhost"
         >
           HOME
@@ -75,7 +75,7 @@ const Header = ({ backend, setLevel, setDisplayAys }) => {
               ? () => navigate("/game")
               : () => setDisplayAys("game")
           }
-          style={{ left: "33.8%" }}
+          style={{ left: "33.33%" }}
           className="headerSectionGhost"
         >
           GAME
@@ -90,7 +90,7 @@ const Header = ({ backend, setLevel, setDisplayAys }) => {
               ? () => navigate("/editor")
               : () => setDisplayAys("editor")
           }
-          style={{ left: "66.4%" }}
+          style={{ left: "66.66%" }}
           className="headerSectionGhost"
         >
           EDITOR

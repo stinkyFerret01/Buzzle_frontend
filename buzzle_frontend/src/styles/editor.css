@@ -1,0 +1,16 @@
+.editorPage {
+    display: flex;
+    flex-direction: column;
+}
+
+.editShop {
+    background-color: black;
+}
+
+.shopList {
+    display: flex;
+}
+
+.editView {
+    background-color: blue;
+}

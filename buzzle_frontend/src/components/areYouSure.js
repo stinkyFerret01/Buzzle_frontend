@@ -13,6 +13,8 @@ const AreYouSure = ({ displayAys, setDisplayAys }) => {
   useEffect(() => {
     if (displayAys === "") {
       setDisplayNext("home");
+    } else {
+      setDisplayNext(displayAys);
     }
   }, [displayAys]);
   ///-- RENDER --///

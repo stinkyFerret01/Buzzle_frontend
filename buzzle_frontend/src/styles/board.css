@@ -4,6 +4,12 @@
     background-color: black;
 }
 
+.table {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+}
+
 .ligns {
     display: flex;
 }
@@ -23,5 +29,14 @@
     }
     to { 
         box-shadow: 0 0 0 4px rgba(234, 178, 11, 0.01);
+    }
+  }
+  @keyframes pulseExit {
+    from {
+        overflow: inherit;
+        box-shadow: 0 0 0 0rem rgb(158, 23, 226);
+    }
+    to { 
+        box-shadow: 0 0 0 4px rgb(158, 23, 226, 0.01);
     }
   }
