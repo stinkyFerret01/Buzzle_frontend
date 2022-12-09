@@ -1,6 +1,8 @@
 ///-- CONFIG --///
 //-- import librairie
 import { useState, useEffect } from "react";
+import * as React from "react";
+import { Range } from "react-range";
 
 //-- import des composants
 import Pos from "./pos";
@@ -8,7 +10,7 @@ import Pos from "./pos";
 ///-- START --///
 const EditorPage = ({ setEdited }) => {
   ///-- STATES --///
-  const [ligns, setLigns] = useState(8);
+  const [ligns, setLigns] = useState(9);
   const [colons, setColons] = useState(7);
   const [oSelection, setOSelection] = useState("W");
   const [oMessage, setOMessage] = useState("mur");
@@ -46,7 +48,6 @@ const EditorPage = ({ setEdited }) => {
 
   useEffect(() => {
     const patternBuilder = (ba) => {
-      console.log(ba[0].length);
       let pairs = [
         ["p", "pg"],
         ["B", "Bs"],
@@ -76,7 +77,6 @@ const EditorPage = ({ setEdited }) => {
         pattern.push(newLign);
         setEdited(pattern);
       }
-      console.log(pattern);
     };
     base !== "loading" && patternBuilder(base);
   }, [base, setEdited]);
@@ -86,32 +86,103 @@ const EditorPage = ({ setEdited }) => {
   return (
     <main className="editorPage">
       <section className="editView">
-        {base !== "loading" ? (
-          <div className="table">
-            {base.map((L, indexL) => {
-              return (
-                <div className="ligns" key={indexL}>
-                  {L.map((o, indexo) => {
-                    return (
-                      <Pos
-                        o={o}
-                        type="edit"
-                        oSelection={oSelection}
-                        setOSelection={setOSelection}
-                        base={base}
-                        setBase={setBase}
-                        xy={[indexL, indexo]}
-                        key={indexo}
-                      />
-                    );
-                  })}
-                </div>
-              );
-            })}
-          </div>
-        ) : (
-          <div>chargement du niveau</div>
-        )}
+        <div className="editViewTop">
+          <Range
+            step={1}
+            min={4}
+            max={24}
+            values={[colons]}
+            onChange={(values) => {
+              setColons(values[0]);
+            }}
+            renderTrack={({ props, children }) => (
+              <div
+                {...props}
+                style={{
+                  ...props.style,
+                  height: "6px",
+                  width: "100%",
+                  backgroundColor: "#ccc",
+                }}
+              >
+                {children}
+              </div>
+            )}
+            renderThumb={({ props }) => (
+              <div
+                {...props}
+                style={{
+                  ...props.style,
+                  height: "42px",
+                  width: "42px",
+                  backgroundColor: "#999",
+                }}
+              />
+            )}
+          />
+        </div>
+        <div className="editViewBottom">
+          <Range
+            step={1}
+            min={4}
+            max={24}
+            values={[ligns]}
+            onChange={(values) => {
+              setLigns(values[0]);
+            }}
+            direction={"to bottom"}
+            renderTrack={({ props, children }) => (
+              <div
+                {...props}
+                style={{
+                  ...props.style,
+                  height: "100%",
+                  width: "6px",
+                  backgroundColor: "#ccc",
+                }}
+              >
+                {children}
+              </div>
+            )}
+            renderThumb={({ props }) => (
+              <div
+                {...props}
+                style={{
+                  ...props.style,
+                  height: "42px",
+                  width: "42px",
+                  backgroundColor: "#999",
+                }}
+              />
+            )}
+          />
+          {base !== "loading" ? (
+            <div className="table">
+              {base.map((L, indexL) => {
+                return (
+                  <div className="ligns" key={indexL}>
+                    {L.map((o, indexo) => {
+                      return (
+                        <Pos
+                          o={o}
+                          type="edit"
+                          oSelection={oSelection}
+                          setOSelection={setOSelection}
+                          base={base}
+                          setBase={setBase}
+                          xy={[indexL, indexo]}
+                          key={indexo}
+                        />
+                      );
+                    })}
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div>chargement du niveau</div>
+          )}
+        </div>
       </section>
       <section className="editShop">
         <h4>éléments:</h4>
