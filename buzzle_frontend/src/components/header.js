@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 ///-- START --///
-const Header = ({ backend, setLevel, setDisplayAys }) => {
+const Header = ({ backend, setLevel, edited, setDisplayAys }) => {
   ///-- STATES --///
   const [levels, setLevels] = useState("loading");
   const [levelsNew, setLevelsNew] = useState("loading");
@@ -17,13 +17,7 @@ const Header = ({ backend, setLevel, setDisplayAys }) => {
   const editer = async () => {
     try {
       const response = await axios.post(`${backend}/edit`, {
-        pattern: [
-          ".........",
-          "WWWWWWWWW",
-          "...P.p...",
-          "WWWWWWWWW",
-          ".........",
-        ],
+        pattern: edited,
         name: "lvl test",
         status: "new",
       });

@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import Pos from "./pos";
 
 ///-- START --///
-const EditorPage = () => {
+const EditorPage = ({ setEdited }) => {
   ///-- STATES --///
   const [ligns, setLigns] = useState(8);
   const [colons, setColons] = useState(7);
@@ -19,31 +19,9 @@ const EditorPage = () => {
     necessary: ["a", "P", "W", "."],
     objects: ["Dh", "Dv", "E", "pg", "Bs", "C"],
   };
-  // const os = [
-  //   "a",
-  //   "Bs",
-  //   "C",
-  //   "Dh",
-  //   "Dv",
-  //   "E",
-  //   "Kh",
-  //   "Kv",
-  //   "kg",
-  //   "Lh",
-  //   "Lv",
-  //   "lg",
-  //   "Mh",
-  //   "Mv",
-  //   "mg",
-  //   "pg",
-  //   "P",
-  //   "W",
-  //   ".",
-  // ];
 
-  //-- USEEFFECT
-  //-- baseBuilder
-
+  //-- FONCTIONS
+  //- none
   useEffect(() => {
     //-- baseBuilder construit le tableau du niveau choisi
     const baseBuilder = (li, co) => {
@@ -66,6 +44,42 @@ const EditorPage = () => {
     setBase(baseBuilder(parseInt(ligns), parseInt(colons)));
   }, [ligns, colons]);
 
+  useEffect(() => {
+    const patternBuilder = (ba) => {
+      console.log(ba[0].length);
+      let pairs = [
+        ["p", "pg"],
+        ["B", "Bs"],
+        ["H", "Dh"],
+        ["V", "Dv"],
+        ["1", "kg"],
+        ["K", "Kh"],
+        ["k", "Kv"],
+        ["2", "lg"],
+        ["L", "Lh"],
+        ["l", "Lv"],
+        ["3", "mg"],
+        ["M", "Mh"],
+        ["m", "Mv"],
+      ];
+      let pattern = [];
+      for (let L = 0; L < ba.length; L++) {
+        let newLign = "";
+        for (let o = 0; o < ba[0].length; o++) {
+          let newO = ba[L][o];
+          let newOIndex = pairs.findIndex((pair) => pair[1] === newO);
+          if (newOIndex >= 0) {
+            newO = pairs[newOIndex][0];
+          }
+          newLign = newLign + newO;
+        }
+        pattern.push(newLign);
+        setEdited(pattern);
+      }
+      console.log(pattern);
+    };
+    base !== "loading" && patternBuilder(base);
+  }, [base, setEdited]);
   useEffect(() => {}, [oMessage]);
 
   ///-- RENDER --///
@@ -159,6 +173,7 @@ const EditorPage = () => {
             setColons(event.target.value);
           }}
         />
+        {/* <button onClick={() => patternBuilder(base)}>logpattern</button> */}
       </section>
     </main>
   );
