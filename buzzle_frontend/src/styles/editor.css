@@ -7,12 +7,32 @@
     height: 90%;
 }
 
-.editViewTop {}
+.editViewTop {
+    display: flex;
+    flex-direction: row;
+}
+
+.editBlankHorizontal {
+    width:  21%;
+    height: 1rem;
+}
 
 .editViewBottom {
     height: 90%;
     display: flex;
     flex-direction: row;
+}
+
+.editBlankVertical {
+    width: 1rem;
+   height: 23%;
+}
+
+.editTable {
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
 }
 
 
@@ -51,5 +71,5 @@
 
 .editView {
     width: 70%;
-    background-color: blue;
+    background-color: black;
 }

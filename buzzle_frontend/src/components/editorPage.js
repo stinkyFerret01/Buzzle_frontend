@@ -87,6 +87,7 @@ const EditorPage = ({ setEdited }) => {
     <main className="editorPage">
       <section className="editView">
         <div className="editViewTop">
+          <div className="editBlankHorizontal"></div>
           <Range
             step={1}
             min={4}
@@ -101,7 +102,7 @@ const EditorPage = ({ setEdited }) => {
                 style={{
                   ...props.style,
                   height: "6px",
-                  width: "100%",
+                  width: "74%",
                   backgroundColor: "#ccc",
                 }}
               >
@@ -113,8 +114,8 @@ const EditorPage = ({ setEdited }) => {
                 {...props}
                 style={{
                   ...props.style,
-                  height: "42px",
-                  width: "42px",
+                  height: "2rem",
+                  width: "2rem",
                   backgroundColor: "#999",
                 }}
               />
@@ -122,42 +123,45 @@ const EditorPage = ({ setEdited }) => {
           />
         </div>
         <div className="editViewBottom">
-          <Range
-            step={1}
-            min={4}
-            max={24}
-            values={[ligns]}
-            onChange={(values) => {
-              setLigns(values[0]);
-            }}
-            direction={"to bottom"}
-            renderTrack={({ props, children }) => (
-              <div
-                {...props}
-                style={{
-                  ...props.style,
-                  height: "100%",
-                  width: "6px",
-                  backgroundColor: "#ccc",
-                }}
-              >
-                {children}
-              </div>
-            )}
-            renderThumb={({ props }) => (
-              <div
-                {...props}
-                style={{
-                  ...props.style,
-                  height: "42px",
-                  width: "42px",
-                  backgroundColor: "#999",
-                }}
-              />
-            )}
-          />
+          <div className="editRangeVertical">
+            <div className="editBlankVertical"></div>
+            <Range
+              step={1}
+              min={4}
+              max={20}
+              values={[ligns]}
+              onChange={(values) => {
+                setLigns(values[0]);
+              }}
+              direction={"to bottom"}
+              renderTrack={({ props, children }) => (
+                <div
+                  {...props}
+                  style={{
+                    ...props.style,
+                    height: "81%",
+                    width: "6px",
+                    backgroundColor: "#ccc",
+                  }}
+                >
+                  {children}
+                </div>
+              )}
+              renderThumb={({ props }) => (
+                <div
+                  {...props}
+                  style={{
+                    ...props.style,
+                    height: "2rem",
+                    width: "2rem",
+                    backgroundColor: "#999",
+                  }}
+                />
+              )}
+            />
+          </div>
           {base !== "loading" ? (
-            <div className="table">
+            <div className="editTable">
               {base.map((L, indexL) => {
                 return (
                   <div className="ligns" key={indexL}>
