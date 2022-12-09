@@ -1,9 +1,7 @@
 @import "styles/reset.css";
 @import "styles/header.css";
+@import "styles/game.css";
 @import "styles/editor.css";
-@import "styles/board.css";
-
-
 
 .App {
   width: 100vw;
