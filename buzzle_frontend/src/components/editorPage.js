@@ -10,11 +10,13 @@ import Pos from "./pos";
 ///-- START --///
 const EditorPage = ({ setEdited }) => {
   ///-- STATES --///
-  const [ligns, setLigns] = useState(9);
-  const [colons, setColons] = useState(7);
+  const [ligns, setLigns] = useState(10);
+  const [colons, setColons] = useState(10);
   const [oSelection, setOSelection] = useState("W");
   const [oMessage, setOMessage] = useState("mur");
   const [base, setBase] = useState("loading");
+  const [lvlName, setLvlName] = useState("");
+  const [lvlStatus, setLvlStatus] = useState("new");
 
   const os = {
     lockedDoors: ["Kh", "Kv", "kg", "Lh", "Lv", "lg", "Mh", "Mv", "mg"],
@@ -22,8 +24,10 @@ const EditorPage = ({ setEdited }) => {
     objects: ["Dh", "Dv", "E", "pg", "Bs", "C"],
   };
 
-  //-- FONCTIONS
+  ///-- FONCTIONS --///
   //- none
+
+  ///-- USEEFFECT --///
   useEffect(() => {
     //-- baseBuilder construit le tableau du niveau choisi
     const baseBuilder = (li, co) => {
@@ -48,6 +52,7 @@ const EditorPage = ({ setEdited }) => {
 
   useEffect(() => {
     const patternBuilder = (ba) => {
+      let necs = [];
       let pairs = [
         ["p", "pg"],
         ["B", "Bs"],
@@ -63,11 +68,19 @@ const EditorPage = ({ setEdited }) => {
         ["M", "Mh"],
         ["m", "Mv"],
       ];
+      let necsToCheck = ["a", "Bs", "E", "pg", "P"];
       let pattern = [];
       for (let L = 0; L < ba.length; L++) {
         let newLign = "";
         for (let o = 0; o < ba[0].length; o++) {
           let newO = ba[L][o];
+          let necToCheckIndex = necsToCheck.findIndex((nec) => nec === newO);
+          if (necToCheckIndex >= 0) {
+            let necIndex = necs.findIndex((nec) => nec === newO);
+            if (necIndex < 0) {
+              necs.push(newO);
+            }
+          }
           let newOIndex = pairs.findIndex((pair) => pair[1] === newO);
           if (newOIndex >= 0) {
             newO = pairs[newOIndex][0];
@@ -75,11 +88,16 @@ const EditorPage = ({ setEdited }) => {
           newLign = newLign + newO;
         }
         pattern.push(newLign);
-        setEdited(pattern);
+        if (necs.length === necsToCheck.length) {
+          setEdited([pattern, lvlName, lvlStatus]);
+        } else {
+          setEdited(["none", lvlName, lvlStatus]);
+        }
       }
     };
     base !== "loading" && patternBuilder(base);
-  }, [base, setEdited]);
+  }, [base, setEdited, lvlName, lvlStatus]);
+
   useEffect(() => {}, [oMessage]);
 
   ///-- RENDER --///
@@ -102,7 +120,7 @@ const EditorPage = ({ setEdited }) => {
                 style={{
                   ...props.style,
                   height: "6px",
-                  width: "74%",
+                  width: "19.9rem",
                   backgroundColor: "#ccc",
                 }}
               >
@@ -117,8 +135,14 @@ const EditorPage = ({ setEdited }) => {
                   height: "2rem",
                   width: "2rem",
                   backgroundColor: "#999",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: "4px",
                 }}
-              />
+              >
+                {colons}
+              </div>
             )}
           />
         </div>
@@ -139,7 +163,7 @@ const EditorPage = ({ setEdited }) => {
                   {...props}
                   style={{
                     ...props.style,
-                    height: "81%",
+                    height: "73%",
                     width: "6px",
                     backgroundColor: "#ccc",
                   }}
@@ -155,8 +179,14 @@ const EditorPage = ({ setEdited }) => {
                     height: "2rem",
                     width: "2rem",
                     backgroundColor: "#999",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    borderRadius: "4px",
                   }}
-                />
+                >
+                  {ligns}
+                </div>
               )}
             />
           </div>
@@ -231,24 +261,17 @@ const EditorPage = ({ setEdited }) => {
             })}
           </article>
         </div>
-        <h5>{oMessage}</h5>
+        <h5>{oMessage[0]}</h5>
+        <h5>{oMessage[1]}</h5>
         <input
-          className="formInputs"
-          placeholder="ligns"
-          value={ligns}
+          // className="formInputs"
+          type="text"
+          placeholder="level name"
+          value={lvlName}
           onChange={(event) => {
-            setLigns(event.target.value);
+            setLvlName(event.target.value);
           }}
         />
-        <input
-          className="formInputs"
-          placeholder="colons"
-          value={colons}
-          onChange={(event) => {
-            setColons(event.target.value);
-          }}
-        />
-        {/* <button onClick={() => patternBuilder(base)}>logpattern</button> */}
       </section>
     </main>
   );

@@ -151,8 +151,12 @@ const Pos = ({
     ];
     let oIndex = pairs.findIndex((pair) => pair[0] === o);
     let message = pairs[oIndex][1];
-    setOMessage(message);
+    let message2 = pairs[oIndex][2];
+    setOMessage([message, message2]);
   };
+
+  //-- baseChecker vérifie si la modification de joueur est possible
+  // const baseChecker = () => {};
 
   //-- baseUpdater met à jour la base à chaque modification du joueur
   const baseUpdater = () => {

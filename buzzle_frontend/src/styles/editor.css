@@ -4,31 +4,48 @@
 
 /* VIEW */
 .editView {
+    width: 100%;
     height: 90%;
+    background-color: aqua;
 }
 
 .editViewTop {
+    width: 100%;
+    height: 4%;
+    max-width: 26.7rem;
     display: flex;
     flex-direction: row;
+    padding-top: 1rem;
 }
 
 .editBlankHorizontal {
-    width:  21%;
+    width: 6.5rem;
     height: 1rem;
 }
 
 .editViewBottom {
-    height: 90%;
+    height: 96%;
+    max-width: 27rem;
     display: flex;
     flex-direction: row;
+    padding-left: 1rem;
+}
+
+.editRangeVertival {
+    height: 100%;
+    padding-left: 1rem;
 }
 
 .editBlankVertical {
     width: 1rem;
-   height: 23%;
+   height:  20%;
 }
 
 .editTable {
+    overflow: hidden;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    width: 90%;
     margin-left: 1rem;
     display: flex;
     flex-direction: column;
@@ -71,5 +88,7 @@
 
 .editView {
     width: 70%;
+    max-width: 28rem;
+    max-height: 23rem;
     background-color: black;
 }

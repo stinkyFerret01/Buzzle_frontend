@@ -15,14 +15,16 @@ const Header = ({ backend, setLevel, edited, setDisplayAys }) => {
 
   ///-- FONCTIONS --///
   const editer = async () => {
-    try {
-      const response = await axios.post(`${backend}/edit`, {
-        pattern: edited,
-        name: "lvl test",
-        status: "new",
-      });
-      console.log(response.data.message);
-    } catch (error) {}
+    if (edited[0] !== "none" && edited[1] !== "") {
+      try {
+        const response = await axios.post(`${backend}/edit`, {
+          pattern: edited[0],
+          name: edited[1],
+          status: edited[2],
+        });
+        console.log(response.data.message);
+      } catch (error) {}
+    }
   };
 
   //-- USEEFFECT
