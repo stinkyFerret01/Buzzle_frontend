@@ -384,17 +384,51 @@ const GamePage = ({ level, setLevel }) => {
         style={displayPad === true ? {} : { height: "2rem", width: "6rem" }}
       >
         {displayPad ? (
-          <button onClick={() => setDisplayPad(false)}>no pad</button>
+          <section className="padIsTrue">
+            <button onClick={() => setDisplayPad(false)}>no pad</button>
+            <div className="padMessage">En Cours</div>
+            <div className="pad">
+              <div className="padLigns">
+                <button
+                  className="padArrow"
+                  onClick={() => handleKeyDown("pad", "ArrowUp")}
+                >
+                  up
+                </button>
+              </div>
+              <div className="padLigns">
+                <button
+                  className="padArrow"
+                  onClick={() => handleKeyDown("pad", "ArrowLeft")}
+                >
+                  left
+                </button>
+                <button
+                  className="padActivity"
+                  onClick={() => handleKeyDown("pad", "a")}
+                >
+                  action
+                </button>
+                <button
+                  className="padArrow"
+                  onClick={() => handleKeyDown("pad", "ArrowRight")}
+                >
+                  right
+                </button>
+              </div>
+              <div className="padLigns">
+                <button
+                  className="padArrow"
+                  onClick={() => handleKeyDown("pad", "ArrowDown")}
+                >
+                  down
+                </button>
+              </div>
+            </div>
+          </section>
         ) : (
           <button onClick={() => setDisplayPad(true)}>go pad</button>
         )}
-        <button onClick={() => handleKeyDown("pad", "ArrowUp")}>up</button>
-        <button onClick={() => handleKeyDown("pad", "ArrowLeft")}>left</button>
-        <button onClick={() => handleKeyDown("pad", "ArrowRight")}>
-          right
-        </button>
-        <button onClick={() => handleKeyDown("pad", "ArrowDown")}>down</button>
-        <button onClick={() => handleKeyDown("pad", "a")}>action</button>
       </section>
     </main>
   );

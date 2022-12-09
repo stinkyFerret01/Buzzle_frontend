@@ -86,15 +86,62 @@
     }
   }
 
-  /* PAD */
-  .padContainer {
-    width: 12rem;
-    min-width: 12rem;
+/* PAD */
+.padContainer {
+    overflow: hidden;
+    overflow-y: scroll;
+    width: 10rem;
+    min-width: 10rem;
     height: 90%;
+    min-height: 10rem;
     border: solid  rgb(69, 120, 186) 4px;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 1rem;
     display: flex;
+    flex-direction: column;
     margin-left: 1rem;
     box-sizing: border-box;
+}
+
+.padIsTrue {
+    display: flex;
+    flex-direction: column;
+}
+
+.padMessage {
+    width: 100%;
+    height: 2rem;
+    background-color:rgb(69, 120, 186) ;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pad {
+    display: flex;
+    flex-direction: column;
+}
+
+.padLigns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.padArrow {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: rgb(167, 17, 167);
+    border: solid rgb(105, 7, 105) 4px;
+    border-radius: 50%;
+}
+
+.padActivity {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: gold;
+    border: solid goldenrod 4px;
+    border-radius: 50%;
+    margin: 0.5rem;
 }

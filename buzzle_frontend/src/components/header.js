@@ -68,31 +68,37 @@ const Header = ({ backend, setLevel, edited, setDisplayAys }) => {
       {/* CENTER */}
       <section className="headerSection">
         {levels !== "loading" && levelsNew !== "loading" ? (
-          <div>
-            {levels.map((lvl, index) => {
-              return (
-                <button
-                  onClick={() => {
-                    location.pathname === "/game" && setLevel(lvl.pattern);
-                  }}
-                  key={index}
-                >
-                  {lvl.name}
-                </button>
-              );
-            })}
-            {levelsNew.map((lvl, index) => {
-              return (
-                <button
-                  onClick={() => {
-                    location.pathname === "/game" && setLevel(lvl.pattern);
-                  }}
-                  key={index}
-                >
-                  {lvl.name}
-                </button>
-              );
-            })}
+          <div className="headerGameDivs">
+            <div className="headerGameDiv">
+              {levels.map((lvl, index) => {
+                return (
+                  <button
+                    className="levelSelectorValid"
+                    onClick={() => {
+                      location.pathname === "/game" && setLevel(lvl.pattern);
+                    }}
+                    key={index}
+                  >
+                    {lvl.name}
+                  </button>
+                );
+              })}
+            </div>
+            <div className="headerGameDiv">
+              {levelsNew.map((lvl, index) => {
+                return (
+                  <button
+                    className="levelSelectorNew"
+                    onClick={() => {
+                      location.pathname === "/game" && setLevel(lvl.pattern);
+                    }}
+                    key={index}
+                  >
+                    {lvl.name}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         ) : (
           <div>Loading</div>

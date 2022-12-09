@@ -135,16 +135,16 @@ const Pos = ({
       ["C", "agent ennemi"],
       ["Dv", "porte verticale"],
       ["Dh", "porte horizontale"],
-      ["E", "sortie", "1 seul autorisé"],
+      ["E", "sortie", "1 seul possible"],
       ["Kv", "porte vérouillée 1 verticale"],
       ["Kh", "porte vérouillée 1 horizontale"],
-      ["kg", "clés PV 1"],
+      ["kg", "clés PV 1", "autorise la superposition de certains objets"],
       ["Lv", "porte vérouillée 2 verticale"],
       ["Lh", "porte vérouillée 2 horizontale"],
-      ["lg", "clés PV 2"],
+      ["lg", "clés PV 2", "autorise la superposition de certains objets"],
       ["Mv", "porte vérouillée 3 verticale"],
       ["Mh", "porte vérouillée 3 horizontale"],
-      ["mg", "clés PV 3"],
+      ["mg", "clés PV 3", "autorise la superposition de certains objets"],
       [
         "pg",
         "plaque de pression",
@@ -159,9 +159,6 @@ const Pos = ({
     let message2 = pairs[oIndex][2];
     setOMessage([message, message2]);
   };
-
-  //-- baseChecker vérifie si la modification de joueur est possible
-  // const baseChecker = () => {};
 
   //-- baseUpdater met à jour la base à chaque modification du joueur
   const baseUpdater = () => {

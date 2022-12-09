@@ -36,7 +36,6 @@ const EditorPage = ({ setEdited }) => {
       "Dv",
       "C",
     ],
-    lockedDoors: [],
     others: [],
   };
 
@@ -309,17 +308,26 @@ const EditorPage = ({ setEdited }) => {
             </article>
           </div>
         </div>
-        <h5>{oMessage[0]}</h5>
-        <h5>{oMessage[1]}</h5>
-        <h4>Nom du Niveau</h4>
-        <input
-          type="text"
-          placeholder="choisissez un nom"
-          value={lvlName}
-          onChange={(event) => {
-            setLvlName(event.target.value);
-          }}
-        />
+        <div className="oMessages">
+          <h5 className="oMessage1">{oMessage[0]}</h5>
+          <h6 className="oMessage2">{oMessage[1]}</h6>
+        </div>
+        <div className="levelNameSelect">
+          <h4>Nom du Niveau</h4>
+          <input
+            type="text"
+            placeholder="choisissez un nom"
+            value={lvlName}
+            onChange={(event) => {
+              let test = event.target.value;
+              if (test.length < 12) {
+                setLvlName(event.target.value);
+              }
+            }}
+          />
+          <h6>entre 3 et 11 caractères</h6>
+        </div>
+        <h6>la superposition nest pas encore possible en editeur, a venir</h6>
       </section>
     </main>
   );
