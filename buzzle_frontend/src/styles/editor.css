@@ -64,6 +64,7 @@
 .editShop {
     overflow: hidden;
     overflow-y: scroll;
+    /*  */
     width: 12rem;
     min-width: 12rem;
     height: 90%;

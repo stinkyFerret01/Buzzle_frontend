@@ -5,9 +5,10 @@ import { useState, useEffect } from "react";
 //-- import des composants
 import Pos from "./pos";
 
-const GamePage = ({ level }) => {
+const GamePage = ({ level, setLevel }) => {
   ///-- STATES --///
   const [displayPad, setDisplayPad] = useState(true);
+  const [game, setGame] = useState(["Ready?", "START"]);
   const [base, setBase] = useState("loading");
   const [player, setPlayer] = useState("loading");
   const [objects, setObjects] = useState("loading");
@@ -18,7 +19,6 @@ const GamePage = ({ level }) => {
   const okToMoveChecker = (o) => {
     let oStrict = o.slice(0, 1);
     let oObj = o.slice(0, 2);
-    // let act = o.slice(o.length - 1);
     let blocker = ["W", "B", "D", "K", "L", "M"];
     let exept = ["Bh"];
     let blockerTest = blocker.findIndex((block) => block === oStrict);
@@ -63,7 +63,7 @@ const GamePage = ({ level }) => {
   //-- handleKeyDown interprète les commandes du clavier
   const handleKeyDown = (event) => {
     let actChecker = objects.find((obj) => obj[2] === "bs");
-    if (player !== "loading") {
+    if (player !== "loading" && game[0] === "Playing...") {
       if (event.key === "ArrowLeft") {
         let newPos = [player[0], player[1] - 1, player[0], player[1] - 2];
         let o = grid[newPos[0]][newPos[1]];
@@ -176,7 +176,7 @@ const GamePage = ({ level }) => {
     };
     //////------ PROBLEMO ------//////
     // eslint-disable-next-line
-  }, [player, grid]);
+  }, [game, player, grid]);
 
   //-- gameBuilder (prépare le niveau en début de partie)
   useEffect(() => {
@@ -237,6 +237,7 @@ const GamePage = ({ level }) => {
       }
       setPlayer(basePlayer);
       setObjects(baseObjects);
+      setGame(["Ready?", "START"]);
       return base;
     };
     if (level !== "none") setBase(baseBuilder(level));
@@ -290,6 +291,10 @@ const GamePage = ({ level }) => {
       if (activeObj !== undefined) {
         activity = activeObj[2];
       }
+      let exit = objects.find((obj) => obj[2] === "e");
+      if (exit && exit[0] === player[0] && exit[1] === player[1]) {
+        setGame(["Win!", "RESTART"]);
+      }
     }
     for (let L = 0; L < base.length; L++) {
       let newLign = [];
@@ -331,20 +336,38 @@ const GamePage = ({ level }) => {
       }
     >
       <section className="boardContainer">
-        {level !== "none" && grid !== "loading" ? (
-          <div className="table">
-            {grid.map((L, indexL) => {
-              return (
-                <div className="ligns" key={indexL}>
-                  {L.map((o, indexo) => {
-                    return <Pos o={o} key={indexo} />;
-                  })}
-                </div>
-              );
-            })}
-          </div>
-        ) : (
-          <div>chargement du niveau</div>
+        <div className="boardScroller">
+          {level !== "none" && grid !== "loading" ? (
+            <div className="table">
+              {grid.map((L, indexL) => {
+                return (
+                  <div className="ligns" key={indexL}>
+                    {L.map((o, indexo) => {
+                      return <Pos o={o} key={indexo} />;
+                    })}
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div>chargement du niveau</div>
+          )}
+          <div className="boardScrollerBlank"></div>
+        </div>
+
+        {game[0] !== "Playing..." && (
+          <button
+            className="startButton"
+            onClick={() => {
+              setGame(["Playing...", "STOP"]);
+              if (game[0] === "Win!" || game[0] === "Lost!") {
+                let refresh = [...level];
+                setLevel(refresh);
+              }
+            }}
+          >
+            {game[1]}
+          </button>
         )}
       </section>
       <section

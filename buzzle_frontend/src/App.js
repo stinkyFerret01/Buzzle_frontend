@@ -36,7 +36,10 @@ function App() {
         />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/game" element={<GamePage level={level} />} />
+          <Route
+            path="/game"
+            element={<GamePage level={level} setLevel={setLevel} />}
+          />
           <Route
             path="/editor"
             element={<EditorPage edited={edited} setEdited={setEdited} />}
