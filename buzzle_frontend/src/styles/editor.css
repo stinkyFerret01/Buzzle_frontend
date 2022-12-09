@@ -1,16 +1,39 @@
 .editorPage {
     display: flex;
-    flex-direction: column;
 }
 
 .editShop {
+    width: 30%;
+    min-width: 10.9rem;
+    height: 90%;
     background-color: black;
+    margin: 1rem;
+  
+  
+
 }
 
 .shopList {
+    width: 100%;
+    max-width: 10.9rem;
     display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+   
+}
+
+.shopCategory {
+    width: 3.5rem;
+    min-width: 3.5rem;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .editView {
+    width: 70%;
     background-color: blue;
 }

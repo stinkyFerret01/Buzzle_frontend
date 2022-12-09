@@ -8,19 +8,41 @@ import { useLocation, useNavigate } from "react-router-dom";
 const Header = ({ backend, setLevel, setDisplayAys }) => {
   ///-- STATES --///
   const [levels, setLevels] = useState("loading");
+  const [levelsNew, setLevelsNew] = useState("loading");
 
   const navigate = useNavigate();
   const location = useLocation();
 
+  ///-- FONCTIONS --///
+  const editer = async () => {
+    try {
+      const response = await axios.post(`${backend}/edit`, {
+        pattern: [
+          ".........",
+          "WWWWWWWWW",
+          "...P.p...",
+          "WWWWWWWWW",
+          ".........",
+        ],
+        name: "lvl test",
+        status: "new",
+      });
+      console.log(response.data.message);
+    } catch (error) {}
+  };
+
   //-- USEEFFECT
+  useEffect(() => {}, [levels, levelsNew]);
+
   useEffect(() => {
     const fetcher = async () => {
       try {
         const response = await axios.get(`${backend}/levels`);
         setLevels(response.data.levels);
         console.log(backend);
-        if (response.data.levels !== undefined) {
-          setLevels(response.data.levels);
+        if (response.data.levelsValid !== undefined) {
+          setLevels(response.data.levelsValid);
+          setLevelsNew(response.data.levelsNew);
         } else {
           console.log(response.data.alert);
         }
@@ -49,9 +71,21 @@ const Header = ({ backend, setLevel, setDisplayAys }) => {
       )}
       {/* CENTER */}
       <section className="headerSection">
-        {levels !== "loading" ? (
+        {levels !== "loading" && levelsNew !== "loading" ? (
           <div>
             {levels.map((lvl, index) => {
+              return (
+                <button
+                  onClick={() => {
+                    location.pathname === "/game" && setLevel(lvl.pattern);
+                  }}
+                  key={index}
+                >
+                  {lvl.name}
+                </button>
+              );
+            })}
+            {levelsNew.map((lvl, index) => {
               return (
                 <button
                   onClick={() => {
@@ -82,7 +116,9 @@ const Header = ({ backend, setLevel, setDisplayAys }) => {
         </section>
       )}
       {/* RIGHT */}
-      <section className="headerSection"></section>
+      <section className="headerSection">
+        <button onClick={editer}>EDIT</button>
+      </section>
       {location.pathname !== "/editor" && (
         <section
           onClick={

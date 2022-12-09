@@ -181,6 +181,7 @@ const GamePage = ({ level }) => {
   useEffect(() => {
     //-- baseBuilder construit le tableau du niveau choisi
     const baseBuilder = (lvl) => {
+      console.log("pat" + lvl);
       let base = [];
       let basePlayer = [];
       let baseObjects = [];

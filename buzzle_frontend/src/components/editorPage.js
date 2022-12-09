@@ -14,30 +14,36 @@ const EditorPage = () => {
   const [oMessage, setOMessage] = useState("mur");
   const [base, setBase] = useState("loading");
 
-  const os = [
-    "a",
-    "Bs",
-    "C",
-    "Dh",
-    "Dv",
-    "E",
-    "Kh",
-    "Kv",
-    "kg",
-    "Lh",
-    "Lv",
-    "lg",
-    "Mh",
-    "Mv",
-    "mg",
-    "pg",
-    "P",
-    "W",
-    ".",
-  ];
+  const os = {
+    lockedDoors: ["Kh", "Kv", "kg", "Lh", "Lv", "lg", "Mh", "Mv", "mg"],
+    necessary: ["a", "P", "W", "."],
+    objects: ["Dh", "Dv", "E", "pg", "Bs", "C"],
+  };
+  // const os = [
+  //   "a",
+  //   "Bs",
+  //   "C",
+  //   "Dh",
+  //   "Dv",
+  //   "E",
+  //   "Kh",
+  //   "Kv",
+  //   "kg",
+  //   "Lh",
+  //   "Lv",
+  //   "lg",
+  //   "Mh",
+  //   "Mv",
+  //   "mg",
+  //   "pg",
+  //   "P",
+  //   "W",
+  //   ".",
+  // ];
 
   //-- USEEFFECT
   //-- baseBuilder
+
   useEffect(() => {
     //-- baseBuilder construit le tableau du niveau choisi
     const baseBuilder = (li, co) => {
@@ -65,39 +71,6 @@ const EditorPage = () => {
   ///-- RENDER --///
   return (
     <main className="editorPage">
-      <section className="editShop">
-        <div className="shopList">
-          {os.map((o, indexo) => {
-            return (
-              <Pos
-                o={o}
-                setOSelection={setOSelection}
-                setOMessage={setOMessage}
-                type="choose"
-                key={indexo}
-              />
-            );
-          })}
-        </div>
-        <h3>{oMessage}</h3>
-        <input
-          className="formInputs"
-          placeholder="ligns"
-          value={ligns}
-          onChange={(event) => {
-            setLigns(event.target.value);
-          }}
-        />
-        <input
-          className="formInputs"
-          placeholder="colons"
-          value={colons}
-          onChange={(event) => {
-            setColons(event.target.value);
-          }}
-        />
-        <div>{oSelection}</div>
-      </section>
       <section className="editView">
         {base !== "loading" ? (
           <div className="table">
@@ -125,6 +98,67 @@ const EditorPage = () => {
         ) : (
           <div>chargement du niveau</div>
         )}
+      </section>
+      <section className="editShop">
+        <h4>éléments:</h4>
+        <div className="shopList">
+          <article className="shopCategory">
+            {os.lockedDoors.map((o, indexo) => {
+              return (
+                <Pos
+                  o={o}
+                  setOSelection={setOSelection}
+                  setOMessage={setOMessage}
+                  type="choose"
+                  key={indexo}
+                />
+              );
+            })}
+          </article>
+          <article className="shopCategory">
+            {os.objects.map((o, indexo) => {
+              return (
+                <Pos
+                  o={o}
+                  setOSelection={setOSelection}
+                  setOMessage={setOMessage}
+                  type="choose"
+                  key={indexo}
+                />
+              );
+            })}
+          </article>
+          <article className="shopCategory">
+            {os.necessary.map((o, indexo) => {
+              return (
+                <Pos
+                  o={o}
+                  setOSelection={setOSelection}
+                  setOMessage={setOMessage}
+                  type="choose"
+                  key={indexo}
+                />
+              );
+            })}
+          </article>
+        </div>
+        <h5>{oMessage}</h5>
+        <input
+          className="formInputs"
+          placeholder="ligns"
+          value={ligns}
+          onChange={(event) => {
+            setLigns(event.target.value);
+          }}
+        />
+        <input
+          className="formInputs"
+          placeholder="colons"
+          value={colons}
+          onChange={(event) => {
+            setColons(event.target.value);
+          }}
+        />
       </section>
     </main>
   );
