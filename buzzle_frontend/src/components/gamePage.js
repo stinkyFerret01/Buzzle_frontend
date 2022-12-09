@@ -7,6 +7,7 @@ import Pos from "./pos";
 
 const GamePage = ({ level }) => {
   ///-- STATES --///
+  const [displayPad, setDisplayPad] = useState(true);
   const [base, setBase] = useState("loading");
   const [player, setPlayer] = useState("loading");
   const [objects, setObjects] = useState("loading");
@@ -317,11 +318,18 @@ const GamePage = ({ level }) => {
       newGrid.push(newLign);
     }
     setGrid(newGrid);
-  }, [base, player, objects]);
+  }, [base, player, objects, displayPad]);
 
   ///-- RENDER --///
   return (
-    <main>
+    <main
+      className="gamePage"
+      style={
+        displayPad === true
+          ? { flexDirection: "row" }
+          : { flexDirection: "column" }
+      }
+    >
       <section className="boardContainer">
         {level !== "none" && grid !== "loading" ? (
           <div className="table">
@@ -337,6 +345,16 @@ const GamePage = ({ level }) => {
           </div>
         ) : (
           <div>chargement du niveau</div>
+        )}
+      </section>
+      <section
+        className="padContainer"
+        style={displayPad === true ? {} : { height: "2rem", width: "6rem" }}
+      >
+        {displayPad ? (
+          <button onClick={() => setDisplayPad(false)}>no pad</button>
+        ) : (
+          <button onClick={() => setDisplayPad(true)}>go pad</button>
         )}
       </section>
     </main>

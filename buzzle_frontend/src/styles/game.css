@@ -1,3 +1,7 @@
+.gamePage {
+    display: flex;
+}
+
 /* BOARD et POS */
 .boardContainer {
     overflow: hidden;
@@ -51,3 +55,13 @@
         box-shadow: 0 0 0 4px rgb(158, 23, 226, 0.01);
     }
   }
+
+  /* PAD */
+  .padContainer {
+    height: 90%;
+    border: solid  rgb(69, 120, 186) 4px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    margin-left: 1rem;
+}
