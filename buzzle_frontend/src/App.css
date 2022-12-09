@@ -21,23 +21,24 @@ header {
   position: relative;
   width: 80%;
   height: 6rem;
-  border:solid rgb(102, 61, 222) 4px;
+  border:solid  rgb(69, 120, 186) 4px;
   display: flex;
   box-sizing: border-box;
 }
 
 main {
   width: 80%;
-  height: 60%;
+  height: 65%;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
 }
 
 footer {
   width: 80%;
   height: 6rem;
-  background-color: rgb(102, 61, 222);
+  background-color:  rgb(69, 120, 186);
   display: flex;
 }
 

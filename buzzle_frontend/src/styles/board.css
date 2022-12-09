@@ -4,12 +4,6 @@
     background-color: black;
 }
 
-.table {
-    display: flex;
-    flex-direction: column;
-    background-color: black;
-}
-
 .ligns {
     display: flex;
 }
