@@ -34,15 +34,15 @@ const Pos = ({
       style["backgroundColor"] = "green";
     } else if (oStrict === "C") {
       style["borderRadius"] = "50%";
-      style["backgroundColor"] = "aqua";
+      style["backgroundColor"] = "blue";
     } else if (oObj === "Dh") {
       style["borderTop"] = "solid black 6px";
       style["borderBottom"] = "solid black 6px";
-      style["backgroundColor"] = "brown";
+      style["backgroundColor"] = "aqua";
     } else if (oObj === "Dv") {
       style["borderLeft"] = "solid black 6px";
       style["borderRight"] = "solid black 6px";
-      style["backgroundColor"] = "brown";
+      style["backgroundColor"] = "aqua";
     } else if (oStrict === "e") {
       style["backgroundColor"] = "black";
     } else if (oStrict === "E") {
@@ -54,31 +54,31 @@ const Pos = ({
         style["backgroundColor"] = "gray";
       }
     } else if (oObj === "kg") {
-      style["border"] = "solid orange 2px";
+      style["border"] = "solid orangered 2px";
       style["margin"] = "4px";
       style["width"] = "8px";
       style["height"] = "8px";
     } else if (oObj === "Kh") {
       style["borderTop"] = "solid black 6px";
       style["borderBottom"] = "solid black 6px";
-      style["backgroundColor"] = "orange";
+      style["backgroundColor"] = "orangered";
     } else if (oObj === "Kv") {
       style["borderLeft"] = "solid black 6px";
       style["borderRight"] = "solid black 6px";
-      style["backgroundColor"] = "orange";
+      style["backgroundColor"] = "orangered";
     } else if (oObj === "lg") {
-      style["border"] = "solid gold 2px";
+      style["border"] = "solid orange 2px";
       style["margin"] = "4px";
       style["width"] = "8px";
       style["height"] = "8px";
     } else if (oObj === "Lh") {
       style["borderTop"] = "solid black 6px";
       style["borderBottom"] = "solid black 6px";
-      style["backgroundColor"] = "gold";
+      style["backgroundColor"] = "orange";
     } else if (oObj === "Lv") {
       style["borderLeft"] = "solid black 6px";
       style["borderRight"] = "solid black 6px";
-      style["backgroundColor"] = "gold";
+      style["backgroundColor"] = "orange";
     } else if (oObj === "mg") {
       style["border"] = "solid yellow 2px";
       style["margin"] = "4px";
@@ -105,7 +105,12 @@ const Pos = ({
     } else if (oStrict === "W") {
       style["backgroundColor"] = "gray";
     } else if (oStrict === ".") {
-      style["backgroundColor"] = "black";
+      if (type === "choose") {
+        style["border"] = "solid black 3px";
+        style["backgroundColor"] = "white";
+      } else {
+        style["backgroundColor"] = "black";
+      }
     }
 
     // if (type === "edit") {
@@ -177,11 +182,10 @@ const Pos = ({
         <article style={styleMaker(o)} className="pos"></article>
       )}
       {type === "choose" && (
-        <article
-          onClick={choiceUpdater}
-          style={styleMaker(o)}
-          className="pos"
-        ></article>
+        <article onClick={choiceUpdater} style={styleMaker(o)} className="pos">
+          {o === "a" && o}
+          {o === "E" && "s"}
+        </article>
       )}
       {type === "edit" && (
         <article

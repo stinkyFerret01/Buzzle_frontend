@@ -13,21 +13,38 @@ const EditorPage = ({ setEdited }) => {
   const [ligns, setLigns] = useState(10);
   const [colons, setColons] = useState(10);
   const [oSelection, setOSelection] = useState("W");
-  const [oMessage, setOMessage] = useState("mur");
+  const [oMessage, setOMessage] = useState(["mur"]);
   const [base, setBase] = useState("loading");
   const [lvlName, setLvlName] = useState("");
-  const [lvlStatus, setLvlStatus] = useState("new");
+  const [lvlStatus] = useState("new");
 
+  //-- liste des object à sélectioner
   const os = {
-    lockedDoors: ["Kh", "Kv", "kg", "Lh", "Lv", "lg", "Mh", "Mv", "mg"],
-    necessary: ["a", "P", "W", "."],
-    objects: ["Dh", "Dv", "E", "pg", "Bs", "C"],
+    necessary: ["a", "P", "E", "pg", "Bs"],
+    basics: ["W", "."],
+    objects: [
+      "Kh",
+      "Kv",
+      "kg",
+      "Lh",
+      "Lv",
+      "lg",
+      "Mh",
+      "Mv",
+      "mg",
+      "Dh",
+      "Dv",
+      "C",
+    ],
+    lockedDoors: [],
+    others: [],
   };
 
   ///-- FONCTIONS --///
   //- none
 
   ///-- USEEFFECT --///
+  //-- baseBuilder (construit la base)
   useEffect(() => {
     //-- baseBuilder construit le tableau du niveau choisi
     const baseBuilder = (li, co) => {
@@ -50,6 +67,7 @@ const EditorPage = ({ setEdited }) => {
     setBase(baseBuilder(parseInt(ligns), parseInt(colons)));
   }, [ligns, colons]);
 
+  //-- patternBuilder (construit le pattern pour l'édition)
   useEffect(() => {
     const patternBuilder = (ba) => {
       let necs = [];
@@ -220,53 +238,81 @@ const EditorPage = ({ setEdited }) => {
       </section>
       <section className="editShop">
         <h4>éléments:</h4>
-        <div className="shopList">
-          <article className="shopCategory">
-            {os.lockedDoors.map((o, indexo) => {
-              return (
-                <Pos
-                  o={o}
-                  setOSelection={setOSelection}
-                  setOMessage={setOMessage}
-                  type="choose"
-                  key={indexo}
-                />
-              );
-            })}
-          </article>
-          <article className="shopCategory">
-            {os.objects.map((o, indexo) => {
-              return (
-                <Pos
-                  o={o}
-                  setOSelection={setOSelection}
-                  setOMessage={setOMessage}
-                  type="choose"
-                  key={indexo}
-                />
-              );
-            })}
-          </article>
-          <article className="shopCategory">
-            {os.necessary.map((o, indexo) => {
-              return (
-                <Pos
-                  o={o}
-                  setOSelection={setOSelection}
-                  setOMessage={setOMessage}
-                  type="choose"
-                  key={indexo}
-                />
-              );
-            })}
-          </article>
+        <div className="shopLists">
+          <div className="shopList">
+            <h5>nécessaires</h5>
+            <article className="shopCategory">
+              {os.necessary.map((o, indexo) => {
+                return (
+                  <div className="posSpacer">
+                    <Pos
+                      o={o}
+                      setOSelection={setOSelection}
+                      setOMessage={setOMessage}
+                      type="choose"
+                      key={indexo}
+                    />
+                  </div>
+                );
+              })}
+            </article>
+            <h5>basiques</h5>
+            <article className="shopCategory">
+              {os.basics.map((o, indexo) => {
+                return (
+                  <div className="posSpacer">
+                    <Pos
+                      o={o}
+                      setOSelection={setOSelection}
+                      setOMessage={setOMessage}
+                      type="choose"
+                      key={indexo}
+                    />
+                  </div>
+                );
+              })}
+            </article>
+          </div>
+          <div className="shopList">
+            <h5>optionels</h5>
+            <article className="shopCategory">
+              {os.objects.map((o, indexo) => {
+                return (
+                  <div className="posSpacer">
+                    <Pos
+                      o={o}
+                      setOSelection={setOSelection}
+                      setOMessage={setOMessage}
+                      type="choose"
+                      key={indexo}
+                    />
+                  </div>
+                );
+              })}
+            </article>
+            <article className="shopCategory">
+              {os.others.map((o, indexo) => {
+                return (
+                  <div className="posSpacer">
+                    <Pos
+                      o={o}
+                      setOSelection={setOSelection}
+                      setOMessage={setOMessage}
+                      type="choose"
+                      key={indexo}
+                    />
+                  </div>
+                );
+              })}
+            </article>
+          </div>
         </div>
         <h5>{oMessage[0]}</h5>
         <h5>{oMessage[1]}</h5>
+        <h4>Nom du Niveau</h4>
         <input
-          // className="formInputs"
           type="text"
-          placeholder="level name"
+          placeholder="choisissez un nom"
           value={lvlName}
           onChange={(event) => {
             setLvlName(event.target.value);
