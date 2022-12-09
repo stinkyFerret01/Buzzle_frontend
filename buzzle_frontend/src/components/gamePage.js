@@ -61,10 +61,14 @@ const GamePage = ({ level, setLevel }) => {
   };
 
   //-- handleKeyDown interprète les commandes du clavier
-  const handleKeyDown = (event) => {
+  const handleKeyDown = (event, k) => {
+    let key = event.key;
+    if (event === "pad") {
+      key = k;
+    }
     let actChecker = objects.find((obj) => obj[2] === "bs");
     if (player !== "loading" && game[0] === "Playing...") {
-      if (event.key === "ArrowLeft") {
+      if (key === "ArrowLeft") {
         let newPos = [player[0], player[1] - 1, player[0], player[1] - 2];
         let o = grid[newPos[0]][newPos[1]];
         let oAct = grid[newPos[2]][newPos[3]];
@@ -83,7 +87,7 @@ const GamePage = ({ level, setLevel }) => {
           setPlayer(newPos);
         }
       }
-      if (event.key === "ArrowRight") {
+      if (key === "ArrowRight") {
         let newPos = [player[0], player[1] + 1, player[0], player[1] + 2];
         let o = grid[newPos[0]][newPos[1]];
         let oAct = grid[newPos[2]][newPos[3]];
@@ -102,7 +106,7 @@ const GamePage = ({ level, setLevel }) => {
           setPlayer(newPos);
         }
       }
-      if (event.key === "ArrowUp") {
+      if (key === "ArrowUp") {
         let newPos = [player[0] - 1, player[1], player[0] - 2, player[1]];
         let o = grid[newPos[0]][newPos[1]];
         let oAct = grid[newPos[2]][newPos[3]];
@@ -121,7 +125,7 @@ const GamePage = ({ level, setLevel }) => {
           setPlayer(newPos);
         }
       }
-      if (event.key === "ArrowDown") {
+      if (key === "ArrowDown") {
         let newPos = [player[0] + 1, player[1], player[0] + 2, player[1]];
         let o = grid[newPos[0]][newPos[1]];
         let oAct = grid[newPos[2]][newPos[3]];
@@ -140,7 +144,7 @@ const GamePage = ({ level, setLevel }) => {
           setPlayer(newPos);
         }
       }
-      if (event.key === "a") {
+      if (key === "a") {
         let objIndex = objects.findIndex((obj) => obj[2] === "bs");
         let object = objects.find((obj) => obj[2] === "bs");
         if (object === undefined) {
@@ -169,6 +173,7 @@ const GamePage = ({ level, setLevel }) => {
   ///--USEEFFECT --///
   //-- keyboardListener (reçois et transmet les commandes claviers)
   useEffect(() => {
+    console.log("use 1");
     window.removeEventListener("keydown", handleKeyDown);
     window.addEventListener("keydown", handleKeyDown);
     return () => {
@@ -180,9 +185,9 @@ const GamePage = ({ level, setLevel }) => {
 
   //-- gameBuilder (prépare le niveau en début de partie)
   useEffect(() => {
+    console.log("use 2");
     //-- baseBuilder construit le tableau du niveau choisi
     const baseBuilder = (lvl) => {
-      console.log("pat" + lvl);
       let base = [];
       let basePlayer = [];
       let baseObjects = [];
@@ -237,14 +242,15 @@ const GamePage = ({ level, setLevel }) => {
       }
       setPlayer(basePlayer);
       setObjects(baseObjects);
-      setGame(["Ready?", "START"]);
       return base;
     };
     if (level !== "none") setBase(baseBuilder(level));
+    setGame(["Ready?", "START"]);
   }, [level]);
 
   //-- pressChecker (vérifie la présence d'un objet sur la presse)
   useEffect(() => {
+    console.log("use 3");
     //-- pressChecker vérifie la présence d'un objet sur la presse
     const pressChecker = () => {
       let press = objects.find((obj) => obj[2] === "pg");
@@ -280,10 +286,11 @@ const GamePage = ({ level, setLevel }) => {
         setObjects(newObjects);
       }
     }
-  }, [player, objects]);
+  }, [player, objects, game]);
 
   //-- gridDrawer (dessine le niveau à chaque changement de valeur)
   useEffect(() => {
+    console.log("use 4");
     let newGrid = [];
     let activity = "none";
     if (objects !== "loading") {
@@ -354,20 +361,22 @@ const GamePage = ({ level, setLevel }) => {
           )}
           <div className="boardScrollerBlank"></div>
         </div>
-
-        {game[0] !== "Playing..." && (
-          <button
-            className="startButton"
-            onClick={() => {
-              setGame(["Playing...", "STOP"]);
-              if (game[0] === "Win!" || game[0] === "Lost!") {
-                let refresh = [...level];
-                setLevel(refresh);
-              }
-            }}
-          >
-            {game[1]}
-          </button>
+        {game[0] !== "Playing..." && level !== "none" && (
+          <article className="startPopper">
+            <button
+              className="startButton"
+              onClick={() => {
+                if (game[0] === "Win!" || game[0] === "Lost!") {
+                  let refresh = [...level];
+                  setLevel(refresh);
+                } else {
+                  setGame(["Playing...", "STOP"]);
+                }
+              }}
+            >
+              {game[1]}
+            </button>
+          </article>
         )}
       </section>
       <section
@@ -379,6 +388,13 @@ const GamePage = ({ level, setLevel }) => {
         ) : (
           <button onClick={() => setDisplayPad(true)}>go pad</button>
         )}
+        <button onClick={() => handleKeyDown("pad", "ArrowUp")}>up</button>
+        <button onClick={() => handleKeyDown("pad", "ArrowLeft")}>left</button>
+        <button onClick={() => handleKeyDown("pad", "ArrowRight")}>
+          right
+        </button>
+        <button onClick={() => handleKeyDown("pad", "ArrowDown")}>down</button>
+        <button onClick={() => handleKeyDown("pad", "a")}>action</button>
       </section>
     </main>
   );

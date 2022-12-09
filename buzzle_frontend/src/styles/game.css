@@ -7,7 +7,6 @@
     position: relative;
     overflow: hidden;
     /*  */
-    min-width: 10rem;
     height: 90%;
     min-height: 10rem;
     border: solid  rgb(69, 120, 186) 4px;
@@ -25,11 +24,22 @@
     padding-right: 1rem;
 }
 
-.startButton {
-    z-index: 3;
+.startPopper {
+    z-index: 2;
     position: absolute;
-    left: 50%;
-    top: 50%;
+    left: calc(50% - 6rem);
+    top: calc(50% - 4rem);
+    /*  */
+    width: 12rem;
+    height: 8rem;
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.startButton {
+  
     color:white;
     background-color: aqua;
 }
