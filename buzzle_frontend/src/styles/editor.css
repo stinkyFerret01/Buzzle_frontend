@@ -5,6 +5,8 @@
 /* VIEW */
 .editView {
     overflow: hidden;
+    overflow-x: scroll;
+    overflow-y: scroll;
     width: 70%;
     max-width: 29.7rem;
     height: 90%;
@@ -48,10 +50,6 @@
 }
 
 .editTable {
-    /* min-width: 24rem; */
-    overflow: hidden;
-    overflow-x: scroll;
-    overflow-y: scroll;
     padding-left: 1rem;
     padding-right: 1rem;
     display: flex;
@@ -63,6 +61,8 @@
 
 /* SHOP */
 .editShop {
+    overflow: hidden;
+    overflow-y: scroll;
     width: 12rem;
     min-width: 12rem;
     height: 90%;

@@ -139,6 +139,7 @@ const EditorPage = ({ setEdited }) => {
                   ...props.style,
                   height: "6px",
                   width: "19.9rem",
+                  minWidth: "19.9rem",
                   backgroundColor: "#ccc",
                 }}
               >
@@ -181,8 +182,9 @@ const EditorPage = ({ setEdited }) => {
                   {...props}
                   style={{
                     ...props.style,
-                    height: "73%",
                     width: "6px",
+                    height: "16rem",
+                    minHeight: "16rem",
                     backgroundColor: "#ccc",
                   }}
                 >
