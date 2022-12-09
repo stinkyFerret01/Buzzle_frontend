@@ -322,21 +322,23 @@ const GamePage = ({ level }) => {
   ///-- RENDER --///
   return (
     <main>
-      {level !== "none" && grid !== "loading" ? (
-        <div className="table">
-          {grid.map((L, indexL) => {
-            return (
-              <div className="ligns" key={indexL}>
-                {L.map((o, indexo) => {
-                  return <Pos o={o} key={indexo} />;
-                })}
-              </div>
-            );
-          })}
-        </div>
-      ) : (
-        <div>chargement du niveau</div>
-      )}
+      <section className="boardContainer">
+        {level !== "none" && grid !== "loading" ? (
+          <div className="table">
+            {grid.map((L, indexL) => {
+              return (
+                <div className="ligns" key={indexL}>
+                  {L.map((o, indexo) => {
+                    return <Pos o={o} key={indexo} />;
+                  })}
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div>chargement du niveau</div>
+        )}
+      </section>
     </main>
   );
 };

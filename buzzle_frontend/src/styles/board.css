@@ -1,4 +1,17 @@
+.boardContainer {
+    overflow: hidden;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    height: 90%;
+    border: solid  rgb(69, 120, 186) 4px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    /* justify-content: center; */
+}
+
 .table {
+    /* min-width: 30rem; */
     display: flex;
     flex-direction: column;
     background-color: black;
