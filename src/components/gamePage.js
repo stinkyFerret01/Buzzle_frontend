@@ -29,9 +29,11 @@ const GamePage = ({ level, setLevel, edited }) => {
     let exept = ["Bh"];
     let blockerTest = blocker.findIndex((block) => block === oStrict);
     let exeptTest = exept.findIndex((exep) => exep === oObj);
-    if (blockerTest >= 0 && exeptTest < 0) {
+    if (blockerTest >= 0) {
       return false;
     } else {
+      console.log(o);
+      console.log(cops);
       return true;
     }
   };
@@ -180,7 +182,6 @@ const GamePage = ({ level, setLevel, edited }) => {
   //-- keyboardListener (reçois et transmet les commandes claviers)
   //-- (PROBEMO dépendance handleKeyDown)
   useEffect(() => {
-    console.log("use 1");
     window.removeEventListener("keydown", handleKeyDown);
     window.addEventListener("keydown", handleKeyDown);
     return () => {
@@ -192,7 +193,6 @@ const GamePage = ({ level, setLevel, edited }) => {
 
   //-- gameBuilder (prépare le niveau en début de partie)
   useEffect(() => {
-    console.log("use 2");
     //-- baseBuilder construit le tableau du niveau choisi
     const baseBuilder = (lvl) => {
       let eBase = [];
@@ -302,27 +302,27 @@ const GamePage = ({ level, setLevel, edited }) => {
         if (
           cops.find((cop) => cop[0] === newCop[0] && cop[1] === newCop[1]) ||
           newCops.find((cop) => cop[0] === newCop[0] && cop[1] === newCop[1]) ||
-          okToMoveChecker(grid[newCop[1]][newCop[0]]) === false
+          okToMoveChecker(grid[newCop[0]][newCop[1]]) === false
         ) {
           if (
-            cops.find((cop) => cop[0] === oldCop[0] && cop[1] === newCop[1]) ===
-              undefined &&
-            newCops.find(
-              (cop) => cop[0] === oldCop[0] && cop[1] === newCop[1]
-            ) === undefined &&
-            okToMoveChecker(grid[newCop[1]][oldCop[0]]) === true
-          ) {
-            let newCopB = [oldCop[0], newCop[1]];
-            newCops.push(newCopB);
-          } else if (
             cops.find((cop) => cop[0] === newCop[0] && cop[1] === oldCop[1]) ===
               undefined &&
             newCops.find(
               (cop) => cop[0] === newCop[0] && cop[1] === oldCop[1]
             ) === undefined &&
-            okToMoveChecker(grid[oldCop[1]][newCop[0]]) === true
+            okToMoveChecker(grid[newCop[0]][oldCop[1]]) === true
           ) {
-            let newCopA = [newCop[0], oldCop[1]];
+            let newCopB = [newCop[0], oldCop[1], "C"];
+            newCops.push(newCopB);
+          } else if (
+            cops.find((cop) => cop[0] === oldCop[0] && cop[1] === newCop[1]) ===
+              undefined &&
+            newCops.find(
+              (cop) => cop[0] === oldCop[0] && cop[1] === newCop[1]
+            ) === undefined &&
+            okToMoveChecker(grid[oldCop[0]][newCop[1]]) === true
+          ) {
+            let newCopA = [oldCop[0], newCop[1], "C"];
             newCops.push(newCopA);
           } else {
             newCops.push(oldCop);
@@ -350,7 +350,6 @@ const GamePage = ({ level, setLevel, edited }) => {
 
   //-- pressChecker (vérifie la présence d'un objet sur la presse)
   useEffect(() => {
-    console.log("use 3");
     //-- pressChecker vérifie la présence d'un objet sur la presse
     const pressChecker = () => {
       let press = objects.find((obj) => obj[2] === "pg");
@@ -390,10 +389,9 @@ const GamePage = ({ level, setLevel, edited }) => {
 
   //-- gridDrawer (dessine le niveau à chaque changement de valeur)
   useEffect(() => {
-    console.log("use 4");
     let newGrid = [];
     let activity = "none";
-    if (objects !== "loading") {
+    if (objects !== "loading" && cops !== "loading") {
       let activeObj = objects.find((obj) => obj[2] === "bs");
       if (activeObj !== undefined) {
         activity = activeObj[2];
@@ -401,6 +399,12 @@ const GamePage = ({ level, setLevel, edited }) => {
       let exit = objects.find((obj) => obj[2] === "e");
       if (exit && exit[0] === player[0] && exit[1] === player[1]) {
         setGame(["Win!", "REFRESH"]);
+      }
+      let caught = cops.findIndex(
+        (cop) => cop[0] === player[0] && cop[1] === player[1]
+      );
+      if (caught >= 0) {
+        setGame(["Lost!", "REFRESH"]);
       }
     }
     for (let L = 0; L < base.length; L++) {
