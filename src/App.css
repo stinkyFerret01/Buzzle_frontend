@@ -3,7 +3,7 @@
 @import "styles/home.css";
 @import "styles/game.css";
 @import "styles/editor.css";
-@import "styles/areYouSure.css";
+@import "styles/aysEtWfr.css";
 
 .App {
   width: 100vw;
@@ -44,3 +44,13 @@ footer {
   display: flex;
 }
 
+.spreadOver {
+  position: absolute;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(234, 178, 11, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

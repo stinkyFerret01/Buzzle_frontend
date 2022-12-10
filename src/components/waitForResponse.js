@@ -2,11 +2,15 @@
 const WaitForResponse = ({ setDisplayWfr }) => {
   ///-- RENDER --///
   return (
-    <article className="ays">
-      <h3>WAIT!</h3>
-      <h5>continuer sans attendre peut vous faire perdre votre progression</h5>
-      <button>CONTINUER</button>
-    </article>
+    <section className="spreadOver">
+      <article className="ays">
+        <h3>PATIENTEZ!</h3>
+        <h5>
+          continuer sans attendre peut vous faire perdre votre progression
+        </h5>
+        <button className="wfrContinue">CONTINUER</button>
+      </article>
+    </section>
   );
 };
 

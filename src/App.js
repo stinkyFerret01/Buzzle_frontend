@@ -23,7 +23,7 @@ function App() {
   const [level, setLevel] = useState("none");
   const [edited, setEdited] = useState(["none", "none", "new"]);
   const [editBase, setEditBase] = useState("none");
-  const [displayAys, setDisplayAys] = useState(false);
+  const [displayAys, setDisplayAys] = useState("none");
   const [displayWfr, setDisplayWfr] = useState(false);
 
   ///-- RENDER --///
@@ -58,7 +58,7 @@ function App() {
           />
         </Routes>
         <Footer />
-        {displayAys === true && (
+        {displayAys !== "none" && (
           <AreYouSure displayAys={displayAys} setDisplayAys={setDisplayAys} />
         )}
         {displayWfr === true && (

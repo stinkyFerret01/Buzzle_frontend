@@ -37,11 +37,14 @@
 }
 
 .levelSelectorValid {
+    font-weight: bold;
     background-color: goldenrod;
     font-size: 0.8rem;
 }
 
 .levelSelectorNew {
+    font-weight: bold;
+    color: aliceblue;
     background-color: purple;
     font-size: 0.8rem;
 }
