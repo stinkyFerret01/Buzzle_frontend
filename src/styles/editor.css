@@ -90,10 +90,10 @@
 }
 
 .shopCategory {
-    width: 4.2rem;
+    width: 4.5rem;
     min-width: 3.5rem;
     margin-left: 0.5rem;
-    padding: 5px;
+    padding: 2px;
     background-color: rgb(69, 120, 186);
     display: flex;
     flex-wrap: wrap;
@@ -107,6 +107,13 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    border: solid transparent 1px;
+}
+
+.posSpacer:hover {
+    box-shadow: 0 0 0 0rem rgba(234, 178, 11, 1);
+    border: solid red 1px;
+    box-sizing: border-box;
 }
 
 .posSpacer2 {

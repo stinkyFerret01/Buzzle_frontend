@@ -1,7 +1,7 @@
 ///-- CONFIG --///
 //-- import librairie
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 //-- import des composants
 import Pos from "./pos";
@@ -19,28 +19,23 @@ const GamePage = ({ level, setLevel, edited }) => {
   }
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   ///-- FONCTIONS --///
   //-- okToMoveChecker vérifie si le déplacement du joueur est possible
   const okToMoveChecker = (o) => {
     let oStrict = o.slice(0, 1);
-    let oObj = o.slice(0, 2);
-    let blocker = ["W", "B", "D", "K", "L", "M"];
-    let exept = ["Bh"];
+    let blocker = ["W", "B", "D", "K", "L", "M", "E"];
     let blockerTest = blocker.findIndex((block) => block === oStrict);
-    let exeptTest = exept.findIndex((exep) => exep === oObj);
     if (blockerTest >= 0) {
       return false;
     } else {
-      console.log(o);
-      console.log(cops);
       return true;
     }
   };
 
   //-- actioner défini la nouvelle valeur d'un object après une action du joueur
   const actioner = (obj) => {
-    console.log(obj);
     let pairs = [
       ["Dv", "dv"],
       ["Dh", "dh"],
@@ -535,7 +530,9 @@ const GamePage = ({ level, setLevel, edited }) => {
                 </button>
               </div>
             </div>
-            <button onClick={() => navigate("/editor")}>back to edit</button>
+            {location.pathname === "/game/editor" && (
+              <button onClick={() => navigate("/editor")}>back to edit</button>
+            )}
           </section>
         ) : (
           <button onClick={() => setDisplayPad(true)}>go pad</button>

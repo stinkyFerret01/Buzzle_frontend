@@ -25,7 +25,7 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
 
   //-- liste des object à sélectioner
   const os = {
-    necessary: ["a", "P", "E", "pg", "Bs"],
+    necessary: ["P", "E", "pg", "Bs"],
     basics: ["W", "."],
     objects: [
       "Kh",
@@ -45,6 +45,52 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
   };
 
   ///-- FONCTIONS --///
+
+  //-- choice updater gère le choix et laffichage de l'élement choisi
+  const choiceUpdater = (o, oDef) => {
+    if (oDef === true) {
+      setOSelection(o);
+    }
+    let pairs = [
+      [
+        "a",
+        "activité du joueur",
+        "1 seul possible, au contact direct du joueur",
+      ],
+      ["Bs", "boite", "peut se superposer sur certains objets"],
+      ["C", "agent ennemi"],
+      ["Dv", "porte verticale"],
+      ["Dh", "porte horizontale"],
+      ["E", "sortie", "1 seul possible"],
+      ["Kv", "porte vérouillée 1 verticale"],
+      ["Kh", "porte vérouillée 1 horizontale"],
+      ["kg", "clés PV 1", "autorise la superposition de certains objets"],
+      ["Lv", "porte vérouillée 2 verticale"],
+      ["Lh", "porte vérouillée 2 horizontale"],
+      ["lg", "clés PV 2", "autorise la superposition de certains objets"],
+      ["Mv", "porte vérouillée 3 verticale"],
+      ["Mh", "porte vérouillée 3 horizontale"],
+      ["mg", "clés PV 3", "autorise la superposition de certains objets"],
+      [
+        "pg",
+        "plaque de pression",
+        "autorise la superposition de certains objets",
+      ],
+      ["P", "spawn du joueur", "1 seul possible"],
+      ["W", "mur"],
+      [".", "effacer"],
+    ];
+    let oIndex = pairs.findIndex((pair) => pair[0] === o);
+    let message = pairs[oIndex][1];
+    let message2 = pairs[oIndex][2];
+    if (oDef === false) {
+      let oIndex = pairs.findIndex((pair) => pair[0] === oSelection);
+      message = pairs[oIndex][1];
+      message2 = pairs[oIndex][2];
+    }
+    setOMessage([message, message2]);
+  };
+
   //- tryLevel
   const levelTester = () => {
     if (editable !== "not ready") {
@@ -281,7 +327,17 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
             <article className="shopCategory">
               {os.necessary.map((o, indexo) => {
                 return (
-                  <div className="posSpacer" key={indexo}>
+                  <div
+                    className="posSpacer"
+                    onClick={() => choiceUpdater(o, true)}
+                    onMouseEnter={() => {
+                      choiceUpdater(o, "none");
+                    }}
+                    onMouseLeave={() => {
+                      choiceUpdater(o, false);
+                    }}
+                    key={indexo}
+                  >
                     <Pos
                       o={o}
                       setOSelection={setOSelection}
@@ -296,7 +352,17 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
             <article className="shopCategory">
               {os.basics.map((o, indexo) => {
                 return (
-                  <div className="posSpacer" key={indexo}>
+                  <div
+                    className="posSpacer"
+                    onClick={() => choiceUpdater(o, true)}
+                    onMouseEnter={() => {
+                      choiceUpdater(o, "none");
+                    }}
+                    onMouseLeave={() => {
+                      choiceUpdater(o, false);
+                    }}
+                    key={indexo}
+                  >
                     <Pos
                       o={o}
                       setOSelection={setOSelection}
@@ -313,7 +379,17 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
             <article className="shopCategory">
               {os.objects.map((o, indexo) => {
                 return (
-                  <div className="posSpacer" key={indexo}>
+                  <div
+                    className="posSpacer"
+                    onClick={() => choiceUpdater(o, true)}
+                    onMouseEnter={() => {
+                      choiceUpdater(o, "none");
+                    }}
+                    onMouseLeave={() => {
+                      choiceUpdater(o, false);
+                    }}
+                    key={indexo}
+                  >
                     <Pos
                       o={o}
                       setOSelection={setOSelection}
@@ -327,7 +403,17 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
             <article className="shopCategory">
               {os.others.map((o, indexo) => {
                 return (
-                  <div className="posSpacer" key={indexo}>
+                  <div
+                    className="posSpacer"
+                    onClick={() => choiceUpdater(o, true)}
+                    onMouseEnter={() => {
+                      choiceUpdater(o, "none");
+                    }}
+                    onMouseLeave={() => {
+                      choiceUpdater(o, false);
+                    }}
+                    key={indexo}
+                  >
                     <Pos
                       o={o}
                       setOSelection={setOSelection}
