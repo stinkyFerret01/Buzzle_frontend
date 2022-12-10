@@ -6,9 +6,11 @@ const HomePage = () => {
   const navigate = useNavigate();
   ///-- RENDER --///
   return (
-    <main>
-      <button onClick={() => navigate("/")}>connect (marche pas)</button>
-      <button onClick={() => navigate("/game")}>game</button>
+    <main className="homePage">
+      <button className="homeToGame" onClick={() => navigate("/game/game")}>
+        <h1>PLAY BUZZLE NOW!</h1>
+      </button>
+      <button onClick={() => {}}>se connecter (inactif)</button>
     </main>
   );
 };

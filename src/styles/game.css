@@ -9,6 +9,7 @@
     /*  */
     height: 90%;
     min-height: 10rem;
+    background-color: black;
     border: solid  rgb(69, 120, 186) 4px;
     display: flex;
     box-sizing: border-box;
@@ -27,21 +28,19 @@
 .startPopper {
     z-index: 2;
     position: absolute;
-    left: calc(50% - 6rem);
-    top: calc(50% - 4rem);
     /*  */
-    width: 12rem;
-    height: 8rem;
-    background-color: aliceblue;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(234, 178, 11, 0.3);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .startButton {
-  
     color:white;
-    background-color: aqua;
+    font-weight: bold;
+    background-color: brown;
 }
 
 .table {
@@ -144,4 +143,15 @@
     border: solid goldenrod 4px;
     border-radius: 50%;
     margin: 0.5rem;
+}
+
+ @media (min-width: 500px) {
+    .boardContainer {
+        min-width: 17.2rem;
+    }
+}
+@media (min-width: 770px) {
+    .boardContainer {
+        min-width: 31.7rem;
+    }
 }

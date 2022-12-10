@@ -15,9 +15,8 @@ const GamePage = ({ level, setLevel, edited }) => {
   const [objects, setObjects] = useState("loading");
   const [cops, setCops] = useState("loading");
   const [grid, setGrid] = useState(base);
-  if (cops) {
-  }
 
+  //-- config et variables dures
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -268,6 +267,26 @@ const GamePage = ({ level, setLevel, edited }) => {
     }
   }, [level]);
 
+  useEffect(() => {
+    if (level === "none") {
+      const presLvl = [
+        ".........",
+        "WWWWWWWWW",
+        "W.......W",
+        "W.Pa....W",
+        "W.......E",
+        "W..B....W",
+        "W...p...W",
+        "W.......W",
+        "W.......W",
+        "WWWWWWWWW",
+        ".........",
+      ];
+      setLevel(presLvl);
+      setGame(["Ready?", "START"]);
+    }
+  }, [level, setLevel, base]);
+
   //-- copsMover (gère le déplacement des agents)
   //-- (PROBEMO dépendance player)
   useEffect(() => {
@@ -485,12 +504,11 @@ const GamePage = ({ level, setLevel, edited }) => {
         )}
       </section>
       <section
-        className="padContainer"
-        style={displayPad === true ? {} : { height: "2rem", width: "6rem" }}
+        className={displayPad === true ? "padContainer" : "padContainerOff"}
       >
         {displayPad ? (
           <section className="padIsTrue">
-            <button onClick={() => setDisplayPad(false)}>no pad</button>
+            <button onClick={() => setDisplayPad(false)}>fermer le pad</button>
             <div className="padMessage">En Cours</div>
             <div className="pad">
               <div className="padLigns">
@@ -535,7 +553,7 @@ const GamePage = ({ level, setLevel, edited }) => {
             )}
           </section>
         ) : (
-          <button onClick={() => setDisplayPad(true)}>go pad</button>
+          <button onClick={() => setDisplayPad(true)}>ouvrir le pad</button>
         )}
       </section>
     </main>

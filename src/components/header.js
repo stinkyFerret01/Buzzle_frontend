@@ -52,7 +52,7 @@ const Header = ({ backend, setLevel, edited, setDisplayAys }) => {
     <header>
       {/* LEFT */}
       <section className="headerSection">
-        <button onClick={() => {}}>connect</button>
+        <button onClick={() => {}}>se connecter (inactif)</button>
       </section>
       {location.pathname !== "/" && (
         <section
