@@ -216,16 +216,18 @@ const EditorPage = ({ setEdited }) => {
                   <div className="ligns" key={indexL}>
                     {L.map((o, indexo) => {
                       return (
-                        <Pos
-                          o={o}
-                          type="edit"
-                          oSelection={oSelection}
-                          setOSelection={setOSelection}
-                          base={base}
-                          setBase={setBase}
-                          xy={[indexL, indexo]}
-                          key={indexo}
-                        />
+                        <div className="posSpacer2">
+                          <Pos
+                            o={o}
+                            type="edit"
+                            oSelection={oSelection}
+                            setOSelection={setOSelection}
+                            base={base}
+                            setBase={setBase}
+                            xy={[indexL, indexo]}
+                            key={indexo}
+                          />
+                        </div>
                       );
                     })}
                   </div>

@@ -12,6 +12,7 @@ const GamePage = ({ level, setLevel }) => {
   const [base, setBase] = useState("loading");
   const [player, setPlayer] = useState("loading");
   const [objects, setObjects] = useState("loading");
+  const [cops, setCops] = useState("loading");
   const [grid, setGrid] = useState(base);
 
   ///-- FONCTIONS --///
@@ -191,6 +192,7 @@ const GamePage = ({ level, setLevel }) => {
       let base = [];
       let basePlayer = [];
       let baseObjects = [];
+      let baseCops = [];
       for (let L = 0; L < lvl.length; L++) {
         let lign = [];
         for (let o = 0; o < lvl[0].length; o++) {
@@ -200,20 +202,22 @@ const GamePage = ({ level, setLevel }) => {
           } else {
             lign.push(".");
           }
-          if (pos === "P") {
-            basePlayer.unshift(L, o);
-          } else if (pos === "a") {
+          if (pos === "a") {
             basePlayer.push(L, o);
+          } else if (pos === "B") {
+            baseObjects.unshift([L, o, "Bs"]);
+          } else if (pos === "C") {
+            baseCops.push([L, o, "C"]);
           } else if (pos === "E") {
             baseObjects.push([L, o, "E"]);
-          } else if (pos === "V") {
-            baseObjects.push([L, o, "Dv"]);
           } else if (pos === "v") {
             baseObjects.push([L, o, "dv"]);
-          } else if (pos === "H") {
-            baseObjects.push([L, o, "Dh"]);
+          } else if (pos === "V") {
+            baseObjects.push([L, o, "Dv"]);
           } else if (pos === "h") {
             baseObjects.push([L, o, "dh"]);
+          } else if (pos === "H") {
+            baseObjects.push([L, o, "Dh"]);
           } else if (pos === "k") {
             baseObjects.push([L, o, "Kv"]);
           } else if (pos === "K") {
@@ -226,15 +230,27 @@ const GamePage = ({ level, setLevel }) => {
             baseObjects.push([L, o, "Mv"]);
           } else if (pos === "M") {
             baseObjects.push([L, o, "Mh"]);
+          } else if (pos === "p") {
+            baseObjects.push([L, o, "pg"]);
+          } else if (pos === "P") {
+            basePlayer.unshift(L, o);
           } else if (pos === "1") {
             baseObjects.push([L, o, "kg"]);
           } else if (pos === "2") {
             baseObjects.push([L, o, "lg"]);
           } else if (pos === "3") {
             baseObjects.push([L, o, "mg"]);
-          } else if (pos === "B") {
+          } else if (pos === "4") {
             baseObjects.unshift([L, o, "Bs"]);
-          } else if (pos === "p") {
+            baseObjects.push([L, o, "kg"]);
+          } else if (pos === "5") {
+            baseObjects.unshift([L, o, "Bs"]);
+            baseObjects.push([L, o, "lg"]);
+          } else if (pos === "6") {
+            baseObjects.unshift([L, o, "Bs"]);
+            baseObjects.push([L, o, "mg"]);
+          } else if (pos === "0") {
+            baseObjects.unshift([L, o, "Bs"]);
             baseObjects.push([L, o, "pg"]);
           }
         }
@@ -242,6 +258,7 @@ const GamePage = ({ level, setLevel }) => {
       }
       setPlayer(basePlayer);
       setObjects(baseObjects);
+      setCops(baseCops);
       return base;
     };
     if (level !== "none") setBase(baseBuilder(level));

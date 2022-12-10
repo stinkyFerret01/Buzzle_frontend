@@ -104,6 +104,18 @@
     margin: 1px;
     padding: 2px;
     background-color: black;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.posSpacer2 {
+    width: 1rem;
+    height: 1rem;
+    background-color: black;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .oMessages {

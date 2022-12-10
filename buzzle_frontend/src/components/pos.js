@@ -104,6 +104,30 @@ const Pos = ({
       style["backgroundColor"] = "rgba(234, 178, 11, 1)";
     } else if (oStrict === "W") {
       style["backgroundColor"] = "gray";
+    } else if (oStrict === "0") {
+      style["border"] = "solid green 4px";
+      style["margin"] = "2px";
+      style["width"] = "12px";
+      style["height"] = "12px";
+      style["backgroundColor"] = "red";
+    } else if (oStrict === "4") {
+      style["border"] = "solid green 4px";
+      style["margin"] = "2px";
+      style["width"] = "12px";
+      style["height"] = "12px";
+      style["backgroundColor"] = "orangered";
+    } else if (oStrict === "5") {
+      style["border"] = "solid green 4px";
+      style["margin"] = "2px";
+      style["width"] = "12px";
+      style["height"] = "12px";
+      style["backgroundColor"] = "orange";
+    } else if (oStrict === "6") {
+      style["border"] = "solid green 4px";
+      style["margin"] = "2px";
+      style["width"] = "12px";
+      style["height"] = "12px";
+      style["backgroundColor"] = "yellow";
     } else if (oStrict === ".") {
       if (type === "choose") {
         style["border"] = "solid black 3px";
@@ -163,9 +187,28 @@ const Pos = ({
   //-- baseUpdater met à jour la base à chaque modification du joueur
   const baseUpdater = () => {
     let newO = oSelection;
-    for (let L = 0; L < base.length; L++) {}
+
     let newBase = [...base];
-    newBase[xy[0]].splice([xy[1]], 1, newO);
+    for (let L = 0; L < base.length; L++) {}
+    if (newO === base[xy[0]][xy[1]]) {
+      newBase[xy[0]].splice([xy[1]], 1, ".");
+    } else if (newO === "Bs") {
+      if (newBase[xy[0]][xy[1]] === "kg") {
+        newBase[xy[0]].splice([xy[1]], 1, "4");
+        console.log(newBase[xy[0]][xy[1]]);
+      } else if (newBase[xy[0]][xy[1]] === "lg") {
+        newBase[xy[0]].splice([xy[1]], 1, "5");
+      } else if (newBase[xy[0]][xy[1]] === "mg") {
+        newBase[xy[0]].splice([xy[1]], 1, "6");
+      } else if (newBase[xy[0]][xy[1]] === "pg") {
+        newBase[xy[0]].splice([xy[1]], 1, "0");
+        console.log(newBase[xy[0]][xy[1]]);
+      } else {
+        newBase[xy[0]].splice([xy[1]], 1, newO);
+      }
+    } else {
+      newBase[xy[0]].splice([xy[1]], 1, newO);
+    }
     setBase(newBase);
   };
 

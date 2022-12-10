@@ -21,6 +21,11 @@ porte verticale = V
 boite = B
 press = p
 
+# objets superposés
+
+cléfs sous boite = 4, 5, 6
+press sous boite = 0
+
 # portes vérrouillées (limitée à 3 modèles)
 
 porte vérrouillée horizontale = K, L, M
