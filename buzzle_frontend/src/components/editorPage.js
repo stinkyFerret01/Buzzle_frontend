@@ -18,6 +18,7 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
   const [base, setBase] = useState("loading");
   const [lvlName, setLvlName] = useState("");
   const [lvlStatus] = useState("new");
+  const [editable, setEditable] = useState("not ready");
 
   //-- config
   const navigate = useNavigate();
@@ -44,7 +45,14 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
   };
 
   ///-- FONCTIONS --///
-  //- none
+  //- tryLevel
+  const levelTester = () => {
+    if (editable !== "not ready") {
+      setLevel(edited[0]);
+      setEditBase(base);
+      navigate("/game/editor");
+    }
+  };
 
   ///-- USEEFFECT --///
   //-- baseBuilder (construit la base)
@@ -67,8 +75,12 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
       }
       return base;
     };
-    setBase(baseBuilder(parseInt(ligns), parseInt(colons)));
-  }, [ligns, colons]);
+    if (editBase === "none") {
+      setBase(baseBuilder(parseInt(ligns), parseInt(colons)));
+    } else {
+      setBase(editBase);
+    }
+  }, [ligns, colons, editBase]);
 
   //-- patternBuilder (construit le pattern pour l'édition)
   useEffect(() => {
@@ -89,7 +101,7 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
         ["M", "Mh"],
         ["m", "Mv"],
       ];
-      let necsToCheck = ["a", "Bs", "E", "pg", "P"];
+      let necsToCheck = ["Bs", "E", "pg", "P"];
       let pattern = [];
       for (let L = 0; L < ba.length; L++) {
         let newLign = "";
@@ -111,8 +123,13 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
         pattern.push(newLign);
         if (necs.length === necsToCheck.length) {
           setEdited([pattern, lvlName, lvlStatus]);
+          setEditable("good for testing");
+          if (lvlName !== "none" && lvlName.length > 2) {
+            setEditable("ready to be edited");
+          }
         } else {
           setEdited(["none", lvlName, lvlStatus]);
+          setEditable("not ready");
         }
       }
     };
@@ -329,16 +346,7 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
           <h6>entre 3 et 11 caractères</h6>
         </div>
         <h6>les agents ne sont pas encore activés</h6>
-        <button
-          onClick={() => {
-            console.log("from" + edited[0]);
-            setLevel(edited[0]);
-            setEditBase(base);
-            navigate("/game/editor");
-          }}
-        >
-          TRY LVL
-        </button>
+        <button onClick={levelTester}>TRY LVL</button>
       </section>
     </main>
   );

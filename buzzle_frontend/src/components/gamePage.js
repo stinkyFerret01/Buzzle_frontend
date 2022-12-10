@@ -1,7 +1,7 @@
 ///-- CONFIG --///
 //-- import librairie
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 //-- import des composants
 import Pos from "./pos";
@@ -18,8 +18,7 @@ const GamePage = ({ level, setLevel, edited }) => {
   if (cops) {
   }
 
-  //-- config
-  const location = useLocation();
+  const navigate = useNavigate();
 
   ///-- FONCTIONS --///
   //-- okToMoveChecker vérifie si le déplacement du joueur est possible
@@ -192,7 +191,7 @@ const GamePage = ({ level, setLevel, edited }) => {
 
   //-- gameBuilder (prépare le niveau en début de partie)
   useEffect(() => {
-    console.log("use 2" + level);
+    console.log("use 2");
     //-- baseBuilder construit le tableau du niveau choisi
     const baseBuilder = (lvl) => {
       let eBase = [];
@@ -457,6 +456,7 @@ const GamePage = ({ level, setLevel, edited }) => {
                 </button>
               </div>
             </div>
+            <button onClick={() => navigate("/editor")}>back to edit</button>
           </section>
         ) : (
           <button onClick={() => setDisplayPad(true)}>go pad</button>
