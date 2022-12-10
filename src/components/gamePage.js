@@ -267,13 +267,14 @@ const GamePage = ({ level, setLevel, edited }) => {
     }
   }, [level]);
 
+  //-- presLevel (défini le niveau par défault (en dur))
   useEffect(() => {
     if (level === "none") {
       const presLvl = [
         ".........",
         "WWWWWWWWW",
         "W.......W",
-        "W.Pa....W",
+        "W.P.....W",
         "W.......E",
         "W..B....W",
         "W...p...W",

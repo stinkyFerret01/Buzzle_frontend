@@ -5,7 +5,13 @@ import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 ///-- START --///
-const Header = ({ backend, setLevel, edited, setDisplayAys }) => {
+const Header = ({
+  backend,
+  setLevel,
+  edited,
+  setDisplayAys,
+  setDisplayWfr,
+}) => {
   ///-- STATES --///
   const [levels, setLevels] = useState("loading");
   const [levelsNew, setLevelsNew] = useState("loading");
@@ -17,11 +23,15 @@ const Header = ({ backend, setLevel, edited, setDisplayAys }) => {
   const editer = async () => {
     if (edited[0] !== "none" && edited[1] !== "") {
       try {
+        setDisplayWfr(true);
         const response = await axios.post(`${backend}/edit`, {
           pattern: edited[0],
           name: edited[1],
           status: edited[2],
         });
+        if (response.data.message === "requête edit accordée") {
+          setDisplayWfr(false);
+        }
         console.log(response.data.message);
       } catch (error) {}
     }

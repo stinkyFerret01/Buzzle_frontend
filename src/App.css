@@ -3,6 +3,7 @@
 @import "styles/home.css";
 @import "styles/game.css";
 @import "styles/editor.css";
+@import "styles/areYouSure.css";
 
 .App {
   width: 100vw;
@@ -21,7 +22,7 @@ header {
   width: 90%;
   max-width: 42.7rem;
   height: 6rem;
-  border:solid  rgb(69, 120, 186) 4px;
+  border: solid  rgb(69, 120, 186) 4px;
   display: flex;
   box-sizing: border-box;
 }
@@ -43,12 +44,3 @@ footer {
   display: flex;
 }
 
-.ays {
-  position: absolute;
-  z-index: 2;
-  /*  */
-  width: 20%;
-  height: 20%;
-  background-color: aliceblue;
-  color: black;
-}

@@ -95,7 +95,7 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
   const levelTester = () => {
     if (editable !== "not ready") {
       setLevel(edited[0]);
-      setEditBase(base);
+      setEditBase([base, lvlName]);
       navigate("/game/editor");
     }
   };
@@ -125,9 +125,10 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
     if (editBase === "none") {
       setBase(newBase);
     } else {
-      setBase(editBase);
-      setLigns(editBase.length);
-      setColons(editBase[0].length);
+      setBase(editBase[0]);
+      setLvlName(editBase[1]);
+      setLigns(editBase[0].length);
+      setColons(editBase[0][0].length);
     }
   }, [ligns, colons, editBase]);
 
@@ -446,14 +447,19 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
               }
             }}
           />
-          <h6 className="noHovText">entre 3 et 11 caractères</h6>
+          <p
+            className="noHovText"
+            style={{ fontSize: "11px", lineHeight: "1px" }}
+          >
+            entre 3 et 11 caractères
+          </p>
         </div>
         {editable !== "not ready" && (
           <div className="levelTester">
-            <h6>
+            <p className="noHovText" style={{ fontSize: "11px" }}>
               vous ne pourrez plus changer les dimensions du niveau apres avoir
               fait votre premier test, soyez sur de vous!
-            </h6>
+            </p>
             <button onClick={levelTester}>TRY LVL</button>
           </div>
         )}

@@ -11,6 +11,7 @@ import GamePage from "./components/gamePage";
 import EditorPage from "./components/editorPage";
 import Footer from "./components/footer";
 import AreYouSure from "./components/areYouSure";
+import WaitForResponse from "./components/waitForResponse";
 
 ///-- START --///
 function App() {
@@ -22,7 +23,8 @@ function App() {
   const [level, setLevel] = useState("none");
   const [edited, setEdited] = useState(["none", "none", "new"]);
   const [editBase, setEditBase] = useState("none");
-  const [displayAys, setDisplayAys] = useState("none");
+  const [displayAys, setDisplayAys] = useState(false);
+  const [displayWfr, setDisplayWfr] = useState(false);
 
   ///-- RENDER --///
   return (
@@ -33,6 +35,8 @@ function App() {
           setLevel={setLevel}
           edited={edited}
           setDisplayAys={setDisplayAys}
+          displayWfr={displayWfr}
+          setDisplayWfr={setDisplayWfr}
         />
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -54,8 +58,11 @@ function App() {
           />
         </Routes>
         <Footer />
-        {displayAys !== "none" && (
+        {displayAys === true && (
           <AreYouSure displayAys={displayAys} setDisplayAys={setDisplayAys} />
+        )}
+        {displayWfr === true && (
+          <WaitForResponse setDisplayWfr={setDisplayWfr} />
         )}
       </Router>
     </div>

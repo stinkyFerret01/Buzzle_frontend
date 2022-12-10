@@ -1,37 +1,34 @@
 ///-- CONFIG --///
 //-- import librairie
-import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 ///-- START --///
 const AreYouSure = ({ displayAys, setDisplayAys }) => {
-  const [displayNext, setDisplayNext] = useState(displayAys);
   //-- config et variables
   const navigate = useNavigate();
 
-  //-- USEEFFECT
-  useEffect(() => {
-    if (displayAys === "") {
-      setDisplayNext("home");
-    } else {
-      setDisplayNext(displayAys);
-    }
-  }, [displayAys]);
   ///-- RENDER --///
   return (
     <article className="ays">
-      <h6>
-        etes vous sur de vouloir changer de page? votre progression sera perdue
-      </h6>
-      <button
-        onClick={() => {
-          setDisplayAys("none");
-          navigate(`/${displayAys}`);
-        }}
-      >
-        go to <span style={{ color: "red" }}>{displayNext}</span>
-      </button>
-      <button onClick={() => setDisplayAys("none")}>anuler</button>
+      <h3>ATTENTION!</h3>
+      <h5 className="noHovText" style={{ fontSize: "11px" }}>
+        vous êtes sur le point de changer de page, si vous continuez votre
+        progression peut etre perdue
+      </h5>
+      <div className="aysChoiceDisplayer">
+        <button
+          className="aysContinue"
+          onClick={() => {
+            setDisplayAys("none");
+            navigate(`/${displayAys}`);
+          }}
+        >
+          <span style={{ color: "red" }}>continuer</span>
+        </button>
+        <button className="aysAbort" onClick={() => setDisplayAys("none")}>
+          anuler
+        </button>
+      </div>
     </article>
   );
 };
