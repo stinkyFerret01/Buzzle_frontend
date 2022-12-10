@@ -20,8 +20,8 @@ function App() {
   const [backend] = useState(online || local);
   // const [pData, setPData] = useState("none");
   const [level, setLevel] = useState("none");
-  // const [edited, setEdited] = useState([2, "none", "none", "new"]);
-  const [edited, setEdited] = useState([5, 5]);
+  const [edited, setEdited] = useState(["none", "none", "new"]);
+  const [editBase, setEditBase] = useState("none");
   const [displayAys, setDisplayAys] = useState("none");
 
   ///-- RENDER --///
@@ -37,12 +37,20 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route
-            path="/game"
+            path="/game/:from"
             element={<GamePage level={level} setLevel={setLevel} />}
           />
           <Route
             path="/editor"
-            element={<EditorPage edited={edited} setEdited={setEdited} />}
+            element={
+              <EditorPage
+                setLevel={setLevel}
+                edited={edited}
+                setEdited={setEdited}
+                editBase={editBase}
+                setEditBase={setEditBase}
+              />
+            }
           />
         </Routes>
         <Footer />

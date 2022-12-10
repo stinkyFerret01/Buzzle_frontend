@@ -1,11 +1,12 @@
 ///-- CONFIG --///
 //-- import librairie
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 //-- import des composants
 import Pos from "./pos";
 
-const GamePage = ({ level, setLevel }) => {
+const GamePage = ({ level, setLevel, edited }) => {
   ///-- STATES --///
   const [displayPad, setDisplayPad] = useState(true);
   const [game, setGame] = useState(["Ready?", "START"]);
@@ -16,6 +17,9 @@ const GamePage = ({ level, setLevel }) => {
   const [grid, setGrid] = useState(base);
   if (cops) {
   }
+
+  //-- config
+  const location = useLocation();
 
   ///-- FONCTIONS --///
   //-- okToMoveChecker vérifie si le déplacement du joueur est possible
@@ -188,10 +192,10 @@ const GamePage = ({ level, setLevel }) => {
 
   //-- gameBuilder (prépare le niveau en début de partie)
   useEffect(() => {
-    console.log("use 2");
+    console.log("use 2" + level);
     //-- baseBuilder construit le tableau du niveau choisi
     const baseBuilder = (lvl) => {
-      let base = [];
+      let eBase = [];
       let basePlayer = [];
       let baseObjects = [];
       let baseCops = [];
@@ -200,7 +204,7 @@ const GamePage = ({ level, setLevel }) => {
         for (let o = 0; o < lvl[0].length; o++) {
           let pos = lvl[L][o];
           if (pos === "W") {
-            lign.push(pos);
+            lign.push("W");
           } else {
             lign.push(".");
           }
@@ -256,16 +260,24 @@ const GamePage = ({ level, setLevel }) => {
             baseObjects.push([L, o, "pg"]);
           }
         }
-        base.push(lign);
+        eBase.push(lign);
       }
       setPlayer(basePlayer);
       setObjects(baseObjects);
       setCops(baseCops);
-      return base;
+      return eBase;
     };
-    if (level !== "none") setBase(baseBuilder(level));
-    setGame(["Ready?", "START"]);
+    if (level !== "none") {
+      setBase(baseBuilder(level));
+      setGame(["Ready?", "START"]);
+    }
   }, [level]);
+
+  useEffect(() => {
+    // if (location.pathname === "/game/editor") {
+    //   setLevel(edited);
+    // }
+  }, [edited]);
 
   //-- pressChecker (vérifie la présence d'un objet sur la presse)
   useEffect(() => {

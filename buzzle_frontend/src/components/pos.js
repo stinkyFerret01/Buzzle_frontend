@@ -231,7 +231,8 @@ const Pos = ({
   ///-- RENDER --///
   return (
     <div>
-      {location.pathname === "/game" && (
+      {(location.pathname === "/game/game" ||
+        location.pathname === "/game/editor") && (
         <article style={styleMaker(o)} className="pos"></article>
       )}
       {type === "choose" && (

@@ -3,12 +3,13 @@
 import { useState, useEffect } from "react";
 import * as React from "react";
 import { Range } from "react-range";
+import { useNavigate } from "react-router-dom";
 
 //-- import des composants
 import Pos from "./pos";
 
 ///-- START --///
-const EditorPage = ({ setEdited }) => {
+const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
   ///-- STATES --///
   const [ligns, setLigns] = useState(10);
   const [colons, setColons] = useState(10);
@@ -17,6 +18,9 @@ const EditorPage = ({ setEdited }) => {
   const [base, setBase] = useState("loading");
   const [lvlName, setLvlName] = useState("");
   const [lvlStatus] = useState("new");
+
+  //-- config
+  const navigate = useNavigate();
 
   //-- liste des object à sélectioner
   const os = {
@@ -325,6 +329,16 @@ const EditorPage = ({ setEdited }) => {
           <h6>entre 3 et 11 caractères</h6>
         </div>
         <h6>les agents ne sont pas encore activés</h6>
+        <button
+          onClick={() => {
+            console.log("from" + edited[0]);
+            setLevel(edited[0]);
+            setEditBase(base);
+            navigate("/game/editor");
+          }}
+        >
+          TRY LVL
+        </button>
       </section>
     </main>
   );

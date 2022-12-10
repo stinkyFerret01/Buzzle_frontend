@@ -75,7 +75,7 @@ const Header = ({ backend, setLevel, edited, setDisplayAys }) => {
                   <button
                     className="levelSelectorValid"
                     onClick={() => {
-                      location.pathname === "/game" && setLevel(lvl.pattern);
+                      setLevel(lvl.pattern);
                     }}
                     key={index}
                   >
@@ -90,7 +90,7 @@ const Header = ({ backend, setLevel, edited, setDisplayAys }) => {
                   <button
                     className="levelSelectorNew"
                     onClick={() => {
-                      location.pathname === "/game" && setLevel(lvl.pattern);
+                      setLevel(lvl.pattern);
                     }}
                     key={index}
                   >
@@ -104,12 +104,12 @@ const Header = ({ backend, setLevel, edited, setDisplayAys }) => {
           <div>Loading</div>
         )}
       </section>
-      {location.pathname !== "/game" && (
+      {location.pathname !== "/game/game" && (
         <section
           onClick={
             location.pathname === "/"
-              ? () => navigate("/game")
-              : () => setDisplayAys("game")
+              ? () => navigate("/game/game")
+              : () => setDisplayAys("game/game")
           }
           style={{ left: "33.33%" }}
           className="headerSectionGhost"
@@ -121,19 +121,20 @@ const Header = ({ backend, setLevel, edited, setDisplayAys }) => {
       <section className="headerSection">
         <button onClick={editer}>EDIT</button>
       </section>
-      {location.pathname !== "/editor" && (
-        <section
-          onClick={
-            location.pathname === "/"
-              ? () => navigate("/editor")
-              : () => setDisplayAys("editor")
-          }
-          style={{ left: "66.66%" }}
-          className="headerSectionGhost"
-        >
-          EDITOR
-        </section>
-      )}
+      {location.pathname !== "/editor" &&
+        location.pathname !== "/game/editor" && (
+          <section
+            onClick={
+              location.pathname === "/"
+                ? () => navigate("/editor")
+                : () => setDisplayAys("editor")
+            }
+            style={{ left: "66.66%" }}
+            className="headerSectionGhost"
+          >
+            EDITOR
+          </section>
+        )}
     </header>
   );
 };
