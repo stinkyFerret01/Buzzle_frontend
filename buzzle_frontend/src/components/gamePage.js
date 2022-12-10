@@ -283,12 +283,13 @@ const GamePage = ({ level, setLevel }) => {
       if (onPressIndex >= 0) {
         return true;
       } else if (player[0] === press[0] && player[1] === press[1]) {
-        return true;
+        return press;
       } else {
         return false;
       }
     };
-    if (objects !== "loading" && pressChecker()) {
+    if (objects !== "loading" && pressChecker() !== false) {
+      console.log(pressChecker());
       let exitIndex = objects.findIndex((obj) => obj[2] === "E");
       let exit = objects.find((obj) => obj[2] === "E");
       if (exitIndex >= 0) {
@@ -319,7 +320,7 @@ const GamePage = ({ level, setLevel }) => {
       }
       let exit = objects.find((obj) => obj[2] === "e");
       if (exit && exit[0] === player[0] && exit[1] === player[1]) {
-        setGame(["Win!", "RESTART"]);
+        setGame(["Win!", "REFRESH"]);
       }
     }
     for (let L = 0; L < base.length; L++) {
