@@ -45,11 +45,14 @@ const Pos = ({
       style["backgroundColor"] = "aqua";
     } else if (oStrict === "e") {
       style["backgroundColor"] = "black";
+      style["animation"] = "pulseExit infinite 1.3s";
+      style["zIndex"] = "1";
     } else if (oStrict === "E") {
       if (type) {
         style["backgroundColor"] = "gray";
         style["animation"] = "pulseExit infinite 1.3s";
-        style["zIndex"] = "2";
+        style["border"] = "solid black 1px";
+        style["zIndex"] = "1";
       } else {
         style["backgroundColor"] = "gray";
       }
@@ -187,28 +190,38 @@ const Pos = ({
   //-- baseUpdater met à jour la base à chaque modification du joueur
   const baseUpdater = () => {
     let newO = oSelection;
-
+    console.log(newO);
     let newBase = [...base];
     for (let L = 0; L < base.length; L++) {}
-    if (newO === base[xy[0]][xy[1]]) {
-      newBase[xy[0]].splice([xy[1]], 1, ".");
-    } else if (newO === "Bs") {
-      if (newBase[xy[0]][xy[1]] === "kg") {
-        newBase[xy[0]].splice([xy[1]], 1, "4");
-        console.log(newBase[xy[0]][xy[1]]);
-      } else if (newBase[xy[0]][xy[1]] === "lg") {
-        newBase[xy[0]].splice([xy[1]], 1, "5");
-      } else if (newBase[xy[0]][xy[1]] === "mg") {
-        newBase[xy[0]].splice([xy[1]], 1, "6");
-      } else if (newBase[xy[0]][xy[1]] === "pg") {
-        newBase[xy[0]].splice([xy[1]], 1, "0");
-        console.log(newBase[xy[0]][xy[1]]);
-      } else {
+    if (xy[0] > 0 && xy[0] < base.length - 1) {
+      if (
+        xy[0] > 1 &&
+        xy[0] < base.length - 2 &&
+        xy[1] > 0 &&
+        xy[1] < base[0].length - 1
+      ) {
+        if (newO === base[xy[0]][xy[1]]) {
+          newBase[xy[0]].splice([xy[1]], 1, ".");
+        } else if (newO === "Bs") {
+          if (newBase[xy[0]][xy[1]] === "kg") {
+            newBase[xy[0]].splice([xy[1]], 1, "4");
+          } else if (newBase[xy[0]][xy[1]] === "lg") {
+            newBase[xy[0]].splice([xy[1]], 1, "5");
+          } else if (newBase[xy[0]][xy[1]] === "mg") {
+            newBase[xy[0]].splice([xy[1]], 1, "6");
+          } else if (newBase[xy[0]][xy[1]] === "pg") {
+            newBase[xy[0]].splice([xy[1]], 1, "0");
+          } else {
+            newBase[xy[0]].splice([xy[1]], 1, newO);
+          }
+        } else {
+          newBase[xy[0]].splice([xy[1]], 1, newO);
+        }
+      } else if (newO === "E") {
         newBase[xy[0]].splice([xy[1]], 1, newO);
       }
-    } else {
-      newBase[xy[0]].splice([xy[1]], 1, newO);
     }
+
     setBase(newBase);
   };
 

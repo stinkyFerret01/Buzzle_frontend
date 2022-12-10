@@ -79,7 +79,7 @@
   @keyframes pulseExit {
     from {
         overflow: inherit;
-        box-shadow: 0 0 0 0rem rgb(158, 23, 226);
+        box-shadow: 0 0 0 0rem rgb(201, 110, 246);
     }
     to { 
         box-shadow: 0 0 0 4px rgb(158, 23, 226, 0.01);
