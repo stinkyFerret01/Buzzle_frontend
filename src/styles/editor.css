@@ -125,7 +125,12 @@
     align-items: center;
 }
 
+.posSpacer2:hover {
+    animation: pulseToEdit infinite 1.3s;
+}
+
 .oMessages {
+    height: 5rem;
     background-color: rgb(69, 120, 186);
     margin-top: 1rem;
     display: flex;
@@ -134,6 +139,7 @@
 }
 
 .oMessage1 {
+    height: 2rem;
     border-bottom: solid black 1px;
 }
 
@@ -146,3 +152,20 @@
     justify-content: center;
     align-items: center;
 }
+
+.levelTester {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes pulseToEdit {
+    from {
+        overflow: inherit;
+        box-shadow: 0 0 0 0rem white;
+    }
+    to { 
+        box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.01);
+    }
+  }

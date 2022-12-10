@@ -62,7 +62,7 @@ const Header = ({ backend, setLevel, edited, setDisplayAys }) => {
           style={{ left: "0%" }}
           className="headerSectionGhost"
         >
-          HOME
+          <h1>HOME</h1>
         </section>
       )}
       {/* CENTER */}
@@ -114,7 +114,7 @@ const Header = ({ backend, setLevel, edited, setDisplayAys }) => {
           style={{ left: "33.33%" }}
           className="headerSectionGhost"
         >
-          GAME
+          <h1>PLAY BUZZLE!</h1>
         </section>
       )}
       {/* RIGHT */}
@@ -132,7 +132,7 @@ const Header = ({ backend, setLevel, edited, setDisplayAys }) => {
             style={{ left: "66.66%" }}
             className="headerSectionGhost"
           >
-            EDITOR
+            <h1>LEVEL EDITOR</h1>
           </section>
         )}
     </header>

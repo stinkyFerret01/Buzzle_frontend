@@ -121,10 +121,13 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
       }
       return base;
     };
+    let newBase = baseBuilder(parseInt(ligns), parseInt(colons));
     if (editBase === "none") {
-      setBase(baseBuilder(parseInt(ligns), parseInt(colons)));
+      setBase(newBase);
     } else {
       setBase(editBase);
+      setLigns(editBase.length);
+      setColons(editBase[0].length);
     }
   }, [ligns, colons, editBase]);
 
@@ -445,8 +448,15 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
           />
           <h6>entre 3 et 11 caractères</h6>
         </div>
-        <h6>les agents ne sont pas encore activés</h6>
-        <button onClick={levelTester}>TRY LVL</button>
+        {editable !== "not ready" && (
+          <div className="levelTester">
+            <h6>
+              vous ne pourrez plus changer les dimensions du niveau apres avoir
+              fait votre premier test, soyez sur de vous!
+            </h6>
+            <button onClick={levelTester}>TRY LVL</button>
+          </div>
+        )}
       </section>
     </main>
   );
