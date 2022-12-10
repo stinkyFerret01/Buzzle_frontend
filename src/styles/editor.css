@@ -169,14 +169,3 @@
         box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.01);
     }
   }
-
-@media (min-width: 500px) {
-    .boardContainer {
-        min-width: 17.2rem;
-    }
-}
-@media (min-width: 770px) {
-    .boardContainer {
-        min-width: 31.7rem;
-    }
-}

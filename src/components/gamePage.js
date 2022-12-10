@@ -466,7 +466,10 @@ const GamePage = ({ level, setLevel, edited }) => {
           : { flexDirection: "column" }
       }
     >
-      <section className="boardContainer">
+      <section
+        className="boardContainer"
+        style={displayPad ? { maxWidth: "31.7rem" } : { maxWidth: "42.7rem" }}
+      >
         <div className="boardScroller">
           {level !== "none" && grid !== "loading" ? (
             <div className="table">
