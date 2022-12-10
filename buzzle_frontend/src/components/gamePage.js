@@ -14,6 +14,8 @@ const GamePage = ({ level, setLevel }) => {
   const [objects, setObjects] = useState("loading");
   const [cops, setCops] = useState("loading");
   const [grid, setGrid] = useState(base);
+  if (cops) {
+  }
 
   ///-- FONCTIONS --///
   //-- okToMoveChecker vérifie si le déplacement du joueur est possible

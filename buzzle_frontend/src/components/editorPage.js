@@ -216,7 +216,7 @@ const EditorPage = ({ setEdited }) => {
                   <div className="ligns" key={indexL}>
                     {L.map((o, indexo) => {
                       return (
-                        <div className="posSpacer2">
+                        <div className="posSpacer2" key={indexo}>
                           <Pos
                             o={o}
                             type="edit"
@@ -225,7 +225,6 @@ const EditorPage = ({ setEdited }) => {
                             base={base}
                             setBase={setBase}
                             xy={[indexL, indexo]}
-                            key={indexo}
                           />
                         </div>
                       );
@@ -247,13 +246,12 @@ const EditorPage = ({ setEdited }) => {
             <article className="shopCategory">
               {os.necessary.map((o, indexo) => {
                 return (
-                  <div className="posSpacer">
+                  <div className="posSpacer" key={indexo}>
                     <Pos
                       o={o}
                       setOSelection={setOSelection}
                       setOMessage={setOMessage}
                       type="choose"
-                      key={indexo}
                     />
                   </div>
                 );
@@ -263,13 +261,12 @@ const EditorPage = ({ setEdited }) => {
             <article className="shopCategory">
               {os.basics.map((o, indexo) => {
                 return (
-                  <div className="posSpacer">
+                  <div className="posSpacer" key={indexo}>
                     <Pos
                       o={o}
                       setOSelection={setOSelection}
                       setOMessage={setOMessage}
                       type="choose"
-                      key={indexo}
                     />
                   </div>
                 );
@@ -281,13 +278,12 @@ const EditorPage = ({ setEdited }) => {
             <article className="shopCategory">
               {os.objects.map((o, indexo) => {
                 return (
-                  <div className="posSpacer">
+                  <div className="posSpacer" key={indexo}>
                     <Pos
                       o={o}
                       setOSelection={setOSelection}
                       setOMessage={setOMessage}
                       type="choose"
-                      key={indexo}
                     />
                   </div>
                 );
@@ -296,13 +292,12 @@ const EditorPage = ({ setEdited }) => {
             <article className="shopCategory">
               {os.others.map((o, indexo) => {
                 return (
-                  <div className="posSpacer">
+                  <div className="posSpacer" key={indexo}>
                     <Pos
                       o={o}
                       setOSelection={setOSelection}
                       setOMessage={setOMessage}
                       type="choose"
-                      key={indexo}
                     />
                   </div>
                 );
@@ -329,7 +324,7 @@ const EditorPage = ({ setEdited }) => {
           />
           <h6>entre 3 et 11 caractères</h6>
         </div>
-        <h6>la superposition nest pas encore possible en editeur, a venir</h6>
+        <h6>les agents ne sont pas encore activés</h6>
       </section>
     </main>
   );
