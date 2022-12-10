@@ -178,6 +178,7 @@ const GamePage = ({ level, setLevel, edited }) => {
 
   ///--USEEFFECT --///
   //-- keyboardListener (reçois et transmet les commandes claviers)
+  //-- (PROBEMO dépendance handleKeyDown)
   useEffect(() => {
     console.log("use 1");
     window.removeEventListener("keydown", handleKeyDown);
@@ -272,6 +273,81 @@ const GamePage = ({ level, setLevel, edited }) => {
     }
   }, [level]);
 
+  //-- copsMover (gère le déplacement des agents)
+  //-- (PROBEMO dépendance player)
+  useEffect(() => {
+    let interval;
+    if (game[0] === "Playing...") {
+      clearTimeout(interval);
+    }
+    const copsMover = () => {
+      let newCops = [];
+      for (let c = 0; c < cops.length; c++) {
+        let oldCop = [cops[c][0], cops[c][1], "C"];
+        let newCop = [];
+        if (oldCop[0] > player[0]) {
+          newCop.push(oldCop[0] - 1);
+        } else if (oldCop[0] < player[0]) {
+          newCop.push(oldCop[0] + 1);
+        } else {
+          newCop.push(oldCop[0]);
+        }
+        if (oldCop[1] > player[1]) {
+          newCop.push(oldCop[1] - 1, "C");
+        } else if (oldCop[1] < player[1]) {
+          newCop.push(oldCop[1] + 1, "C");
+        } else {
+          newCop.push(oldCop[1], "C");
+        }
+        if (
+          cops.find((cop) => cop[0] === newCop[0] && cop[1] === newCop[1]) ||
+          newCops.find((cop) => cop[0] === newCop[0] && cop[1] === newCop[1]) ||
+          okToMoveChecker(grid[newCop[1]][newCop[0]]) === false
+        ) {
+          if (
+            cops.find((cop) => cop[0] === oldCop[0] && cop[1] === newCop[1]) ===
+              undefined &&
+            newCops.find(
+              (cop) => cop[0] === oldCop[0] && cop[1] === newCop[1]
+            ) === undefined &&
+            okToMoveChecker(grid[newCop[1]][oldCop[0]]) === true
+          ) {
+            let newCopB = [oldCop[0], newCop[1]];
+            newCops.push(newCopB);
+          } else if (
+            cops.find((cop) => cop[0] === newCop[0] && cop[1] === oldCop[1]) ===
+              undefined &&
+            newCops.find(
+              (cop) => cop[0] === newCop[0] && cop[1] === oldCop[1]
+            ) === undefined &&
+            okToMoveChecker(grid[oldCop[1]][newCop[0]]) === true
+          ) {
+            let newCopA = [newCop[0], oldCop[1]];
+            newCops.push(newCopA);
+          } else {
+            newCops.push(oldCop);
+          }
+        } else {
+          newCops.push(newCop);
+        }
+      }
+      const checkStart = () => {
+        if (game[0] === "Playing...") {
+          setCops(newCops);
+          clearTimeout(interval);
+        } else {
+          clearTimeout(interval);
+        }
+      };
+      interval = setTimeout(checkStart, 600);
+    };
+    if (game[0] === "Playing...") {
+      copsMover();
+    }
+    //-- PROBLEMO
+    // eslint-disable-next-line
+  }, [game, cops]);
+
   //-- pressChecker (vérifie la présence d'un objet sur la presse)
   useEffect(() => {
     console.log("use 3");
@@ -294,7 +370,6 @@ const GamePage = ({ level, setLevel, edited }) => {
       }
     };
     if (objects !== "loading" && pressChecker() !== false) {
-      console.log(pressChecker());
       let exitIndex = objects.findIndex((obj) => obj[2] === "E");
       let exit = objects.find((obj) => obj[2] === "E");
       if (exitIndex >= 0) {
@@ -340,6 +415,12 @@ const GamePage = ({ level, setLevel, edited }) => {
             pos = obj[2];
           }
         }
+        if (cops !== "loading" && cops.length > 0) {
+          let copIndex = cops.findIndex((cop) => cop[0] === L && cop[1] === o);
+          if (copIndex >= 0) {
+            pos = "C";
+          }
+        }
         if (player[0] === L && player[1] === o) {
           newLign.push("P");
         } else if (player[2] === L && player[3] === o) {
@@ -355,7 +436,7 @@ const GamePage = ({ level, setLevel, edited }) => {
       newGrid.push(newLign);
     }
     setGrid(newGrid);
-  }, [base, player, objects, displayPad]);
+  }, [base, player, objects, cops, displayPad]);
 
   ///-- RENDER --///
   return (

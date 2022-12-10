@@ -113,6 +113,20 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
             if (necIndex < 0) {
               necs.push(newO);
             }
+          } else if (newO === "0") {
+            let necIndex = necs.findIndex((nec) => nec === "Bs");
+            if (necIndex < 0) {
+              necs.push("Bs");
+            }
+            necIndex = necs.findIndex((nec) => nec === "pg");
+            if (necIndex < 0) {
+              necs.push("pg");
+            }
+          } else if (newO > 3) {
+            let necIndex = necs.findIndex((nec) => nec === "Bs");
+            if (necIndex < 0) {
+              necs.push("Bs");
+            }
           }
           let newOIndex = pairs.findIndex((pair) => pair[1] === newO);
           if (newOIndex >= 0) {
