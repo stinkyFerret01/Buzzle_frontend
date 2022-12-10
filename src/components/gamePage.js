@@ -272,12 +272,6 @@ const GamePage = ({ level, setLevel, edited }) => {
     }
   }, [level]);
 
-  useEffect(() => {
-    // if (location.pathname === "/game/editor") {
-    //   setLevel(edited);
-    // }
-  }, [edited]);
-
   //-- pressChecker (vérifie la présence d'un objet sur la presse)
   useEffect(() => {
     console.log("use 3");

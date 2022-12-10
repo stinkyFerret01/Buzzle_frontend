@@ -217,8 +217,12 @@ const Pos = ({
         } else {
           newBase[xy[0]].splice([xy[1]], 1, newO);
         }
-      } else if (newO === "E") {
-        newBase[xy[0]].splice([xy[1]], 1, newO);
+      } else if (newO === "E" || newO === "W") {
+        if (newO === base[xy[0]][xy[1]]) {
+          newBase[xy[0]].splice([xy[1]], 1, "W");
+        } else {
+          newBase[xy[0]].splice([xy[1]], 1, newO);
+        }
       }
     }
 
