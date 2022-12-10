@@ -135,12 +135,16 @@
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
-
 }
 
 .oMessage1 {
     height: 2rem;
     border-bottom: solid black 1px;
+    cursor: default;
+}
+
+.oMessage2 {
+    cursor: default;
 }
 
 .levelNameSelect {

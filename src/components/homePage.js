@@ -7,6 +7,7 @@ const HomePage = () => {
   ///-- RENDER --///
   return (
     <main className="homePage">
+      <div></div>
       <button className="homeToGame" onClick={() => navigate("/game/game")}>
         <h1>PLAY BUZZLE NOW!</h1>
       </button>

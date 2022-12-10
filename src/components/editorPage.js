@@ -323,10 +323,10 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
         </div>
       </section>
       <section className="editShop">
-        <h4>éléments:</h4>
+        <h4 className="noHovText">éléments:</h4>
         <div className="shopLists">
           <div className="shopList">
-            <h5>nécessaires</h5>
+            <h5 className="noHovText">nécessaires</h5>
             <article className="shopCategory">
               {os.necessary.map((o, indexo) => {
                 return (
@@ -351,7 +351,7 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
                 );
               })}
             </article>
-            <h5>basiques</h5>
+            <h5 className="noHovText">basiques</h5>
             <article className="shopCategory">
               {os.basics.map((o, indexo) => {
                 return (
@@ -378,7 +378,7 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
             </article>
           </div>
           <div className="shopList">
-            <h5>optionels</h5>
+            <h5 className="noHovText">optionels</h5>
             <article className="shopCategory">
               {os.objects.map((o, indexo) => {
                 return (
@@ -434,7 +434,7 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
           <h6 className="oMessage2">{oMessage[1]}</h6>
         </div>
         <div className="levelNameSelect">
-          <h4>Nom du Niveau</h4>
+          <h4 className="noHovText">Nom du Niveau</h4>
           <input
             type="text"
             placeholder="choisissez un nom"
@@ -446,7 +446,7 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
               }
             }}
           />
-          <h6>entre 3 et 11 caractères</h6>
+          <h6 className="noHovText">entre 3 et 11 caractères</h6>
         </div>
         {editable !== "not ready" && (
           <div className="levelTester">

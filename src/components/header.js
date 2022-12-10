@@ -51,7 +51,16 @@ const Header = ({ backend, setLevel, edited, setDisplayAys }) => {
   return (
     <header>
       {/* LEFT */}
-      <section className="headerSection">
+      <section
+        className="headerSection"
+        style={
+          location.pathname === "/"
+            ? {
+                boxShadow: "0 0 3rem rgba(234, 178, 11, 0.7)",
+              }
+            : {}
+        }
+      >
         <button onClick={() => {}}>se connecter (inactif)</button>
       </section>
       {location.pathname !== "/" && (
@@ -66,7 +75,16 @@ const Header = ({ backend, setLevel, edited, setDisplayAys }) => {
         </section>
       )}
       {/* CENTER */}
-      <section className="headerSection">
+      <section
+        className="headerSection"
+        style={
+          location.pathname.slice(0, 5) === "/game"
+            ? {
+                boxShadow: "0 0 5rem rgba(234, 178, 11, 0.7)",
+              }
+            : {}
+        }
+      >
         {levels !== "loading" && levelsNew !== "loading" ? (
           <div className="headerGameDivs">
             <div className="headerGameDiv">
@@ -118,7 +136,16 @@ const Header = ({ backend, setLevel, edited, setDisplayAys }) => {
         </section>
       )}
       {/* RIGHT */}
-      <section className="headerSection">
+      <section
+        className="headerSection"
+        style={
+          location.pathname === "/editor"
+            ? {
+                boxShadow: "0 0 3rem rgba(234, 178, 11, 0.7)",
+              }
+            : {}
+        }
+      >
         <button onClick={editer}>EDIT</button>
       </section>
       {location.pathname !== "/editor" &&
