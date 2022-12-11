@@ -28,6 +28,7 @@
 }
 
 .headerGameTitle {
+    overflow: hidden;
     width: 33.33%;
     border-left: solid rgb(123, 107, 13)1px;
     border-right: solid rgb(123, 107, 13) 1px;

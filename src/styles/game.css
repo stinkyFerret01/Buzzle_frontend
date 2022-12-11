@@ -14,10 +14,14 @@
     background-color: black;
     border: solid  rgb(69, 120, 186) 4px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     box-sizing: border-box;
 }
 
 .boardScroller {
+    max-width: 100%;
+    max-height: 100%;
     overflow: hidden;
     overflow-x: scroll;
     overflow-y: scroll;
@@ -90,6 +94,25 @@
         box-shadow: 0 0 0 4px rgb(158, 23, 226, 0.01);
     }
   }
+
+  /* SCROLL PLAYER INTO VIEW */
+
+  /* div[id^="player"] {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    padding-right: 6rem;
+    padding-left: 6rem;
+    position: relative;
+    margin-top: -6rem;
+    margin-bottom: -6rem;
+    margin-right: -6rem;
+    margin-left: -6rem;
+    } */
+
+div[id^="player"] {
+    top: -100px;
+    right: -100px;
+        }
 
 /* PAD */
 .padContainer {

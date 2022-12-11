@@ -127,7 +127,7 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
     } else {
       setBase(editBase[0]);
       setLvlName(editBase[1]);
-      setLigns(editBase[0].length);
+      setLigns(editBase[0].length - 2);
       setColons(editBase[0][0].length);
     }
   }, [ligns, colons, editBase]);

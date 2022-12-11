@@ -1,6 +1,6 @@
 ///-- CONFIG --///
 //-- import librairie
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 //-- import des composants
@@ -16,6 +16,14 @@ const GamePage = ({ level, setLevel }) => {
   const [cops, setCops] = useState("loading");
   const [grid, setGrid] = useState(base);
   const [action, setAction] = useState("");
+
+  ///////////////////////////////////////////
+  const titleRef = useRef();
+  const handleBackClick = () => {
+    console.log("active");
+    titleRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+  ////////////////////////////////////////////
 
   //-- config et variables dures
   const navigate = useNavigate();
@@ -65,6 +73,8 @@ const GamePage = ({ level, setLevel }) => {
 
   //-- handleKeyDown interprète les commandes du clavier
   const handleKeyDown = (event, k) => {
+    console.log("trying");
+    handleBackClick();
     let key = event.key;
     if (event === "pad") {
       key = k;
@@ -532,7 +542,17 @@ const GamePage = ({ level, setLevel }) => {
                 return (
                   <div className="ligns" key={indexL}>
                     {L.map((o, indexo) => {
-                      return <Pos o={o} key={indexo} />;
+                      return (
+                        <div key={indexo}>
+                          {o === "P" ? (
+                            <div id="player" ref={titleRef}>
+                              <Pos o={o} />
+                            </div>
+                          ) : (
+                            <Pos o={o} />
+                          )}
+                        </div>
+                      );
                     })}
                   </div>
                 );
@@ -618,6 +638,7 @@ const GamePage = ({ level, setLevel }) => {
           </button>
         )}
       </section>
+      <button onClick={handleBackClick}>test</button>
     </main>
   );
 };
