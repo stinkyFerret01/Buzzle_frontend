@@ -131,8 +131,38 @@ const Pos = ({ o, type, oSelection, base, setBase, xy, bigScreen }) => {
       }
     }
     if (bigScreen === true) {
-      style["minWidth"] = "2rem";
-      style["height"] = "2rem";
+      if (oObj === "kg" || oObj === "lg" || oObj === "mg") {
+        style["width"] = "1rem";
+        style["height"] = "1rem";
+        style["margin"] = "8px";
+        if (oObj === "kg") {
+          style["border"] = "solid orangered 4px";
+        } else if (oObj === "lg") {
+          style["border"] = "solid orange 4px";
+        } else if (oObj === "mg") {
+          style["border"] = "solid yellow 4px";
+        }
+      } else if (oObj === "pg") {
+        style["width"] = "24px";
+        style["height"] = "24px";
+        style["border"] = "solid gray 4px";
+        style["margin"] = "4px";
+      } else {
+        style["width"] = "2rem";
+        style["height"] = "2rem";
+      }
+      if (oObj === "Dh" || oObj === "Kh" || oObj === "Lh" || oObj === "Mh") {
+        style["borderTop"] = "solid black 12px";
+        style["borderBottom"] = "solid black 12px";
+      } else if (
+        oObj === "Dv" ||
+        oObj === "Kv" ||
+        oObj === "Lv" ||
+        oObj === "Mv"
+      ) {
+        style["borderLeft"] = "solid black 12px";
+        style["borderRight"] = "solid black 12px";
+      }
     }
     // if (type === "edit") {
     //   style["margin"] = "0.5px";

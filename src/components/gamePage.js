@@ -20,7 +20,6 @@ const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
   ///////////////////////////////////////////
   const titleRef = useRef();
   const handleBackClick = () => {
-    console.log("active");
     titleRef.current.scrollIntoView({ behavior: "smooth" });
   };
   ////////////////////////////////////////////
