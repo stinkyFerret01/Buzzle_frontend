@@ -193,6 +193,11 @@ const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
   };
 
   ///--USEEFFECT --///
+  //-- screenSetter
+  useEffect(() => {
+    setBigScreen(true);
+  }, [setBigScreen]);
+
   //-- keyboardListener (reçois et transmet les commandes claviers)
   //-- (PROBEMO dépendance handleKeyDown)
   useEffect(() => {

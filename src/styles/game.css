@@ -54,9 +54,13 @@
 }
 
 .startButton {
+    position: absolute;
+    top: 0;
+    right: 0;
     color:white;
     font-weight: bold;
     background-color: brown;
+    animation: pulseStart 1.3s infinite;
 }
 
 .startButton:hover {
@@ -96,8 +100,9 @@
         z-index: 1;
         box-shadow: 0 0 0 4px rgba(234, 178, 11, 0.01);
     }
-  }
-  @keyframes pulseExit {
+}
+
+@keyframes pulseExit {
     from {
         z-index: 10;
         overflow: inherit;
@@ -107,9 +112,25 @@
         z-index: 10;
         box-shadow: 0 0 0 4px rgb(158, 23, 226, 0.01);
     }
-  }
+}
 
-  /* SCROLL PLAYER INTO VIEW */
+@keyframes pulseStart {
+    from {
+        z-index: 10;
+        overflow: inherit;
+        box-shadow: -8px 8px 0px 0.5rem red;
+    }
+    to { 
+        z-index: 10;
+        box-shadow: -8px 8px 0px 0.5rem rgba(255, 0, 0, 0.01);
+    }
+}
+
+/* SCROLL PLAYER INTO VIEW */
+div[id^="player"] {
+    top: -100px;
+    right: -100px;
+}
 
   /* div[id^="player"] {
     padding-top: 6rem;
@@ -123,10 +144,6 @@
     margin-left: -6rem;
     } */
 
-div[id^="player"] {
-    top: -100px;
-    right: -100px;
-        }
 
 /* PAD */
 .padContainer {
