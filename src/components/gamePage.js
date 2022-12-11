@@ -558,6 +558,16 @@ const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
         }
       >
         <button className="enlargeScreen" onClick={screenToggler}></button>
+        {location.pathname === "/game/editor" && displayPad === false && (
+          <button
+            className="backToEdit"
+            onClick={() => {
+              navigate("/editor");
+            }}
+          >
+            back to edit
+          </button>
+        )}
         <div className="boardScroller">
           {level !== "none" && grid !== "loading" ? (
             <div className="table">
@@ -652,7 +662,12 @@ const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
               </div>
             </div>
             {location.pathname === "/game/editor" && (
-              <button onClick={() => navigate("/editor")}>back to edit</button>
+              <button
+                className="backToEdit2"
+                onClick={() => navigate("/editor")}
+              >
+                back to edit
+              </button>
             )}
           </section>
         ) : (
