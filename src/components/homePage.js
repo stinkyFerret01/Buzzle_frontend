@@ -17,7 +17,7 @@ const HomePage = () => {
         <div className="presVidDisplay">
           <h3>EDIT!</h3>
           <video width="220" height="130" loop autoPlay muted>
-            <source src="../Videos/presVid.mp4" type="video/mp4" />
+            <source src="../Videos/presVidEdit.mp4" type="video/mp4" />
           </video>
         </div>
       </div>
