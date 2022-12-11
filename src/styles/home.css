@@ -8,6 +8,7 @@
 
 .presVidsDisplay {
     display: flex;
+    flex-direction: column;
 }
 
 .presVidDisplay {
@@ -34,4 +35,10 @@ video {
     height: 4rem;
     background-color: rgb(69, 120, 186);
     box-shadow: 0 0 81rem rgba(234, 178, 11, 1);
+}
+
+@media (min-width: 501px) {
+    .presVidsDisplay {
+        flex-direction: row;
+    }
 }
