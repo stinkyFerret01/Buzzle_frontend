@@ -638,7 +638,6 @@ const GamePage = ({ level, setLevel }) => {
           </button>
         )}
       </section>
-      <button onClick={handleBackClick}>test</button>
     </main>
   );
 };

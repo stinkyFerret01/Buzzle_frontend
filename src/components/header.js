@@ -16,7 +16,7 @@ const Header = ({
 }) => {
   ///-- STATES --///
   const [levels, setLevels] = useState("loading");
-  const [levelsNew, setLevelsNew] = useState("loading");
+  const [gameDiv, setGameDiv] = useState("validé");
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -39,8 +39,15 @@ const Header = ({
     }
   };
 
+  ///-- gameDivDefiner
+  const gamDivDefiner = (div) => {
+    if (div !== gameDiv) {
+      setGameDiv(div);
+    }
+  };
+
   //-- USEEFFECT
-  useEffect(() => {}, [levels, levelsNew]);
+  useEffect(() => {}, [levels]);
 
   //-- fetcher (requete au backend pour récupérer les niveaux)
   useEffect(() => {
@@ -48,12 +55,6 @@ const Header = ({
       try {
         const response = await axios.get(`${backend}/levels`);
         setLevels(response.data.levels);
-        if (response.data.levelsValid !== undefined) {
-          setLevels(response.data.levelsValid);
-          setLevelsNew(response.data.levelsNew);
-        } else {
-          console.log(response.data.alert);
-        }
       } catch (error) {}
     };
     fetcher();
@@ -108,44 +109,82 @@ const Header = ({
             : {}
         }
       >
-        {levels !== "loading" && levelsNew !== "loading" ? (
-          <div>
+        {levels !== "loading" ? (
+          <div className="headerGame">
             <div className="headerGameTitles">
-              <div className="headerGameTitle">validé</div>
-              <div className="headerGameTitle">à tester</div>
+              <button
+                className="headerGameTitle"
+                style={gameDiv === "validé" ? { backgroundColor: "black" } : {}}
+                onClick={() => gamDivDefiner("validé")}
+              >
+                validé
+              </button>
+              <button
+                className="headerGameTitle"
+                style={
+                  gameDiv === "à tester" ? { backgroundColor: "black" } : {}
+                }
+                onClick={() => gamDivDefiner("à tester")}
+              >
+                à tester
+              </button>
+              <button
+                className="headerGameTitle"
+                style={
+                  gameDiv === "rechercher" ? { backgroundColor: "black" } : {}
+                }
+                onClick={() => gamDivDefiner("rechercher")}
+              >
+                rechercher
+              </button>
               <div className="headerGameTitle"></div>
             </div>
             <div className="headerGameDivs">
-              <div className="headerGameDiv">
-                {levels.map((lvl, index) => {
-                  return (
-                    <button
-                      className="levelSelectorValid"
-                      onClick={() => {
-                        setLevel(lvl.pattern);
-                      }}
-                      key={index}
-                    >
-                      {lvl.name}
-                    </button>
-                  );
-                })}
-              </div>
-              <div className="headerGameDiv">
-                {levelsNew.map((lvl, index) => {
-                  return (
-                    <button
-                      className="levelSelectorNew"
-                      onClick={() => {
-                        setLevel(lvl.pattern);
-                      }}
-                      key={index}
-                    >
-                      {lvl.name}
-                    </button>
-                  );
-                })}
-              </div>
+              {gameDiv === "validé" && (
+                <div className="headerGameDiv">
+                  {levels.map((lvl, index) => {
+                    if (lvl.status === "valid") {
+                      return (
+                        <button
+                          className="levelSelectorValid"
+                          onClick={() => {
+                            setLevel(lvl.pattern);
+                          }}
+                          key={index}
+                        >
+                          {lvl.name}
+                        </button>
+                      );
+                    } else {
+                      return <div key={index}></div>;
+                    }
+                  })}
+                </div>
+              )}
+              {gameDiv === "à tester" && (
+                <div className="headerGameDiv">
+                  {levels.map((lvl, index) => {
+                    if (lvl.status === "new") {
+                      return (
+                        <button
+                          className="levelSelectorNew"
+                          onClick={() => {
+                            setLevel(lvl.pattern);
+                          }}
+                          key={index}
+                        >
+                          {lvl.name}
+                        </button>
+                      );
+                    } else {
+                      return <div key={index}></div>;
+                    }
+                  })}
+                </div>
+              )}
+              {gameDiv === "rechercher" && (
+                <div className="headerGameDiv"></div>
+              )}
             </div>
           </div>
         ) : (

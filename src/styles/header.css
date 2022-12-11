@@ -22,34 +22,50 @@
 }
 
 /* CENTER */
+.headerGame {
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+}
+
 .headerGameTitles {
+    width: 100%;
     height: 1.15rem;
     display: flex;
+    box-sizing: border-box;
 }
+
+
 
 .headerGameTitle {
     overflow: hidden;
     width: 33.33%;
-    border-left: solid rgb(123, 107, 13)1px;
-    border-right: solid rgb(123, 107, 13) 1px;
+    min-width: 33.33%;
+    height: 100%;
     color: aliceblue;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: bold;
     text-align: center;
+    background-color: gray;
     box-sizing: border-box;
 }
 
+.headerGameTitle:hover {
+    background-color: black;
+}
+
 .headerGameDivs {
-    height: 80%;
+    height: 100%;
     height: 4.1rem;
     display: flex;
     flex-direction: row;
+    box-sizing: border-box;
 }
 
 .headerGameDiv {
     overflow: hidden;
     overflow-y: scroll;
-    width: 33.33%;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
