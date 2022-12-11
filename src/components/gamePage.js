@@ -552,7 +552,7 @@ const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
         style={
           displayPad
             ? bigScreen
-              ? { width: "calc(100vw - 14.1rem)", height: "100vh" }
+              ? { width: "calc(100vw - 14.1rem)", height: "99vh" }
               : { maxWidth: "31.7rem" }
             : bigScreen
             ? { width: "100vw", height: "100vh" }
@@ -627,6 +627,7 @@ const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
       </section>
       <section
         className={displayPad === true ? "padContainer" : "padContainerOff"}
+        style={bigScreen === true ? { height: "99vh" } : {}}
       >
         {displayPad ? (
           <section className="padIsTrue">

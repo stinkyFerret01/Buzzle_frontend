@@ -10,7 +10,7 @@
     width: 100%;
     max-width: 42.7rem;
     height: 90%;
-    min-height: 10rem;
+    /* min-height: 10rem; */
     background-color: black;
     border: solid  rgb(69, 120, 186) 4px;
     display: flex;
@@ -186,7 +186,7 @@ div[id^="player"] {
     width: 10rem;
     min-width: 10rem;
     height: 90%;
-    min-height: 10rem;
+    /* min-height: 10rem; */
     background-color: black;
     border: solid  rgb(69, 120, 186) 4px;
     padding-top: 1rem;

@@ -6,6 +6,8 @@
 @import "styles/aysEtWfr.css";
 
 .App {
+  overflow: hidden;
+  overflow-y: scroll;
   width: 100vw;
   height: 100vh;
   background-color: rgba(15, 10, 30);
@@ -22,6 +24,7 @@ header {
   width: 90%;
   max-width: 42.7rem;
   height: 6rem;
+  min-height: 6rem;
   border: solid  rgb(69, 120, 186) 4px;
   display: flex;
   box-sizing: border-box;
@@ -30,6 +33,7 @@ header {
 main {
   width: 90%;
   height: 65%;
+  min-height: 11rem;
   display: flex;
   justify-content: center;
   align-items: center;
