@@ -551,9 +551,11 @@ const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
         className="boardContainer"
         style={
           displayPad
-            ? { maxWidth: "31.7rem" }
+            ? bigScreen
+              ? { width: "calc(100vw - 14.1rem)", height: "100vh" }
+              : { maxWidth: "31.7rem" }
             : bigScreen
-            ? { maxWidth: "100%", maxHeight: "100%" }
+            ? { width: "100vw", height: "100vh" }
             : { maxWidth: "42.7rem" }
         }
       >
