@@ -189,8 +189,6 @@ const GamePage = ({ level, setLevel }) => {
   useEffect(() => {
     if (grid.length > 0 && player !== "loading" && player.length > 2) {
       const actionDefiner = (L, o) => {
-        console.log(L);
-        console.log(o);
         let obj = grid[L][o];
         const pairs = [
           ["Bs", "prendre la boite"],
@@ -203,9 +201,7 @@ const GamePage = ({ level, setLevel }) => {
         if (activity) {
           setAction(activity[1]);
         }
-        console.log(obj);
       };
-      console.log(player);
       actionDefiner(player[2], player[3]);
     }
   }, [player, grid]);
@@ -381,7 +377,7 @@ const GamePage = ({ level, setLevel }) => {
       };
       interval = setTimeout(checkStart, 600);
     };
-    if (game[0] === "Playing...") {
+    if (game[0] === "Playing..." && cops.length > 0) {
       copsMover();
     }
     //-- PROBLEMO
