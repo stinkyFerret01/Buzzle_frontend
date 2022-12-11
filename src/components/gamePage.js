@@ -557,7 +557,16 @@ const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
             : { maxWidth: "42.7rem" }
         }
       >
-        <button className="enlargeScreen" onClick={screenToggler}></button>
+        {bigScreen === true ? (
+          <button className="reduceScreen" onClick={screenToggler}>
+            CHANGER DE NIVEAU
+          </button>
+        ) : (
+          <button className="enlargeScreen" onClick={screenToggler}>
+            GRAND ECRAN
+          </button>
+        )}
+
         {location.pathname === "/game/editor" && displayPad === false && (
           <button
             className="backToEdit"
