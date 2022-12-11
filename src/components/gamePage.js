@@ -186,20 +186,40 @@ const GamePage = ({ level, setLevel }) => {
     // eslint-disable-next-line
   }, [game, player, grid]);
 
+  //-- actionDefiner (défini l'action possible)
   useEffect(() => {
-    if (grid.length > 0 && player !== "loading" && player.length > 2) {
+    if (
+      player !== "loading" &&
+      player.length > 2 &&
+      grid[player[2]][player[3]]
+    ) {
       const actionDefiner = (L, o) => {
+        //-- actionDefiner défini l'action possible du joueur pour l'orienter
         let obj = grid[L][o];
+        console.log(obj);
         const pairs = [
-          ["Bs", "prendre la boite"],
           ["bs", "poser la boite"],
-          [".", ""],
+          ["Bs", "prendre la boite"],
+          ["dh", "dv", "fermer la porte"],
+          ["Dh", "Dv", "ouvrir la porte"],
+          [".", ".a", ""],
+          ["kg", "lg", "mg", "ramasser la clef"],
+          ["ki", "li", "mi", ""],
+          ["Kv", "Lv", "Mv", "porte vérrouillée"],
+          ["Kh", "Lh", "Mh", "porte vérrouillée"],
+          ["pg", "plaque de pression"],
+          ["W", "Wa", ""],
+          ["Ca", "attention!"],
         ];
         let activity = pairs.find(
-          (pair) => pair[0].slice(0, 1) === obj.slice(0, 1)
+          (pair) =>
+            //  pair.findIndex((find) => find === obj.slice(0, 2))
+            pair[0] === obj.slice(0, 2) ||
+            pair[1] === obj.slice(0, 2) ||
+            pair[2] === obj.slice(0, 2)
         );
         if (activity) {
-          setAction(activity[1]);
+          setAction(activity[activity.length - 1]);
         }
       };
       actionDefiner(player[2], player[3]);
