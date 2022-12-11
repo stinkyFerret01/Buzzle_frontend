@@ -6,7 +6,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 //-- import des composants
 import Pos from "./pos";
 
-const GamePage = ({ level, setLevel, edited }) => {
+const GamePage = ({ level, setLevel }) => {
   ///-- STATES --///
   const [displayPad, setDisplayPad] = useState(true);
   const [game, setGame] = useState(["Ready?", "START"]);
@@ -15,6 +15,7 @@ const GamePage = ({ level, setLevel, edited }) => {
   const [objects, setObjects] = useState("loading");
   const [cops, setCops] = useState("loading");
   const [grid, setGrid] = useState(base);
+  const [action, setAction] = useState("");
 
   //-- config et variables dures
   const navigate = useNavigate();
@@ -184,6 +185,27 @@ const GamePage = ({ level, setLevel, edited }) => {
     //////------ PROBLEMO ------//////
     // eslint-disable-next-line
   }, [game, player, grid]);
+
+  useEffect(() => {
+    if (grid.length > 0 && player[2] && player[3]) {
+      const actionDefiner = (L, o) => {
+        let obj = grid[L][o].slice(0, 2);
+        const pairs = [
+          ["Bs", "prendre la boite"],
+          ["bs", "poser la boite"],
+          [".", ""],
+        ];
+        let activity = pairs.find(
+          (pair) => pair[0].slice(0, 1) === obj.slice(0, 1)
+        );
+        if (activity) {
+          setAction(activity[1]);
+        }
+        console.log(obj);
+      };
+      actionDefiner(player[2], player[3]);
+    }
+  }, [player, grid]);
 
   //-- gameBuilder (prépare le niveau en début de partie)
   useEffect(() => {
@@ -513,7 +535,7 @@ const GamePage = ({ level, setLevel, edited }) => {
         {displayPad ? (
           <section className="padIsTrue">
             <button onClick={() => setDisplayPad(false)}>fermer le pad</button>
-            <div className="padMessage">En Cours</div>
+            <div className="padMessage">{action}</div>
             <div className="pad">
               <div className="padLigns">
                 <button
