@@ -25,7 +25,6 @@ const HomePage = () => {
       <button className="homeToGame" onClick={() => navigate("/game/game")}>
         <h1>PLAY BUZZLE NOW!</h1>
       </button>
-      <button onClick={() => {}}>se connecter (inactif)</button>
     </main>
   );
 };

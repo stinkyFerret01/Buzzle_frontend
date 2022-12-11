@@ -68,16 +68,7 @@ const Header = ({
   return (
     <header>
       {/* LEFT */}
-      <section
-        className="headerSection"
-        style={
-          location.pathname === "/"
-            ? {
-                boxShadow: "0 0 3rem rgba(234, 178, 11, 0.7)",
-              }
-            : {}
-        }
-      >
+      <section className="headerSection">
         <button onClick={() => {}}>se connecter (inactif)</button>
         <button
           onClick={() => {
@@ -103,16 +94,7 @@ const Header = ({
         </section>
       )}
       {/* CENTER */}
-      <section
-        className="headerSection"
-        style={
-          location.pathname.slice(0, 5) === "/game"
-            ? {
-                boxShadow: "0 0 5rem rgba(234, 178, 11, 0.7)",
-              }
-            : {}
-        }
-      >
+      <section className="headerSection">
         {levels.length >= 0 ? (
           <div className="headerGame">
             <div className="headerGameTitles">
@@ -234,16 +216,7 @@ const Header = ({
         </section>
       )}
       {/* RIGHT */}
-      <section
-        className="headerSection"
-        style={
-          location.pathname === "/editor"
-            ? {
-                boxShadow: "0 0 3rem rgba(234, 178, 11, 0.7)",
-              }
-            : {}
-        }
-      >
+      <section className="headerSection">
         {edited[0] !== "none" && edited[1].length > 2 && (
           <button className="headerEditButton" onClick={editer}>
             EDIT
