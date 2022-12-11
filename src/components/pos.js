@@ -12,7 +12,6 @@ const Pos = ({ o, type, oSelection, base, setBase, xy, bigScreen }) => {
   ///-- FONCTIONS --///
   //-- styleMaker détermine le style des Pos en fonctions de leurs valeurs
   const styleMaker = (o) => {
-    console.log(bigScreen);
     let oStrict = o.slice(0, 1);
     let oObj = o.slice(0, 2);
     let act = o.slice(o.length - 1);
@@ -132,7 +131,6 @@ const Pos = ({ o, type, oSelection, base, setBase, xy, bigScreen }) => {
       }
     }
     if (bigScreen === true) {
-      console.log("ok");
       style["minWidth"] = "2rem";
       style["height"] = "2rem";
     }

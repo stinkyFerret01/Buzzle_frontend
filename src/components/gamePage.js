@@ -652,9 +652,11 @@ const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
             )}
           </section>
         ) : (
-          <button className="padButton" onClick={() => setDisplayPad(true)}>
-            ouvrir le pad
-          </button>
+          bigScreen === false && (
+            <button className="padButton" onClick={() => setDisplayPad(true)}>
+              ouvrir le pad
+            </button>
+          )
         )}
       </section>
     </main>
