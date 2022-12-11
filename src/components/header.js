@@ -7,6 +7,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 ///-- START --///
 const Header = ({
   backend,
+  theme,
+  setTheme,
   setLevel,
   edited,
   setDisplayAys,
@@ -40,12 +42,12 @@ const Header = ({
   //-- USEEFFECT
   useEffect(() => {}, [levels, levelsNew]);
 
+  //-- fetcher (requete au backend pour récupérer les niveaux)
   useEffect(() => {
     const fetcher = async () => {
       try {
         const response = await axios.get(`${backend}/levels`);
         setLevels(response.data.levels);
-        console.log(backend);
         if (response.data.levelsValid !== undefined) {
           setLevels(response.data.levelsValid);
           setLevelsNew(response.data.levelsNew);
@@ -72,6 +74,17 @@ const Header = ({
         }
       >
         <button onClick={() => {}}>se connecter (inactif)</button>
+        <button
+          onClick={() => {
+            if (theme === "clear") {
+              setTheme("dark");
+            } else {
+              setTheme("clear");
+            }
+          }}
+        >
+          THEME
+        </button>
       </section>
       {location.pathname !== "/" && (
         <section
@@ -96,36 +109,43 @@ const Header = ({
         }
       >
         {levels !== "loading" && levelsNew !== "loading" ? (
-          <div className="headerGameDivs">
-            <div className="headerGameDiv">
-              {levels.map((lvl, index) => {
-                return (
-                  <button
-                    className="levelSelectorValid"
-                    onClick={() => {
-                      setLevel(lvl.pattern);
-                    }}
-                    key={index}
-                  >
-                    {lvl.name}
-                  </button>
-                );
-              })}
+          <div>
+            <div className="headerGameTitles">
+              <div className="headerGameTitle">validé</div>
+              <div className="headerGameTitle">à tester</div>
+              <div className="headerGameTitle"></div>
             </div>
-            <div className="headerGameDiv">
-              {levelsNew.map((lvl, index) => {
-                return (
-                  <button
-                    className="levelSelectorNew"
-                    onClick={() => {
-                      setLevel(lvl.pattern);
-                    }}
-                    key={index}
-                  >
-                    {lvl.name}
-                  </button>
-                );
-              })}
+            <div className="headerGameDivs">
+              <div className="headerGameDiv">
+                {levels.map((lvl, index) => {
+                  return (
+                    <button
+                      className="levelSelectorValid"
+                      onClick={() => {
+                        setLevel(lvl.pattern);
+                      }}
+                      key={index}
+                    >
+                      {lvl.name}
+                    </button>
+                  );
+                })}
+              </div>
+              <div className="headerGameDiv">
+                {levelsNew.map((lvl, index) => {
+                  return (
+                    <button
+                      className="levelSelectorNew"
+                      onClick={() => {
+                        setLevel(lvl.pattern);
+                      }}
+                      key={index}
+                    >
+                      {lvl.name}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
         ) : (
@@ -156,7 +176,11 @@ const Header = ({
             : {}
         }
       >
-        <button onClick={editer}>EDIT</button>
+        {edited[0] !== "none" && edited[1] !== "" && (
+          <button className="headerEditButton" onClick={editer}>
+            EDIT
+          </button>
+        )}
       </section>
       {location.pathname !== "/editor" &&
         location.pathname !== "/game/editor" && (

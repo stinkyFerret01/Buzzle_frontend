@@ -70,6 +70,7 @@
     min-width: 12rem;
     height: 90%;
     min-height: 10rem;
+    background-color: black;
     border:solid  rgb(69, 120, 186) 4px;
     margin-left: 1rem;
     box-sizing: border-box;

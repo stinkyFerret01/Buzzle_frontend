@@ -24,10 +24,10 @@ const AreYouSure = ({ displayAys, setDisplayAys }) => {
               navigate(`/${displayAys}`);
             }}
           >
-            <span style={{ color: "red" }}>continuer</span>
+            <div>continuer</div>
           </button>
           <button className="aysAbort" onClick={() => setDisplayAys("none")}>
-            anuler
+            <div>anuler</div>
           </button>
         </div>
       </article>

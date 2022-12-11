@@ -19,6 +19,7 @@ function App() {
   const online = "https://buzzlebackend.onrender.com";
   const local = "http://localhost:3000";
   const [backend] = useState(online || local);
+  const [theme, setTheme] = useState("dark");
   // const [pData, setPData] = useState("none");
   const [level, setLevel] = useState("none");
   const [edited, setEdited] = useState(["none", "none", "new"]);
@@ -28,10 +29,15 @@ function App() {
 
   ///-- RENDER --///
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={theme === "clear" ? { backgroundColor: "aliceblue" } : {}}
+    >
       <Router>
         <Header
           backend={backend}
+          theme={theme}
+          setTheme={setTheme}
           setLevel={setLevel}
           edited={edited}
           setDisplayAys={setDisplayAys}

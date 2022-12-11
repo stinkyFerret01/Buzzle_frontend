@@ -45,6 +45,10 @@
     background-color: brown;
 }
 
+.startButton:hover {
+    background-color: red;
+}
+
 .table {
     display: flex;
     flex-direction: column;
@@ -95,6 +99,7 @@
     min-width: 10rem;
     height: 90%;
     min-height: 10rem;
+    background-color: black;
     border: solid  rgb(69, 120, 186) 4px;
     padding: 1rem;
     display: flex;
@@ -106,6 +111,16 @@
 .padIsTrue {
     display: flex;
     flex-direction: column;
+}
+
+.padButton {
+    font-weight: bold;
+    background-color: brown;
+    color: aliceblue;
+}
+
+.padButton:hover {
+    background-color: red;
 }
 
 .padMessage {
@@ -141,19 +156,8 @@
 .padActivity {
     width: 2.5rem;
     height: 2.5rem;
-    background-color: gold;
+    background-color:  gold;
     border: solid goldenrod 4px;
     border-radius: 50%;
     margin: 0.5rem;
 }
-
- /* @media (min-width: 500px) {
-    .boardContainer {
-        min-width: 17.2rem;
-    }
-}
-@media (min-width: 770px) {
-    .boardContainer {
-        min-width: 31.7rem;
-    }
-} */

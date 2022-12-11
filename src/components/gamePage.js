@@ -196,7 +196,6 @@ const GamePage = ({ level, setLevel }) => {
       const actionDefiner = (L, o) => {
         //-- actionDefiner défini l'action possible du joueur pour l'orienter
         let obj = grid[L][o];
-        console.log(obj);
         const pairs = [
           ["bs", "poser la boite"],
           ["Bs", "prendre la boite"],
@@ -314,16 +313,30 @@ const GamePage = ({ level, setLevel }) => {
       const presLvl = [
         ".........",
         "WWWWWWWWW",
-        "W.......W",
-        "W.P.....W",
-        "W.......E",
-        "W..B....W",
-        "W...p...W",
-        "W.......W",
+        "WB..W...W",
+        "W.P.W.P.W",
+        "WWHWW...E",
+        "W.....p.W",
         "W.......W",
         "WWWWWWWWW",
         ".........",
       ];
+      ////////////////////
+      // let presLvl2 = [
+      //   ".........",
+      //   "WWWWWWWWW",
+      //   "WB..W...W",
+      //   "W.P.W.P.W",
+      //   "WWHWW...E",
+      //   "W.....p.W",
+      //   "W.......W",
+      //   "WWWWWWWWW",
+      //   ".........",
+      // ];
+      // if ((presLvl2 = presLvl)) {
+      // }
+
+      ////////////////////
       setLevel(presLvl);
       setGame(["Ready?", "START"]);
     }
@@ -553,7 +566,9 @@ const GamePage = ({ level, setLevel }) => {
       >
         {displayPad ? (
           <section className="padIsTrue">
-            <button onClick={() => setDisplayPad(false)}>fermer le pad</button>
+            <button className="padButton" onClick={() => setDisplayPad(false)}>
+              fermer le pad
+            </button>
             <div className="padMessage">{action}</div>
             <div className="pad">
               <div className="padLigns">
@@ -598,7 +613,9 @@ const GamePage = ({ level, setLevel }) => {
             )}
           </section>
         ) : (
-          <button onClick={() => setDisplayPad(true)}>ouvrir le pad</button>
+          <button className="padButton" onClick={() => setDisplayPad(true)}>
+            ouvrir le pad
+          </button>
         )}
       </section>
     </main>

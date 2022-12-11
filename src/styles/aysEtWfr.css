@@ -17,11 +17,32 @@
 
 .aysChoiceDisplayer {
     width: 80%;
+    height: 1.3rem;
     margin-top: 1rem;
     display: flex;
     justify-content: space-around;
 }
 
 .wfrContinue {
+    font-weight: bold;
     background-color: red;
+}
+
+.aysContinue {
+    color: red;
+    font-weight: bold;
+}
+
+.aysContinue:hover {
+    color: white;
+    background-color: red;
+}
+
+.aysAbort {
+    font-weight: bold;
+}
+
+.aysAbort:hover {
+    color: white;
+    background-color: black;
 }
