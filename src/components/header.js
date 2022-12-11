@@ -15,8 +15,12 @@ const Header = ({
   setDisplayWfr,
 }) => {
   ///-- STATES --///
-  const [levels, setLevels] = useState("loading");
+  const [levels, setLevels] = useState([]);
+  const [searchLvl, setSearchLvl] = useState("");
   const [gameDiv, setGameDiv] = useState("validé");
+  const searchedLevels = levels.filter(
+    (lvl) => lvl.name.toUpperCase().indexOf(searchLvl.toUpperCase()) >= 0
+  );
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -31,7 +35,7 @@ const Header = ({
           name: edited[1],
           status: edited[2],
         });
-        if (response.data.message === "requête edit accordée") {
+        if (response.data.message === "votre niveau a été édité!") {
           setDisplayWfr(false);
         }
         console.log(response.data.message);
@@ -47,7 +51,7 @@ const Header = ({
   };
 
   //-- USEEFFECT
-  useEffect(() => {}, [levels]);
+  useEffect(() => {}, [levels, searchLvl]);
 
   //-- fetcher (requete au backend pour récupérer les niveaux)
   useEffect(() => {
@@ -109,7 +113,7 @@ const Header = ({
             : {}
         }
       >
-        {levels !== "loading" ? (
+        {levels.length >= 0 ? (
           <div className="headerGame">
             <div className="headerGameTitles">
               <button
@@ -183,7 +187,32 @@ const Header = ({
                 </div>
               )}
               {gameDiv === "rechercher" && (
-                <div className="headerGameDiv"></div>
+                <div className="headerGameDiv">
+                  <input
+                    className="textincome"
+                    name="searchLvl"
+                    type="text"
+                    placeholder="chercher un niveau"
+                    value={searchLvl}
+                    onChange={(event) => {
+                      setSearchLvl(event.target.value);
+                    }}
+                  />
+                  {searchedLevels.length > 0 &&
+                    searchedLevels.map((lvl, index) => {
+                      return (
+                        <button
+                          className="levelSelectorSearch"
+                          onClick={() => {
+                            setLevel(lvl.pattern);
+                          }}
+                          key={index}
+                        >
+                          {lvl.name}
+                        </button>
+                      );
+                    })}
+                </div>
               )}
             </div>
           </div>

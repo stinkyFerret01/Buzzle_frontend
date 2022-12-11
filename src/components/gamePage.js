@@ -73,111 +73,112 @@ const GamePage = ({ level, setLevel }) => {
 
   //-- handleKeyDown interprète les commandes du clavier
   const handleKeyDown = (event, k) => {
-    console.log("trying");
-    handleBackClick();
-    let key = event.key;
-    if (event === "pad") {
-      key = k;
-    }
-    let actChecker = objects.find((obj) => obj[2] === "bs");
-    if (player !== "loading" && game[0] === "Playing...") {
-      if (key === "ArrowLeft") {
-        let newPos = [player[0], player[1] - 1, player[0], player[1] - 2];
-        let o = grid[newPos[0]][newPos[1]];
-        let oAct = grid[newPos[2]][newPos[3]];
-        if (
-          (actChecker === undefined && okToMoveChecker(o)) ||
-          (actChecker !== undefined &&
-            okToMoveChecker(o) &&
-            okToMoveChecker(oAct))
-        ) {
-          setPlayer(newPos);
-        } else if (
-          actChecker === undefined ||
-          (okToMoveChecker(o) && !okToMoveChecker(oAct))
-        ) {
-          newPos = [player[0], player[1], player[0], player[1] - 1];
-          setPlayer(newPos);
-        }
+    if (game[0] === "Playing...") {
+      handleBackClick();
+      let key = event.key;
+      if (event === "pad") {
+        key = k;
       }
-      if (key === "ArrowRight") {
-        let newPos = [player[0], player[1] + 1, player[0], player[1] + 2];
-        let o = grid[newPos[0]][newPos[1]];
-        let oAct = grid[newPos[2]][newPos[3]];
-        if (
-          (actChecker === undefined && okToMoveChecker(o)) ||
-          (actChecker !== undefined &&
-            okToMoveChecker(o) &&
-            okToMoveChecker(oAct))
-        ) {
-          setPlayer(newPos);
-        } else if (
-          actChecker === undefined ||
-          (okToMoveChecker(o) && !okToMoveChecker(oAct))
-        ) {
-          newPos = [player[0], player[1], player[0], player[1] + 1];
-          setPlayer(newPos);
+      let actChecker = objects.find((obj) => obj[2] === "bs");
+      if (player !== "loading") {
+        if (key === "ArrowLeft") {
+          let newPos = [player[0], player[1] - 1, player[0], player[1] - 2];
+          let o = grid[newPos[0]][newPos[1]];
+          let oAct = grid[newPos[2]][newPos[3]];
+          if (
+            (actChecker === undefined && okToMoveChecker(o)) ||
+            (actChecker !== undefined &&
+              okToMoveChecker(o) &&
+              okToMoveChecker(oAct))
+          ) {
+            setPlayer(newPos);
+          } else if (
+            actChecker === undefined ||
+            (okToMoveChecker(o) && !okToMoveChecker(oAct))
+          ) {
+            newPos = [player[0], player[1], player[0], player[1] - 1];
+            setPlayer(newPos);
+          }
         }
-      }
-      if (key === "ArrowUp") {
-        let newPos = [player[0] - 1, player[1], player[0] - 2, player[1]];
-        let o = grid[newPos[0]][newPos[1]];
-        let oAct = grid[newPos[2]][newPos[3]];
-        if (
-          (actChecker === undefined && okToMoveChecker(o)) ||
-          (actChecker !== undefined &&
-            okToMoveChecker(o) &&
-            okToMoveChecker(oAct))
-        ) {
-          setPlayer(newPos);
-        } else if (
-          actChecker === undefined ||
-          (okToMoveChecker(o) && !okToMoveChecker(oAct))
-        ) {
-          newPos = [player[0], player[1], player[0] - 1, player[1]];
-          setPlayer(newPos);
+        if (key === "ArrowRight") {
+          let newPos = [player[0], player[1] + 1, player[0], player[1] + 2];
+          let o = grid[newPos[0]][newPos[1]];
+          let oAct = grid[newPos[2]][newPos[3]];
+          if (
+            (actChecker === undefined && okToMoveChecker(o)) ||
+            (actChecker !== undefined &&
+              okToMoveChecker(o) &&
+              okToMoveChecker(oAct))
+          ) {
+            setPlayer(newPos);
+          } else if (
+            actChecker === undefined ||
+            (okToMoveChecker(o) && !okToMoveChecker(oAct))
+          ) {
+            newPos = [player[0], player[1], player[0], player[1] + 1];
+            setPlayer(newPos);
+          }
         }
-      }
-      if (key === "ArrowDown") {
-        let newPos = [player[0] + 1, player[1], player[0] + 2, player[1]];
-        let o = grid[newPos[0]][newPos[1]];
-        let oAct = grid[newPos[2]][newPos[3]];
-        if (
-          (actChecker === undefined && okToMoveChecker(o)) ||
-          (actChecker !== undefined &&
-            okToMoveChecker(o) &&
-            okToMoveChecker(oAct))
-        ) {
-          setPlayer(newPos);
-        } else if (
-          actChecker === undefined ||
-          (okToMoveChecker(o) && !okToMoveChecker(oAct))
-        ) {
-          newPos = [player[0], player[1], player[0] + 1, player[1]];
-          setPlayer(newPos);
+        if (key === "ArrowUp") {
+          let newPos = [player[0] - 1, player[1], player[0] - 2, player[1]];
+          let o = grid[newPos[0]][newPos[1]];
+          let oAct = grid[newPos[2]][newPos[3]];
+          if (
+            (actChecker === undefined && okToMoveChecker(o)) ||
+            (actChecker !== undefined &&
+              okToMoveChecker(o) &&
+              okToMoveChecker(oAct))
+          ) {
+            setPlayer(newPos);
+          } else if (
+            actChecker === undefined ||
+            (okToMoveChecker(o) && !okToMoveChecker(oAct))
+          ) {
+            newPos = [player[0], player[1], player[0] - 1, player[1]];
+            setPlayer(newPos);
+          }
         }
-      }
-      if (key === "a") {
-        let objIndex = objects.findIndex((obj) => obj[2] === "bs");
-        let object = objects.find((obj) => obj[2] === "bs");
-        if (object === undefined) {
-          objIndex = objects.findIndex(
-            (obj) =>
-              obj[0] === player[2] &&
-              obj[1] === player[3] &&
-              obj[2].slice(1, 2) !== "i"
-          );
-          object = objects.find(
-            (obj) =>
-              obj[0] === player[2] &&
-              obj[1] === player[3] &&
-              obj[2].slice(1, 2) !== "i"
-          );
+        if (key === "ArrowDown") {
+          let newPos = [player[0] + 1, player[1], player[0] + 2, player[1]];
+          let o = grid[newPos[0]][newPos[1]];
+          let oAct = grid[newPos[2]][newPos[3]];
+          if (
+            (actChecker === undefined && okToMoveChecker(o)) ||
+            (actChecker !== undefined &&
+              okToMoveChecker(o) &&
+              okToMoveChecker(oAct))
+          ) {
+            setPlayer(newPos);
+          } else if (
+            actChecker === undefined ||
+            (okToMoveChecker(o) && !okToMoveChecker(oAct))
+          ) {
+            newPos = [player[0], player[1], player[0] + 1, player[1]];
+            setPlayer(newPos);
+          }
         }
-        if (objIndex >= 0) {
-          let newObjects = [...objects];
-          newObjects.splice(objIndex, 1, actioner(object[2]));
-          setObjects(newObjects);
+        if (key === "a") {
+          let objIndex = objects.findIndex((obj) => obj[2] === "bs");
+          let object = objects.find((obj) => obj[2] === "bs");
+          if (object === undefined) {
+            objIndex = objects.findIndex(
+              (obj) =>
+                obj[0] === player[2] &&
+                obj[1] === player[3] &&
+                obj[2].slice(1, 2) !== "i"
+            );
+            object = objects.find(
+              (obj) =>
+                obj[0] === player[2] &&
+                obj[1] === player[3] &&
+                obj[2].slice(1, 2) !== "i"
+            );
+          }
+          if (objIndex >= 0) {
+            let newObjects = [...objects];
+            newObjects.splice(objIndex, 1, actioner(object[2]));
+            setObjects(newObjects);
+          }
         }
       }
     }

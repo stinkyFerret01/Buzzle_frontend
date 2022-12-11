@@ -21,6 +21,11 @@
     font-weight: bold;
 }
 
+.headerSectionGhost:hover {
+    color: rgba(234, 178, 11, 1);
+    cursor: pointer;
+}
+
 /* CENTER */
 .headerGame {
     overflow: hidden;
@@ -35,8 +40,6 @@
     box-sizing: border-box;
 }
 
-
-
 .headerGameTitle {
     overflow: hidden;
     width: 33.33%;
@@ -46,7 +49,7 @@
     font-size: 13px;
     font-weight: bold;
     text-align: center;
-    background-color: gray;
+    background-color: rgb(215, 213, 213);
     box-sizing: border-box;
 }
 
@@ -93,6 +96,16 @@
 
 .levelSelectorNew:hover {
     background-color: rgb(214, 13, 214);
+}
+
+.levelSelectorSearch {
+    font-weight: bold;
+    background-color: rgb(11, 170, 11);
+    font-size: 0.8rem;
+}
+
+.levelSelectorSearch:hover {
+    background-color: rgb(32, 215, 32);
 }
 
 /* RIGHT */

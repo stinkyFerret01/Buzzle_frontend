@@ -8,7 +8,9 @@ const WaitForResponse = ({ setDisplayWfr }) => {
         <h5>
           continuer sans attendre peut vous faire perdre votre progression
         </h5>
-        <button className="wfrContinue">CONTINUER</button>
+        <button className="wfrContinue" onClick={() => setDisplayWfr(false)}>
+          CONTINUER
+        </button>
       </article>
     </section>
   );
