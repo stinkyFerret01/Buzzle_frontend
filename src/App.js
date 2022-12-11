@@ -6,6 +6,7 @@ import { useState } from "react";
 
 //-- import des composants
 import Header from "./components/header";
+// import BurgerMenu from "./components/burgerMenu";
 import HomePage from "./components/homePage";
 import GamePage from "./components/gamePage";
 import EditorPage from "./components/editorPage";
@@ -26,6 +27,7 @@ function App() {
   const [editBase, setEditBase] = useState("none");
   const [displayAys, setDisplayAys] = useState("none");
   const [displayWfr, setDisplayWfr] = useState(false);
+  const [bigScreen, setBigScreen] = useState(false);
 
   ///-- RENDER --///
   return (
@@ -34,21 +36,30 @@ function App() {
       style={theme === "clear" ? { backgroundColor: "aliceblue" } : {}}
     >
       <Router>
-        <Header
-          backend={backend}
-          theme={theme}
-          setTheme={setTheme}
-          setLevel={setLevel}
-          edited={edited}
-          setDisplayAys={setDisplayAys}
-          displayWfr={displayWfr}
-          setDisplayWfr={setDisplayWfr}
-        />
+        {bigScreen === false && (
+          <Header
+            backend={backend}
+            theme={theme}
+            setTheme={setTheme}
+            setLevel={setLevel}
+            edited={edited}
+            setDisplayAys={setDisplayAys}
+            displayWfr={displayWfr}
+            setDisplayWfr={setDisplayWfr}
+          />
+        )}
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route
             path="/game/:from"
-            element={<GamePage level={level} setLevel={setLevel} />}
+            element={
+              <GamePage
+                level={level}
+                setLevel={setLevel}
+                bigScreen={bigScreen}
+                setBigScreen={setBigScreen}
+              />
+            }
           />
           <Route
             path="/editor"
@@ -63,7 +74,7 @@ function App() {
             }
           />
         </Routes>
-        <Footer />
+        {bigScreen === false && <Footer />}
         {displayAys !== "none" && (
           <AreYouSure displayAys={displayAys} setDisplayAys={setDisplayAys} />
         )}

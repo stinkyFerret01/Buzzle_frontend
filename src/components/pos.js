@@ -6,12 +6,13 @@ import { useLocation } from "react-router-dom";
 ///-- START --///
 // chaque composant Pos incarne une "position" sur la grille du jeu
 // cette position est représentée par une <div> dont le style est défini ici
-const Pos = ({ o, type, oSelection, base, setBase, xy }) => {
+const Pos = ({ o, type, oSelection, base, setBase, xy, bigScreen }) => {
   const location = useLocation();
 
   ///-- FONCTIONS --///
   //-- styleMaker détermine le style des Pos en fonctions de leurs valeurs
   const styleMaker = (o) => {
+    console.log(bigScreen);
     let oStrict = o.slice(0, 1);
     let oObj = o.slice(0, 2);
     let act = o.slice(o.length - 1);
@@ -130,7 +131,11 @@ const Pos = ({ o, type, oSelection, base, setBase, xy }) => {
         style["backgroundColor"] = "black";
       }
     }
-
+    if (bigScreen === true) {
+      console.log("ok");
+      style["minWidth"] = "2rem";
+      style["height"] = "2rem";
+    }
     // if (type === "edit") {
     //   style["margin"] = "0.5px";
     // }

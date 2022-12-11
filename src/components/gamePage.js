@@ -6,9 +6,9 @@ import { useNavigate, useLocation } from "react-router-dom";
 //-- import des composants
 import Pos from "./pos";
 
-const GamePage = ({ level, setLevel }) => {
+const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
   ///-- STATES --///
-  const [displayPad, setDisplayPad] = useState(true);
+  const [displayPad, setDisplayPad] = useState(false);
   const [game, setGame] = useState(["Ready?", "START"]);
   const [base, setBase] = useState("loading");
   const [player, setPlayer] = useState("loading");
@@ -30,6 +30,15 @@ const GamePage = ({ level, setLevel }) => {
   const location = useLocation();
 
   ///-- FONCTIONS --///
+  //-- screenToggler
+  const screenToggler = () => {
+    if (bigScreen === true) {
+      setBigScreen(false);
+    } else {
+      setBigScreen(true);
+    }
+  };
+
   //-- okToMoveChecker vérifie si le déplacement du joueur est possible
   const okToMoveChecker = (o) => {
     let oStrict = o.slice(0, 1);
@@ -527,15 +536,24 @@ const GamePage = ({ level, setLevel }) => {
     <main
       className="gamePage"
       style={
-        displayPad === true
+        displayPad
           ? { flexDirection: "row" }
+          : bigScreen
+          ? { height: "100%" }
           : { flexDirection: "column" }
       }
     >
       <section
         className="boardContainer"
-        style={displayPad ? { maxWidth: "31.7rem" } : { maxWidth: "42.7rem" }}
+        style={
+          displayPad
+            ? { maxWidth: "31.7rem" }
+            : bigScreen
+            ? { maxWidth: "100%", maxHeight: "100%" }
+            : { maxWidth: "42.7rem" }
+        }
       >
+        <button className="enlargeScreen" onClick={screenToggler}></button>
         <div className="boardScroller">
           {level !== "none" && grid !== "loading" ? (
             <div className="table">
@@ -547,10 +565,10 @@ const GamePage = ({ level, setLevel }) => {
                         <div key={indexo}>
                           {o === "P" ? (
                             <div id="player" ref={titleRef}>
-                              <Pos o={o} />
+                              <Pos o={o} bigScreen={bigScreen} />
                             </div>
                           ) : (
-                            <Pos o={o} />
+                            <Pos o={o} bigScreen={bigScreen} />
                           )}
                         </div>
                       );

@@ -5,7 +5,7 @@
 /* BOARD et POS */
 .boardContainer {
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
     /*  */
     width: 100%;
     max-width: 42.7rem;
@@ -17,6 +17,16 @@
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+}
+
+.enlargeScreen {
+    overflow: inherit;
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    z-index: 2;
+    top: -0.5rem;
+    left: -0.5rem;
 }
 
 .boardScroller {
