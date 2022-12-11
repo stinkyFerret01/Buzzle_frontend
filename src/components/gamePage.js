@@ -187,9 +187,11 @@ const GamePage = ({ level, setLevel }) => {
   }, [game, player, grid]);
 
   useEffect(() => {
-    if (grid.length > 0 && player[2] && player[3]) {
+    if (grid.length > 0 && player !== "loading" && player.length > 2) {
       const actionDefiner = (L, o) => {
-        let obj = grid[L][o].slice(0, 2);
+        console.log(L);
+        console.log(o);
+        let obj = grid[L][o];
         const pairs = [
           ["Bs", "prendre la boite"],
           ["bs", "poser la boite"],
@@ -203,6 +205,7 @@ const GamePage = ({ level, setLevel }) => {
         }
         console.log(obj);
       };
+      console.log(player);
       actionDefiner(player[2], player[3]);
     }
   }, [player, grid]);
