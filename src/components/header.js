@@ -176,7 +176,7 @@ const Header = ({
             : {}
         }
       >
-        {edited[0] !== "none" && edited[1] !== "" && (
+        {edited[0] !== "none" && edited[1].length > 2 && (
           <button className="headerEditButton" onClick={editer}>
             EDIT
           </button>
