@@ -18,7 +18,7 @@ function App() {
   ///-- STATES --///
   const online = "https://buzzlebackend.onrender.com";
   const local = "http://localhost:3000";
-  const [backend] = useState(local);
+  const [backend] = useState(online || local);
   const [theme, setTheme] = useState("dark");
   // const [pData, setPData] = useState("none");
   const [level, setLevel] = useState("none");
