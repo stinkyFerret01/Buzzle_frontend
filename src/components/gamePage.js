@@ -39,9 +39,14 @@ const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
   };
 
   //-- okToMoveChecker vérifie si le déplacement du joueur est possible
-  const okToMoveChecker = (o) => {
+  const okToMoveChecker = (o, id) => {
     let oStrict = o.slice(0, 1);
     let blocker = ["W", "B", "D", "K", "L", "M", "E"];
+    if (id === "cop") {
+      blocker.push("b");
+    } else if (id === "act") {
+      blocker.push("C");
+    }
     let blockerTest = blocker.findIndex((block) => block === oStrict);
     if (blockerTest >= 0) {
       return false;
@@ -97,12 +102,12 @@ const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
             (actChecker === undefined && okToMoveChecker(o)) ||
             (actChecker !== undefined &&
               okToMoveChecker(o) &&
-              okToMoveChecker(oAct))
+              okToMoveChecker(oAct, "act"))
           ) {
             setPlayer(newPos);
           } else if (
             actChecker === undefined ||
-            (okToMoveChecker(o) && !okToMoveChecker(oAct))
+            (okToMoveChecker(o) && !okToMoveChecker(oAct, "act"))
           ) {
             newPos = [player[0], player[1], player[0], player[1] - 1];
             setPlayer(newPos);
@@ -116,12 +121,12 @@ const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
             (actChecker === undefined && okToMoveChecker(o)) ||
             (actChecker !== undefined &&
               okToMoveChecker(o) &&
-              okToMoveChecker(oAct))
+              okToMoveChecker(oAct, "act"))
           ) {
             setPlayer(newPos);
           } else if (
             actChecker === undefined ||
-            (okToMoveChecker(o) && !okToMoveChecker(oAct))
+            (okToMoveChecker(o) && !okToMoveChecker(oAct, "act"))
           ) {
             newPos = [player[0], player[1], player[0], player[1] + 1];
             setPlayer(newPos);
@@ -135,12 +140,12 @@ const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
             (actChecker === undefined && okToMoveChecker(o)) ||
             (actChecker !== undefined &&
               okToMoveChecker(o) &&
-              okToMoveChecker(oAct))
+              okToMoveChecker(oAct, "act"))
           ) {
             setPlayer(newPos);
           } else if (
             actChecker === undefined ||
-            (okToMoveChecker(o) && !okToMoveChecker(oAct))
+            (okToMoveChecker(o) && !okToMoveChecker(oAct, "act"))
           ) {
             newPos = [player[0], player[1], player[0] - 1, player[1]];
             setPlayer(newPos);
@@ -154,12 +159,12 @@ const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
             (actChecker === undefined && okToMoveChecker(o)) ||
             (actChecker !== undefined &&
               okToMoveChecker(o) &&
-              okToMoveChecker(oAct))
+              okToMoveChecker(oAct, "act"))
           ) {
             setPlayer(newPos);
           } else if (
             actChecker === undefined ||
-            (okToMoveChecker(o) && !okToMoveChecker(oAct))
+            (okToMoveChecker(o) && !okToMoveChecker(oAct, "act"))
           ) {
             newPos = [player[0], player[1], player[0] + 1, player[1]];
             setPlayer(newPos);
@@ -395,7 +400,7 @@ const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
         if (
           cops.find((cop) => cop[0] === newCop[0] && cop[1] === newCop[1]) ||
           newCops.find((cop) => cop[0] === newCop[0] && cop[1] === newCop[1]) ||
-          okToMoveChecker(grid[newCop[0]][newCop[1]]) === false
+          okToMoveChecker(grid[newCop[0]][newCop[1]], "cop") === false
         ) {
           if (
             cops.find((cop) => cop[0] === newCop[0] && cop[1] === oldCop[1]) ===
@@ -403,7 +408,7 @@ const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
             newCops.find(
               (cop) => cop[0] === newCop[0] && cop[1] === oldCop[1]
             ) === undefined &&
-            okToMoveChecker(grid[newCop[0]][oldCop[1]]) === true
+            okToMoveChecker(grid[newCop[0]][oldCop[1]], "cop") === true
           ) {
             let newCopB = [newCop[0], oldCop[1], "C"];
             newCops.push(newCopB);
@@ -413,15 +418,21 @@ const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
             newCops.find(
               (cop) => cop[0] === oldCop[0] && cop[1] === newCop[1]
             ) === undefined &&
-            okToMoveChecker(grid[oldCop[0]][newCop[1]]) === true
+            okToMoveChecker(grid[oldCop[0]][newCop[1]], "cop") === true
           ) {
             let newCopA = [oldCop[0], newCop[1], "C"];
             newCops.push(newCopA);
           } else {
             newCops.push(oldCop);
           }
-        } else {
+        } else if (
+          okToMoveChecker(grid[newCop[0]][newCop[1]], "cop") &&
+          (okToMoveChecker(grid[oldCop[0]][newCop[1]], "cop") ||
+            okToMoveChecker(grid[newCop[0]][oldCop[1]], "cop"))
+        ) {
           newCops.push(newCop);
+        } else {
+          newCops.push(oldCop);
         }
       }
       const checkStart = () => {

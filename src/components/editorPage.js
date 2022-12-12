@@ -101,6 +101,13 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
   };
 
   ///-- USEEFFECT --///
+  useEffect(() => {
+    if (editBase !== "none") {
+      setLigns(editBase[0].length - 2);
+      setColons(editBase[0][0].length);
+    }
+  }, [editBase]);
+
   //-- baseBuilder (construit la base)
   useEffect(() => {
     //-- baseBuilder construit le tableau du niveau choisi
@@ -113,6 +120,12 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
             lign.push(".");
           } else if (L === 1 || L === li || o === 0 || o === co - 1) {
             lign.push("W");
+          } else if (
+            editBase[0] !== "none" &&
+            editBase[0][L] !== undefined &&
+            editBase[0][L][o] !== undefined
+          ) {
+            lign.push(editBase[0][L][o]);
           } else {
             lign.push(".");
           }
@@ -122,13 +135,9 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
       return base;
     };
     let newBase = baseBuilder(parseInt(ligns), parseInt(colons));
-    if (editBase === "none") {
-      setBase(newBase);
-    } else {
-      setBase(editBase[0]);
+    setBase(newBase);
+    if (editBase !== "none") {
       setLvlName(editBase[1]);
-      setLigns(editBase[0].length - 2);
-      setColons(editBase[0][0].length);
     }
   }, [ligns, colons, editBase]);
 
