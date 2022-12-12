@@ -572,11 +572,11 @@ const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
       >
         {bigScreen === true ? (
           <button className="reduceScreen" onClick={screenToggler}>
-            CHANGER DE NIVEAU
+            X
           </button>
         ) : (
           <button className="enlargeScreen" onClick={screenToggler}>
-            GRAND ECRAN
+            O
           </button>
         )}
 

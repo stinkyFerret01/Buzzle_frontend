@@ -70,6 +70,8 @@ function App() {
                 setEdited={setEdited}
                 editBase={editBase}
                 setEditBase={setEditBase}
+                bigScreen={bigScreen}
+                setBigScreen={setBigScreen}
               />
             }
           />

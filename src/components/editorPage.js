@@ -9,7 +9,15 @@ import { useNavigate } from "react-router-dom";
 import Pos from "./pos";
 
 ///-- START --///
-const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
+const EditorPage = ({
+  setLevel,
+  edited,
+  setEdited,
+  editBase,
+  setEditBase,
+  bigScreen,
+  setBigScreen,
+}) => {
   ///-- STATES --///
   const [ligns, setLigns] = useState(10);
   const [colons, setColons] = useState(10);
@@ -45,6 +53,14 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
   };
 
   ///-- FONCTIONS --///
+  //-- screenToggler
+  const screenToggler = () => {
+    if (bigScreen === true) {
+      setBigScreen(false);
+    } else {
+      setBigScreen(true);
+    }
+  };
 
   //-- choice updater gère le choix et laffichage de l'élement choisi
   const choiceUpdater = (o, oDef) => {
@@ -214,70 +230,38 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
   ///-- RENDER --///
   return (
     <main className="editorPage">
-      <section className="editView">
-        <div className="editViewTop">
-          <div className="editBlankHorizontal"></div>
-          <Range
-            step={1}
-            min={4}
-            max={24}
-            values={[colons]}
-            onChange={(values) => {
-              setColons(values[0]);
-            }}
-            renderTrack={({ props, children }) => (
-              <div
-                {...props}
-                style={{
-                  ...props.style,
-                  height: "6px",
-                  width: "19.9rem",
-                  minWidth: "19.9rem",
-                  backgroundColor: "#ccc",
-                }}
-              >
-                {children}
-              </div>
-            )}
-            renderThumb={({ props }) => (
-              <div
-                {...props}
-                style={{
-                  ...props.style,
-                  height: "2rem",
-                  width: "2rem",
-                  backgroundColor: "#999",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  borderRadius: "4px",
-                }}
-              >
-                {colons}
-              </div>
-            )}
-          />
-        </div>
-        <div className="editViewBottom">
-          <div className="editRangeVertical">
-            <div className="editBlankVertical"></div>
+      <section
+        className="editView"
+        style={bigScreen ? { height: "99vh", maxWidth: "100%" } : {}}
+      >
+        {bigScreen === true ? (
+          <button className="reduceScreen" onClick={screenToggler}>
+            X
+          </button>
+        ) : (
+          <button className="enlargeScreen" onClick={screenToggler}>
+            O
+          </button>
+        )}
+        <div className="editViewScroller">
+          <div className="editViewTop">
+            <div className="editBlankHorizontal"></div>
             <Range
               step={1}
               min={4}
-              max={20}
-              values={[ligns]}
+              max={24}
+              values={[colons]}
               onChange={(values) => {
-                setLigns(values[0]);
+                setColons(values[0]);
               }}
-              direction={"to bottom"}
               renderTrack={({ props, children }) => (
                 <div
                   {...props}
                   style={{
                     ...props.style,
-                    width: "6px",
-                    height: "16rem",
-                    minHeight: "16rem",
+                    height: "6px",
+                    width: "19.9rem",
+                    minWidth: "19.9rem",
                     backgroundColor: "#ccc",
                   }}
                 >
@@ -298,38 +282,91 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
                     borderRadius: "4px",
                   }}
                 >
-                  {ligns}
+                  {colons}
                 </div>
               )}
             />
           </div>
-          {base !== "loading" ? (
-            <div className="editTable">
-              {base.map((L, indexL) => {
-                return (
-                  <div className="ligns" key={indexL}>
-                    {L.map((o, indexo) => {
-                      return (
-                        <div className="posSpacer2" key={indexo}>
-                          <Pos
-                            o={o}
-                            type="edit"
-                            oSelection={oSelection}
-                            setOSelection={setOSelection}
-                            base={base}
-                            setBase={setBase}
-                            xy={[indexL, indexo]}
-                          />
-                        </div>
-                      );
-                    })}
+          <div className="editViewBottom">
+            <div className="editRangeVertical">
+              <div className="editBlankVertical"></div>
+              <Range
+                step={1}
+                min={4}
+                max={20}
+                values={[ligns]}
+                onChange={(values) => {
+                  setLigns(values[0]);
+                }}
+                direction={"to bottom"}
+                renderTrack={({ props, children }) => (
+                  <div
+                    {...props}
+                    style={{
+                      ...props.style,
+                      width: "6px",
+                      height: "16rem",
+                      minHeight: "16rem",
+                      backgroundColor: "#ccc",
+                    }}
+                  >
+                    {children}
                   </div>
-                );
-              })}
+                )}
+                renderThumb={({ props }) => (
+                  <div
+                    {...props}
+                    style={{
+                      ...props.style,
+                      height: "2rem",
+                      width: "2rem",
+                      backgroundColor: "#999",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      borderRadius: "4px",
+                    }}
+                  >
+                    {ligns}
+                  </div>
+                )}
+              />
             </div>
-          ) : (
-            <div>chargement du niveau</div>
-          )}
+            {base !== "loading" ? (
+              <div className="editTable">
+                {base.map((L, indexL) => {
+                  return (
+                    <div className="ligns" key={indexL}>
+                      {L.map((o, indexo) => {
+                        return (
+                          <div
+                            className="posSpacer2"
+                            style={
+                              bigScreen ? { width: "2rem", height: "2rem" } : {}
+                            }
+                            key={indexo}
+                          >
+                            <Pos
+                              o={o}
+                              type="edit"
+                              oSelection={oSelection}
+                              setOSelection={setOSelection}
+                              base={base}
+                              setBase={setBase}
+                              bigScreen={bigScreen}
+                              xy={[indexL, indexo]}
+                            />
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <div>chargement du niveau</div>
+            )}
+          </div>
         </div>
       </section>
       <section className="editShop">
@@ -355,6 +392,7 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
                       o={o}
                       setOSelection={setOSelection}
                       setOMessage={setOMessage}
+                      bigScreen={bigScreen}
                       type="choose"
                     />
                   </div>
@@ -380,6 +418,7 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
                       o={o}
                       setOSelection={setOSelection}
                       setOMessage={setOMessage}
+                      bigScreen={bigScreen}
                       type="choose"
                     />
                   </div>
@@ -407,6 +446,7 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
                       o={o}
                       setOSelection={setOSelection}
                       setOMessage={setOMessage}
+                      bigScreen={bigScreen}
                       type="choose"
                     />
                   </div>
@@ -431,6 +471,7 @@ const EditorPage = ({ setLevel, edited, setEdited, editBase, setEditBase }) => {
                       o={o}
                       setOSelection={setOSelection}
                       setOMessage={setOMessage}
+                      bigScreen={bigScreen}
                       type="choose"
                     />
                   </div>

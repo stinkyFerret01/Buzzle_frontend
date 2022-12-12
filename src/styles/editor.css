@@ -4,9 +4,10 @@
 
 /* VIEW */
 .editView {
-    overflow: hidden;
-    overflow-x: scroll;
-    overflow-y: scroll;
+    position: relative;
+   
+    /* overflow-x: scroll;
+    overflow-y: scroll; */
     width: 70%;
     max-width: 29.7rem;
     height: 90%;
@@ -15,6 +16,14 @@
     border: solid  rgb(69, 120, 186) 4px;
     padding-right: 1rem;
     box-sizing: border-box;
+}
+
+.editViewScroller {
+    overflow: hidden;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .editViewTop {

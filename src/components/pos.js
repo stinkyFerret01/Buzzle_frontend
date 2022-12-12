@@ -130,7 +130,7 @@ const Pos = ({ o, type, oSelection, base, setBase, xy, bigScreen }) => {
         style["backgroundColor"] = "black";
       }
     }
-    if (bigScreen === true) {
+    if (bigScreen && type !== "choose") {
       if (oObj === "kg" || oObj === "lg" || oObj === "mg") {
         style["width"] = "1rem";
         style["height"] = "1rem";
@@ -176,7 +176,6 @@ const Pos = ({ o, type, oSelection, base, setBase, xy, bigScreen }) => {
   //-- baseUpdater met à jour la base à chaque modification du joueur
   const baseUpdater = () => {
     let newO = oSelection;
-    console.log(newO);
     let newBase = [...base];
     for (let L = 0; L < base.length; L++) {}
     if (xy[0] > 0 && xy[0] < base.length - 1) {
