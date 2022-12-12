@@ -4,11 +4,7 @@
 ///-- START --///
 const Footer = () => {
   ///-- RENDER --///
-  return (
-    <footer>
-      <p className="mobileComp">compatible mobile📲</p>
-    </footer>
-  );
+  return <footer></footer>;
 };
 
 export default Footer;

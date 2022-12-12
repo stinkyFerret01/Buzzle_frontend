@@ -5,9 +5,6 @@
     height: 100%;
     box-sizing: border-box;
 }
-.headerSection:hover {
-    box-shadow: 0 0 1rem rgb(167, 17, 167);
-}
 
 .headerSectionGhost {
     position: absolute;
@@ -15,7 +12,7 @@
     /*  */
     width: 33.33%;
     height: 100%;
-    background-color: rgba(69, 120, 186);
+    background-color: rgba(234, 178, 11);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,9 +21,8 @@
 }
 
 .headerSectionGhost:hover {
-    z-index: 2;
-    color: rgb(167, 17, 167);
-    box-shadow: 0 0 1rem rgb(167, 17, 167);
+    color: white;
+    background-color: rgb(167, 17, 167);
     cursor: pointer;
 }
 

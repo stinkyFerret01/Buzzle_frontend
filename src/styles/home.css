@@ -13,7 +13,7 @@
 
 .presVidDisplay {
     width: 13.5rem;
-    background-color: rgb(69, 120, 186);
+    background-color: rgba(234, 178, 11);
     margin: 1rem;
     display: flex;
     flex-direction: column;
@@ -21,9 +21,11 @@
 }
 
 .presVidDisplay:hover {
-    color: rgba(234, 178, 11, 1);
+    color: rgba(234, 178, 11);
     cursor: pointer;
     box-shadow: 0 0 1rem rgba(234, 178, 11, 1);
+    background-color:   rgb(167, 17, 167);
+  
 }
 
 video {

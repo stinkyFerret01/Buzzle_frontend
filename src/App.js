@@ -33,7 +33,7 @@ function App() {
   return (
     <div
       className="App"
-      style={theme === "clear" ? { backgroundColor: "aliceblue" } : {}}
+      style={theme === "clear" ? { backgroundColor: "purple" } : {}}
     >
       <Router>
         {bigScreen === false && (

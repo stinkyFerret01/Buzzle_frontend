@@ -15,8 +15,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /*  */
-  color: aliceblue;
 }
 
 header {
@@ -26,7 +24,7 @@ header {
   height: 6rem;
   min-height: 6rem;
   background-color: black;
-  border: solid  rgb(69, 120, 186) 4px;
+  border: solid rgba(234, 178, 11)4px;
   display: flex;
   box-sizing: border-box;
 }
@@ -45,7 +43,7 @@ footer {
   width: 90%;
   max-width: 42.7rem;
   height: 6rem;
-  background-color:  rgb(69, 120, 186);
+  background-color:  rgba(234, 178, 11);
   display: flex;
 }
 

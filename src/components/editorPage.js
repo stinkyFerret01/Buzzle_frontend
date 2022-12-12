@@ -132,14 +132,26 @@ const EditorPage = ({
       for (let L = 0; L < li + 2; L++) {
         let lign = [];
         for (let o = 0; o < co; o++) {
+          let toEdit = "";
+          if (editBase[0] !== "none" && editBase[0][L] && editBase[0][L][o]) {
+            toEdit = editBase[0][L][o];
+          }
           if (L === 0 || L === li + 1) {
             lign.push(".");
-          } else if (L === 1 || L === li || o === 0 || o === co - 1) {
+          } else if (
+            (L === 1 || L === li || o === 0 || o === co - 1) &&
+            toEdit !== "E"
+          ) {
             lign.push("W");
           } else if (
-            editBase[0] !== "none" &&
-            editBase[0][L] !== undefined &&
-            editBase[0][L][o] !== undefined
+            (editBase[0] !== "none" &&
+              editBase[0][L] !== undefined &&
+              editBase[0][L][o] !== undefined &&
+              L >= 2 &&
+              o > 0 &&
+              L < editBase[0].length - 3 &&
+              o < editBase[0][0].length - 1) ||
+            ((L === 1 || o === 0) && toEdit === "E")
           ) {
             lign.push(editBase[0][L][o]);
           } else {
