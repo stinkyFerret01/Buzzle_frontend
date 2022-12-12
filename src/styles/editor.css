@@ -79,6 +79,7 @@
     min-width: 12rem;
     height: 90%;
     min-height: 10rem;
+    color:  rgba(234, 178, 11);
     background-color: black;
     border:solid  rgba(234, 178, 11) 4px;
     margin-left: 1rem;
@@ -124,6 +125,7 @@
     box-shadow: 0 0 0 0rem rgba(234, 178, 11, 1);
     border: solid red 1px;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 .posSpacer2 {
@@ -133,6 +135,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .posSpacer2:hover {
@@ -140,15 +143,16 @@
 }
 
 .oMessages {
-    height: 5rem;
+    height: 4.2rem;
+    margin-top: 0.5rem;
+    color: black;
     background-color: rgba(234, 178, 11);
-    margin-top: 1rem;
     display: flex;
     flex-direction: column;
 }
 
 .oMessage1 {
-    height: 2rem;
+    color: black;
     border-bottom: solid black 1px;
     cursor: default;
 }
@@ -159,8 +163,8 @@
 
 .levelNameSelect {
     width: 100%;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -172,6 +176,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.levelTesterButton {
+    background-color: green;
 }
 
 @keyframes pulseToEdit {

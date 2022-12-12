@@ -111,7 +111,6 @@ const EditorPage = ({
   const levelTester = () => {
     if (editable !== "not ready") {
       setLevel(edited[0]);
-      setEditBase([base, lvlName]);
       navigate("/game/editor");
     }
   };
@@ -365,6 +364,8 @@ const EditorPage = ({
                               setOSelection={setOSelection}
                               base={base}
                               setBase={setBase}
+                              setEditBase={setEditBase}
+                              lvlName={lvlName}
                               bigScreen={bigScreen}
                               xy={[indexL, indexo]}
                             />
@@ -518,11 +519,9 @@ const EditorPage = ({
         </div>
         {editable !== "not ready" && (
           <div className="levelTester">
-            <p className="noHovText" style={{ fontSize: "11px" }}>
-              vous ne pourrez plus changer les dimensions du niveau apres avoir
-              fait votre premier test, soyez sur de vous!
-            </p>
-            <button onClick={levelTester}>TRY LVL</button>
+            <button className="levelTesterButton" onClick={levelTester}>
+              TESTER!
+            </button>
           </div>
         )}
       </section>

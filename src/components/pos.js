@@ -6,7 +6,17 @@ import { useLocation } from "react-router-dom";
 ///-- START --///
 // chaque composant Pos incarne une "position" sur la grille du jeu
 // cette position est représentée par une <div> dont le style est défini ici
-const Pos = ({ o, type, oSelection, base, setBase, xy, bigScreen }) => {
+const Pos = ({
+  o,
+  type,
+  oSelection,
+  base,
+  setBase,
+  setEditBase,
+  lvlName,
+  xy,
+  bigScreen,
+}) => {
   const location = useLocation();
 
   ///-- FONCTIONS --///
@@ -212,6 +222,7 @@ const Pos = ({ o, type, oSelection, base, setBase, xy, bigScreen }) => {
     }
 
     setBase(newBase);
+    setEditBase([base, lvlName]);
   };
 
   //-- USEEFFECT
