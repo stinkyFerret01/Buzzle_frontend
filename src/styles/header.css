@@ -3,7 +3,6 @@
 .headerSection {
     width: 33.33%;
     height: 100%;
-    background-color: rgba(234, 178, 11, 1);
     box-sizing: border-box;
 }
 .headerSection:hover {
@@ -16,8 +15,9 @@
     /*  */
     width: 33.33%;
     height: 100%;
-    background-color: rgba(15, 10, 30, 0.9);
+    background-color: rgba(69, 120, 186);
     display: flex;
+    justify-content: center;
     align-items: center;
     text-align: center;
     font-weight: bold;

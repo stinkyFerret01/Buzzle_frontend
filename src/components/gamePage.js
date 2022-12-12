@@ -38,6 +38,15 @@ const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
     }
   };
 
+  //-- padToggler
+  const padToggler = () => {
+    if (displayPad === true) {
+      setDisplayPad(false);
+    } else {
+      setDisplayPad(true);
+    }
+  };
+
   //-- okToMoveChecker vérifie si le déplacement du joueur est possible
   const okToMoveChecker = (o, id) => {
     let oStrict = o.slice(0, 1);
@@ -561,26 +570,18 @@ const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
       <section
         className="boardContainer"
         style={
-          displayPad
-            ? bigScreen
-              ? { width: "calc(100vw - 14.1rem)", height: "99vh" }
-              : { maxWidth: "31.7rem" }
-            : bigScreen
-            ? { width: "100vw", height: "100vh" }
+          bigScreen
+            ? { minWidth: "100vw", height: "100vh", border: "inherit" }
             : { maxWidth: "42.7rem" }
         }
       >
-        {bigScreen === true ? (
-          <button className="reduceScreen" onClick={screenToggler}>
-            X
-          </button>
-        ) : (
-          <button className="enlargeScreen" onClick={screenToggler}>
-            O
-          </button>
-        )}
-
-        {location.pathname === "/game/editor" && displayPad === false && (
+        <button
+          className={bigScreen ? "reduceScreen" : "enlargeScreen"}
+          onClick={screenToggler}
+        >
+          {bigScreen ? "↘" : "↖"}
+        </button>
+        {location.pathname === "/game/editor" && (
           <button
             className="backToEdit"
             onClick={() => {
@@ -590,6 +591,14 @@ const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
             back to edit
           </button>
         )}
+        <button
+          className="padButton"
+          onClick={() => {
+            padToggler();
+          }}
+        >
+          {displayPad ? "X" : "PAD"}
+        </button>
         <div className="boardScroller">
           {level !== "none" && grid !== "loading" ? (
             <div className="table">
@@ -618,6 +627,40 @@ const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
           )}
           <div className="boardScrollerBlank"></div>
         </div>
+        {displayPad && (
+          <section className="padContainer">
+            <div className="pad">
+              <div className="padLigns">
+                <button
+                  className="padArrowUp"
+                  onClick={() => handleKeyDown("pad", "ArrowUp")}
+                ></button>
+              </div>
+              <div className="padLigns">
+                <button
+                  className="padArrowLeft"
+                  onClick={() => handleKeyDown("pad", "ArrowLeft")}
+                ></button>
+                <button
+                  className="padActivity"
+                  onClick={() => handleKeyDown("pad", "a")}
+                >
+                  {action}
+                </button>
+                <button
+                  className="padArrowRight"
+                  onClick={() => handleKeyDown("pad", "ArrowRight")}
+                ></button>
+              </div>
+              <div className="padLigns">
+                <button
+                  className="padArrowDown"
+                  onClick={() => handleKeyDown("pad", "ArrowDown")}
+                ></button>
+              </div>
+            </div>
+          </section>
+        )}
         {game[0] !== "Playing..." && level !== "none" && (
           <article className="startPopper">
             <button
@@ -634,71 +677,6 @@ const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
               {game[1]}
             </button>
           </article>
-        )}
-      </section>
-      <section
-        className={displayPad === true ? "padContainer" : "padContainerOff"}
-        style={bigScreen === true ? { height: "99vh" } : {}}
-      >
-        {displayPad ? (
-          <section className="padIsTrue">
-            <button className="padButton" onClick={() => setDisplayPad(false)}>
-              fermer le pad
-            </button>
-            <div className="padMessage">{action}</div>
-            <div className="pad">
-              <div className="padLigns">
-                <button
-                  className="padArrow"
-                  onClick={() => handleKeyDown("pad", "ArrowUp")}
-                >
-                  up
-                </button>
-              </div>
-              <div className="padLigns">
-                <button
-                  className="padArrow"
-                  onClick={() => handleKeyDown("pad", "ArrowLeft")}
-                >
-                  left
-                </button>
-                <button
-                  className="padActivity"
-                  onClick={() => handleKeyDown("pad", "a")}
-                >
-                  action
-                </button>
-                <button
-                  className="padArrow"
-                  onClick={() => handleKeyDown("pad", "ArrowRight")}
-                >
-                  right
-                </button>
-              </div>
-              <div className="padLigns">
-                <button
-                  className="padArrow"
-                  onClick={() => handleKeyDown("pad", "ArrowDown")}
-                >
-                  down
-                </button>
-              </div>
-            </div>
-            {location.pathname === "/game/editor" && (
-              <button
-                className="backToEdit2"
-                onClick={() => navigate("/editor")}
-              >
-                back to edit
-              </button>
-            )}
-          </section>
-        ) : (
-          bigScreen === false && (
-            <button className="padButton" onClick={() => setDisplayPad(true)}>
-              ouvrir le pad
-            </button>
-          )
         )}
       </section>
     </main>
