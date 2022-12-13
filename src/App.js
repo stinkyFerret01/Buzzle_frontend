@@ -72,10 +72,11 @@ function App() {
           />
         )}
         <audio
+          className="audioPlayer"
           src="../Audio/Stranger-things-124008.mp3"
           type="audio/mp3"
           controls
-          muted
+          // muted
           loop
           autoPlay
         />
