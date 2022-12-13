@@ -150,8 +150,12 @@ const EditorPage = ({
               L >= 2 &&
               o > 0 &&
               L < editBase[0].length - 2 &&
-              o < editBase[0][0].length) ||
-            ((L === 1 || o === 0) && toEdit === "E")
+              o < editBase[0][0].length - 1) ||
+            ((L === 1 ||
+              L === editBase[0].length - 2 ||
+              o === 0 ||
+              o === editBase[0][0].length - 1) &&
+              toEdit === "E")
           ) {
             lign.push(editBase[0][L][o]);
           } else {
