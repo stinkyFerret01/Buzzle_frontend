@@ -43,6 +43,7 @@ function App() {
       } catch (error) {}
     };
     fetcher();
+    // setBigScreen(true);
   }, [backend, setLevels]);
 
   ///-- RENDER --///
@@ -74,7 +75,15 @@ function App() {
             setDisplayWfr={setDisplayWfr}
           />
         )}
-        <LevelsSlide displayLevels={displayLevels} />
+        <LevelsSlide
+          level={level}
+          setLevel={setLevel}
+          levels={levels}
+          setLevels={setLevels}
+          setBigScreen={setBigScreen}
+          displayLevels={displayLevels}
+          setDisplayLevels={setDisplayLevels}
+        />
         <audio
           className="audioPlayer"
           src="../Audio/Stranger-things-124008.mp3"

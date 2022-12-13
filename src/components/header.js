@@ -17,7 +17,6 @@ const Header = ({
   // setDisplayWfr,
 }) => {
   ///-- STATES --///
-
   const [searchLvl, setSearchLvl] = useState("");
   const [gameDiv, setGameDiv] = useState("validé");
   const searchedLevels = levels.filter(
