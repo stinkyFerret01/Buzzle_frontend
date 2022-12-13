@@ -82,11 +82,13 @@ function App() {
             path="/editor"
             element={
               <EditorPage
+                backend={backend}
                 setLevel={setLevel}
                 edited={edited}
                 setEdited={setEdited}
                 editBase={editBase}
                 setEditBase={setEditBase}
+                setDisplayWfr={setDisplayWfr}
                 bigScreen={bigScreen}
                 setBigScreen={setBigScreen}
               />

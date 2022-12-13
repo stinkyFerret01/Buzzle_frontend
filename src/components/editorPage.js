@@ -77,7 +77,6 @@ const EditorPage = ({
         if (response.data.message === "votre niveau a été édité!") {
           setDisplayWfr(false);
         }
-        console.log(response.data.message);
       } catch (error) {}
     }
   };
@@ -579,7 +578,7 @@ const EditorPage = ({
               TESTER!
             </button>
             {editable === "ready to be edited" && (
-              <button className="levelEditerButton" onClick={editer}>
+              <button className="levelEditerButton" onClick={() => editer()}>
                 EDITER!
               </button>
             )}
