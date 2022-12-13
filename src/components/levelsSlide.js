@@ -1,12 +1,13 @@
 ///-- CONFIG --///
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 ///-- START --///
 const LevelsSlide = ({
   setBigScreen,
   levels,
   setLevel,
+  setDisplayAys,
   displayLevels,
   setDisplayLevels,
 }) => {
@@ -17,7 +18,8 @@ const LevelsSlide = ({
   const searchedLevels = levels.filter(
     (lvl) => lvl.name.toUpperCase().indexOf(searchLvl.toUpperCase()) >= 0
   );
-  const navigate = useNavigate();
+  //   const navigate = useNavigate();
+  const location = useLocation();
 
   ///-- FONCTIONS --///
   ///-- gameDivDefiner
@@ -28,9 +30,15 @@ const LevelsSlide = ({
   };
 
   const levelSetter = (pattern) => {
-    setLevel(pattern);
-    setBigScreen(true);
-    navigate("/game/game");
+    if (location.pathname !== "/game/game") {
+      setDisplayAys(pattern);
+    } else {
+      const levelSetter = (pattern) => {
+        setLevel(pattern);
+        setBigScreen(true);
+      };
+      levelSetter(pattern);
+    }
   };
 
   ///-- RENDER --///
@@ -94,7 +102,7 @@ const LevelsSlide = ({
                     <button
                       className="levelSelectorNew"
                       onClick={() => {
-                        setLevel(lvl.pattern);
+                        levelSetter(lvl.pattern);
                       }}
                       key={index}
                     >
@@ -125,7 +133,7 @@ const LevelsSlide = ({
                     <button
                       className="levelSelectorSearch"
                       onClick={() => {
-                        setLevel(lvl.pattern);
+                        levelSetter(lvl.pattern);
                       }}
                       key={index}
                     >

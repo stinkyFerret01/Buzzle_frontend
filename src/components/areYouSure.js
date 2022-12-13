@@ -3,9 +3,24 @@
 import { useNavigate } from "react-router-dom";
 
 ///-- START --///
-const AreYouSure = ({ displayAys, setDisplayAys }) => {
+const AreYouSure = ({ setLevel, setBigScreen, displayAys, setDisplayAys }) => {
   //-- config et variables
   const navigate = useNavigate();
+
+  const continuer = () => {
+    if (displayAys[0].slice(0, 4) === "....") {
+      const levelSetter = (pattern) => {
+        setLevel(pattern);
+        setBigScreen(true);
+        setDisplayAys("none");
+        navigate("/game/game");
+      };
+      levelSetter(displayAys);
+    } else {
+      setDisplayAys("none");
+      navigate(`/${displayAys}`);
+    }
+  };
 
   ///-- RENDER --///
   return (
@@ -20,8 +35,7 @@ const AreYouSure = ({ displayAys, setDisplayAys }) => {
           <button
             className="aysContinue"
             onClick={() => {
-              setDisplayAys("none");
-              navigate(`/${displayAys}`);
+              continuer();
             }}
           >
             <div>continuer</div>

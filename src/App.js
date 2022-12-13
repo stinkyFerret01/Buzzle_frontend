@@ -43,7 +43,6 @@ function App() {
       } catch (error) {}
     };
     fetcher();
-    // setBigScreen(true);
   }, [backend, setLevels]);
 
   ///-- RENDER --///
@@ -83,6 +82,7 @@ function App() {
           setBigScreen={setBigScreen}
           displayLevels={displayLevels}
           setDisplayLevels={setDisplayLevels}
+          setDisplayAys={setDisplayAys}
         />
         <audio
           className="audioPlayer"
@@ -129,7 +129,12 @@ function App() {
         </Routes>
         {bigScreen === false && <Footer />}
         {displayAys !== "none" && (
-          <AreYouSure displayAys={displayAys} setDisplayAys={setDisplayAys} />
+          <AreYouSure
+            setLevel={setLevel}
+            setBigScreen={setBigScreen}
+            displayAys={displayAys}
+            setDisplayAys={setDisplayAys}
+          />
         )}
         {displayWfr === true && (
           <WaitForResponse setDisplayWfr={setDisplayWfr} />
