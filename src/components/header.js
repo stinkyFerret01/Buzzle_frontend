@@ -173,7 +173,9 @@ const Header = ({
             </div>
           </div>
         ) : (
-          <div style={{ color: "white" }}>Loading</div>
+          <div style={{ color: "white" }}>
+            Niveaux en chargement, cela peut prendre quelques secondes...
+          </div>
         )}
       </section>
       {location.pathname !== "/game/game" && (

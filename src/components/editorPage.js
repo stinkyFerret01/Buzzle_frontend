@@ -265,13 +265,24 @@ const EditorPage = ({
 
   ///-- RENDER --///
   return (
-    <main className="editorPage">
+    <main
+      className="editorPage"
+      style={
+        bigScreen
+          ? { height: "100vh", width: "100vw", maxWidth: "100vw" }
+          : { width: "90%", maxWidth: "42.7rem" }
+      }
+    >
       <section
         className="editView"
         style={
           bigScreen
-            ? { height: "100vh", width: "100vw", maxWidth: "100vw" }
-            : {}
+            ? {
+                height: "100vh",
+                width: "100vw",
+                maxWidth: "calc(100vw - 13rem)",
+              }
+            : { width: "100%", maxWidth: "calc(100% - 13rem" }
         }
       >
         {bigScreen === true ? (
