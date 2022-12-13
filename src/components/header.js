@@ -1,20 +1,20 @@
 ///-- CONFIG --///
 //-- import librairie
-import axios from "axios";
+// import axios from "axios";
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 ///-- START --///
 const Header = ({
-  backend,
+  // backend,
   theme,
   setTheme,
   levels,
-  setLevels,
+  // setLevels,
   setLevel,
-  edited,
+  // edited,
   setDisplayAys,
-  setDisplayWfr,
+  // setDisplayWfr,
 }) => {
   ///-- STATES --///
 
@@ -28,23 +28,6 @@ const Header = ({
   const location = useLocation();
 
   ///-- FONCTIONS --///
-  const editer = async () => {
-    if (edited[0] !== "none" && edited[1] !== "") {
-      try {
-        setDisplayWfr(true);
-        const response = await axios.post(`${backend}/edit`, {
-          pattern: edited[0],
-          name: edited[1],
-          status: edited[2],
-        });
-        if (response.data.message === "votre niveau a été édité!") {
-          setDisplayWfr(false);
-        }
-        console.log(response.data.message);
-      } catch (error) {}
-    }
-  };
-
   ///-- gameDivDefiner
   const gamDivDefiner = (div) => {
     if (div !== gameDiv) {
@@ -54,17 +37,6 @@ const Header = ({
 
   //-- USEEFFECT
   useEffect(() => {}, [levels, searchLvl]);
-
-  //-- fetcher (requete au backend pour récupérer les niveaux)
-  useEffect(() => {
-    const fetcher = async () => {
-      try {
-        const response = await axios.get(`${backend}/levels`);
-        setLevels(response.data.levels);
-      } catch (error) {}
-    };
-    fetcher();
-  }, [backend, setLevels]);
 
   ///-- RENDER --///
   return (
@@ -201,7 +173,7 @@ const Header = ({
             </div>
           </div>
         ) : (
-          <div>Loading</div>
+          <div style={{ color: "white" }}>Loading</div>
         )}
       </section>
       {location.pathname !== "/game/game" && (
@@ -219,11 +191,11 @@ const Header = ({
       )}
       {/* RIGHT */}
       <section className="headerSection">
-        {edited[0] !== "none" && edited[1].length > 2 && (
+        {/* {edited[0] !== "none" && edited[1].length > 2 && (
           <button className="headerEditButton" onClick={editer}>
             EDIT
           </button>
-        )}
+        )} */}
       </section>
       {location.pathname !== "/editor" &&
         location.pathname !== "/game/editor" && (

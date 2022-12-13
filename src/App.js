@@ -2,7 +2,8 @@
 //-- import style et librairie
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 //-- import des composants
 import Header from "./components/header";
@@ -29,6 +30,17 @@ function App() {
   const [displayAys, setDisplayAys] = useState("none");
   const [displayWfr, setDisplayWfr] = useState(false);
   const [bigScreen, setBigScreen] = useState(false);
+
+  //-- fetcher (requete au backend pour récupérer les niveaux)
+  useEffect(() => {
+    const fetcher = async () => {
+      try {
+        const response = await axios.get(`${backend}/levels`);
+        setLevels(response.data.levels);
+      } catch (error) {}
+    };
+    fetcher();
+  }, [backend, setLevels]);
 
   ///-- RENDER --///
   return (
@@ -57,8 +69,10 @@ function App() {
             path="/game/:from"
             element={
               <GamePage
+                backend={backend}
                 level={level}
                 setLevel={setLevel}
+                setDisplayWfr={setDisplayWfr}
                 bigScreen={bigScreen}
                 setBigScreen={setBigScreen}
               />

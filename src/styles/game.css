@@ -29,6 +29,10 @@
     left: -0.5rem;
 }
 
+.enlargeScreen:hover {
+    background-color: orangered;
+}
+
 .reduceScreen {
     overflow: inherit;
     position: absolute; 
@@ -41,19 +45,24 @@
     left: 0.5rem;
 }
 
+.reduceScreen:hover {
+    background-color: orangered;
+}
+
 .backToEdit {
     overflow: inherit;
     position: absolute;
     z-index: 6;
     width: 8rem;
     height: 2rem;
-    background-color: green;
+    font-weight: bold;
+    background-color: rgba(234, 178, 11);
     top: 0rem;
     right: 0rem;
 }
 
 .backToEdit:hover,.backToEdit2:hover {
-    background-color: lime;
+    background-color: orangered;
 }
 
 .boardScroller {

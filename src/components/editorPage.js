@@ -4,12 +4,15 @@ import { useState, useEffect } from "react";
 import * as React from "react";
 import { Range } from "react-range";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 //-- import des composants
 import Pos from "./pos";
 
 ///-- START --///
 const EditorPage = ({
+  backend,
+  setDisplayWfr,
   setLevel,
   edited,
   setEdited,
@@ -59,6 +62,23 @@ const EditorPage = ({
       setBigScreen(false);
     } else {
       setBigScreen(true);
+    }
+  };
+
+  const editer = async () => {
+    if (edited[0] !== "none" && edited[1] !== "") {
+      try {
+        setDisplayWfr(true);
+        const response = await axios.post(`${backend}/edit`, {
+          pattern: edited[0],
+          name: edited[1],
+          status: edited[2],
+        });
+        if (response.data.message === "votre niveau a été édité!") {
+          setDisplayWfr(false);
+        }
+        console.log(response.data.message);
+      } catch (error) {}
     }
   };
 
@@ -248,7 +268,11 @@ const EditorPage = ({
     <main className="editorPage">
       <section
         className="editView"
-        style={bigScreen ? { height: "99vh", maxWidth: "100%" } : {}}
+        style={
+          bigScreen
+            ? { height: "100vh", width: "100vw", maxWidth: "100vw" }
+            : {}
+        }
       >
         {bigScreen === true ? (
           <button className="reduceScreen" onClick={screenToggler}>
@@ -260,8 +284,15 @@ const EditorPage = ({
           </button>
         )}
         <div className="editViewScroller">
-          <div className="editViewTop">
-            <div className="editBlankHorizontal"></div>
+          <div
+            className="editViewTop"
+            style={bigScreen ? { maxWidth: "none" } : { maxWidth: "26.7rem" }}
+          >
+            <div
+              className={
+                bigScreen ? "editBlankHorizontalBig" : "editBlankHorizontal"
+              }
+            ></div>
             <Range
               step={1}
               min={4}
@@ -273,12 +304,13 @@ const EditorPage = ({
               renderTrack={({ props, children }) => (
                 <div
                   {...props}
+                  className={
+                    bigScreen
+                      ? "rangeTrackHorizontalBig"
+                      : "rangeTrackHorizontal"
+                  }
                   style={{
                     ...props.style,
-                    height: "6px",
-                    width: "19.9rem",
-                    minWidth: "19.9rem",
-                    backgroundColor: "#ccc",
                   }}
                 >
                   {children}
@@ -287,11 +319,12 @@ const EditorPage = ({
               renderThumb={({ props }) => (
                 <div
                   {...props}
+                  className="rangeButton"
                   style={{
                     ...props.style,
                     height: "2rem",
                     width: "2rem",
-                    backgroundColor: "#999",
+                    fontWeight: "bold",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
@@ -305,7 +338,11 @@ const EditorPage = ({
           </div>
           <div className="editViewBottom">
             <div className="editRangeVertical">
-              <div className="editBlankVertical"></div>
+              <div
+                className={
+                  bigScreen ? "editBlankVerticalBig" : "editBlankVertical"
+                }
+              ></div>
               <Range
                 step={1}
                 min={4}
@@ -318,12 +355,11 @@ const EditorPage = ({
                 renderTrack={({ props, children }) => (
                   <div
                     {...props}
+                    className={
+                      bigScreen ? "rangeTrackVerticalBig" : "rangeTrackVertical"
+                    }
                     style={{
                       ...props.style,
-                      width: "6px",
-                      height: "16rem",
-                      minHeight: "16rem",
-                      backgroundColor: "#ccc",
                     }}
                   >
                     {children}
@@ -332,11 +368,12 @@ const EditorPage = ({
                 renderThumb={({ props }) => (
                   <div
                     {...props}
+                    className="rangeButton"
                     style={{
                       ...props.style,
                       height: "2rem",
                       width: "2rem",
-                      backgroundColor: "#999",
+                      fontWeight: "bold",
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
@@ -387,7 +424,10 @@ const EditorPage = ({
           </div>
         </div>
       </section>
-      <section className="editShop">
+      <section
+        className="editShop"
+        style={bigScreen ? { height: "100vh", maxWidth: "100%" } : {}}
+      >
         <h4 className="noHovText">éléments:</h4>
         <div className="shopLists">
           <div className="shopList">
@@ -527,6 +567,11 @@ const EditorPage = ({
             <button className="levelTesterButton" onClick={levelTester}>
               TESTER!
             </button>
+            {editable === "ready to be edited" && (
+              <button className="levelEditerButton" onClick={editer}>
+                EDITER!
+              </button>
+            )}
           </div>
         )}
       </section>
