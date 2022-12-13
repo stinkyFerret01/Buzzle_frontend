@@ -200,7 +200,7 @@ const Pos = ({
   const baseUpdater = () => {
     let newO = oSelection;
     let newBase = [...base];
-    for (let L = 0; L < base.length; L++) {}
+    // for (let L = 0; L < base.length; L++) {}
     if (xy[0] > 0 && xy[0] < base.length - 1) {
       if (
         xy[0] > 1 &&
@@ -239,16 +239,18 @@ const Pos = ({
         }
       } else if (newO === "E" || newO === "W") {
         if (newO === base[xy[0]][xy[1]]) {
+          console.log(newO);
           newBase[xy[0]].splice([xy[1]], 1, "W");
         } else {
+          console.log(newO);
           newBase[xy[0]].splice([xy[1]], 1, "E");
         }
       }
     }
 
     setBase(newBase);
-    setEditBase([base, lvlName]);
-    // setEditBase([newBase, lvlName]);
+    // setEditBase([base, lvlName]);
+    setEditBase([newBase, lvlName]);
   };
 
   //-- USEEFFECT
