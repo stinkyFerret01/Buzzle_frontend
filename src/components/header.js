@@ -69,7 +69,7 @@ const Header = ({
       )}
       {/* CENTER */}
       <section className="headerSection">
-        {levels.length >= 0 ? (
+        {levels.length > 0 ? (
           <div className="headerGame">
             <div className="headerGameTitles">
               <button
