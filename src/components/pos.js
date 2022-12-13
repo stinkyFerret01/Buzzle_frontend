@@ -183,6 +183,19 @@ const Pos = ({
     return style;
   };
 
+  //-- base checker
+  const baseChecker = (pos) => {
+    let result = [false];
+    for (let L = 0; L < base.length; L++) {
+      for (let o = 0; o < base[0].length; o++) {
+        if (base[L][o] === pos) {
+          result = [true, L, o];
+        }
+      }
+    }
+    return result;
+  };
+
   //-- baseUpdater met à jour la base à chaque modification du joueur
   const baseUpdater = () => {
     let newO = oSelection;
@@ -209,6 +222,18 @@ const Pos = ({
           } else {
             newBase[xy[0]].splice([xy[1]], 1, newO);
           }
+        } else if (newO === "P") {
+          let check = baseChecker(newO);
+          newBase[xy[0]].splice([xy[1]], 1, newO);
+          if (check[0]) {
+            newBase[check[1]].splice([check[2]], 1, ".");
+          }
+        } else if (newO === "pg") {
+          let check = baseChecker(newO);
+          newBase[xy[0]].splice([xy[1]], 1, newO);
+          if (check[0]) {
+            newBase[check[1]].splice([check[2]], 1, ".");
+          }
         } else {
           newBase[xy[0]].splice([xy[1]], 1, newO);
         }
@@ -216,13 +241,14 @@ const Pos = ({
         if (newO === base[xy[0]][xy[1]]) {
           newBase[xy[0]].splice([xy[1]], 1, "W");
         } else {
-          newBase[xy[0]].splice([xy[1]], 1, newO);
+          newBase[xy[0]].splice([xy[1]], 1, "E");
         }
       }
     }
 
     setBase(newBase);
     setEditBase([base, lvlName]);
+    // setEditBase([newBase, lvlName]);
   };
 
   //-- USEEFFECT

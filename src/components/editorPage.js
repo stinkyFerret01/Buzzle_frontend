@@ -111,6 +111,7 @@ const EditorPage = ({
   const levelTester = () => {
     if (editable !== "not ready") {
       setLevel(edited[0]);
+      setEditBase([base, lvlName]);
       navigate("/game/editor");
     }
   };
