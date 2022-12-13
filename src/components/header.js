@@ -9,13 +9,15 @@ const Header = ({
   backend,
   theme,
   setTheme,
+  levels,
+  setLevels,
   setLevel,
   edited,
   setDisplayAys,
   setDisplayWfr,
 }) => {
   ///-- STATES --///
-  const [levels, setLevels] = useState([]);
+
   const [searchLvl, setSearchLvl] = useState("");
   const [gameDiv, setGameDiv] = useState("validé");
   const searchedLevels = levels.filter(
@@ -62,7 +64,7 @@ const Header = ({
       } catch (error) {}
     };
     fetcher();
-  }, [backend]);
+  }, [backend, setLevels]);
 
   ///-- RENDER --///
   return (

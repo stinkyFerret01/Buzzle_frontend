@@ -22,6 +22,7 @@ function App() {
   const [backend] = useState(online || local);
   const [theme, setTheme] = useState("dark");
   // const [pData, setPData] = useState("none");
+  const [levels, setLevels] = useState([]);
   const [level, setLevel] = useState("none");
   const [edited, setEdited] = useState(["none", "none", "new"]);
   const [editBase, setEditBase] = useState("none");
@@ -41,6 +42,8 @@ function App() {
             backend={backend}
             theme={theme}
             setTheme={setTheme}
+            levels={levels}
+            setLevels={setLevels}
             setLevel={setLevel}
             edited={edited}
             setDisplayAys={setDisplayAys}
