@@ -1,10 +1,17 @@
 ///-- CONFIG --///
 //-- import librairie
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 ///-- START --///
-const HomePage = () => {
+const HomePage = ({ setBigScreen }) => {
   const navigate = useNavigate();
+
+  //-- USEEFFECT
+  useEffect(() => {
+    setBigScreen(false);
+  }, [setBigScreen]);
+
   ///-- RENDER --///
   return (
     <main className="homePage">

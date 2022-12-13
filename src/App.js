@@ -14,6 +14,7 @@ import EditorPage from "./components/editorPage";
 import Footer from "./components/footer";
 import AreYouSure from "./components/areYouSure";
 import WaitForResponse from "./components/waitForResponse";
+import LevelsSlide from "./components/levelsSlide";
 
 ///-- START --///
 function App() {
@@ -29,8 +30,10 @@ function App() {
   const [editBase, setEditBase] = useState("none");
   const [displayAys, setDisplayAys] = useState("none");
   const [displayWfr, setDisplayWfr] = useState(false);
+  const [displayLevels, setDisplayLevels] = useState(false);
   const [bigScreen, setBigScreen] = useState(false);
 
+  //-- USEEFFECT
   //-- fetcher (requete au backend pour récupérer les niveaux)
   useEffect(() => {
     const fetcher = async () => {
@@ -71,6 +74,7 @@ function App() {
             setDisplayWfr={setDisplayWfr}
           />
         )}
+        <LevelsSlide displayLevels={displayLevels} />
         <audio
           className="audioPlayer"
           src="../Audio/Stranger-things-124008.mp3"
@@ -81,7 +85,7 @@ function App() {
           autoPlay
         />
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage setBigScreen={setBigScreen} />} />
           <Route
             path="/game/:from"
             element={
@@ -90,6 +94,8 @@ function App() {
                 level={level}
                 setLevel={setLevel}
                 setDisplayWfr={setDisplayWfr}
+                displayLevels={displayLevels}
+                setDisplayLevels={setDisplayLevels}
                 bigScreen={bigScreen}
                 setBigScreen={setBigScreen}
               />

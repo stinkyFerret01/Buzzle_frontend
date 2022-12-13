@@ -1,15 +1,26 @@
-import { useNavigate } from "react-router-dom";
+///-- START --///
+const BurgerMenu = ({ game, displayLevels, setDisplayLevels }) => {
+  //-- FONCTIONS
+  //-- displayLevelsToggler
+  const displayLevelsToggler = () => {
+    if (displayLevels === true) {
+      setDisplayLevels(false);
+    } else {
+      setDisplayLevels(true);
+    }
+  };
 
-const BurgerMenu = () => {
-  const navigate = useNavigate();
-
+  ///-- RENDER --///
   return (
     <section>
       <button
+        className={game[0] === "Playing..." ? "burgerMenu2" : "burgerMenu"}
         onClick={() => {
-          navigate("/");
+          displayLevelsToggler();
         }}
-      ></button>
+      >
+        +
+      </button>
     </section>
   );
 };

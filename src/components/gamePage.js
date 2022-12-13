@@ -5,8 +5,16 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 //-- import des composants
 import Pos from "./pos";
+import BurgerMenu from "./burgerMenu";
 
-const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
+const GamePage = ({
+  level,
+  setLevel,
+  bigScreen,
+  setBigScreen,
+  displayLevels,
+  setDisplayLevels,
+}) => {
   ///-- STATES --///
   const [displayPad, setDisplayPad] = useState(false);
   const [game, setGame] = useState(["Ready?", "START"]);
@@ -575,6 +583,12 @@ const GamePage = ({ level, setLevel, bigScreen, setBigScreen }) => {
             : { maxWidth: "42.7rem" }
         }
       >
+        <BurgerMenu
+          bigScreen={bigScreen}
+          game={game}
+          displayLevels={displayLevels}
+          setDisplayLevels={setDisplayLevels}
+        />
         <button
           className={bigScreen ? "reduceScreen" : "enlargeScreen"}
           onClick={screenToggler}
