@@ -50,12 +50,12 @@ function App() {
     >
       <Router>
         <div className="audio">
-          <audio
-            loop
+          {/* <iframe
             src="../Audio/Stranger-things-124008.mp3"
-            controls
-            autoPlay
-          />
+            allow="autoplay"
+            id="audio"
+            hidden
+          ></iframe> */}
         </div>
         {bigScreen === false && (
           <Header
@@ -71,6 +71,14 @@ function App() {
             setDisplayWfr={setDisplayWfr}
           />
         )}
+        <audio
+          src="../Audio/Stranger-things-124008.mp3"
+          type="audio/mp3"
+          controls
+          muted
+          loop
+          autoPlay
+        />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route
