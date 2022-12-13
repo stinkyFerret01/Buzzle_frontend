@@ -58,3 +58,11 @@ footer {
   justify-content: center;
   align-items: center;
 }
+
+
+
+.audio {
+  min-width: 15rem;
+  min-height: 3rem;
+  background-color: aqua;
+}

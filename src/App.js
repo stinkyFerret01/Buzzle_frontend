@@ -49,6 +49,14 @@ function App() {
       style={theme === "clear" ? { backgroundColor: "purple" } : {}}
     >
       <Router>
+        <div className="audio">
+          <audio
+            loop
+            src="../Audio/Stranger-things-124008.mp3"
+            controls
+            autoPlay
+          />
+        </div>
         {bigScreen === false && (
           <Header
             backend={backend}
@@ -108,3 +116,5 @@ function App() {
 }
 
 export default App;
+
+// Music by <a href="https://pixabay.com/fr/users/music_unlimited-27600023/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=124008">Music_Unlimited</a> from <a href="https://pixabay.com/music//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=124008">Pixabay</a>

@@ -1,6 +1,7 @@
 ///-- CONFIG --///
 //-- import librairie
 import { useNavigate } from "react-router-dom";
+
 ///-- START --///
 const HomePage = () => {
   const navigate = useNavigate();
