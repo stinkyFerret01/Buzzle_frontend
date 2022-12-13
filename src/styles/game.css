@@ -80,7 +80,7 @@
 .startPopper {
     z-index: 2;
     position: absolute;
-    /* pointer-events:none; */
+    pointer-events:none;
     /*  */
     width: 100%;
     height: 100%;
@@ -93,6 +93,7 @@
 .startButton {
     z-index: 16;
     position: absolute;
+    pointer-events: auto;
     color:white;
     font-weight: bold;
     background-color: orangered;
