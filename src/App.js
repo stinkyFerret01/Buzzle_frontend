@@ -99,6 +99,7 @@ function App() {
               <EditorPage
                 backend={backend}
                 setLevel={setLevel}
+                setLevels={setLevels}
                 edited={edited}
                 setEdited={setEdited}
                 editBase={editBase}

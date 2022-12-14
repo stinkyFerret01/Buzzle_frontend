@@ -1,5 +1,5 @@
 ///-- CONFIG --///
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 ///-- START --///
@@ -50,6 +50,9 @@ const LevelsSlide = ({
       setDisplayLevels(true);
     }
   };
+
+  ///-- USEEFFECT --///
+  useEffect(() => {}, [levels]);
 
   ///-- RENDER --///
   return (

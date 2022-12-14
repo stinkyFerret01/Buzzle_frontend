@@ -18,6 +18,7 @@ const EditorPage = ({
   setEdited,
   editBase,
   setEditBase,
+  setLevels,
   setDisplayAys,
   bigScreen,
   setBigScreen,
@@ -75,8 +76,11 @@ const EditorPage = ({
           name: edited[1],
           status: edited[2],
         });
+        console.log(response.data);
+        console.log(response.data.level);
         if (response.data.message === "votre niveau a été édité!") {
           setDisplayWfr(false);
+          setLevels((prevState) => [...prevState, response.data.level]);
         }
       } catch (error) {}
     }
