@@ -7,6 +7,8 @@ const LevelsSlide = ({
   setBigScreen,
   levels,
   setLevel,
+  setLevelTitle,
+  setLevelContext,
   game,
   setDisplayAys,
   displayLevels,
@@ -30,16 +32,10 @@ const LevelsSlide = ({
     }
   };
 
-  const levelSetter = (pattern) => {
-    if (location.pathname !== "/game/game") {
-      setDisplayAys(pattern);
-    } else {
-      const levelSetter = (pattern) => {
-        setLevel(pattern);
-        setBigScreen(true);
-      };
-      levelSetter(pattern);
-    }
+  const levelSetter = (lvl) => {
+    setLevel(lvl.pattern);
+    setLevelTitle(lvl.name);
+    setBigScreen(true);
   };
 
   //-- displayLevelsToggler
@@ -169,7 +165,7 @@ const LevelsSlide = ({
                           <button
                             className="levelSelectorValid"
                             onClick={() => {
-                              levelSetter(lvl.pattern);
+                              levelSetter(lvl);
                             }}
                             key={index}
                           >
@@ -190,7 +186,7 @@ const LevelsSlide = ({
                           <button
                             className="levelSelectorNew"
                             onClick={() => {
-                              levelSetter(lvl.pattern);
+                              levelSetter(lvl);
                             }}
                             key={index}
                           >
@@ -221,7 +217,7 @@ const LevelsSlide = ({
                           <button
                             className="levelSelectorSearch"
                             onClick={() => {
-                              levelSetter(lvl.pattern);
+                              levelSetter(lvl);
                             }}
                             key={index}
                           >

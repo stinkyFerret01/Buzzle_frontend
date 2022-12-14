@@ -25,6 +25,8 @@ const GamePage = ({
   const [displayPad, setDisplayPad] = useState(false);
   const [displayInfo, setDisplayInfo] = useState(false);
   const [base, setBase] = useState("loading");
+  const [levelTitle, setLevelTitle] = useState("");
+  const [levelContext, setLevelContext] = useState("");
   const [player, setPlayer] = useState("loading");
   const [objects, setObjects] = useState("loading");
   const [cops, setCops] = useState([]);
@@ -441,6 +443,8 @@ const GamePage = ({
 
       ////////////////////
       setLevel(presLvl);
+      setLevelTitle("TUTO 1");
+      setLevelContext("utiliser la boîte pour sortir");
       setGame(["Ready?", "START"]);
     }
   }, [level, setLevel, setGame, edited, location]);
@@ -649,6 +653,8 @@ const GamePage = ({
         <LevelsSlide
           level={level}
           setLevel={setLevel}
+          setLevelTitle={setLevelTitle}
+          setLevelContext={setLevelContext}
           game={game}
           levels={levels}
           setLevels={setLevels}
@@ -684,7 +690,8 @@ const GamePage = ({
               contextToggler();
             }}
           >
-            ici, il y a du contexte de niveau
+            <p className="levelContextTitle">{levelTitle}:</p>
+            <p className="levelContextContext">{levelContext}</p>
           </button>
         ) : (
           <button
@@ -838,9 +845,9 @@ const GamePage = ({
         {displayInfo && (
           <section
             className="infoContainer"
-            // onMouseLeave={() => {
-            //   setDisplayInfo(false);
-            // }}
+            onMouseLeave={() => {
+              setDisplayInfo(false);
+            }}
           >
             <p className="keyInfo">
               utiliser la touche <span className="keyInfoSpan">"entrée"</span>{" "}
