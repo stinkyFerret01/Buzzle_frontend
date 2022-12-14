@@ -26,6 +26,7 @@ function App() {
   // const [pData, setPData] = useState("none");
   const [levels, setLevels] = useState([]);
   const [level, setLevel] = useState("none");
+  const [game, setGame] = useState(["Ready?", "START"]);
   const [edited, setEdited] = useState(["none", "none", "new"]);
   const [editBase, setEditBase] = useState("none");
   const [displayAys, setDisplayAys] = useState("none");
@@ -77,6 +78,7 @@ function App() {
         <LevelsSlide
           level={level}
           setLevel={setLevel}
+          game={game}
           levels={levels}
           setLevels={setLevels}
           setBigScreen={setBigScreen}
@@ -102,6 +104,8 @@ function App() {
                 backend={backend}
                 level={level}
                 setLevel={setLevel}
+                game={game}
+                setGame={setGame}
                 setDisplayWfr={setDisplayWfr}
                 displayLevels={displayLevels}
                 setDisplayLevels={setDisplayLevels}

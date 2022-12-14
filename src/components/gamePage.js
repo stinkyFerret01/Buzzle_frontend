@@ -5,11 +5,12 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 //-- import des composants
 import Pos from "./pos";
-import BurgerMenu from "./burgerMenu";
 
 const GamePage = ({
   level,
   setLevel,
+  game,
+  setGame,
   bigScreen,
   setBigScreen,
   displayLevels,
@@ -17,13 +18,14 @@ const GamePage = ({
 }) => {
   ///-- STATES --///
   const [displayPad, setDisplayPad] = useState(false);
-  const [game, setGame] = useState(["Ready?", "START"]);
+  const [displayInfo, setDisplayInfo] = useState(false);
   const [base, setBase] = useState("loading");
   const [player, setPlayer] = useState("loading");
   const [objects, setObjects] = useState("loading");
   const [cops, setCops] = useState("loading");
   const [grid, setGrid] = useState(base);
   const [action, setAction] = useState("");
+  const [difficulty, setDifficulty] = useState("medium");
 
   ///////////////////////////////////////////
   const titleRef = useRef();
@@ -52,6 +54,22 @@ const GamePage = ({
       setDisplayPad(false);
     } else {
       setDisplayPad(true);
+    }
+  };
+
+  const infoToggler = () => {
+    if (displayInfo === true) {
+      setDisplayInfo(false);
+    } else {
+      setDisplayInfo(true);
+    }
+  };
+
+  //-- difficultySetter
+  const difficultySetter = (dif) => {
+    console.log();
+    if (game[0] !== "Playing...") {
+      setDifficulty(dif);
     }
   };
 
@@ -351,7 +369,7 @@ const GamePage = ({
       setBase(baseBuilder(level));
       setGame(["Ready?", "START"]);
     }
-  }, [level]);
+  }, [level, setGame]);
 
   //-- presLevel (défini le niveau par défault (en dur))
   useEffect(() => {
@@ -386,7 +404,7 @@ const GamePage = ({
       setLevel(presLvl);
       setGame(["Ready?", "START"]);
     }
-  }, [level, setLevel, base]);
+  }, [level, setLevel, setGame, base]);
 
   //-- copsMover (gère le déplacement des agents)
   //-- (PROBEMO dépendance player)
@@ -460,7 +478,13 @@ const GamePage = ({
           clearTimeout(interval);
         }
       };
-      interval = setTimeout(checkStart, 600);
+      if (difficulty === "hard") {
+        interval = setTimeout(checkStart, 500);
+      } else if (difficulty === "medium") {
+        interval = setTimeout(checkStart, 800);
+      } else if (difficulty === "easy") {
+        interval = setTimeout(checkStart, 1100);
+      }
     };
     if (game[0] === "Playing..." && cops.length > 0) {
       copsMover();
@@ -561,7 +585,7 @@ const GamePage = ({
       newGrid.push(newLign);
     }
     setGrid(newGrid);
-  }, [base, player, objects, cops, displayPad]);
+  }, [setGame, base, player, objects, cops, displayPad]);
 
   ///-- RENDER --///
   return (
@@ -583,12 +607,6 @@ const GamePage = ({
             : { maxWidth: "42.7rem" }
         }
       >
-        <BurgerMenu
-          bigScreen={bigScreen}
-          game={game}
-          displayLevels={displayLevels}
-          setDisplayLevels={setDisplayLevels}
-        />
         <button
           className={bigScreen ? "reduceScreen" : "enlargeScreen"}
           onClick={screenToggler}
@@ -605,14 +623,69 @@ const GamePage = ({
             back to edit
           </button>
         )}
-        <button
-          className={bigScreen ? "padButton" : "padButtonLarge"}
-          onClick={() => {
-            padToggler();
-          }}
-        >
-          {displayPad ? "X" : "PAD"}
-        </button>
+        <div className="difficultyDisplay">
+          <button
+            className="difficultyButtonHard"
+            onClick={() => {
+              difficultySetter("hard");
+            }}
+            style={
+              difficulty === "hard"
+                ? { backgroundColor: "black", color: "white" }
+                : {}
+            }
+          >
+            HARD
+          </button>
+          <button
+            className="difficultyButtonMedium"
+            onClick={() => {
+              difficultySetter("medium");
+            }}
+            style={
+              difficulty === "medium"
+                ? { backgroundColor: "black", color: "white" }
+                : {}
+            }
+          >
+            MEDIUM
+          </button>
+          <button
+            className="difficultyButtonEasy"
+            onClick={() => {
+              difficultySetter("easy");
+            }}
+            style={
+              difficulty === "easy"
+                ? { backgroundColor: "black", color: "white" }
+                : {}
+            }
+          >
+            EASY
+          </button>
+        </div>
+        <div className={bigScreen ? "commandInfoLarge" : "commandInfo"}>
+          {displayPad === false && (
+            <button
+              className="commandInfoButton"
+              onClick={() => {
+                infoToggler();
+              }}
+            >
+              {displayInfo ? "X" : "INFO"}
+            </button>
+          )}
+          {displayInfo === false && (
+            <button
+              className="padButton"
+              onClick={() => {
+                padToggler();
+              }}
+            >
+              {displayPad ? "X" : "PAD"}
+            </button>
+          )}
+        </div>
         <div className="boardScroller">
           {level !== "none" && grid !== "loading" ? (
             <div className="table">
@@ -673,6 +746,17 @@ const GamePage = ({
                 ></button>
               </div>
             </div>
+          </section>
+        )}
+        {displayInfo && (
+          <section
+            className="infoContainer"
+            onMouseLeave={() => {
+              setDisplayInfo(false);
+            }}
+          >
+            utiliser les fleches pour vous déplacer et la touche "a" pour
+            intéragir
           </section>
         )}
         {game[0] !== "Playing..." && level !== "none" && (
