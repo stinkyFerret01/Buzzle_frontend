@@ -34,21 +34,14 @@ const Header = ({ theme, setTheme, setDisplayAys }) => {
         <button
           className="navButton"
           onClick={() => {
-            setDisplayAys("home");
+            navigate("");
           }}
         >
           <h3 style={{ pointerEvents: "none" }}>HOME</h3>
         </button>
       )}
       {location.pathname !== "/game/game" && (
-        <button
-          className="navButton"
-          onClick={
-            location.pathname === "/"
-              ? () => navigate("/game/game")
-              : () => setDisplayAys("game/game")
-          }
-        >
+        <button className="navButton" onClick={() => navigate("/game/game")}>
           <h3>PLAY BUZZLE!</h3>
         </button>
       )}

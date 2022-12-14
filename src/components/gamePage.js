@@ -430,7 +430,7 @@ const GamePage = ({
           ".........",
         ],
         name: "TUTO 1",
-        context: "poser la boite sur la plaque de pression pour sortir",
+        context: "posez la boîte sur la plaque de pression pour sortir",
       };
       setLevel(tuto1.pattern);
       setLevelTitle(tuto1.name);
@@ -536,10 +536,8 @@ const GamePage = ({
 
   //-- autoTuttoSetter
   useEffect(() => {
-    console.log(game);
     //-- tutoSetter
     const tutoSetter = () => {
-      console.log("ok");
       const tuto1 = {
         pattern: [
           ".........",
@@ -553,7 +551,7 @@ const GamePage = ({
           ".........",
         ],
         name: "TUTO 1",
-        context: "poser la boite sur la plaque de pression pour sortir",
+        context: "posez la boîte sur la plaque de pression pour sortir",
       };
       const tuto2 = {
         pattern: [

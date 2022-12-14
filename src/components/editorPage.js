@@ -67,9 +67,8 @@ const EditorPage = ({
     }
   };
 
-  //-- editQuiter
-  const editQuiter = (page) => {
-    setDisplayAys(page);
+  const editQuiter = () => {
+    navigate("/game/game");
   };
 
   const editer = async () => {
@@ -605,7 +604,7 @@ const EditorPage = ({
         <button
           className="backToGameButton"
           onClick={() => {
-            setDisplayAys("game/game");
+            editQuiter();
           }}
         >
           RETOURNER JOUER!
