@@ -5,10 +5,14 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 //-- import des composants
 import Pos from "./pos";
+import LevelsSlide from "./levelsSlide";
 
 const GamePage = ({
   level,
   setLevel,
+  levels,
+  setLevels,
+  setDisplayAys,
   game,
   setGame,
   bigScreen,
@@ -607,6 +611,17 @@ const GamePage = ({
             : { maxWidth: "42.7rem" }
         }
       >
+        <LevelsSlide
+          level={level}
+          setLevel={setLevel}
+          game={game}
+          levels={levels}
+          setLevels={setLevels}
+          setBigScreen={setBigScreen}
+          displayLevels={displayLevels}
+          setDisplayLevels={setDisplayLevels}
+          setDisplayAys={setDisplayAys}
+        />
         <button
           className={bigScreen ? "reduceScreen" : "enlargeScreen"}
           onClick={screenToggler}

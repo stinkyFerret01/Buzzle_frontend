@@ -26,6 +26,10 @@
     max-height: 100%;
 }
 
+.editViewScroller::-webkit-scrollbar {
+    display: none;
+}
+
 .editViewTop {
     width: 100%;
     /* max-width: 26.7rem; */
@@ -127,6 +131,10 @@
     border:solid  rgba(234, 178, 11) 4px;
     margin-left: 1rem;
     box-sizing: border-box;
+}
+
+.editShop::-webkit-scrollbar {
+    display: none;
 }
 
 .shopLists {

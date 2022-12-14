@@ -22,6 +22,7 @@ const AreYouSure = ({ setLevel, setBigScreen, displayAys, setDisplayAys }) => {
         setDisplayAys("none");
         navigate(`/${displayAys}`);
       } else {
+        setDisplayAys("none");
         navigate(`/`);
       }
     }

@@ -5,6 +5,7 @@
 /* BOARD et POS */
 .boardContainer {
     position: relative;
+    overflow: hidden;
     /*  */
     width: 100%;
     max-width: 42.7rem;
@@ -20,13 +21,13 @@
 .enlargeScreen {
     overflow: inherit;
     position: absolute;
-    z-index: 4;
+    z-index: 5;
     width: 1.4rem;
     height: 1.4rem;
     font-weight: bold;
     background-color: rgba(234, 178, 11);
-    top: -0.5rem;
-    left: -0.5rem;
+    top: 0rem;
+    left: 0rem;
 }
 
 .enlargeScreen:hover {
@@ -36,7 +37,7 @@
 .reduceScreen {
     overflow: inherit;
     position: absolute; 
-    z-index: 4;
+    z-index: 5;
     width: 1.4rem;
     height: 1.4rem;
     font-weight: bold;
@@ -75,6 +76,10 @@
     display: flex;
     padding-left: 1rem;
     padding-right: 1rem;
+}
+
+.boardScroller::-webkit-scrollbar {
+    display: none;
 }
 
 .startPopper {
@@ -443,22 +448,32 @@ div[id^="player"] {
 }
 
 /* LEVELSSLIDE */
+/* .levelsSlideContainer {
+    z-index: 5;
+    position: absolute;
+    overflow-y: scroll;
+    top: calc(50% - 10rem);
+    left: -0.5rem;
+} */
 
 .levelsSlide {
     z-index: 5;
     position: absolute;
+    /* overflow-y: scroll; */
     top: calc(50% - 10rem);
     left: -0.5rem;
     width: 15.6rem;
     height: 20rem;
+    max-height: 100%;
     background-color: black;
     border-top: solid rgba(234, 178, 11) 4px;
     border-right: solid rgba(234, 178, 11) 4px;
     border-bottom: solid rgba(234, 178, 11) 4px;
-    border-radius: 8px;
     display: flex;
     flex-direction: column;
-    animation: levelsSlide 0.6s;
+    align-items: flex-start;
+    justify-content: flex-start;
+    animation: levelsSlide 0.4s;
 }
 
 .levelsSlide2 {
@@ -468,13 +483,13 @@ div[id^="player"] {
     left: -14.5rem;
     width: 15.6rem;
     height: 20rem;
+    /* max-height: 100%; */
     background-color: black;
     border-top: solid rgba(234, 178, 11) 4px;
     border-right: solid rgba(234, 178, 11) 4px;
     border-bottom: solid rgba(234, 178, 11) 4px;
-    border-radius: 8px;
     display: flex;
-    animation: levelsSlideBack 0.3s;
+    animation: levelsSlideBack 0.2s;
 }
 
 @keyframes levelsSlide {

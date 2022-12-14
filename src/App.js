@@ -14,7 +14,6 @@ import EditorPage from "./components/editorPage";
 import Footer from "./components/footer";
 import AreYouSure from "./components/areYouSure";
 import WaitForResponse from "./components/waitForResponse";
-import LevelsSlide from "./components/levelsSlide";
 
 ///-- START --///
 function App() {
@@ -53,14 +52,6 @@ function App() {
       style={theme === "clear" ? { backgroundColor: "purple" } : {}}
     >
       <Router>
-        <div className="audio">
-          {/* <iframe
-            src="../Audio/Stranger-things-124008.mp3"
-            allow="autoplay"
-            id="audio"
-            hidden
-          ></iframe> */}
-        </div>
         {bigScreen === false && (
           <Header
             backend={backend}
@@ -75,26 +66,6 @@ function App() {
             setDisplayWfr={setDisplayWfr}
           />
         )}
-        <LevelsSlide
-          level={level}
-          setLevel={setLevel}
-          game={game}
-          levels={levels}
-          setLevels={setLevels}
-          setBigScreen={setBigScreen}
-          displayLevels={displayLevels}
-          setDisplayLevels={setDisplayLevels}
-          setDisplayAys={setDisplayAys}
-        />
-        <audio
-          className="audioPlayer"
-          src="../Audio/Stranger-things-124008.mp3"
-          type="audio/mp3"
-          controls
-          // muted
-          loop
-          autoPlay
-        />
         <Routes>
           <Route path="/" element={<HomePage setBigScreen={setBigScreen} />} />
           <Route
@@ -104,8 +75,11 @@ function App() {
                 backend={backend}
                 level={level}
                 setLevel={setLevel}
+                levels={levels}
+                setLevels={setLevels}
                 game={game}
                 setGame={setGame}
+                setDisplayAys={setDisplayAys}
                 setDisplayWfr={setDisplayWfr}
                 displayLevels={displayLevels}
                 setDisplayLevels={setDisplayLevels}

@@ -55,7 +55,15 @@ const LevelsSlide = ({
   return (
     <section
       onMouseLeave={() => setDisplayLevels(false)}
-      onMouseEnter={() => setDisplayLevels(true)}
+      onClick={() => {
+        displayLevelsToggler();
+      }}
+      // onMouseEnter={() => setDisplayLevels(true)}
+      style={
+        location.pathname !== "/game/game"
+          ? { display: "none" }
+          : { display: "inherit" }
+      }
     >
       <div className={displayLevels ? "levelsSlide" : "levelsSlide2"}>
         <button
@@ -67,10 +75,10 @@ const LevelsSlide = ({
           {displayLevels ? "<" : "+"}
         </button>
         {gameDiv === "none" ? (
-          <div className="headerGameTitles">
+          <div className="presTitlesContainer">
             <div>
               <button
-                className="headerGameTitleValid"
+                className="headerGameTitle"
                 onClick={() => gamDivDefiner("validé")}
               >
                 NIVEAUX VALIDES!
@@ -78,7 +86,7 @@ const LevelsSlide = ({
             </div>
             <div>
               <button
-                className="headerGameTitleNew"
+                className="headerGameTitle"
                 onClick={() => gamDivDefiner("à tester")}
               >
                 NIVEAUX NON VERIFIE...
@@ -86,7 +94,7 @@ const LevelsSlide = ({
             </div>
             <div>
               <button
-                className="headerGameTitleSearch"
+                className="headerGameTitle"
                 onClick={() => gamDivDefiner("rechercher")}
               >
                 CHERCHER UN NIVEAU
@@ -100,41 +108,46 @@ const LevelsSlide = ({
                 EDITER UN NIVEAU
               </button>
             </div>
-            <div className="headerGameTitle"></div>
+            <div>
+              <button className="headerGameTitleInact" onClick={() => {}}>
+                SE CONNECTER (inactif)
+              </button>
+            </div>
           </div>
         ) : (
-          <div>
+          <div className="levelsCategories">
             <div className="headerGameTitles2">
               <button
-                className="headerGameTitle"
-                style={gameDiv === "validé" ? { backgroundColor: "black" } : {}}
+                className="headerGameTitle2"
+                style={
+                  gameDiv === "validé" ? { backgroundColor: "orangered" } : {}
+                }
                 onClick={() => gamDivDefiner("validé")}
               >
-                validé
+                validés
               </button>
               <button
-                className="headerGameTitle"
+                className="headerGameTitle2"
                 style={
-                  gameDiv === "à tester" ? { backgroundColor: "black" } : {}
+                  gameDiv === "à tester" ? { backgroundColor: "orangered" } : {}
                 }
                 onClick={() => gamDivDefiner("à tester")}
               >
-                à tester
+                nouveaux
               </button>
               <button
-                className="headerGameTitle"
+                className="headerGameTitle2"
                 style={
-                  gameDiv === "rechercher" ? { backgroundColor: "black" } : {}
+                  gameDiv === "rechercher"
+                    ? { backgroundColor: "orangered" }
+                    : {}
                 }
                 onClick={() => gamDivDefiner("rechercher")}
               >
                 rechercher
               </button>
               <button
-                className="headerGameTitle"
-                style={
-                  gameDiv === "rechercher" ? { backgroundColor: "black" } : {}
-                }
+                className="headerGameTitleBack"
                 onClick={() => gamDivDefiner("none")}
               >
                 BACK
