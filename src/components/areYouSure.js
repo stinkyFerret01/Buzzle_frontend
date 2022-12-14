@@ -3,12 +3,17 @@
 import { useNavigate } from "react-router-dom";
 
 ///-- START --///
-const AreYouSure = ({ setLevel, setBigScreen, displayAys, setDisplayAys }) => {
+const AreYouSure = ({
+  setLevel,
+  setBigScreen,
+  displayAys,
+  setDisplayAys,
+  game,
+}) => {
   //-- config et variables
   const navigate = useNavigate();
 
   const continuer = () => {
-    console.log(displayAys);
     if (displayAys[0].slice(0, 4) === "....") {
       const levelSetter = (pattern) => {
         setLevel(pattern);

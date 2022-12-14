@@ -84,6 +84,7 @@ function App() {
                 setLevels={setLevels}
                 game={game}
                 setGame={setGame}
+                edited={edited}
                 setDisplayAys={setDisplayAys}
                 setDisplayWfr={setDisplayWfr}
                 displayLevels={displayLevels}
@@ -119,6 +120,7 @@ function App() {
             setBigScreen={setBigScreen}
             displayAys={displayAys}
             setDisplayAys={setDisplayAys}
+            game={game}
           />
         )}
         {displayWfr === true && (

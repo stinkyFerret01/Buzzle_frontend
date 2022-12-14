@@ -5,17 +5,38 @@
 /* VIEW */
 .editView {
     position: relative;
-   
-    /* overflow-x: scroll;
-    overflow-y: scroll; */
     width: 70%;
     max-width: 29.7rem;
     height: 90%;
     min-height: 10rem;
     background-color: black;
     border: solid  rgba(234, 178, 11) 4px;
-    padding-right: 1rem;
+    /* padding-right: 1rem; */
     box-sizing: border-box;
+}
+
+.editToGameButton {
+    z-index: 3;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 3rem;
+    height: 3rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding-bottom: 0.4rem;
+    color: rgba(234, 178, 11);
+    background-color: transparent;
+    border: solid rgba(234, 178, 11) 4px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.editToGameButton:hover {
+    color: orangered;
+    border: solid orangered 4px;
 }
 
 .editViewScroller {
@@ -115,8 +136,6 @@
     background-color: black;
 }
 
-
-
 /* SHOP */
 .editShop {
     overflow: hidden;
@@ -126,6 +145,7 @@
     min-width: 12rem;
     height: 90%;
     min-height: 10rem;
+    padding-top: 3rem;
     color:  rgba(234, 178, 11);
     background-color: black;
     border:solid  rgba(234, 178, 11) 4px;
@@ -251,7 +271,6 @@
     background-color: orangered;
     color: black;
 }
-
 
 .backToGameButton {
     height: 2rem;

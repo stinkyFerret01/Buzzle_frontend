@@ -15,6 +15,7 @@ const GamePage = ({
   setDisplayAys,
   game,
   setGame,
+  edited,
   bigScreen,
   setBigScreen,
   displayLevels,
@@ -26,7 +27,7 @@ const GamePage = ({
   const [base, setBase] = useState("loading");
   const [player, setPlayer] = useState("loading");
   const [objects, setObjects] = useState("loading");
-  const [cops, setCops] = useState("loading");
+  const [cops, setCops] = useState([]);
   const [grid, setGrid] = useState(base);
   const [action, setAction] = useState("");
   const [difficulty, setDifficulty] = useState("medium");
@@ -136,10 +137,18 @@ const GamePage = ({
     }
   };
 
+  //-- gameQuiter
+  const gameQuiter = (page) => {
+    if (game[0] !== "Playing...") {
+      navigate(`/${page}`);
+    } else {
+      setDisplayAys(page);
+    }
+  };
+
   //-- handleKeyDown interprète les commandes du clavier
   const handleKeyDown = (event, k) => {
     let key = event.key;
-    console.log(key);
     if (game[0] === "Playing...") {
       handleBackClick();
       if (event === "pad") {
@@ -390,7 +399,10 @@ const GamePage = ({
 
   //-- presLevel (défini le niveau par défault (en dur))
   useEffect(() => {
-    if (level === "none") {
+    if (
+      level === "none" ||
+      (level === edited[0] && location.pathname === "/game/game")
+    ) {
       const presLvl = [
         ".........",
         "WWWWWWWWW",
@@ -421,7 +433,7 @@ const GamePage = ({
       setLevel(presLvl);
       setGame(["Ready?", "START"]);
     }
-  }, [level, setLevel, setGame, base]);
+  }, [level, setLevel, setGame, edited, location]);
 
   //-- copsMover (gère le déplacement des agents)
   //-- (PROBEMO dépendance player)
@@ -553,7 +565,7 @@ const GamePage = ({
   useEffect(() => {
     let newGrid = [];
     let activity = "none";
-    if (objects !== "loading" && cops !== "loading") {
+    if (objects !== "loading") {
       let activeObj = objects.find((obj) => obj[2] === "bs");
       if (activeObj !== undefined) {
         activity = activeObj[2];
@@ -581,7 +593,7 @@ const GamePage = ({
             pos = obj[2];
           }
         }
-        if (cops !== "loading" && cops.length > 0) {
+        if (cops.length > 0) {
           let copIndex = cops.findIndex((cop) => cop[0] === L && cop[1] === o);
           if (copIndex >= 0) {
             pos = "C";
@@ -635,6 +647,20 @@ const GamePage = ({
           setDisplayLevels={setDisplayLevels}
           setDisplayAys={setDisplayAys}
         />
+        {location.pathname === "/game/game" && (
+          <button
+            className={
+              game[0] !== "Playing..."
+                ? "gameToEditButton"
+                : "gameToEditButton2"
+            }
+            onClick={() => {
+              gameQuiter("editor");
+            }}
+          >
+            e
+          </button>
+        )}
         <button
           className={bigScreen ? "reduceScreen" : "enlargeScreen"}
           onClick={screenToggler}

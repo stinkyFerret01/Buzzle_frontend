@@ -67,6 +67,11 @@ const EditorPage = ({
     }
   };
 
+  //-- editQuiter
+  const editQuiter = (page) => {
+    setDisplayAys(page);
+  };
+
   const editer = async () => {
     if (edited[0] !== "none" && edited[1] !== "") {
       try {
@@ -443,6 +448,14 @@ const EditorPage = ({
         className="editShop"
         style={bigScreen ? { height: "100vh", maxWidth: "100%" } : {}}
       >
+        <button
+          className="editToGameButton"
+          onClick={() => {
+            editQuiter("game/game");
+          }}
+        >
+          p
+        </button>
         <h4 className="noHovText">éléments:</h4>
         <div className="shopLists">
           <div className="shopList">
