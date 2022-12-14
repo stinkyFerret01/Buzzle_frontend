@@ -109,80 +109,93 @@ const LevelsSlide = ({
             >
               rechercher
             </button>
+            <button
+              className="headerGameTitle"
+              style={
+                gameDiv === "rechercher" ? { backgroundColor: "black" } : {}
+              }
+              onClick={() => gamDivDefiner("none")}
+            >
+              BACK
+            </button>
             <div className="headerGameTitle"></div>
           </div>
-          <div className="headerGameDivs">
-            {gameDiv === "validé" && (
-              <div className="headerGameDiv">
-                {levels.map((lvl, index) => {
-                  if (lvl.status === "valid") {
-                    return (
-                      <button
-                        className="levelSelectorValid"
-                        onClick={() => {
-                          levelSetter(lvl.pattern);
-                        }}
-                        key={index}
-                      >
-                        {lvl.name}
-                      </button>
-                    );
-                  } else {
-                    return <div key={index}></div>;
-                  }
-                })}
-              </div>
-            )}
-            {gameDiv === "à tester" && (
-              <div className="headerGameDiv">
-                {levels.map((lvl, index) => {
-                  if (lvl.status === "new") {
-                    return (
-                      <button
-                        className="levelSelectorNew"
-                        onClick={() => {
-                          levelSetter(lvl.pattern);
-                        }}
-                        key={index}
-                      >
-                        {lvl.name}
-                      </button>
-                    );
-                  } else {
-                    return <div key={index}></div>;
-                  }
-                })}
-              </div>
-            )}
-            {gameDiv === "rechercher" && (
-              <div className="headerGameDiv">
-                <input
-                  className="textincome"
-                  name="searchLvl"
-                  type="text"
-                  placeholder="chercher un niveau"
-                  value={searchLvl}
-                  onChange={(event) => {
-                    setSearchLvl(event.target.value);
-                  }}
-                />
-                {searchedLevels.length > 0 &&
-                  searchedLevels.map((lvl, index) => {
-                    return (
-                      <button
-                        className="levelSelectorSearch"
-                        onClick={() => {
-                          levelSetter(lvl.pattern);
-                        }}
-                        key={index}
-                      >
-                        {lvl.name}
-                      </button>
-                    );
+          {levels.length === 0 ? (
+            <h1>niveaux en chargement, cela peut prendre quelques secondes</h1>
+          ) : (
+            <div className="headerGameDivs">
+              {gameDiv === "validé" && (
+                <div className="headerGameDiv">
+                  {levels.map((lvl, index) => {
+                    if (lvl.status === "valid") {
+                      return (
+                        <button
+                          className="levelSelectorValid"
+                          onClick={() => {
+                            levelSetter(lvl.pattern);
+                          }}
+                          key={index}
+                        >
+                          {lvl.name}
+                        </button>
+                      );
+                    } else {
+                      return <div key={index}></div>;
+                    }
                   })}
-              </div>
-            )}
-          </div>
+                </div>
+              )}
+              {gameDiv === "à tester" && (
+                <div className="headerGameDiv">
+                  {levels.map((lvl, index) => {
+                    if (lvl.status === "new") {
+                      return (
+                        <button
+                          className="levelSelectorNew"
+                          onClick={() => {
+                            levelSetter(lvl.pattern);
+                          }}
+                          key={index}
+                        >
+                          {lvl.name}
+                        </button>
+                      );
+                    } else {
+                      return <div key={index}></div>;
+                    }
+                  })}
+                </div>
+              )}
+              {gameDiv === "rechercher" && (
+                <div className="headerGameDiv">
+                  <input
+                    className="textincome"
+                    name="searchLvl"
+                    type="text"
+                    placeholder="chercher un niveau"
+                    value={searchLvl}
+                    onChange={(event) => {
+                      setSearchLvl(event.target.value);
+                    }}
+                  />
+                  {searchedLevels.length > 0 &&
+                    searchedLevels.map((lvl, index) => {
+                      return (
+                        <button
+                          className="levelSelectorSearch"
+                          onClick={() => {
+                            levelSetter(lvl.pattern);
+                          }}
+                          key={index}
+                        >
+                          {lvl.name}
+                        </button>
+                      );
+                    })}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
     </section>
