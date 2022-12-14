@@ -10,6 +10,10 @@ import LevelsSlide from "./levelsSlide";
 const GamePage = ({
   level,
   setLevel,
+  levelTitle,
+  setLevelTitle,
+  levelContext,
+  setLevelContext,
   levels,
   setLevels,
   setDisplayAys,
@@ -25,8 +29,6 @@ const GamePage = ({
   const [displayPad, setDisplayPad] = useState(false);
   const [displayInfo, setDisplayInfo] = useState(false);
   const [base, setBase] = useState("loading");
-  const [levelTitle, setLevelTitle] = useState("");
-  const [levelContext, setLevelContext] = useState("");
   const [player, setPlayer] = useState("loading");
   const [objects, setObjects] = useState("loading");
   const [cops, setCops] = useState([]);
@@ -141,7 +143,7 @@ const GamePage = ({
     if (game[0] === "Win!" || game[0] === "Lost!") {
       let refresh = [...level];
       setLevel(refresh);
-      setCops("loading");
+      setCops([]);
     } else if (game[0] === "Playing...") {
       setGame(["Ready?", "CONTINUER"]);
     } else {
@@ -415,39 +417,35 @@ const GamePage = ({
       level === "none" ||
       (level === edited[0] && location.pathname === "/game/game")
     ) {
-      const presLvl = [
-        ".........",
-        "WWWWWWWWW",
-        "WB..W...W",
-        "W.P.W.P.W",
-        "WWHWW...E",
-        "W.....p.W",
-        "W.......W",
-        "WWWWWWWWW",
-        ".........",
-      ];
-      ////////////////////
-      // let presLvl2 = [
-      //   ".........",
-      //   "WWWWWWWWW",
-      //   "WB..W...W",
-      //   "W.P.W.P.W",
-      //   "WWHWW...E",
-      //   "W.....p.W",
-      //   "W.......W",
-      //   "WWWWWWWWW",
-      //   ".........",
-      // ];
-      // if ((presLvl2 = presLvl)) {
-      // }
-
-      ////////////////////
-      setLevel(presLvl);
-      setLevelTitle("TUTO 1");
-      setLevelContext("utiliser la boîte pour sortir");
+      const tuto1 = {
+        pattern: [
+          ".........",
+          "WWWWWWWWW",
+          "WB..W...W",
+          "W.P.W.P.W",
+          "WWHWW...E",
+          "W.....p.W",
+          "W.......W",
+          "WWWWWWWWW",
+          ".........",
+        ],
+        name: "TUTO 1",
+        context: "poser la boite sur la plaque de pression pour sortir",
+      };
+      setLevel(tuto1.pattern);
+      setLevelTitle(tuto1.name);
+      setLevelContext(tuto1.context);
       setGame(["Ready?", "START"]);
     }
-  }, [level, setLevel, setGame, edited, location]);
+  }, [
+    level,
+    setLevel,
+    setLevelContext,
+    setLevelTitle,
+    setGame,
+    edited,
+    location,
+  ]);
 
   //-- copsMover (gère le déplacement des agents)
   //-- (PROBEMO dépendance player)
@@ -535,6 +533,79 @@ const GamePage = ({
     //-- PROBLEMO
     // eslint-disable-next-line
   }, [game, cops]);
+
+  //-- autoTuttoSetter
+  useEffect(() => {
+    console.log(game);
+    //-- tutoSetter
+    const tutoSetter = () => {
+      console.log("ok");
+      const tuto1 = {
+        pattern: [
+          ".........",
+          "WWWWWWWWW",
+          "WB..W...W",
+          "W.P.W.P.W",
+          "WWHWW...E",
+          "W.....p.W",
+          "W.......W",
+          "WWWWWWWWW",
+          ".........",
+        ],
+        name: "TUTO 1",
+        context: "poser la boite sur la plaque de pression pour sortir",
+      };
+      const tuto2 = {
+        pattern: [
+          ".........",
+          "WWWWWWWWW",
+          "WB..W...W",
+          "W...W.P.W",
+          "WWKWW...E",
+          "W.....p.W",
+          "W..1....W",
+          "WWWWWWWWW",
+          ".........",
+        ],
+        name: "TUTO 2",
+        context: "utilisez la clef pour ouvrir la porte",
+      };
+      const tuto3 = {
+        pattern: [
+          "..................",
+          "WWWWWWWWWWWWWWWWWW",
+          "WB..W.....W......W",
+          "W...W..1..W....P.W",
+          "WWKWW.....V......E",
+          "W.....C...W....p.W",
+          "W.........W......W",
+          "WWWWWWWWWWWWWWWWWW",
+          "..................",
+        ],
+        name: "TUTO 3",
+        context: "évitez les agents!",
+      };
+      if (levelTitle === "TUTO 1") {
+        setLevel(tuto2.pattern);
+        setLevelTitle(tuto2.name);
+        setLevelContext(tuto2.context);
+        setGame(["Ready?", "START"]);
+      } else if (levelTitle === "TUTO 2") {
+        setLevel(tuto3.pattern);
+        setLevelTitle(tuto3.name);
+        setLevelContext(tuto3.context);
+        setGame(["Ready?", "START"]);
+      } else if (levelTitle === "TUTO 3") {
+        setLevel(tuto1.pattern);
+        setLevelTitle(tuto1.name);
+        setLevelContext(tuto1.context);
+        setGame(["Ready?", "START"]);
+      }
+    };
+    if (game[0] === "Win!" || game === "lost!") {
+      tutoSetter();
+    }
+  }, [game, setGame, levelTitle, setLevel, setLevelContext, setLevelTitle]);
 
   //-- pressChecker (vérifie la présence d'un objet sur la presse)
   useEffect(() => {

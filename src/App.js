@@ -25,6 +25,8 @@ function App() {
   // const [pData, setPData] = useState("none");
   const [levels, setLevels] = useState([]);
   const [level, setLevel] = useState("none");
+  const [levelTitle, setLevelTitle] = useState("");
+  const [levelContext, setLevelContext] = useState("");
   const [game, setGame] = useState(["Ready?", "START"]);
   const [edited, setEdited] = useState(["none", "none", "new"]);
   const [editBase, setEditBase] = useState("none");
@@ -80,6 +82,10 @@ function App() {
                 backend={backend}
                 level={level}
                 setLevel={setLevel}
+                levelTitle={levelTitle}
+                setLevelTitle={setLevelTitle}
+                levelContext={levelContext}
+                setLevelContext={setLevelContext}
                 levels={levels}
                 setLevels={setLevels}
                 game={game}
