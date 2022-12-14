@@ -154,9 +154,11 @@ const LevelsSlide = ({
               <div className="headerGameTitle"></div>
             </div>
             {levels.length === 0 ? (
-              <h1>
-                niveaux en chargement, cela peut prendre quelques secondes
-              </h1>
+              <div className="headerGameDivs">
+                <h1 style={{ color: "red" }}>
+                  niveaux en chargement, cela peut prendre quelques secondes
+                </h1>
+              </div>
             ) : (
               <div className="headerGameDivs">
                 {gameDiv === "validé" && (

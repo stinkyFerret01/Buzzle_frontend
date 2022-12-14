@@ -249,11 +249,13 @@ div[id^="player"] {
     z-index: 4;
     overflow: hidden;
     position: absolute;
-    bottom: 1.5rem;
+    bottom: 0.5rem;
     right: 1.5rem;
-    width: 10rem;
-    height: 10rem;
+    width: 12rem;
+    /* height: 10rem; */
+    text-align: center;
     color: rgba(234, 178, 11);
+    padding-bottom: 1rem;
     display: flex;
     flex-direction: column;
     margin-left: 1rem;
@@ -273,8 +275,8 @@ div[id^="player"] {
     position: absolute;
     bottom: 0.5rem;
     right: 0.5rem;
-    background-color: aqua;
     width: 3.2rem;
+    background-color: aqua;
 }
 
 .commandInfoButton {
@@ -285,6 +287,11 @@ div[id^="player"] {
 
 .commandInfoButton:hover {
     background-color: orangered;
+}
+
+.keyInfoSpan {
+    font-weight: bold;
+    color: orangered;
 }
 
 .padButton {
@@ -424,6 +431,78 @@ div[id^="player"] {
     border: solid orangered 4px;
 }
 
+.contextButton {
+    z-index: 4;
+    position: absolute;
+    top: 0.5rem;
+    left: calc(50% - 1rem);
+    width: 2rem;
+    height: 2rem;
+    font-size: 2.1rem;
+    font-weight: bold;
+    padding-bottom: 0.4rem;
+    color: rgba(234, 178, 11,0.5);
+    background-color: transparent;
+    border: solid rgba(234, 178, 11,0.5) 4px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contextButton:hover {
+    color: orangered;
+    border: solid orangered 4px;
+}
+
+.contextButton2 {
+    z-index: 4;
+    position: absolute;
+    top: 0.5rem;
+    left: calc(50% - 1rem);
+    width: 2rem;
+    height: 2rem;
+    font-size: 2.1rem;
+    font-weight: bold;
+    padding-bottom: 0.4rem;
+    color: rgba(234, 178, 11);
+    background-color: transparent;
+    border: solid rgba(234, 178, 11) 4px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contextButton2:hover {
+    color: orangered;
+    border: solid orangered 4px;
+}
+
+.contextDisplayer {
+    z-index: 4;
+    position: absolute;
+    top: 0.5rem;
+    left: calc(50% - 7rem);
+    width: 14rem;
+    height: 6rem;
+    font-size: 1rem;
+    font-weight: bold;
+    padding-bottom: 0.4rem;
+    color: rgba(234, 178, 11);
+    background-color: transparent;
+    border: solid rgba(234, 178, 11) 4px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contextDisplayer:hover {
+    color: orangered;
+    border: solid orangered 4px;
+}
+
 .burgerMenuSlide {
     z-index: 3;
     position: absolute;
@@ -491,7 +570,6 @@ div[id^="player"] {
     display: flex;
     animation: levelsSlideBack 0.2s;
 }
-
 
 .presTitlesContainer {
     width: 14rem;

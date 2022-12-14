@@ -31,6 +31,7 @@ const GamePage = ({
   const [grid, setGrid] = useState(base);
   const [action, setAction] = useState("");
   const [difficulty, setDifficulty] = useState("medium");
+  const [displayContext, setDisplayContext] = useState(true);
 
   ///////////////////////////////////////////
   const titleRef = useRef();
@@ -67,6 +68,15 @@ const GamePage = ({
       setDisplayInfo(false);
     } else {
       setDisplayInfo(true);
+    }
+  };
+
+  //-- contextToggler
+  const contextToggler = () => {
+    if (displayContext === true) {
+      setDisplayContext(false);
+    } else {
+      setDisplayContext(true);
     }
   };
 
@@ -667,6 +677,27 @@ const GamePage = ({
         >
           {bigScreen ? "↘" : "↖"}
         </button>
+        {displayContext ? (
+          <button
+            className="contextDisplayer"
+            onClick={() => {
+              contextToggler();
+            }}
+          >
+            ici, il y a du contexte de niveau
+          </button>
+        ) : (
+          <button
+            className={
+              game[0] !== "Playing..." ? "contextButton" : "contextButton2"
+            }
+            onClick={() => {
+              contextToggler();
+            }}
+          >
+            c
+          </button>
+        )}
         {location.pathname === "/game/editor" && (
           <button
             className="backToEdit"
@@ -677,47 +708,49 @@ const GamePage = ({
             back to edit
           </button>
         )}
-        <div className="difficultyDisplay">
-          <button
-            className="difficultyButtonHard"
-            onClick={() => {
-              difficultySetter("hard");
-            }}
-            style={
-              difficulty === "hard"
-                ? { backgroundColor: "black", color: "white" }
-                : {}
-            }
-          >
-            HARD
-          </button>
-          <button
-            className="difficultyButtonMedium"
-            onClick={() => {
-              difficultySetter("medium");
-            }}
-            style={
-              difficulty === "medium"
-                ? { backgroundColor: "black", color: "white" }
-                : {}
-            }
-          >
-            MEDIUM
-          </button>
-          <button
-            className="difficultyButtonEasy"
-            onClick={() => {
-              difficultySetter("easy");
-            }}
-            style={
-              difficulty === "easy"
-                ? { backgroundColor: "black", color: "white" }
-                : {}
-            }
-          >
-            EASY
-          </button>
-        </div>
+        {game[0] !== "Playing..." && cops.length > 0 && (
+          <div className="difficultyDisplay">
+            <button
+              className="difficultyButtonHard"
+              onClick={() => {
+                difficultySetter("hard");
+              }}
+              style={
+                difficulty === "hard"
+                  ? { backgroundColor: "black", color: "white" }
+                  : {}
+              }
+            >
+              HARD
+            </button>
+            <button
+              className="difficultyButtonMedium"
+              onClick={() => {
+                difficultySetter("medium");
+              }}
+              style={
+                difficulty === "medium"
+                  ? { backgroundColor: "black", color: "white" }
+                  : {}
+              }
+            >
+              MEDIUM
+            </button>
+            <button
+              className="difficultyButtonEasy"
+              onClick={() => {
+                difficultySetter("easy");
+              }}
+              style={
+                difficulty === "easy"
+                  ? { backgroundColor: "black", color: "white" }
+                  : {}
+              }
+            >
+              EASY
+            </button>
+          </div>
+        )}
         <div className={bigScreen ? "commandInfoLarge" : "commandInfo"}>
           {displayPad === false && (
             <button
@@ -726,7 +759,7 @@ const GamePage = ({
                 infoToggler();
               }}
             >
-              {displayInfo ? "X" : "INFO"}
+              {displayInfo ? "X" : "KEY"}
             </button>
           )}
           {displayInfo === false && (
@@ -805,12 +838,16 @@ const GamePage = ({
         {displayInfo && (
           <section
             className="infoContainer"
-            onMouseLeave={() => {
-              setDisplayInfo(false);
-            }}
+            // onMouseLeave={() => {
+            //   setDisplayInfo(false);
+            // }}
           >
-            utiliser les fleches pour vous déplacer et la touche "a" pour
-            intéragir
+            <p className="keyInfo">
+              utiliser la touche <span className="keyInfoSpan">"entrée"</span>{" "}
+              pour arréter/démarrer le jeu, les{" "}
+              <span className="keyInfoSpan">flèches</span> pour vous déplacer et
+              la touche <span className="keyInfoSpan">"a"</span> pour intéragir.
+            </p>
           </section>
         )}
         {game[0] !== "Playing..." && level !== "none" && (
