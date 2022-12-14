@@ -1,21 +1,10 @@
 ///-- CONFIG --///
 //-- import librairie
-// import axios from "axios";
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 ///-- START --///
-const Header = ({
-  // backend,
-  theme,
-  setTheme,
-  levels,
-  // setLevels,
-  setLevel,
-  // edited,
-  setDisplayAys,
-  // setDisplayWfr,
-}) => {
+const Header = ({ theme, setTheme, levels, setLevel, setDisplayAys }) => {
   ///-- STATES --///
   const [searchLvl, setSearchLvl] = useState("");
   const [gameDiv, setGameDiv] = useState("validé");
@@ -57,13 +46,13 @@ const Header = ({
       </section>
       {location.pathname !== "/" && (
         <section
+          className="headerSectionGhost"
           onClick={() => {
-            setDisplayAys("");
+            setDisplayAys("home");
           }}
           style={{ left: "0%" }}
-          className="headerSectionGhost"
         >
-          <h1>HOME</h1>
+          <h1 style={{ pointerEvents: "none" }}>HOME</h1>
         </section>
       )}
       {/* CENTER */}
@@ -179,39 +168,29 @@ const Header = ({
       </section>
       {location.pathname !== "/game/game" && (
         <section
+          className="headerSectionGhost"
           onClick={
             location.pathname === "/"
               ? () => navigate("/game/game")
               : () => setDisplayAys("game/game")
           }
           style={{ left: "33.33%" }}
-          className="headerSectionGhost"
         >
           <h1>PLAY BUZZLE!</h1>
         </section>
       )}
       {/* RIGHT */}
-      <section className="headerSection">
-        {/* {edited[0] !== "none" && edited[1].length > 2 && (
-          <button className="headerEditButton" onClick={editer}>
-            EDIT
-          </button>
-        )} */}
+      <section
+        className="headerSectionGhost"
+        onClick={
+          location.pathname === "/"
+            ? () => navigate("/editor")
+            : () => setDisplayAys("editor")
+        }
+        style={{ left: "66.66%" }}
+      >
+        <h1>EDIT</h1>
       </section>
-      {location.pathname !== "/editor" &&
-        location.pathname !== "/game/editor" && (
-          <section
-            onClick={
-              location.pathname === "/"
-                ? () => navigate("/editor")
-                : () => setDisplayAys("editor")
-            }
-            style={{ left: "66.66%" }}
-            className="headerSectionGhost"
-          >
-            <h1>LEVEL EDITOR</h1>
-          </section>
-        )}
     </header>
   );
 };

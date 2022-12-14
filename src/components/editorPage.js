@@ -18,6 +18,7 @@ const EditorPage = ({
   setEdited,
   editBase,
   setEditBase,
+  setDisplayAys,
   bigScreen,
   setBigScreen,
 }) => {
@@ -584,6 +585,14 @@ const EditorPage = ({
             )}
           </div>
         )}
+        <button
+          className="backToGameButton"
+          onClick={() => {
+            setDisplayAys("game/game");
+          }}
+        >
+          RETOURNER JOUER!
+        </button>
       </section>
     </main>
   );

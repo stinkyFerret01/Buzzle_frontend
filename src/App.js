@@ -121,6 +121,7 @@ function App() {
                 editBase={editBase}
                 setEditBase={setEditBase}
                 setDisplayWfr={setDisplayWfr}
+                setDisplayAys={setDisplayAys}
                 bigScreen={bigScreen}
                 setBigScreen={setBigScreen}
               />

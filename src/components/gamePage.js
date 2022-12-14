@@ -606,7 +606,7 @@ const GamePage = ({
           </button>
         )}
         <button
-          className="padButton"
+          className={bigScreen ? "padButton" : "padButtonLarge"}
           onClick={() => {
             padToggler();
           }}

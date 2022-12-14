@@ -19,6 +19,7 @@
 
 header {
   position: relative;
+  overflow: hidden;
   width: 90%;
   max-width: 42.7rem;
   height: 6rem;

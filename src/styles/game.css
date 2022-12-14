@@ -203,6 +203,15 @@ div[id^="player"] {
 .padButton {
     z-index: 3;
     position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    font-weight: bold;
+    background-color: rgba(234, 178, 11);
+}
+
+.padButtonLarge {
+    z-index: 3;
+    position: absolute;
     bottom: 0rem;
     right: 0rem;
     font-weight: bold;
@@ -352,6 +361,8 @@ div[id^="player"] {
     border-right: solid rgba(234, 178, 11) 4px;
     border-bottom: solid rgba(234, 178, 11) 4px;
     border-radius: 8px;
+    display: flex;
+    flex-direction: column;
     animation: levelsSlide 0.6s;
 }
 
@@ -367,6 +378,7 @@ div[id^="player"] {
     border-right: solid rgba(234, 178, 11) 4px;
     border-bottom: solid rgba(234, 178, 11) 4px;
     border-radius: 8px;
+    display: flex;
     animation: levelsSlideBack 0.3s;
 }
 

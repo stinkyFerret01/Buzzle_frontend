@@ -34,23 +34,80 @@
 }
 
 .headerGameTitles {
-    width: 100%;
-    height: 1.15rem;
+    min-width: 14rem;
+    height: 20rem;
     display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.headerGameTitles2 {
+    width: 14rem;
+    height: 2.15rem;
+    background-color: blue;
+    display: flex;
+    justify-content: space-around;
     box-sizing: border-box;
 }
 
 .headerGameTitle {
     overflow: hidden;
-    width: 33.33%;
-    min-width: 33.33%;
-    height: 100%;
     color: aliceblue;
     font-size: 13px;
     font-weight: bold;
     text-align: center;
-    background-color: rgb(215, 213, 213);
+    background-color: gray;
     box-sizing: border-box;
+}
+
+.headerGameTitleValid {
+    font-size: 1rem;
+    font-weight: bold;
+    width: 9rem;
+    height: 3.5rem;
+    background-color: rgba(234, 178, 11) ; 
+}
+
+.headerGameTitleNew {
+    font-size: 1rem;
+    font-weight: bold;
+    width: 9rem;
+    height: 3.5rem;
+    background-color: purple;
+}
+
+.headerGameTitleSearch {
+    font-size: 1rem;
+    font-weight: bold;
+    width: 9rem;
+    height: 3.5rem;
+    background-color: green;
+}
+
+.headerGameTitleEdit {
+    font-size: 1rem;
+    font-weight: bold;
+    width: 9rem;
+    height: 3.5rem;
+    background-color: blue;
+}
+
+.headerGameTitleValid:hover {
+    background-color: orangered;
+}
+
+.headerGameTitleNew:hover {
+    background-color: orangered;
+}
+
+.headerGameTitleSearch:hover {
+    background-color: orangered;
+}
+
+.headerGameTitleEdit:hover {
+    background-color: orangered;
 }
 
 .headerGameTitle:hover {
@@ -59,7 +116,7 @@
 
 .headerGameDivs {
     height: 100%;
-    height: 4.1rem;
+    height: 17.9rem;
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
@@ -72,10 +129,15 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     box-sizing: border-box;
 }
 
 .levelSelectorValid {
+    width: 9rem;
+    min-height: 2rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
     font-weight: bold;
     background-color: goldenrod;
     font-size: 0.8rem;
@@ -88,6 +150,10 @@
 }
 
 .levelSelectorNew {
+    width: 9rem;
+    min-height: 2rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
     font-weight: bold;
     color: aliceblue;
     background-color: purple;
@@ -99,8 +165,13 @@
 }
 
 .levelSelectorSearch {
+    width: 9rem;
+    min-height: 2rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
     font-weight: bold;
     background-color: rgb(11, 170, 11);
+    border-radius: 4px;
     font-size: 0.8rem;
 }
 
@@ -108,14 +179,3 @@
     background-color: rgb(32, 215, 32);
 }
 
-/* RIGHT */
-
-.headerEditButton {
-    width: 33,33%;
-    height: 100%;
-    background-color: goldenrod;
-}
-
-.headerEditButton:hover {
-    background-color: rgb(246, 202, 91);
-}
