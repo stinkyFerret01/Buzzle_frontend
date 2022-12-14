@@ -42,11 +42,14 @@ main {
 }
 
 footer {
+  position: relative;
   width: 90%;
   max-width: 42.7rem;
   height: 6rem;
   background-color:  rgba(234, 178, 11);
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .spreadOver {
@@ -62,20 +65,17 @@ footer {
 
 
 
-.audio {
-  z-index: 20;
-  position: absolute;
-  top: 3rem;
-  left: 0;
-  min-width: 15rem;
-  min-height: 3rem;
+.audioContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .audioPlayer {
   z-index: 20;
-  position: absolute;
+  /* position: absolute;
   bottom: 0rem;
-  left: 0;
+  left: 0; */
   min-width: 15rem;
   min-height: 3rem;
 }

@@ -123,11 +123,25 @@ const GamePage = ({
     }
   };
 
+  //-- starter
+  const starter = () => {
+    if (game[0] === "Win!" || game[0] === "Lost!") {
+      let refresh = [...level];
+      setLevel(refresh);
+      setCops("loading");
+    } else if (game[0] === "Playing...") {
+      setGame(["Ready?", "CONTINUER"]);
+    } else {
+      setGame(["Playing...", "STOP"]);
+    }
+  };
+
   //-- handleKeyDown interprète les commandes du clavier
   const handleKeyDown = (event, k) => {
+    let key = event.key;
+    console.log(key);
     if (game[0] === "Playing...") {
       handleBackClick();
-      let key = event.key;
       if (event === "pad") {
         key = k;
       }
@@ -234,14 +248,12 @@ const GamePage = ({
         }
       }
     }
+    if (key === "Enter") {
+      starter();
+    }
   };
 
   ///--USEEFFECT --///
-  //-- screenSetter
-  useEffect(() => {
-    setBigScreen(true);
-  }, [setBigScreen]);
-
   //-- keyboardListener (reçois et transmet les commandes claviers)
   //-- (PROBEMO dépendance handleKeyDown)
   useEffect(() => {
@@ -297,6 +309,7 @@ const GamePage = ({
   useEffect(() => {
     //-- baseBuilder construit le tableau du niveau choisi
     const baseBuilder = (lvl) => {
+      setCops([]);
       let eBase = [];
       let basePlayer = [];
       let baseObjects = [];
@@ -779,12 +792,7 @@ const GamePage = ({
             <button
               className="startButton"
               onClick={() => {
-                if (game[0] === "Win!" || game[0] === "Lost!") {
-                  let refresh = [...level];
-                  setLevel(refresh);
-                } else {
-                  setGame(["Playing...", "STOP"]);
-                }
+                starter();
               }}
             >
               {game[1]}

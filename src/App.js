@@ -45,6 +45,11 @@ function App() {
     fetcher();
   }, [backend, setLevels]);
 
+  //-- screenSetter
+  useEffect(() => {
+    setBigScreen(true);
+  }, [setBigScreen]);
+
   ///-- RENDER --///
   return (
     <div

@@ -55,10 +55,6 @@ const LevelsSlide = ({
   return (
     <section
       onMouseLeave={() => setDisplayLevels(false)}
-      onClick={() => {
-        displayLevelsToggler();
-      }}
-      // onMouseEnter={() => setDisplayLevels(true)}
       style={
         location.pathname !== "/game/game"
           ? { display: "none" }
@@ -124,7 +120,7 @@ const LevelsSlide = ({
                 }
                 onClick={() => gamDivDefiner("validé")}
               >
-                validés
+                VALIDES
               </button>
               <button
                 className="headerGameTitle2"
@@ -133,7 +129,7 @@ const LevelsSlide = ({
                 }
                 onClick={() => gamDivDefiner("à tester")}
               >
-                nouveaux
+                NOUVEAUX
               </button>
               <button
                 className="headerGameTitle2"
@@ -144,13 +140,13 @@ const LevelsSlide = ({
                 }
                 onClick={() => gamDivDefiner("rechercher")}
               >
-                rechercher
+                RECHERCHER
               </button>
               <button
                 className="headerGameTitleBack"
                 onClick={() => gamDivDefiner("none")}
               >
-                BACK
+                RETOUR
               </button>
               <div className="headerGameTitle"></div>
             </div>

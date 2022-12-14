@@ -52,16 +52,19 @@ const Header = ({ theme, setTheme, setDisplayAys }) => {
           <h3>PLAY BUZZLE!</h3>
         </button>
       )}
-      <button
-        className="navButton"
-        onClick={
-          location.pathname === "/"
-            ? () => navigate("/editor")
-            : () => setDisplayAys("editor")
-        }
-      >
-        <h3>EDIT</h3>
-      </button>
+      {location.pathname !== "/editor" &&
+        location.pathname !== "/game/editor" && (
+          <button
+            className="navButton"
+            onClick={
+              location.pathname === "/"
+                ? () => navigate("/editor")
+                : () => setDisplayAys("editor")
+            }
+          >
+            <h3>EDIT</h3>
+          </button>
+        )}
     </header>
   );
 };

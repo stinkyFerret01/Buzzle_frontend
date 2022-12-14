@@ -6,7 +6,7 @@ const Footer = () => {
   ///-- RENDER --///
   return (
     <footer>
-      <div className="audio">
+      <div className="audioContainer">
         {/* <iframe
             src="../Audio/Stranger-things-124008.mp3"
             allow="autoplay"

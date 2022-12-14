@@ -194,7 +194,6 @@ div[id^="player"] {
     right:0rem;
     width: 4rem;
     height: 6rem;
-    background-color: red;
     display: flex;
     justify-content: space-around;
     align-items: center;
