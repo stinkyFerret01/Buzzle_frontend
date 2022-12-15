@@ -448,7 +448,7 @@ div[id^="player"] {
     border: solid orangered 4px;
 }
 
-.contextButton {
+.contextButton2 {
     z-index: 4;
     position: absolute;
     top: 0.5rem;
@@ -472,7 +472,7 @@ div[id^="player"] {
     border: solid orangered 4px;
 }
 
-.contextButton2 {
+.contextButton {
     z-index: 4;
     position: absolute;
     top: 0.5rem;
@@ -516,6 +516,26 @@ div[id^="player"] {
     align-items: center;
 }
 
+.contextDisplayer2 {
+    z-index: 4;
+    position: absolute;
+    top: 0.5rem;
+    left: calc(50% - 7rem);
+    width: 14rem;
+    /* height: 6rem; */
+    font-size: 1rem;
+    font-weight: bold;
+    padding-bottom: 0.4rem;
+    color: rgba(234, 178, 11,0.5);
+    background-color: transparent;
+    border: solid rgba(234, 178, 11,0.5) 4px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .contextDisplayer:hover {
     color: orangered;
     border: solid orangered 4px;
@@ -540,8 +560,28 @@ div[id^="player"] {
     font-size: 2.5rem;
     font-weight: bold;
     color: rgba(234, 178, 11);
-    background-color: black;
+    /* background-color: black; */
+    background-color: transparent;
     border: solid rgba(234, 178, 11) 4px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.burgerMenuSlide2 {
+    z-index: 3;
+    position: absolute;
+    top: calc(50% - 1.5rem);
+    right: -1.5rem;
+    width: 3rem;
+    height: 3rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: rgba(234, 178, 11,0.5);
+    /* background-color: black; */
+    background-color: transparent;
+    border: solid rgba(234, 178, 11,0.5) 4px;
     border-radius: 4px;
     display: flex;
     justify-content: center;
@@ -554,27 +594,14 @@ div[id^="player"] {
 }
 
 /* LEVELSSLIDE */
-/* .levelsSlideContainer {
-    z-index: 5;
-    position: absolute;
-    overflow-y: scroll;
-    top: calc(50% - 10rem);
-    left: -0.5rem;
-} */
-
 .levelsSlide {
     z-index: 5;
     position: absolute;
-    /* overflow-y: scroll; */
     top: calc(50% - 10rem);
     left: -0.5rem;
-    width: 15.6rem;
+    width: 12.6rem;
     height: 20rem;
     max-height: 100%;
-    background-color: black;
-    border-top: solid rgba(234, 178, 11) 4px;
-    border-right: solid rgba(234, 178, 11) 4px;
-    border-bottom: solid rgba(234, 178, 11) 4px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -586,14 +613,10 @@ div[id^="player"] {
     z-index: 5;
     position: absolute;
     top: calc(50% - 10rem);
-    left: -14.5rem;
-    width: 15.6rem;
+    left: -11.5rem;
+    width: 12.6rem;
     height: 20rem;
-    /* max-height: 100%; */
-    background-color: black;
-    border-top: solid rgba(234, 178, 11) 4px;
-    border-right: solid rgba(234, 178, 11) 4px;
-    border-bottom: solid rgba(234, 178, 11) 4px;
+    max-height: 100%;
     display: flex;
     animation: levelsSlideBack 0.2s;
 }
@@ -611,23 +634,22 @@ div[id^="player"] {
 
 .headerGameTitles2 {
     overflow: hidden;
-    overflow-x: scroll;
-    width: 15rem;
-    height: 3.5rem;
-    background-color: black;
+    width: 9rem;
+    height: 2rem;
+    margin-bottom: 1rem;
     display: flex;
-    justify-content: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-content: flex-end;
+    /* justify-content: flex-start; */
     box-sizing: border-box;
-}
-
-.headerGameTitles2::-webkit-scrollbar {
-    display: none;
 }
 
 .levelsCategories {
     width: 100%;
     height: 100%;
     padding-left: 0.5rem;
+    margin-left: -1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -636,10 +658,10 @@ div[id^="player"] {
 }
 
 .headerGameTitle {
-    font-size: 1rem;
-    font-weight: bold;
     width: 9rem;
-    height: 3.5rem;
+    height: 2.5rem;
+    font-weight: bold;
+    font-size: 0.8rem;
     background-color: rgba(234, 178, 11);
 }
 
@@ -648,10 +670,10 @@ div[id^="player"] {
 }
 
 .headerGameTitleInact {
-    font-size: 1rem;
-    font-weight: bold;
     width: 9rem;
-    height: 3.5rem;
+    height: 2.5rem;
+    font-weight: bold;
+    font-size: 0.8rem;
     background-color: gray;
 }
 
@@ -692,10 +714,10 @@ div[id^="player"] {
 } */
 
 .headerGameTitleEdit {
-    font-size: 1rem;
-    font-weight: bold;
     width: 9rem;
-    height: 3.5rem;
+    height: 2.5rem;
+    font-weight: bold;
+    font-size: 0.8rem;
     background-color: blue;
 }
 
@@ -704,27 +726,16 @@ div[id^="player"] {
 }
 
 .headerGameTitle2 {
-    height: 3.5rem;
-    min-width: 8rem;
+    height: 2rem;
+    min-width: 2rem;
     font-size: 1rem;
     font-weight: bold;
+    margin-left: 0.3rem;
     background-color: rgba(234, 178, 11);
 }
 
 .headerGameTitle2:hover {
     background-color: orangered;
-}
-
-.headerGameTitleBack {
-    font-size: 1rem;
-    font-weight: bold;
-    min-width: 5rem;
-    height: 3.5rem;
-    background-color: rgba(234, 178, 11);
-}
-
-.headerGameTitleBack:hover {
-    background-color:orangered;
 }
 
 .headerGameDivs {
@@ -797,7 +808,7 @@ div[id^="player"] {
 
 @keyframes levelsSlide {
     from {  
-        left: -14.5rem;
+        left: -11.5rem;
     }
     to { 
         left: -0.5rem;
@@ -810,8 +821,7 @@ div[id^="player"] {
         left: -0.5rem;
     }
     to { 
-        left: -14.5rem;
+        left: -11.5rem;
         display: none;
-        background-color: black;
     }
 }

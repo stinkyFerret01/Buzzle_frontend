@@ -730,6 +730,7 @@ const GamePage = ({
           setLevel={setLevel}
           setLevelTitle={setLevelTitle}
           setLevelContext={setLevelContext}
+          setDisplayContext={setDisplayContext}
           game={game}
           levels={levels}
           setLevels={setLevels}
@@ -760,7 +761,11 @@ const GamePage = ({
         </button>
         {displayContext ? (
           <button
-            className="contextDisplayer"
+            className={
+              game[0] !== "Playing..."
+                ? "contextDisplayer"
+                : "contextDisplayer2"
+            }
             onClick={() => {
               contextToggler();
             }}

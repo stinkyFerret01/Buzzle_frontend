@@ -9,6 +9,7 @@ const LevelsSlide = ({
   setLevel,
   setLevelTitle,
   setLevelContext,
+  setDisplayContext,
   game,
   setDisplayAys,
   displayLevels,
@@ -33,9 +34,31 @@ const LevelsSlide = ({
   };
 
   const levelSetter = (lvl) => {
-    setLevel(lvl.pattern);
-    setLevelTitle(lvl.name);
-    setBigScreen(true);
+    if (lvl === "TUTO") {
+      const tuto1 = {
+        pattern: [
+          ".........",
+          "WWWWWWWWW",
+          "WB..W...W",
+          "W.P.W.P.W",
+          "WWHWW...E",
+          "W.....p.W",
+          "W.......W",
+          "WWWWWWWWW",
+          ".........",
+        ],
+        name: "TUTO 1",
+        context: "posez la boîte sur la plaque de pression pour sortir",
+      };
+      setLevel(tuto1.pattern);
+      setLevelTitle(tuto1.name);
+      setLevelContext(tuto1.context);
+      setDisplayContext(true);
+    } else {
+      setLevel(lvl.pattern);
+      setLevelTitle(lvl.name);
+      setBigScreen(true);
+    }
   };
 
   //-- displayLevelsToggler
@@ -62,7 +85,9 @@ const LevelsSlide = ({
     >
       <div className={displayLevels ? "levelsSlide" : "levelsSlide2"}>
         <button
-          className="burgerMenuSlide"
+          className={
+            game[0] !== "Playing..." ? "burgerMenuSlide" : "burgerMenuSlide2"
+          }
           onClick={() => {
             displayLevelsToggler();
           }}
@@ -71,6 +96,14 @@ const LevelsSlide = ({
         </button>
         {gameDiv === "none" ? (
           <div className="presTitlesContainer">
+            <div>
+              <button
+                className="headerGameTitle"
+                onClick={() => levelSetter("TUTO")}
+              >
+                TUTO
+              </button>
+            </div>
             <div>
               <button
                 className="headerGameTitle"
@@ -119,7 +152,7 @@ const LevelsSlide = ({
                 }
                 onClick={() => gamDivDefiner("validé")}
               >
-                VALIDES
+                V
               </button>
               <button
                 className="headerGameTitle2"
@@ -128,7 +161,7 @@ const LevelsSlide = ({
                 }
                 onClick={() => gamDivDefiner("à tester")}
               >
-                NOUVEAUX
+                N
               </button>
               <button
                 className="headerGameTitle2"
@@ -139,13 +172,13 @@ const LevelsSlide = ({
                 }
                 onClick={() => gamDivDefiner("rechercher")}
               >
-                RECHERCHER
+                R
               </button>
               <button
-                className="headerGameTitleBack"
+                className="headerGameTitle2"
                 onClick={() => gamDivDefiner("none")}
               >
-                RETOUR
+                <p>{"<"}</p>
               </button>
               <div className="headerGameTitle"></div>
             </div>
