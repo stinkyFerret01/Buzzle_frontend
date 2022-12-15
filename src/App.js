@@ -64,6 +64,7 @@ function App() {
             backend={backend}
             theme={theme}
             setTheme={setTheme}
+            game={game}
             levels={levels}
             setLevels={setLevels}
             setLevel={setLevel}

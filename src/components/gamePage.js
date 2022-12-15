@@ -145,7 +145,7 @@ const GamePage = ({
       setLevel(refresh);
       setCops([]);
     } else if (game[0] === "Playing...") {
-      setGame(["Ready?", "CONTINUER"]);
+      setGame(["Pause...", "CONTINUER", "RESTART!"]);
     } else {
       setGame(["Playing...", "STOP"]);
     }
@@ -153,7 +153,7 @@ const GamePage = ({
 
   //-- gameQuiter
   const gameQuiter = (page) => {
-    if (game[0] !== "Playing...") {
+    if (game[0] !== "Playing..." && game[0] !== "Pause...") {
       navigate(`/${page}`);
     } else {
       setDisplayAys(page);
@@ -928,14 +928,21 @@ const GamePage = ({
         )}
         {game[0] !== "Playing..." && level !== "none" && (
           <article className="startPopper">
-            <button
-              className="startButton"
-              onClick={() => {
-                starter();
-              }}
-            >
-              {game[1]}
-            </button>
+            <div className="startButtonContainer">
+              <button
+                className="startButton"
+                onClick={() => {
+                  starter();
+                }}
+              >
+                {game[1]}
+              </button>
+              {game[0] === "Pause..." && (
+                <button className="startButton" onClick={() => {}}>
+                  {game[2]}
+                </button>
+              )}
+            </div>
           </article>
         )}
       </section>

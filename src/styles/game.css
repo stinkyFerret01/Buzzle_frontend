@@ -95,9 +95,21 @@
     align-items: center;
 }
 
-.startButton {
+.startButtonContainer {
     z-index: 3;
     position: absolute;
+    pointer-events: auto;
+    width: 10rem;
+    height: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.startButton {
+    z-index: 3;
+    /* position: absolute; */
     pointer-events: auto;
     color:white;
     font-weight: bold;
