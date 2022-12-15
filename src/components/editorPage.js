@@ -14,6 +14,9 @@ const EditorPage = ({
   backend,
   setDisplayWfr,
   setLevel,
+  setLevelTitle,
+  setLevelContext,
+  levels,
   edited,
   setEdited,
   editBase,
@@ -29,8 +32,8 @@ const EditorPage = ({
   const [oSelection, setOSelection] = useState("W");
   const [oMessage, setOMessage] = useState(["mur"]);
   const [base, setBase] = useState("loading");
-  const [lvlName, setLvlName] = useState("");
-  const [lvlStatus] = useState("new");
+  const [lvlName, setLvlName] = useState("nom du niveau");
+  const [lvlContext, setLvlContext] = useState("aucune information");
   const [editable, setEditable] = useState("not ready");
 
   //-- config
@@ -72,21 +75,27 @@ const EditorPage = ({
   };
 
   const editer = async () => {
+    let context = "no info";
+    if (edited[2] !== "") {
+      context = edited[2];
+    }
     if (edited[0] !== "none" && edited[1] !== "") {
-      try {
-        setDisplayWfr(true);
-        const response = await axios.post(`${backend}/edit`, {
-          pattern: edited[0],
-          name: edited[1],
-          status: edited[2],
-        });
-        console.log(response.data);
-        console.log(response.data.level);
-        if (response.data.message === "votre niveau a été édité!") {
-          setDisplayWfr(false);
-          setLevels((prevState) => [...prevState, response.data.level]);
-        }
-      } catch (error) {}
+      if (levels.findIndex((lvl) => lvl.name === edited[1])) {
+        try {
+          setDisplayWfr(true);
+          const response = await axios.post(`${backend}/edit`, {
+            pattern: edited[0],
+            name: edited[1],
+            context: context,
+          });
+          console.log(response.data);
+          console.log(response.data.level);
+          if (response.data.message === "votre niveau a été édité!") {
+            setDisplayWfr(false);
+            setLevels((prevState) => [...prevState, response.data.level]);
+          }
+        } catch (error) {}
+      }
     }
   };
 
@@ -137,9 +146,19 @@ const EditorPage = ({
 
   //- tryLevel
   const levelTester = () => {
+    let name = lvlName;
+    if (lvlName.length < 3) {
+      name = "nom du niveau";
+    }
+    let context = lvlContext;
+    if (lvlContext === "") {
+      context = "aucune information";
+    }
     if (editable !== "not ready") {
       setLevel(edited[0]);
-      setEditBase([base, lvlName]);
+      setLevelTitle(name);
+      setLevelContext(context);
+      setEditBase([base, lvlName, context]);
       navigate("/game/editor");
     }
   };
@@ -198,6 +217,7 @@ const EditorPage = ({
     setBase(newBase);
     if (editBase !== "none") {
       setLvlName(editBase[1]);
+      setLvlContext(editBase[2]);
     }
   }, [ligns, colons, editBase]);
 
@@ -255,19 +275,19 @@ const EditorPage = ({
         }
         pattern.push(newLign);
         if (necs.length === necsToCheck.length) {
-          setEdited([pattern, lvlName, lvlStatus]);
+          setEdited([pattern, lvlName, lvlContext]);
           setEditable("good for testing");
-          if (lvlName !== "none" && lvlName.length > 2) {
+          if (lvlName.length > 2) {
             setEditable("ready to be edited");
           }
         } else {
-          setEdited(["none", lvlName, lvlStatus]);
+          setEdited(["none", "nom du niveau", "aucune information"]);
           setEditable("not ready");
         }
       }
     };
     base !== "loading" && patternBuilder(base);
-  }, [base, setEdited, lvlName, lvlStatus]);
+  }, [base, setEdited, lvlName, lvlContext]);
 
   useEffect(() => {}, [oMessage]);
 
@@ -427,6 +447,7 @@ const EditorPage = ({
                               setBase={setBase}
                               setEditBase={setEditBase}
                               lvlName={lvlName}
+                              lvlContext={lvlContext}
                               bigScreen={bigScreen}
                               xy={[indexL, indexo]}
                             />
@@ -576,8 +597,8 @@ const EditorPage = ({
             placeholder="choisissez un nom"
             value={lvlName}
             onChange={(event) => {
-              let test = event.target.value;
-              if (test.length < 12) {
+              let name = event.target.value;
+              if (name.length < 12) {
                 setLvlName(event.target.value);
               }
             }}
@@ -587,6 +608,26 @@ const EditorPage = ({
             style={{ fontSize: "11px", lineHeight: "1px" }}
           >
             entre 3 et 11 caractères
+          </p>
+        </div>
+        <div className="levelContextSelect">
+          <h4 className="noHovText">Description du Niveau</h4>
+          <input
+            type="text"
+            placeholder="ajoutez une description (optionel)"
+            value={lvlContext}
+            onChange={(event) => {
+              let context = event.target.value;
+              if (context.length < 101) {
+                setLvlContext(event.target.value);
+              }
+            }}
+          />
+          <p
+            className="noHovText"
+            style={{ fontSize: "11px", lineHeight: "1px" }}
+          >
+            jusqu'à 100 caractères
           </p>
         </div>
         {editable !== "not ready" && (

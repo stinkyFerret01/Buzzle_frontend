@@ -14,6 +14,7 @@ const Pos = ({
   setBase,
   setEditBase,
   lvlName,
+  lvlContext,
   xy,
   bigScreen,
 }) => {
@@ -250,7 +251,7 @@ const Pos = ({
 
     setBase(newBase);
     // setEditBase([base, lvlName]);
-    setEditBase([newBase, lvlName]);
+    setEditBase([newBase, lvlName, lvlContext]);
   };
 
   //-- USEEFFECT

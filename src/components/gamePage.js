@@ -420,8 +420,8 @@ const GamePage = ({
   //-- presLevel (défini le niveau par défault (en dur))
   useEffect(() => {
     if (
-      level === "none" ||
-      (level === edited[0] && location.pathname === "/game/game")
+      location.pathname === "/game/game" &&
+      (level === edited[0] || level === "none")
     ) {
       const tuto1 = {
         pattern: [

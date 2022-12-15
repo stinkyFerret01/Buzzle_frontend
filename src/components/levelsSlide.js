@@ -57,6 +57,11 @@ const LevelsSlide = ({
     } else {
       setLevel(lvl.pattern);
       setLevelTitle(lvl.name);
+      if (lvl.context) {
+        setLevelContext(lvl.context);
+      } else {
+        setLevelContext("aucune information");
+      }
       setBigScreen(true);
     }
   };
@@ -88,11 +93,12 @@ const LevelsSlide = ({
           className={
             game[0] !== "Playing..." ? "burgerMenuSlide" : "burgerMenuSlide2"
           }
+          style={displayLevels ? { paddingLeft: "0.3rem" } : {}}
           onClick={() => {
             displayLevelsToggler();
           }}
         >
-          {displayLevels ? "<" : "+"}
+          {displayLevels ? "<" : ">"}
         </button>
         {gameDiv === "none" ? (
           <div className="presTitlesContainer">

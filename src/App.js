@@ -107,6 +107,9 @@ function App() {
               <EditorPage
                 backend={backend}
                 setLevel={setLevel}
+                setLevelTitle={setLevelTitle}
+                setLevelContext={setLevelContext}
+                levels={levels}
                 setLevels={setLevels}
                 edited={edited}
                 setEdited={setEdited}
