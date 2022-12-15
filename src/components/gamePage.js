@@ -139,8 +139,11 @@ const GamePage = ({
   };
 
   //-- starter
-  const starter = () => {
-    if (game[0] === "Win!" || game[0] === "Lost!") {
+  const starter = (o) => {
+    if (o === undefined) {
+      o = "none";
+    }
+    if (game[0] === "Win!" || game[0] === "Lost!" || o === "refresh") {
       let refresh = [...level];
       setLevel(refresh);
       setCops([]);
@@ -273,6 +276,9 @@ const GamePage = ({
     }
     if (key === "Enter") {
       starter();
+    }
+    if (key === "r") {
+      starter("refresh");
     }
   };
 
@@ -919,10 +925,14 @@ const GamePage = ({
             }}
           >
             <p className="keyInfo">
-              utiliser la touche <span className="keyInfoSpan">"entrée"</span>{" "}
+              utilisez la touche <span className="keyInfoSpan">"entrée"</span>{" "}
               pour arréter/démarrer le jeu, les{" "}
               <span className="keyInfoSpan">flèches</span> pour vous déplacer et
               la touche <span className="keyInfoSpan">"a"</span> pour intéragir.
+            </p>
+            <p className="keyInfo">
+              vous pouver utiliser la touche{" "}
+              <span className="keyInfoSpan">"r"</span> pour redémarrer le jeu.
             </p>
           </section>
         )}
@@ -938,7 +948,12 @@ const GamePage = ({
                 {game[1]}
               </button>
               {game[0] === "Pause..." && (
-                <button className="startButton" onClick={() => {}}>
+                <button
+                  className="startButton"
+                  onClick={() => {
+                    starter("refresh");
+                  }}
+                >
                   {game[2]}
                 </button>
               )}

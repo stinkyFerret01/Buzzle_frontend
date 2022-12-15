@@ -260,11 +260,12 @@ div[id^="player"] {
 .infoContainer {
     z-index: 3;
     overflow: hidden;
+    overflow-y: scroll;
     position: absolute;
     bottom: 0.5rem;
     right: 1.5rem;
     width: 12rem;
-    /* height: 10rem; */
+    max-height: 100%;
     text-align: center;
     color: rgba(234, 178, 11);
     padding-bottom: 1rem;
@@ -272,6 +273,10 @@ div[id^="player"] {
     flex-direction: column;
     margin-left: 1rem;
     box-sizing: border-box;
+}
+
+.infoContainer::-webkit-scrollbar {
+    display: none;
 }
 
 .commandInfo {
