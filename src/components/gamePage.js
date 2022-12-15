@@ -94,6 +94,12 @@ const GamePage = ({
 
   //-- okToMoveChecker vérifie si le déplacement du joueur est possible
   const okToMoveChecker = (o, id) => {
+    // console.log(o);
+    if (o === undefined) {
+      // console.log(cops);
+      // setCops([]);
+      return false;
+    }
     let oStrict = o.slice(0, 1);
     let blocker = ["W", "B", "D", "K", "L", "M", "E"];
     if (id === "cop") {
@@ -143,12 +149,14 @@ const GamePage = ({
     if (o === undefined) {
       o = "none";
     }
-    if (game[0] === "Win!" || game[0] === "Lost!" || o === "refresh") {
+    if (game === "Ready?") {
+    } else if (game[0] === "Win!" || game[0] === "Lost!" || o === "refresh") {
       let refresh = [...level];
+      // setGame(["Ready?", "test", "RESTART"]);
       setLevel(refresh);
       setCops([]);
     } else if (game[0] === "Playing...") {
-      setGame(["Pause...", "CONTINUER", "RESTART!"]);
+      setGame(["Pause...", "CONTINUER", "RESTART"]);
     } else {
       setGame(["Playing...", "STOP"]);
     }
@@ -295,6 +303,9 @@ const GamePage = ({
     // eslint-disable-next-line
   }, [game, player, grid]);
 
+  //-- copsRefresher
+  // useEffect(() => {}, []);
+
   //-- actionDefiner (défini l'action possible)
   useEffect(() => {
     if (
@@ -338,7 +349,6 @@ const GamePage = ({
   useEffect(() => {
     //-- baseBuilder construit le tableau du niveau choisi
     const baseBuilder = (lvl) => {
-      setCops([]);
       let eBase = [];
       let basePlayer = [];
       let baseObjects = [];
@@ -438,6 +448,7 @@ const GamePage = ({
         name: "TUTO 1",
         context: "posez la boîte sur la plaque de pression pour sortir",
       };
+      setCops([]);
       setLevel(tuto1.pattern);
       setLevelTitle(tuto1.name);
       setLevelContext(tuto1.context);
@@ -527,6 +538,9 @@ const GamePage = ({
       };
       if (difficulty === "hard") {
         interval = setTimeout(checkStart, 500);
+        if (game[0] !== "Playing...") {
+          clearTimeout(interval);
+        }
       } else if (difficulty === "medium") {
         interval = setTimeout(checkStart, 800);
       } else if (difficulty === "easy") {
@@ -542,7 +556,6 @@ const GamePage = ({
 
   //-- autoTuttoSetter
   useEffect(() => {
-    //-- tutoSetter
     const tutoSetter = () => {
       const tuto1 = {
         pattern: [
@@ -661,13 +674,17 @@ const GamePage = ({
       }
       let exit = objects.find((obj) => obj[2] === "e");
       if (exit && exit[0] === player[0] && exit[1] === player[1]) {
-        setGame(["Win!", "REFRESH"]);
+        if (game[0] === "Playing...") {
+          setGame(["Win!", "REFRESH"]);
+        }
       }
       let caught = cops.findIndex(
         (cop) => cop[0] === player[0] && cop[1] === player[1]
       );
       if (caught >= 0) {
-        setGame(["Lost!", "REFRESH"]);
+        if (game[0] === "Playing...") {
+          setGame(["Lost!", "REFRESH"]);
+        }
       }
     }
     for (let L = 0; L < base.length; L++) {
@@ -703,7 +720,7 @@ const GamePage = ({
       newGrid.push(newLign);
     }
     setGrid(newGrid);
-  }, [setGame, base, player, objects, cops, displayPad]);
+  }, [game, setGame, base, player, objects, cops, displayPad]);
 
   ///-- RENDER --///
   return (
@@ -947,6 +964,7 @@ const GamePage = ({
               <button
                 className="startButton"
                 onClick={() => {
+                  console.log(game);
                   starter();
                 }}
               >
