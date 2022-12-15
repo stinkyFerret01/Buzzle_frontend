@@ -32,7 +32,7 @@ const EditorPage = ({
   const [oSelection, setOSelection] = useState("W");
   const [oMessage, setOMessage] = useState(["mur"]);
   const [base, setBase] = useState("loading");
-  const [lvlName, setLvlName] = useState("nom du niveau");
+  const [lvlName, setLvlName] = useState("NOM");
   const [lvlContext, setLvlContext] = useState("aucune information");
   const [editable, setEditable] = useState("not ready");
 
@@ -281,7 +281,7 @@ const EditorPage = ({
             setEditable("ready to be edited");
           }
         } else {
-          setEdited(["none", "nom du niveau", "aucune information"]);
+          setEdited(["none", "NOM", "aucune information"]);
           setEditable("not ready");
         }
       }
@@ -598,7 +598,7 @@ const EditorPage = ({
             value={lvlName}
             onChange={(event) => {
               let name = event.target.value;
-              if (name.length < 12) {
+              if (name.length < 14) {
                 setLvlName(event.target.value);
               }
             }}
@@ -607,7 +607,7 @@ const EditorPage = ({
             className="noHovText"
             style={{ fontSize: "11px", lineHeight: "1px" }}
           >
-            entre 3 et 11 caractères
+            entre 3 et 13 caractères
           </p>
         </div>
         <div className="levelContextSelect">

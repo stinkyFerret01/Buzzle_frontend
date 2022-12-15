@@ -250,7 +250,7 @@ const Pos = ({
     }
 
     setBase(newBase);
-    // setEditBase([base, lvlName]);
+    // setEditBase([base, lvlName, lvlContext]);
     setEditBase([newBase, lvlName, lvlContext]);
   };
 
