@@ -304,7 +304,7 @@ const GamePage = ({
   }, [game, player, grid]);
 
   //-- copsRefresher
-  // useEffect(() => {}, []);
+  useEffect(() => {}, [level, cops]);
 
   //-- actionDefiner (défini l'action possible)
   useEffect(() => {

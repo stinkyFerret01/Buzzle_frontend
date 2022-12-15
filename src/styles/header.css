@@ -1,16 +1,96 @@
 /* HEADER */
-
-.headerSection {
-    width: 33.33%;
-    height: 100%;
-    box-sizing: border-box;
-}
-
-/* CENTER */
 .headerGame {
     overflow: hidden;
     width: 100%;
     box-sizing: border-box;
 }
 
+.headerSectionSides{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
 
+.headerConnectAndNav {
+    position: relative;
+    min-width: 10rem;
+    border-left: solid  rgba(234, 178, 11) 2px;
+    box-sizing: border-box;
+}
+
+.headerNav {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 40%;
+    height: 40%;
+    border-left: solid  rgba(234, 178, 11) 2px;
+    border-top: solid  rgba(234, 178, 11) 2px;
+    display: flex;
+    box-sizing: border-box;
+}
+
+.headerNavButton {
+    width: 50%;
+    height: 100%;
+    background-color: orange;
+}
+
+.headerTitle {
+    min-width: 16rem;
+    border-right: solid  rgba(234, 178, 11) 2px;
+    border-left: solid  rgba(234, 178, 11) 2px;
+    box-sizing: border-box;
+}
+
+.headerTitleButton {
+    width: 100%;
+    height: 100%;
+    background-color: orangered;
+}
+
+.headerOptions {
+    min-width: 10rem;
+    border-right: solid  rgba(234, 178, 11) 2px;
+    box-sizing: border-box;
+}
+
+.creatorPromo {
+    width: 50%;
+    height: 50%;
+    border-right: solid  rgba(234, 178, 11) 1px;
+    border-bottom: solid  rgba(234, 178, 11) 1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.creatorPromoTitle {
+    line-height: 0.6rem;
+    font-size: 0.7rem;
+    color: orange;
+}
+
+.creatorPromoTitle:hover {
+    cursor: default;
+}
+
+.creatorNav{
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.creatorLogo {
+    overflow: hidden;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.creatorLogo:hover {
+    cursor: alias;
+}

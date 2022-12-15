@@ -243,6 +243,16 @@
     align-items: center;
 }
 
+.levelContextSelect {
+    width: 100%;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .levelTester {
     width: 100%;
     display: flex;

@@ -10,6 +10,19 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const vidSides1 = [
+    "../Videos/presVid.mp4",
+    "../Videos/presVid.mp4",
+    "../Videos/presVid.mp4",
+    "../Videos/presVid.mp4",
+  ];
+  const vidSides2 = [
+    "../Videos/presVid.mp4",
+    "../Videos/presVid.mp4",
+    "../Videos/presVid.mp4",
+    "../Videos/presVid.mp4",
+  ];
+
   ///-- FONCTIONS --///
   const navigater = (to) => {
     if (to === "home") {
@@ -30,9 +43,54 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
   ///-- RENDER --///
   return (
     <header>
-      <section className="headerSection">
+      <section className="headerSectionSides">
+        {vidSides1.map((vid, index) => {
+          return (
+            <video width="50" height="22" loop autoPlay muted key={index}>
+              <source src={vid} type="video/mp4" />
+            </video>
+          );
+        })}
+      </section>
+      <section className="headerConnectAndNav">
         <button onClick={() => {}}>se connecter (inactif)</button>
+        <div className="headerNav">
+          {location.pathname !== "/" && (
+            <button
+              className="headerNavButton"
+              onClick={() => {
+                navigater("home");
+              }}
+            >
+              <h3 style={{ pointerEvents: "none" }}>H</h3>
+            </button>
+          )}
+          {location.pathname !== "/game/game" && (
+            <button
+              className="headerNavButton"
+              onClick={() => {
+                navigate("/game/game");
+              }}
+            >
+              <h3>P!</h3>
+            </button>
+          )}
+          {location.pathname !== "/editor" &&
+            location.pathname !== "/game/editor" && (
+              <button
+                className="headerNavButton"
+                onClick={() => {
+                  navigater("editor");
+                }}
+              >
+                <h3>E</h3>
+              </button>
+            )}
+        </div>
+      </section>
+      <section className="headerTitle">
         <button
+          className="headerTitleButton"
           onClick={() => {
             if (theme === "clear") {
               setTheme("dark");
@@ -44,37 +102,57 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
           THEME
         </button>
       </section>
-      {location.pathname !== "/" && (
-        <button
-          className="navButton"
-          onClick={() => {
-            navigater("home");
-          }}
-        >
-          <h3 style={{ pointerEvents: "none" }}>HOME</h3>
-        </button>
-      )}
-      {location.pathname !== "/game/game" && (
-        <button
-          className="navButton"
-          onClick={() => {
-            navigate("/game/game");
-          }}
-        >
-          <h3>PLAY BUZZLE!</h3>
-        </button>
-      )}
-      {location.pathname !== "/editor" &&
-        location.pathname !== "/game/editor" && (
-          <button
-            className="navButton"
-            onClick={() => {
-              navigater("editor");
-            }}
-          >
-            <h3>EDIT</h3>
-          </button>
-        )}
+      <section className="headerOptions">
+        <div className="creatorPromo">
+          <h3 className="creatorPromoTitle">Développeur:</h3>
+          <nav className="creatorNav">
+            <a
+              target="_blank"
+              href="https://www.lereacteur.io"
+              rel="noreferrer"
+            >
+              <img
+                className="creatorLogo"
+                src="../Images/logo-reacteur copie.jpeg"
+                alt="logo"
+              />
+            </a>
+            <a
+              target="_blank"
+              href="https://www.linkedin.com/in/christophe-lafon-549788243"
+              rel="noreferrer"
+            >
+              <img
+                className="creatorLogo"
+                src="../Images/logo-linkedin copie.png"
+                alt="logo"
+              />
+            </a>
+            <a
+              target="_blank"
+              href="https://github.com/stinkyFerret01"
+              rel="noreferrer"
+            >
+              <img
+                className="creatorLogo"
+                src="../Images/github copie.png"
+                alt="logo"
+              />
+            </a>
+          </nav>
+        </div>
+      </section>
+      <section className="headerSectionSides">
+        {vidSides2.map((vid, index) => {
+          return (
+            <video width="50" height="22" loop autoPlay muted key={index}>
+              <source src={vid} type="video/mp4" />
+            </video>
+          );
+        })}
+      </section>
+
+      <section className="headerSection"></section>
     </header>
   );
 };
