@@ -465,7 +465,7 @@ const GamePage = ({
     location,
   ]);
 
-  //-- copsMover (gère le déplacement des agents)
+  //-- counterAdder
   //-- (PROBEMO dépendance player)
   useEffect(() => {
     const counterAdder = () => {

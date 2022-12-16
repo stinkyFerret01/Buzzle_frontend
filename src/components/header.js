@@ -157,7 +157,6 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
           );
         })}
       </section>
-
       <section className="headerSection"></section>
     </header>
   );
