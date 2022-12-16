@@ -914,13 +914,13 @@ const GamePage = ({
           <div className="boardScrollerBlank"></div>
         </div>
         {displayPad && (
-          <section className="padContainer">
+          <section className={pad2 ? "padContainer2" : "padContainer"}>
             <button
               className={pad2 ? "padActivity2" : "padActivity"}
               onClick={() => handleKeyDown("pad", "a")}
             ></button>
             <button
-              className="padOption"
+              className={pad2 ? "padOption2" : "padOption"}
               onClick={() => {
                 padOptionToggler();
               }}

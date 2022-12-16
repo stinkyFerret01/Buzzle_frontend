@@ -211,6 +211,17 @@ div[id^="player"] {
     box-sizing: border-box;
 }
 
+.padContainer2 {
+    z-index: 1;
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    box-sizing: border-box;
+}
+
 .infoContainer {
     z-index: 3;
     overflow: hidden;
@@ -357,6 +368,21 @@ div[id^="player"] {
     margin: 0.5rem;
 }
 
+.padActivity2 {
+    position: absolute;
+    top: 2.25rem;
+    left: 2.25rem;
+    left: calc(100vw - 9.8rem);
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color:  gold;
+    background-color:  rgba(234, 178, 11) ;
+    border: solid rgba(234, 178, 11) 4px;
+    border: solid rgb(69, 120, 186) 4px;
+    border-radius: 8px;
+    margin: 0.5rem;
+}
+
 .padOption {
     position: absolute;
     top: -1rem;
@@ -366,20 +392,15 @@ div[id^="player"] {
     background-color: red;
 }
 
-.padActivity2 {
+.padOption2 {
     position: absolute;
-    top:2.25rem;
-    left:2.25rem;
-    width: 2.5rem;
-    height: 2.5rem;
-    background-color:  gold;
-    background-color:  rgba(234, 178, 11) ;
+    top: -1rem;
+    left: calc(100vw - 4rem);
+    width: 1rem;
+    height: 1rem;
     background-color: red;
-    border: solid rgba(234, 178, 11) 4px;
-    border: solid rgb(69, 120, 186) 4px;
-    border-radius: 8px;
-    margin: 0.5rem;
 }
+
 
 .gameToEditButton {
     z-index: 3;
