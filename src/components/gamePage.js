@@ -27,6 +27,7 @@ const GamePage = ({
 }) => {
   ///-- STATES --///
   const [displayPad, setDisplayPad] = useState(false);
+  const [pad2, setPad2] = useState(false);
   const [displayInfo, setDisplayInfo] = useState(false);
   const [base, setBase] = useState("loading");
   const [player, setPlayer] = useState("loading");
@@ -84,6 +85,15 @@ const GamePage = ({
       setDisplayContext(false);
     } else {
       setDisplayContext(true);
+    }
+  };
+
+  //-- pad OptionToggler
+  const padOptionToggler = () => {
+    if (pad2 === true) {
+      setPad2(false);
+    } else {
+      setPad2(true);
     }
   };
 
@@ -152,12 +162,13 @@ const GamePage = ({
     if (game === "Ready?") {
     } else if (game[0] === "Win!" || game[0] === "Lost!" || o === "refresh") {
       let refresh = [...level];
-      // setGame(["Ready?", "test", "RESTART"]);
       setLevel(refresh);
       setCops([]);
     } else if (game[0] === "Playing...") {
       setGame(["Pause...", "CONTINUER", "RESTART"]);
     } else {
+      setDisplayContext(false);
+      setDisplayInfo(false);
       setGame(["Playing...", "STOP"]);
     }
   };
@@ -538,7 +549,6 @@ const GamePage = ({
   useEffect(() => {
     const counterAdder = () => {
       setCounter(counter + 1);
-      console.log(counter);
     };
     if (game[0] === "Playing...") {
       if (difficulty === "hard") {
@@ -795,7 +805,7 @@ const GamePage = ({
               contextToggler();
             }}
           >
-            <h2 className="CButton">c</h2>
+            <h3>{levelTitle}</h3>
           </button>
         )}
         {location.pathname === "/game/editor" && (
@@ -811,7 +821,7 @@ const GamePage = ({
         {game[0] !== "Playing..." && cops.length > 0 && (
           <div className="difficultyDisplay">
             <button
-              className="difficultyButtonHard"
+              className="difficultyButton"
               onClick={() => {
                 difficultySetter("hard");
               }}
@@ -821,10 +831,10 @@ const GamePage = ({
                   : {}
               }
             >
-              <h3 DifButton>HARD</h3>
+              <h3>HARD</h3>
             </button>
             <button
-              className="difficultyButtonMedium"
+              className="difficultyButton"
               onClick={() => {
                 difficultySetter("medium");
               }}
@@ -834,10 +844,10 @@ const GamePage = ({
                   : {}
               }
             >
-              <h3 DifButton>MEDIUM</h3>
+              <h3>MEDIUM</h3>
             </button>
             <button
-              className="difficultyButtonEasy"
+              className="difficultyButton"
               onClick={() => {
                 difficultySetter("easy");
               }}
@@ -847,7 +857,7 @@ const GamePage = ({
                   : {}
               }
             >
-              <h3 DifButton>EASY</h3>
+              <h3>EASY</h3>
             </button>
           </div>
         )}
@@ -905,6 +915,18 @@ const GamePage = ({
         </div>
         {displayPad && (
           <section className="padContainer">
+            <button
+              className={pad2 ? "padActivity2" : "padActivity"}
+              onClick={() => handleKeyDown("pad", "a")}
+            ></button>
+            <button
+              className="padOption"
+              onClick={() => {
+                padOptionToggler();
+              }}
+            >
+              {pad2 ? "<->" : "><"}
+            </button>
             <div className="pad">
               <div className="padLigns">
                 <button
@@ -917,10 +939,11 @@ const GamePage = ({
                   className="padArrowLeft"
                   onClick={() => handleKeyDown("pad", "ArrowLeft")}
                 ></button>
-                <button
+                {/* <button
                   className="padActivity"
                   onClick={() => handleKeyDown("pad", "a")}
-                ></button>
+                ></button> */}
+                <div style={{ width: "3rem", height: "3rem" }}></div>
                 <button
                   className="padAction"
                   onClick={() => {}}
@@ -968,7 +991,6 @@ const GamePage = ({
               <button
                 className="startButton"
                 onClick={() => {
-                  console.log(game);
                   starter();
                 }}
               >

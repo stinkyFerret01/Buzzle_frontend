@@ -199,52 +199,6 @@ div[id^="player"] {
     margin-left: -6rem;
     } */
 
-.difficultyDisplay {
-    z-index: 4;
-    position: absolute;
-    top: calc(50% - 3rem);
-    right:0rem;
-    width: 4rem;
-    height: 6rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: column;
-}
-
-.difficultyButtonHard {
-    width: 4rem;
-    height: 1rem;
-    font-weight: bold;
-    background-color:  rgba(234, 178, 11);
-}
-
-.difficultyButtonHard:hover {
-    background-color: orangered;
-}
-
-.difficultyButtonMedium {
-    width: 4rem;
-    height: 1rem;
-    font-weight: bold;
-    background-color: rgba(234, 178, 11);
-}
-
-.difficultyButtonMedium:hover {
-    background-color: orangered;
-}
-
-.difficultyButtonEasy {
-    width: 4rem;
-    height: 1rem;
-    font-weight: bold;
-    background-color:  rgba(234, 178, 11);
-}
-
-.difficultyButtonEasy:hover {
-    background-color: orangered;
-}
-
 /* PAD */
 .padContainer {
     z-index: 1;
@@ -390,10 +344,37 @@ div[id^="player"] {
 }
 
 .padActivity {
+    position: absolute;
+    top:2.25rem;
+    left:2.25rem;
     width: 2.5rem;
     height: 2.5rem;
     background-color:  gold;
     background-color:  rgba(234, 178, 11) ;
+    border: solid rgba(234, 178, 11) 4px;
+    border: solid rgb(69, 120, 186) 4px;
+    border-radius: 8px;
+    margin: 0.5rem;
+}
+
+.padOption {
+    position: absolute;
+    top: -1rem;
+    left: 8rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: red;
+}
+
+.padActivity2 {
+    position: absolute;
+    top:2.25rem;
+    left:2.25rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color:  gold;
+    background-color:  rgba(234, 178, 11) ;
+    background-color: red;
     border: solid rgba(234, 178, 11) 4px;
     border: solid rgb(69, 120, 186) 4px;
     border-radius: 8px;
@@ -452,8 +433,8 @@ div[id^="player"] {
     z-index: 4;
     position: absolute;
     top: 0.5rem;
-    left: calc(50% - 1rem);
-    width: 2rem;
+    left: calc(50% - 5rem);
+    width: 10rem;
     height: 2rem;
     font-size: 2.1rem;
     font-weight: bold;
@@ -476,8 +457,8 @@ div[id^="player"] {
     z-index: 4;
     position: absolute;
     top: 0.5rem;
-    left: calc(50% - 1rem);
-    width: 2rem;
+    left: calc(50% - 5rem);
+    width: 10rem;
     height: 2rem;
     font-size: 2.1rem;
     font-weight: bold;
@@ -627,6 +608,7 @@ div[id^="player"] {
     width: 14rem;
     /* max-width: 100%; */
     height: 20rem;
+    margin-left: 1rem;
     display: flex;
     align-items: flex-start;
     justify-content: space-around;
@@ -678,42 +660,6 @@ div[id^="player"] {
     font-size: 0.8rem;
     background-color: gray;
 }
-
-/* .headerGameTitleValid {
-    font-size: 1rem;
-    font-weight: bold;
-    width: 9rem;
-    height: 3.5rem;
-    background-color: rgba(234, 178, 11) ; 
-}
-
-.headerGameTitleValid:hover {
-    background-color: orangered;
-} */
-
-/* .headerGameTitleNew {
-    font-size: 1rem;
-    font-weight: bold;
-    width: 9rem;
-    height: 3.5rem;
-    background-color: rgba(234, 178, 11);
-}
-
-.headerGameTitleNew:hover {
-    background-color: orangered;
-} */
-
-/* .headerGameTitleSearch {
-    font-size: 1rem;
-    font-weight: bold;
-    width: 9rem;
-    height: 3.5rem;
-    background-color: rgba(234, 178, 11);
-}
-
-.headerGameTitleSearch:hover {
-    background-color: orangered;
-} */
 
 .headerGameTitleEdit {
     width: 9rem;
@@ -836,6 +782,31 @@ div[id^="player"] {
         left: -11.5rem;
         display: none;
     }
+}
+
+.difficultyDisplay {
+    z-index: 4;
+    position: absolute;
+    top: calc(50% - 3rem);
+    right:0rem;
+    width: 4rem;
+    height: 6rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.difficultyButton {
+    width: 5rem;
+    height: 1.5rem;
+    font-weight: bold;
+    margin-right: 2rem;
+    background-color:  rgba(234, 178, 11);
+}
+
+.difficultyButton:hover {
+    background-color: orangered;
 }
 
 .loadingText {

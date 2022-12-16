@@ -1,6 +1,6 @@
 ///-- CONFIG --///
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 ///-- START --///
 const LevelsSlide = ({
@@ -22,7 +22,7 @@ const LevelsSlide = ({
   const searchedLevels = levels.filter(
     (lvl) => lvl.name.toUpperCase().indexOf(searchLvl.toUpperCase()) >= 0
   );
-  //   const navigate = useNavigate();
+  const navigate = useNavigate();
   const location = useLocation();
 
   ///-- FONCTIONS --///
@@ -33,6 +33,7 @@ const LevelsSlide = ({
     }
   };
 
+  //-- levelSetter
   const levelSetter = (lvl) => {
     if (lvl === "TUTO") {
       const tuto1 = {
@@ -48,7 +49,8 @@ const LevelsSlide = ({
           ".........",
         ],
         name: "TUTO 1",
-        context: "posez la boîte sur la plaque de pression pour sortir",
+        context:
+          "POSEZ LA BOITE SUR LA PLAQUE DE PRESSION POUR SORTIR (UTILISEZ LES 'FLèCHES' POUR VOUS DéPLACER ET LA TOUCHE 'A' POUR INTERRAGIR",
       };
       setLevel(tuto1.pattern);
       setLevelTitle(tuto1.name);
@@ -72,6 +74,15 @@ const LevelsSlide = ({
       setDisplayLevels(false);
     } else {
       setDisplayLevels(true);
+    }
+  };
+
+  //-- gameToEdit
+  const gameToEdit = () => {
+    if (game[0] === "Playing...") {
+      setDisplayAys("editor");
+    } else {
+      navigate("/editor");
     }
   };
 
@@ -137,7 +148,9 @@ const LevelsSlide = ({
             <div>
               <button
                 className="headerGameTitleEdit"
-                onClick={() => setDisplayAys("editor")}
+                onClick={() => {
+                  gameToEdit();
+                }}
               >
                 <h3>EDITER UN NIVEAU</h3>
               </button>
