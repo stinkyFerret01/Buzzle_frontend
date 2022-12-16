@@ -107,7 +107,7 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
       <section className="headerOptions">
         <div className="optionCreator">
           <div className="creatorPromo">
-            <h3 className="creatorPromoTitle">Développeur:</h3>
+            <h3 className="creatorPromoTitle">DéVELOPPEUR:</h3>
             <nav className="creatorNav">
               <a
                 target="_blank"

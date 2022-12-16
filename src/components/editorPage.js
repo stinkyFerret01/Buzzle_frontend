@@ -30,7 +30,7 @@ const EditorPage = ({
   const [ligns, setLigns] = useState(10);
   const [colons, setColons] = useState(10);
   const [oSelection, setOSelection] = useState("W");
-  const [oMessage, setOMessage] = useState(["mur"]);
+  const [oMessage, setOMessage] = useState(["MUR"]);
   const [base, setBase] = useState("loading");
   const [lvlName, setLvlName] = useState("");
   const [lvlContext, setLvlContext] = useState("");
@@ -75,7 +75,7 @@ const EditorPage = ({
   };
 
   const editer = async () => {
-    let context = "aucune information";
+    let context = "AUCUNE INFORMATION";
     if (edited[2] !== "") {
       context = edited[2];
     }
@@ -85,8 +85,8 @@ const EditorPage = ({
           setDisplayWfr([
             "edit request",
             "PATIENTEZ",
-            "nous éditons votre niveau, l'opération peut prendre quelques secondes. Continuer sans attendre peut vous faire perde votre progression!",
-            "je prends le risque!",
+            "NOUS éDITONS VOTRE NIVEAU, L'OPéRATION PEUT PREDRE QUELQUES SECONDES. CONTINUER SANS ATTENDRE PEUT VOUS FAIRE PERDRE VOTRE PROGRESSION!",
+            "JE PRENDS LE RISQUE!",
           ]);
           const response = await axios.post(`${backend}/edit`, {
             pattern: edited[0],
@@ -97,16 +97,16 @@ const EditorPage = ({
             setDisplayWfr([
               "edit ok",
               "TOUT EST OK!",
-              "votre niveau à été édité, vous pouvez le retrouver dans la catégorie des niveaux à vérifier",
-              "continuer",
+              "VOTRE NIVEAU A éTé éDITé, VOUS POUVEZ LE RETROUVER DANS LA CATéGORIE -A VéRIFIER-",
+              "CONTINUER",
             ]);
             setLevels((prevState) => [...prevState, response.data.level]);
           } else if (response.data.message === "ce nom est déja utilisé!") {
             setDisplayWfr([
               "edit error",
               "OUPS!",
-              "un niveau porte déja ce nom, choisissez un autre nom pour pouvoir éditer",
-              "retourner à l'édition",
+              "UN NIVEAU PORTE DéJA CE NOM, CHOISISSEZ UN AUTRE NOM POUR POUVOIR éDITER",
+              "RETOURNER A L'éDITION",
             ]);
           }
         } catch (error) {}
@@ -125,20 +125,20 @@ const EditorPage = ({
         "activité du joueur",
         "1 seul possible, au contact direct du joueur",
       ],
-      ["Bs", "boite", "peut se superposer sur certains objets"],
-      ["C", "agent ennemi"],
-      ["Dv", "porte verticale"],
-      ["Dh", "porte horizontale"],
-      ["E", "sortie", "1 seul possible"],
-      ["Kv", "porte vérouillée 1 verticale"],
-      ["Kh", "porte vérouillée 1 horizontale"],
-      ["kg", "clés PV 1", "autorise la superposition de certains objets"],
-      ["Lv", "porte vérouillée 2 verticale"],
-      ["Lh", "porte vérouillée 2 horizontale"],
-      ["lg", "clés PV 2", "autorise la superposition de certains objets"],
-      ["Mv", "porte vérouillée 3 verticale"],
-      ["Mh", "porte vérouillée 3 horizontale"],
-      ["mg", "clés PV 3", "autorise la superposition de certains objets"],
+      ["Bs", "BOITE", "PEUT SE SUPERPOSER AUX BOITES"],
+      ["C", "AGENT ENNEMI"],
+      ["Dv", "PORTE VERTICALE"],
+      ["Dh", "PORTE HORIZONTALE"],
+      ["E", "SORTIE"],
+      ["Kv", "PORTE VéRROUILLé 1"],
+      ["Kh", "PORTE VéRROUILLé 1"],
+      ["kg", "CLéS PV 1", "PEUT SE CACHER SOUS LES BOITES"],
+      ["Lv", "PORTE VéRROUILLé 2"],
+      ["Lh", "PORTE VéRROUILLé 2"],
+      ["lg", "CLéS PV 2", "PEUT SE CACHER SOUS LES BOITES"],
+      ["Mv", "PORTE VéRROUILLé 3"],
+      ["Mh", "PORTE VéRROUILLé 3"],
+      ["mg", "CLéS PV 3", "PEUT SE CACHER SOUS LES BOITES"],
       [
         "pg",
         "plaque de pression",
@@ -492,12 +492,12 @@ const EditorPage = ({
             editQuiter("game/game");
           }}
         >
-          p
+          <h2>P</h2>
         </button>
-        <h4 className="noHovText">éléments:</h4>
+        <h4 className="noHovText">éLéMENTS:</h4>
         <div className="shopLists">
           <div className="shopList">
-            <h5 className="noHovText">nécessaires</h5>
+            <h5 className="noHovText">NéCESSAIRES</h5>
             <article className="shopCategory">
               {os.necessary.map((o, indexo) => {
                 return (
@@ -523,7 +523,7 @@ const EditorPage = ({
                 );
               })}
             </article>
-            <h5 className="noHovText">basiques</h5>
+            <h5 className="noHovText">BASIQUES</h5>
             <article className="shopCategory">
               {os.basics.map((o, indexo) => {
                 return (
@@ -551,7 +551,7 @@ const EditorPage = ({
             </article>
           </div>
           <div className="shopList">
-            <h5 className="noHovText">optionels</h5>
+            <h5 className="noHovText">OPTIONELS</h5>
             <article className="shopCategory">
               {os.objects.map((o, indexo) => {
                 return (
@@ -609,8 +609,9 @@ const EditorPage = ({
           <h6 className="oMessage2">{oMessage[1]}</h6>
         </div>
         <div className="levelNameSelect">
-          <h4 className="noHovText">Nom du Niveau</h4>
+          <h4 className="noHovText">NOM DU NIVEAU</h4>
           <input
+            className="levelNameInput"
             type="text"
             placeholder="choisissez un nom"
             value={lvlName}
@@ -621,16 +622,12 @@ const EditorPage = ({
               }
             }}
           />
-          <p
-            className="noHovText"
-            style={{ fontSize: "11px", lineHeight: "1px" }}
-          >
-            entre 3 et 13 caractères
-          </p>
+          <h5 className="noHovText">ENTRE 3 ET 13 CARACTèRES</h5>
         </div>
         <div className="levelContextSelect">
-          <h4 className="noHovText">Description du Niveau</h4>
+          <h4 className="noHovText">DESCRIPTION DU NIVEAU</h4>
           <input
+            className="levelContextInput"
             type="text"
             placeholder="ajoutez une description (optionel)"
             value={lvlContext}
@@ -641,12 +638,7 @@ const EditorPage = ({
               }
             }}
           />
-          <p
-            className="noHovText"
-            style={{ fontSize: "11px", lineHeight: "1px" }}
-          >
-            jusqu'à 100 caractères
-          </p>
+          <h5 className="noHovText">JUSQU'A 100 CARACTèRES!</h5>
         </div>
         {editable !== "not ready" && (
           <div className="levelTester">
@@ -666,7 +658,7 @@ const EditorPage = ({
             editQuiter();
           }}
         >
-          RETOURNER JOUER!
+          <h3 className="noHovText">RETOURNER JOUER!</h3>
         </button>
       </section>
     </main>

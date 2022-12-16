@@ -4,8 +4,10 @@
 @import "styles/game.css";
 @import "styles/editor.css";
 @import "styles/aysEtWfr.css";
+@import "styles/fonts.css";
 
 .App {
+  font-family:  'Pixeled', sans-serif;
   overflow: hidden;
   overflow-y: scroll;
   width: 100vw;
