@@ -53,7 +53,9 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
         })}
       </section>
       <section className="headerConnectAndNav">
-        <button onClick={() => {}}>se connecter (inactif)</button>
+        <button className="headerConnectionButton" onClick={() => {}}>
+          SE CONNECTER (inactif)
+        </button>
         <div className="headerNav">
           {location.pathname !== "/" && (
             <button
@@ -103,44 +105,48 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
         </button>
       </section>
       <section className="headerOptions">
-        <div className="creatorPromo">
-          <h3 className="creatorPromoTitle">Développeur:</h3>
-          <nav className="creatorNav">
-            <a
-              target="_blank"
-              href="https://www.lereacteur.io"
-              rel="noreferrer"
-            >
-              <img
-                className="creatorLogo"
-                src="../Images/logo-reacteur copie.jpeg"
-                alt="logo"
-              />
-            </a>
-            <a
-              target="_blank"
-              href="https://www.linkedin.com/in/christophe-lafon-549788243"
-              rel="noreferrer"
-            >
-              <img
-                className="creatorLogo"
-                src="../Images/logo-linkedin copie.png"
-                alt="logo"
-              />
-            </a>
-            <a
-              target="_blank"
-              href="https://github.com/stinkyFerret01"
-              rel="noreferrer"
-            >
-              <img
-                className="creatorLogo"
-                src="../Images/github copie.png"
-                alt="logo"
-              />
-            </a>
-          </nav>
+        <div className="optionCreator">
+          <div className="creatorPromo">
+            <h3 className="creatorPromoTitle">Développeur:</h3>
+            <nav className="creatorNav">
+              <a
+                target="_blank"
+                href="https://www.lereacteur.io"
+                rel="noreferrer"
+              >
+                <img
+                  className="creatorLogo"
+                  src="../Images/logo-reacteur copie.jpeg"
+                  alt="logo"
+                />
+              </a>
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/in/christophe-lafon-549788243"
+                rel="noreferrer"
+              >
+                <img
+                  className="creatorLogo"
+                  src="../Images/logo-linkedin copie.png"
+                  alt="logo"
+                />
+              </a>
+              <a
+                target="_blank"
+                href="https://github.com/stinkyFerret01"
+                rel="noreferrer"
+              >
+                <img
+                  className="creatorLogo"
+                  src="../Images/github copie.png"
+                  alt="logo"
+                />
+              </a>
+            </nav>
+          </div>
+          <div className="otherCreations"></div>
         </div>
+        <button className="optionSite">OPTIONS (inactif)</button>
       </section>
       <section className="headerSectionSides">
         {vidSides2.map((vid, index) => {

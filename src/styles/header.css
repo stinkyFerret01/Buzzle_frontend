@@ -5,17 +5,27 @@
     box-sizing: border-box;
 }
 
+/* SIDES */
 .headerSectionSides{
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
 }
 
+/* CONNECT AND NAV */
 .headerConnectAndNav {
     position: relative;
     min-width: 10rem;
     border-left: solid  rgba(234, 178, 11) 2px;
     box-sizing: border-box;
+}
+
+.headerConnectionButton {
+    width: 100%;
+    height: 100%;
+    font-weight: bold;
+    padding-bottom: 2rem;
+    background-color: gray;
 }
 
 .headerNav {
@@ -36,6 +46,7 @@
     background-color: orange;
 }
 
+/* TITLE */
 .headerTitle {
     min-width: 16rem;
     border-right: solid  rgba(234, 178, 11) 2px;
@@ -49,17 +60,33 @@
     background-color: orangered;
 }
 
+/* OPTIONS */
 .headerOptions {
     min-width: 10rem;
+    height: 100%;
     border-right: solid  rgba(234, 178, 11) 2px;
+    box-sizing: border-box;
+}
+
+.optionCreator {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    border-bottom: solid  rgba(234, 178, 11) 2px;
+    box-sizing: border-box;
+}
+
+.otherCreations {
+    width: 50%;
+    height: 100%;
     box-sizing: border-box;
 }
 
 .creatorPromo {
     width: 50%;
-    height: 50%;
-    border-right: solid  rgba(234, 178, 11) 1px;
-    border-bottom: solid  rgba(234, 178, 11) 1px;
+    height: 100%;
+    border-right: solid  rgba(234, 178, 11) 2px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -93,4 +120,11 @@
 
 .creatorLogo:hover {
     cursor: alias;
+}
+
+.optionSite {
+    width: 100%;
+    height: 50%;
+    font-weight: bold;
+    background-color: gray;
 }

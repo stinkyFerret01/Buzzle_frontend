@@ -15,6 +15,7 @@ const Footer = () => {
           ></iframe> */}
       </div>
       <audio
+        width="10000"
         className="audioPlayer"
         src="../Audio/Stranger-things-124008.mp3"
         type="audio/mp3"
