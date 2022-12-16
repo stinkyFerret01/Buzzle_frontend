@@ -924,9 +924,7 @@ const GamePage = ({
               onClick={() => {
                 padOptionToggler();
               }}
-            >
-              {pad2 ? "<->" : "><"}
-            </button>
+            ></button>
             <div className="pad">
               <div className="padLigns">
                 <button

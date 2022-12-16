@@ -1,6 +1,8 @@
 ///-- CONFIG --///
 //-- import librairie
 
+// import music from url("../Audio/Stranger-things-124008.mp3")
+
 ///-- START --///
 const Footer = () => {
   ///-- RENDER --///

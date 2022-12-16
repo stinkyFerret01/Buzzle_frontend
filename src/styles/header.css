@@ -57,7 +57,20 @@
 .headerTitleButton {
     width: 100%;
     height: 100%;
-    background-color: orangered;
+    background: none;
+    /* background-image: url("../public/Images/backgroundTitle3.png"); */
+    /* background-image: "./Media/backgroundTitle3.png"; */
+    /* object-fit: fill; */
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    padding-top: 1px;
+}
+
+.titleBg {
+    pointer-events: none;
+    min-width: 105%;
+    max-height: 102%;
 }
 
 /* OPTIONS */

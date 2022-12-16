@@ -1,11 +1,17 @@
 ///-- CONFIG --///
 //-- import librairie
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+
+import titleBg1 from "./Media/backgroundTitle1.png";
+import titleBg2 from "./Media/backgroundTitle2.png";
+import titleBg3 from "./Media/backgroundTitle3.png";
 
 ///-- START --///
 const Header = ({ theme, setTheme, setDisplayAys, game }) => {
   ///-- STATES --///
-  //- none
+  const [titleBg, setTitleBg] = useState(0);
+  const [titleBgCounter, setTitleBgCounter] = useState(1);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -39,6 +45,30 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
       }
     }
   };
+
+  ///-- USEEFFECT --///
+  useEffect(() => {
+    const counterAdder = () => {
+      console.log(titleBg);
+      console.log(titleBgCounter);
+      if (titleBgCounter !== 3) {
+        setTitleBgCounter(titleBgCounter + 1);
+      } else {
+        setTitleBgCounter(1);
+      }
+    };
+    setTimeout(counterAdder, 1000);
+  }, [titleBg, titleBgCounter]);
+
+  useEffect(() => {
+    if (titleBgCounter === 1) {
+      setTitleBg(titleBg1);
+    } else if (titleBgCounter === 2) {
+      setTitleBg(titleBg2);
+    } else if (titleBgCounter === 3) {
+      setTitleBg(titleBg3);
+    }
+  }, [titleBgCounter, titleBg]);
 
   ///-- RENDER --///
   return (
@@ -101,7 +131,7 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
             }
           }}
         >
-          <h1>THEME</h1>
+          <img className="titleBg" src={titleBg} alt="background spatial" />
         </button>
       </section>
       <section className="headerOptions">
