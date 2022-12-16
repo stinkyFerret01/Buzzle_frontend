@@ -188,15 +188,15 @@ const LevelsSlide = ({
                 className="headerGameTitle2"
                 onClick={() => gamDivDefiner("none")}
               >
-                <p>{"<"}</p>
+                B
               </button>
               <div className="headerGameTitle"></div>
             </div>
             {levels.length === 0 ? (
               <div className="headerGameDivs">
-                <h1 style={{ color: "red" }}>
-                  niveaux en chargement, cela peut prendre quelques secondes
-                </h1>
+                <h3 className="loadingText">
+                  NIVEAUX EN CHARGEMENT, CELA PEUT PRNDRE QUELQUES SECONDES...
+                </h3>
               </div>
             ) : (
               <div className="headerGameDivs">
@@ -212,7 +212,7 @@ const LevelsSlide = ({
                             }}
                             key={index}
                           >
-                            {lvl.name}
+                            <h3>{lvl.name}</h3>
                           </button>
                         );
                       } else {
@@ -233,7 +233,7 @@ const LevelsSlide = ({
                             }}
                             key={index}
                           >
-                            {lvl.name}
+                            <h3>{lvl.name}</h3>
                           </button>
                         );
                       } else {
@@ -264,7 +264,7 @@ const LevelsSlide = ({
                             }}
                             key={index}
                           >
-                            {lvl.name}
+                            <h3>{lvl.name}</h3>
                           </button>
                         );
                       })}

@@ -561,6 +561,7 @@ div[id^="player"] {
     font-weight: bold;
     color: rgba(234, 178, 11);
     padding-left: 1rem;
+    padding-bottom: 2.6rem;
     background-color: transparent;
     border: solid rgba(234, 178, 11) 4px;
     border-radius: 4px;
@@ -580,6 +581,7 @@ div[id^="player"] {
     font-weight: bold;
     color: rgba(234, 178, 11,0.5);
     padding-left: 1rem;
+    padding-bottom: 2.6rem;
     background-color: transparent;
     border: solid rgba(234, 178, 11,0.5) 4px;
     border-radius: 4px;
@@ -834,4 +836,8 @@ div[id^="player"] {
         left: -11.5rem;
         display: none;
     }
+}
+
+.loadingText {
+    color: red;
 }

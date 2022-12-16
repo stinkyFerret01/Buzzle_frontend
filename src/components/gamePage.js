@@ -37,6 +37,8 @@ const GamePage = ({
   const [difficulty, setDifficulty] = useState("medium");
   const [displayContext, setDisplayContext] = useState(true);
   const [counter, setCounter] = useState(0);
+  if (action === "OUAAATE!!") {
+  }
 
   ///////////////////////////////////////////
   const titleRef = useRef();
@@ -95,10 +97,7 @@ const GamePage = ({
 
   //-- okToMoveChecker vérifie si le déplacement du joueur est possible
   const okToMoveChecker = (o, id) => {
-    // console.log(o);
     if (o === undefined) {
-      // console.log(cops);
-      // setCops([]);
       return false;
     }
     let oStrict = o.slice(0, 1);
@@ -315,18 +314,18 @@ const GamePage = ({
         //-- actionDefiner défini l'action possible du joueur pour l'orienter
         let obj = grid[L][o];
         const pairs = [
-          ["bs", "poser la boite"],
-          ["Bs", "prendre la boite"],
-          ["dh", "dv", "fermer la porte"],
-          ["Dh", "Dv", "ouvrir la porte"],
+          ["bs", "POSER LA BOITE"],
+          ["Bs", "PRENDRE LA BOITE"],
+          ["dh", "dv", "FERMER LA PORTE"],
+          ["Dh", "Dv", "OUVRIR LA PORTE"],
           [".", ".a", ""],
-          ["kg", "lg", "mg", "ramasser la clef"],
+          ["kg", "lg", "mg", "RAMASSERLA CLé"],
           ["ki", "li", "mi", ""],
-          ["Kv", "Lv", "Mv", "porte vérrouillée"],
-          ["Kh", "Lh", "Mh", "porte vérrouillée"],
-          ["pg", "plaque de pression"],
+          ["Kv", "Lv", "Mv", "PORTE VéRROUILLéE"],
+          ["Kh", "Lh", "Mh", "PORTE VéRROUILLéE"],
+          ["pg", "PLAQUE DE PRESSION"],
           ["W", "Wa", ""],
-          ["Ca", "attention!"],
+          ["Ca", "ATTENTION!"],
         ];
         let activity = pairs.find(
           (pair) =>
@@ -444,7 +443,8 @@ const GamePage = ({
           ".........",
         ],
         name: "TUTO 1",
-        context: "posez la boîte sur la plaque de pression pour sortir",
+        context:
+          "POSEZ LA BOITE SUR LA PLAQUE DE PRESSION POUR SORTIR (UTILISEZ LES 'FLèCHES' POUR VOUS DéPLACER ET LA TOUCHE 'A' POUR INTERRAGIR",
       };
       setCops([]);
       setLevel(tuto1.pattern);
@@ -461,6 +461,77 @@ const GamePage = ({
     edited,
     location,
   ]);
+
+  //-- autoTuttoSetter
+  useEffect(() => {
+    const tutoSetter = () => {
+      const tuto1 = {
+        pattern: [
+          ".........",
+          "WWWWWWWWW",
+          "WB..W...W",
+          "W.P.W.P.W",
+          "WWHWW...E",
+          "W.....p.W",
+          "W.......W",
+          "WWWWWWWWW",
+          ".........",
+        ],
+        name: "TUTO 1",
+        context:
+          "POSEZ LA BOITE SUR LA PLAQUE DE PRESSION POUR SORTIR (UTILISEZ LES 'FLèCHES' POUR VOUS DéPLACER ET LA TOUCHE 'A' POUR INTERRAGIR",
+      };
+      const tuto2 = {
+        pattern: [
+          ".........",
+          "WWWWWWWWW",
+          "WB..W...W",
+          "W...W.P.W",
+          "WWKWW...E",
+          "W.....p.W",
+          "W..1....W",
+          "WWWWWWWWW",
+          ".........",
+        ],
+        name: "TUTO 2",
+        context: "UTILISEZ LA CLé POUR OUVRIR LA PORTE",
+      };
+      const tuto3 = {
+        pattern: [
+          "..................",
+          "WWWWWWWWWWWWWWWWWW",
+          "WB..W.....W......W",
+          "W...W..1..W....P.W",
+          "WWKWW.....V......E",
+          "W.....C...W....p.W",
+          "W.........W......W",
+          "WWWWWWWWWWWWWWWWWW",
+          "..................",
+        ],
+        name: "TUTO 3",
+        context: "éVITEZ LES AGENTS!",
+      };
+      if (levelTitle === "TUTO 1") {
+        setLevel(tuto2.pattern);
+        setLevelTitle(tuto2.name);
+        setLevelContext(tuto2.context);
+        setGame(["Ready?", "START"]);
+      } else if (levelTitle === "TUTO 2") {
+        setLevel(tuto3.pattern);
+        setLevelTitle(tuto3.name);
+        setLevelContext(tuto3.context);
+        setGame(["Ready?", "START"]);
+      } else if (levelTitle === "TUTO 3") {
+        setLevel(tuto1.pattern);
+        setLevelTitle(tuto1.name);
+        setLevelContext(tuto1.context);
+        setGame(["Ready?", "START"]);
+      }
+    };
+    if (game[0] === "Win!" || game === "lost!") {
+      tutoSetter();
+    }
+  }, [game, setGame, levelTitle, setLevel, setLevelContext, setLevelTitle]);
 
   //-- counterAdder
   //-- (PROBEMO dépendance player)
@@ -548,76 +619,6 @@ const GamePage = ({
     //-- PROBLEMO
     // eslint-disable-next-line
   }, [counter]);
-
-  //-- autoTuttoSetter
-  useEffect(() => {
-    const tutoSetter = () => {
-      const tuto1 = {
-        pattern: [
-          ".........",
-          "WWWWWWWWW",
-          "WB..W...W",
-          "W.P.W.P.W",
-          "WWHWW...E",
-          "W.....p.W",
-          "W.......W",
-          "WWWWWWWWW",
-          ".........",
-        ],
-        name: "TUTO 1",
-        context: "posez la boîte sur la plaque de pression pour sortir",
-      };
-      const tuto2 = {
-        pattern: [
-          ".........",
-          "WWWWWWWWW",
-          "WB..W...W",
-          "W...W.P.W",
-          "WWKWW...E",
-          "W.....p.W",
-          "W..1....W",
-          "WWWWWWWWW",
-          ".........",
-        ],
-        name: "TUTO 2",
-        context: "utilisez la clef pour ouvrir la porte",
-      };
-      const tuto3 = {
-        pattern: [
-          "..................",
-          "WWWWWWWWWWWWWWWWWW",
-          "WB..W.....W......W",
-          "W...W..1..W....P.W",
-          "WWKWW.....V......E",
-          "W.....C...W....p.W",
-          "W.........W......W",
-          "WWWWWWWWWWWWWWWWWW",
-          "..................",
-        ],
-        name: "TUTO 3",
-        context: "évitez les agents!",
-      };
-      if (levelTitle === "TUTO 1") {
-        setLevel(tuto2.pattern);
-        setLevelTitle(tuto2.name);
-        setLevelContext(tuto2.context);
-        setGame(["Ready?", "START"]);
-      } else if (levelTitle === "TUTO 2") {
-        setLevel(tuto3.pattern);
-        setLevelTitle(tuto3.name);
-        setLevelContext(tuto3.context);
-        setGame(["Ready?", "START"]);
-      } else if (levelTitle === "TUTO 3") {
-        setLevel(tuto1.pattern);
-        setLevelTitle(tuto1.name);
-        setLevelContext(tuto1.context);
-        setGame(["Ready?", "START"]);
-      }
-    };
-    if (game[0] === "Win!" || game === "lost!") {
-      tutoSetter();
-    }
-  }, [game, setGame, levelTitle, setLevel, setLevelContext, setLevelTitle]);
 
   //-- pressChecker (vérifie la présence d'un objet sur la presse)
   useEffect(() => {
@@ -762,14 +763,14 @@ const GamePage = ({
               gameQuiter("editor");
             }}
           >
-            e
+            <h1 className="gameToEditButtonText">e</h1>
           </button>
         )}
         <button
           className={bigScreen ? "reduceScreen" : "enlargeScreen"}
           onClick={screenToggler}
         >
-          {bigScreen ? "↘" : "↖"}
+          <h3 className="screenButton">{bigScreen ? "X" : "O"}</h3>
         </button>
         {displayContext ? (
           <button
@@ -782,8 +783,8 @@ const GamePage = ({
               contextToggler();
             }}
           >
-            <p className="levelContextTitle">{levelTitle}:</p>
-            <p className="levelContextContext">{levelContext}</p>
+            <h3 className="levelContextTitle">{levelTitle}:</h3>
+            <h4 className="levelContextContext">{levelContext}</h4>
           </button>
         ) : (
           <button
@@ -794,7 +795,7 @@ const GamePage = ({
               contextToggler();
             }}
           >
-            c
+            <h2 className="CButton">c</h2>
           </button>
         )}
         {location.pathname === "/game/editor" && (
@@ -804,7 +805,7 @@ const GamePage = ({
               navigate("/editor");
             }}
           >
-            back to edit
+            <h3 className="BEButton">back to edit</h3>
           </button>
         )}
         {game[0] !== "Playing..." && cops.length > 0 && (
@@ -820,7 +821,7 @@ const GamePage = ({
                   : {}
               }
             >
-              HARD
+              <h3 DifButton>HARD</h3>
             </button>
             <button
               className="difficultyButtonMedium"
@@ -833,7 +834,7 @@ const GamePage = ({
                   : {}
               }
             >
-              MEDIUM
+              <h3 DifButton>MEDIUM</h3>
             </button>
             <button
               className="difficultyButtonEasy"
@@ -846,7 +847,7 @@ const GamePage = ({
                   : {}
               }
             >
-              EASY
+              <h3 DifButton>EASY</h3>
             </button>
           </div>
         )}
@@ -858,7 +859,7 @@ const GamePage = ({
                 infoToggler();
               }}
             >
-              {displayInfo ? "X" : "KEY"}
+              <h3>{displayInfo ? "X" : "KEY"}</h3>
             </button>
           )}
           {displayInfo === false && (
@@ -868,7 +869,7 @@ const GamePage = ({
                 padToggler();
               }}
             >
-              {displayPad ? "X" : "PAD"}
+              <h3>{displayPad ? "X" : "PAD"}</h3>
             </button>
           )}
         </div>
@@ -896,7 +897,9 @@ const GamePage = ({
               })}
             </div>
           ) : (
-            <div>chargement du niveau</div>
+            <div>
+              <h3 className="loadingText">CHARGEMENT DU NIVEAU</h3>
+            </div>
           )}
           <div className="boardScrollerBlank"></div>
         </div>
@@ -917,8 +920,13 @@ const GamePage = ({
                 <button
                   className="padActivity"
                   onClick={() => handleKeyDown("pad", "a")}
+                ></button>
+                <button
+                  className="padAction"
+                  onClick={() => {}}
+                  style={{ display: "none" }}
                 >
-                  {action}
+                  <h3>{""}</h3>
                 </button>
                 <button
                   className="padArrowRight"
@@ -941,16 +949,17 @@ const GamePage = ({
               setDisplayInfo(false);
             }}
           >
-            <p className="keyInfo">
-              utilisez la touche <span className="keyInfoSpan">"entrée"</span>{" "}
-              pour arréter/démarrer le jeu, les{" "}
-              <span className="keyInfoSpan">flèches</span> pour vous déplacer et
-              la touche <span className="keyInfoSpan">"a"</span> pour intéragir.
-            </p>
-            <p className="keyInfo">
-              vous pouver utiliser la touche{" "}
-              <span className="keyInfoSpan">"r"</span> pour redémarrer le jeu.
-            </p>
+            <h4 className="keyInfo">
+              UTILISEZ LA TOUCHE <span className="keyInfoSpan">"ENTREé"</span>{" "}
+              POUR ARRéTER/DéMARRER LE JEU, LES{" "}
+              <span className="keyInfoSpan">"FLèCHES"</span> POUR VOUS DéPLACER
+              ET LA TOUCHE <span className="keyInfoSpan">"A"</span> POUR
+              INTéRRAGIR.
+            </h4>
+            <h4 className="keyInfo">
+              VOUS POUVEZ UTILISER LA TOUCHE{" "}
+              <span className="keyInfoSpan">"R"</span> POUR REDéMARRER LE JEU.
+            </h4>
           </section>
         )}
         {game[0] !== "Playing..." && level !== "none" && (
@@ -972,7 +981,7 @@ const GamePage = ({
                     starter("refresh");
                   }}
                 >
-                  {game[2]}
+                  <h3>{game[2]}</h3>
                 </button>
               )}
             </div>

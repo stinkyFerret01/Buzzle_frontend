@@ -54,7 +54,7 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
       </section>
       <section className="headerConnectAndNav">
         <button className="headerConnectionButton" onClick={() => {}}>
-          SE CONNECTER (inactif)
+          <h3>SE CONNECTER (inactif)</h3>
         </button>
         <div className="headerNav">
           {location.pathname !== "/" && (
@@ -101,7 +101,7 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
             }
           }}
         >
-          THEME
+          <h1>THEME</h1>
         </button>
       </section>
       <section className="headerOptions">
@@ -146,7 +146,9 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
           </div>
           <div className="otherCreations"></div>
         </div>
-        <button className="optionSite">OPTIONS (inactif)</button>
+        <button className="optionSite">
+          <h3>OPTIONS (inactif)</h3>
+        </button>
       </section>
       <section className="headerSectionSides">
         {vidSides2.map((vid, index) => {

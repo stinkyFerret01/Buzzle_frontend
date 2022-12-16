@@ -38,10 +38,9 @@ const AreYouSure = ({
     <section className="spreadOver">
       <article className="ays">
         <h3>ATTENTION!</h3>
-        <h5 className="noHovText" style={{ fontSize: "11px" }}>
-          vous êtes sur le point de changer de page, si vous continuez votre
-          progression peut etre perdue
-        </h5>
+        <h4 className="noHovText">
+          SI VOUS JOUER, VOUS RISQUEZ DE PERDRE VOTRE PROGRESSION!
+        </h4>
         <div className="aysChoiceDisplayer">
           <button
             className="aysContinue"
@@ -49,10 +48,10 @@ const AreYouSure = ({
               continuer();
             }}
           >
-            <div>continuer</div>
+            <h3>continuer</h3>
           </button>
           <button className="aysAbort" onClick={() => setDisplayAys("none")}>
-            <div>anuler</div>
+            <h3>anuler</h3>
           </button>
         </div>
       </article>

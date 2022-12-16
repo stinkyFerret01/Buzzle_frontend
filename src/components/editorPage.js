@@ -125,7 +125,7 @@ const EditorPage = ({
         "activité du joueur",
         "1 seul possible, au contact direct du joueur",
       ],
-      ["Bs", "BOITE", "PEUT SE SUPERPOSER AUX BOITES"],
+      ["Bs", "BOITE", "PEUT SE SUPERPOSER AUX CLéS ET A LA PLAQUE DE PRESSION"],
       ["C", "AGENT ENNEMI"],
       ["Dv", "PORTE VERTICALE"],
       ["Dh", "PORTE HORIZONTALE"],
@@ -139,14 +139,10 @@ const EditorPage = ({
       ["Mv", "PORTE VéRROUILLé 3"],
       ["Mh", "PORTE VéRROUILLé 3"],
       ["mg", "CLéS PV 3", "PEUT SE CACHER SOUS LES BOITES"],
-      [
-        "pg",
-        "plaque de pression",
-        "autorise la superposition de certains objets",
-      ],
-      ["P", "spawn du joueur", "1 seul possible"],
-      ["W", "mur"],
-      [".", "effacer"],
+      ["pg", "PLAQUE DE PRESSION", "PEUT SE CACHER SOUS LES BOITES"],
+      ["P", "SPAWN DU JOUEUR", "1 SEUL "],
+      ["W", "MUR"],
+      [".", "EFFACER"],
     ];
     let oIndex = pairs.findIndex((pair) => pair[0] === o);
     let message = pairs[oIndex][1];
@@ -163,11 +159,11 @@ const EditorPage = ({
   const levelTester = () => {
     let name = lvlName;
     if (lvlName.length < 3) {
-      name = "nom du niveau";
+      name = "NOM DU NIVEAU";
     }
     let context = lvlContext;
     if (lvlContext === "") {
-      context = "aucune information";
+      context = "AUCUNE INFORMATION";
     }
     if (editable !== "not ready") {
       setLevel(edited[0]);
@@ -238,7 +234,7 @@ const EditorPage = ({
 
   //-- patternBuilder (construit le pattern pour l'édition)
   useEffect(() => {
-    if (lvlContext === "aucune information") {
+    if (lvlContext === "AUCUNE INFORMATION") {
       setLvlContext("");
     }
     const patternBuilder = (ba) => {
@@ -333,11 +329,11 @@ const EditorPage = ({
       >
         {bigScreen === true ? (
           <button className="reduceScreen" onClick={screenToggler}>
-            X
+            <h3>X</h3>
           </button>
         ) : (
           <button className="enlargeScreen" onClick={screenToggler}>
-            O
+            <h3>O</h3>
           </button>
         )}
         <div className="editViewScroller">
@@ -605,8 +601,8 @@ const EditorPage = ({
           </div>
         </div>
         <div className="oMessages">
-          <h5 className="oMessage1">{oMessage[0]}</h5>
-          <h6 className="oMessage2">{oMessage[1]}</h6>
+          <h5 className="noHovText">{oMessage[0]}</h5>
+          <h5 className="noHovText">{oMessage[1]}</h5>
         </div>
         <div className="levelNameSelect">
           <h4 className="noHovText">NOM DU NIVEAU</h4>
