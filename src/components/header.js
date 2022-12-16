@@ -74,7 +74,7 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
                 navigate("/game/game");
               }}
             >
-              <h3>P!</h3>
+              <h3>P</h3>
             </button>
           )}
           {location.pathname !== "/editor" &&

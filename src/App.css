@@ -20,6 +20,7 @@
 header {
   position: relative;
   overflow: hidden;
+  overflow-x: scroll;
   width: 90%;
   max-width: 42.7rem;
   height: 6rem;
@@ -28,6 +29,10 @@ header {
   border: solid rgba(234, 178, 11)4px;
   display: flex;
   box-sizing: border-box;
+}
+
+header::-webkit-scrollbar {
+  display: none;
 }
 
 main {
