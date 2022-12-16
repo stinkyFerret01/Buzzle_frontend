@@ -21,7 +21,7 @@ function App() {
   const online = "https://buzzlebackend.onrender.com";
   const local = "http://localhost:3000";
   const [backend] = useState(online || local);
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("clear");
   // const [pData, setPData] = useState("none");
   const [levels, setLevels] = useState([]);
   const [level, setLevel] = useState("none");
@@ -56,7 +56,9 @@ function App() {
   return (
     <div
       className="App"
-      style={theme === "clear" ? { backgroundColor: "purple" } : {}}
+      style={
+        theme === "clear" ? { backgroundColor: " rgba(234, 178, 11, 1)" } : {}
+      }
     >
       <Router>
         {bigScreen === false && (

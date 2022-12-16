@@ -43,8 +43,14 @@
     color: rgba(234, 178, 11);
     cursor: pointer;
     box-shadow: 0 0 1rem rgba(234, 178, 11, 1);
-    background-color:  orangered;;
-  
+    background-color:  orangered;
+}
+
+.presVidDisplay2:hover {
+    color: rgba(234, 178, 11);
+    cursor: pointer;
+    box-shadow: 0 0 1rem rgba(234, 178, 11, 1);
+    background-color:  orangered;
 }
 
 video {

@@ -17,7 +17,7 @@ const HomePage = ({ setBigScreen }) => {
     <main className="homePage">
       <div className="presVidsDisplay">
         <button className="homeToGame" onClick={() => navigate("/game/game")}>
-          <h1>PLAY BUZZLE NOW!</h1>
+          <h3 style={{ fontSize: "18px" }}>PLAY BUZZLE NOW!</h3>
         </button>
         <div className="presVidDisplay" onClick={() => navigate("/game/game")}>
           <h3>PLAY!</h3>

@@ -107,7 +107,7 @@ const LevelsSlide = ({
                 className="headerGameTitle"
                 onClick={() => levelSetter("TUTO")}
               >
-                TUTO
+                <h3>TUTO</h3>
               </button>
             </div>
             <div>
@@ -115,7 +115,7 @@ const LevelsSlide = ({
                 className="headerGameTitle"
                 onClick={() => gamDivDefiner("validé")}
               >
-                NIVEAUX VALIDES!
+                <h3>NIVEAUX VALIDES!</h3>
               </button>
             </div>
             <div>
@@ -123,7 +123,7 @@ const LevelsSlide = ({
                 className="headerGameTitle"
                 onClick={() => gamDivDefiner("à tester")}
               >
-                NIVEAUX NON VERIFIE...
+                <h3>NIVEAUX NON VERIFIE...</h3>
               </button>
             </div>
             <div>
@@ -131,7 +131,7 @@ const LevelsSlide = ({
                 className="headerGameTitle"
                 onClick={() => gamDivDefiner("rechercher")}
               >
-                CHERCHER UN NIVEAU
+                <h3>CHERCHER UN NIVEAU</h3>
               </button>
             </div>
             <div>
@@ -139,12 +139,12 @@ const LevelsSlide = ({
                 className="headerGameTitleEdit"
                 onClick={() => setDisplayAys("editor")}
               >
-                EDITER UN NIVEAU
+                <h3>EDITER UN NIVEAU</h3>
               </button>
             </div>
             <div>
               <button className="headerGameTitleInact" onClick={() => {}}>
-                SE CONNECTER (inactif)
+                <h3>SE CONNECTER (inactif)</h3>
               </button>
             </div>
           </div>
