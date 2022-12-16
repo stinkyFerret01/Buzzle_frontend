@@ -36,6 +36,7 @@ const GamePage = ({
   const [action, setAction] = useState("");
   const [difficulty, setDifficulty] = useState("medium");
   const [displayContext, setDisplayContext] = useState(true);
+  const [counter, setCounter] = useState(0);
 
   ///////////////////////////////////////////
   const titleRef = useRef();
@@ -467,10 +468,22 @@ const GamePage = ({
   //-- copsMover (gère le déplacement des agents)
   //-- (PROBEMO dépendance player)
   useEffect(() => {
-    let interval;
-    if (game[0] === "Playing...") {
-      clearTimeout(interval);
+    const counterAdder = () => {
+      setCounter(counter + 1);
+      console.log(counter);
+    };
+    if (difficulty === "hard") {
+      setTimeout(counterAdder, 500);
+    } else if (difficulty === "medium") {
+      setTimeout(counterAdder, 800);
+    } else if (difficulty === "easy") {
+      setTimeout(counterAdder, 1100);
     }
+  }, [counter, game, difficulty]);
+
+  //-- copsMover (gère le déplacement des agents)
+  //-- (PROBEMO dépendance player)
+  useEffect(() => {
     const copsMover = () => {
       let newCops = [];
       for (let c = 0; c < cops.length; c++) {
@@ -528,31 +541,14 @@ const GamePage = ({
           newCops.push(oldCop);
         }
       }
-      const checkStart = () => {
-        if (game[0] === "Playing...") {
-          setCops(newCops);
-          clearTimeout(interval);
-        } else {
-          clearTimeout(interval);
-        }
-      };
-      if (difficulty === "hard") {
-        interval = setTimeout(checkStart, 500);
-        if (game[0] !== "Playing...") {
-          clearTimeout(interval);
-        }
-      } else if (difficulty === "medium") {
-        interval = setTimeout(checkStart, 800);
-      } else if (difficulty === "easy") {
-        interval = setTimeout(checkStart, 1100);
-      }
+      setCops(newCops);
     };
     if (game[0] === "Playing..." && cops.length > 0) {
       copsMover();
     }
     //-- PROBLEMO
     // eslint-disable-next-line
-  }, [game, cops]);
+  }, [counter]);
 
   //-- autoTuttoSetter
   useEffect(() => {
