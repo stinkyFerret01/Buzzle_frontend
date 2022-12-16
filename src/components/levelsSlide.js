@@ -154,7 +154,9 @@ const LevelsSlide = ({
               <button
                 className="headerGameTitle2"
                 style={
-                  gameDiv === "validé" ? { backgroundColor: "orangered" } : {}
+                  gameDiv === "validé"
+                    ? { backgroundColor: "black", color: "rgba(234, 178, 11)" }
+                    : {}
                 }
                 onClick={() => gamDivDefiner("validé")}
               >
@@ -163,7 +165,9 @@ const LevelsSlide = ({
               <button
                 className="headerGameTitle2"
                 style={
-                  gameDiv === "à tester" ? { backgroundColor: "orangered" } : {}
+                  gameDiv === "à tester"
+                    ? { backgroundColor: "black", color: "rgba(234, 178, 11)" }
+                    : {}
                 }
                 onClick={() => gamDivDefiner("à tester")}
               >
@@ -173,7 +177,7 @@ const LevelsSlide = ({
                 className="headerGameTitle2"
                 style={
                   gameDiv === "rechercher"
-                    ? { backgroundColor: "orangered" }
+                    ? { backgroundColor: "black", color: "rgba(234, 178, 11)" }
                     : {}
                 }
                 onClick={() => gamDivDefiner("rechercher")}
@@ -241,7 +245,7 @@ const LevelsSlide = ({
                 {gameDiv === "rechercher" && (
                   <div className="headerGameDiv">
                     <input
-                      className="textincome"
+                      className="levelSearchInput"
                       name="searchLvl"
                       type="text"
                       placeholder="chercher un niveau"

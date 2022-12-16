@@ -806,6 +806,16 @@ div[id^="player"] {
     background-color: rgb(32, 215, 32);
 }
 
+.levelSearchInput {
+    max-width: 8rem;
+    min-height: 1.5rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
 @keyframes levelsSlide {
     from {  
         left: -11.5rem;

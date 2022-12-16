@@ -31,7 +31,7 @@ function App() {
   const [edited, setEdited] = useState(["none", "none", "new"]);
   const [editBase, setEditBase] = useState("none");
   const [displayAys, setDisplayAys] = useState("none");
-  const [displayWfr, setDisplayWfr] = useState(false);
+  const [displayWfr, setDisplayWfr] = useState("none");
   const [displayLevels, setDisplayLevels] = useState(false);
   const [bigScreen, setBigScreen] = useState(false);
 
@@ -133,8 +133,11 @@ function App() {
             game={game}
           />
         )}
-        {displayWfr === true && (
-          <WaitForResponse setDisplayWfr={setDisplayWfr} />
+        {displayWfr !== "none" && (
+          <WaitForResponse
+            displayWfr={displayWfr}
+            setDisplayWfr={setDisplayWfr}
+          />
         )}
       </Router>
     </div>

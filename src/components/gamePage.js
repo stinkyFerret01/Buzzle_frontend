@@ -304,9 +304,6 @@ const GamePage = ({
     // eslint-disable-next-line
   }, [game, player, grid]);
 
-  //-- copsRefresher
-  useEffect(() => {}, [level, cops]);
-
   //-- actionDefiner (défini l'action possible)
   useEffect(() => {
     if (
@@ -472,12 +469,14 @@ const GamePage = ({
       setCounter(counter + 1);
       console.log(counter);
     };
-    if (difficulty === "hard") {
-      setTimeout(counterAdder, 500);
-    } else if (difficulty === "medium") {
-      setTimeout(counterAdder, 800);
-    } else if (difficulty === "easy") {
-      setTimeout(counterAdder, 1100);
+    if (game[0] === "Playing...") {
+      if (difficulty === "hard") {
+        setTimeout(counterAdder, 500);
+      } else if (difficulty === "medium") {
+        setTimeout(counterAdder, 800);
+      } else if (difficulty === "easy") {
+        setTimeout(counterAdder, 1100);
+      }
     }
   }, [counter, game, difficulty]);
 

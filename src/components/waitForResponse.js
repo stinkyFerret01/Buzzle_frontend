@@ -1,25 +1,25 @@
 ///-- START --///
-const WaitForResponse = ({ type, setDisplayWfr }) => {
+const WaitForResponse = ({ displayWfr, setDisplayWfr }) => {
   let text = {
-    title: `${type[0]}`,
-    message: `${type[1]}`,
-    button: `${type[2]}`,
+    title: `${displayWfr[1]}`,
+    message: `${displayWfr[2]}`,
+    button: `${displayWfr[3]}`,
   };
   const waitNews = {
-    backGroundColor: "gold",
+    backgroundColor: "gold",
   };
   const goodNews = {
-    backGroundColor: "green",
+    backgroundColor: "green",
   };
   const badNews = {
-    backGroundColor: "red",
+    backgroundColor: "red",
   };
   let style = {};
-  if (type === "edit request") {
+  if (displayWfr[0] === "edit request") {
     style = waitNews;
-  } else if (type === "edit ok") {
+  } else if (displayWfr[0] === "edit ok") {
     style = goodNews;
-  } else if (type === "edit error") {
+  } else if (displayWfr[0] === "edit error") {
     style = badNews;
   }
 
@@ -32,7 +32,7 @@ const WaitForResponse = ({ type, setDisplayWfr }) => {
           {text.message}
           {/* continuer sans attendre peut vous faire perdre votre progression */}
         </h5>
-        <button className="wfrContinue" onClick={() => setDisplayWfr(false)}>
+        <button className="wfrContinue" onClick={() => setDisplayWfr("none")}>
           {text.button}
         </button>
       </article>

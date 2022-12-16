@@ -32,8 +32,8 @@ const EditorPage = ({
   const [oSelection, setOSelection] = useState("W");
   const [oMessage, setOMessage] = useState(["mur"]);
   const [base, setBase] = useState("loading");
-  const [lvlName, setLvlName] = useState("NOM");
-  const [lvlContext, setLvlContext] = useState("aucune information");
+  const [lvlName, setLvlName] = useState("");
+  const [lvlContext, setLvlContext] = useState("");
   const [editable, setEditable] = useState("not ready");
 
   //-- config
@@ -75,24 +75,39 @@ const EditorPage = ({
   };
 
   const editer = async () => {
-    let context = "no info";
+    let context = "aucune information";
     if (edited[2] !== "") {
       context = edited[2];
     }
     if (edited[0] !== "none" && edited[1] !== "") {
       if (levels.findIndex((lvl) => lvl.name === edited[1])) {
         try {
-          setDisplayWfr(true);
+          setDisplayWfr([
+            "edit request",
+            "PATIENTEZ",
+            "nous éditons votre niveau, l'opération peut prendre quelques secondes. Continuer sans attendre peut vous faire perde votre progression!",
+            "je prends le risque!",
+          ]);
           const response = await axios.post(`${backend}/edit`, {
             pattern: edited[0],
             name: edited[1],
             context: context,
           });
-          console.log(response.data);
-          console.log(response.data.level);
           if (response.data.message === "votre niveau a été édité!") {
-            setDisplayWfr(false);
+            setDisplayWfr([
+              "edit ok",
+              "TOUT EST OK!",
+              "votre niveau à été édité, vous pouvez le retrouver dans la catégorie des niveaux à vérifier",
+              "continuer",
+            ]);
             setLevels((prevState) => [...prevState, response.data.level]);
+          } else if (response.data.message === "ce nom est déja utilisé!") {
+            setDisplayWfr([
+              "edit error",
+              "OUPS!",
+              "un niveau porte déja ce nom, choisissez un autre nom pour pouvoir éditer",
+              "retourner à l'édition",
+            ]);
           }
         } catch (error) {}
       }
@@ -223,6 +238,9 @@ const EditorPage = ({
 
   //-- patternBuilder (construit le pattern pour l'édition)
   useEffect(() => {
+    if (lvlContext === "aucune information") {
+      setLvlContext("");
+    }
     const patternBuilder = (ba) => {
       let necs = [];
       let pairs = [
