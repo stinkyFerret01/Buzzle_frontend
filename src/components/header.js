@@ -6,7 +6,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import titleBg1 from "./Media/backgroundTitle1.png";
 import titleBg2 from "./Media/backgroundTitle2.png";
 import titleBg3 from "./Media/backgroundTitle3.png";
-
+import videoPlay from "./Media/presVid.mp4";
+import videoPlay2 from "./Media/presVidEdit.mp4";
 ///-- START --///
 const Header = ({ theme, setTheme, setDisplayAys, game }) => {
   ///-- STATES --///
@@ -16,18 +17,8 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const vidSides1 = [
-    "../Videos/presVid.mp4",
-    "../Videos/presVid.mp4",
-    "../Videos/presVid.mp4",
-    "../Videos/presVid.mp4",
-  ];
-  const vidSides2 = [
-    "../Videos/presVid.mp4",
-    "../Videos/presVid.mp4",
-    "../Videos/presVid.mp4",
-    "../Videos/presVid.mp4",
-  ];
+  const vidSides1 = [videoPlay, videoPlay2, videoPlay, videoPlay2];
+  const vidSides2 = [videoPlay, videoPlay2, videoPlay, videoPlay2];
 
   ///-- FONCTIONS --///
   const navigater = (to) => {
