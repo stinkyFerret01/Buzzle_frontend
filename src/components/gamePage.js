@@ -447,7 +447,13 @@ const GamePage = ({
   useEffect(() => {
     console.log(skip);
     console.log(level.slice(0, 4));
-    if (location.pathname === "/game/game" && skip === false) {
+    if (
+      location.pathname === "/game/game" &&
+      skip === false &&
+      levelTitle !== "TUTO 1" &&
+      levelTitle !== "TUTO 2" &&
+      levelTitle !== "TUTO 3"
+    ) {
       const tuto1 = {
         pattern: [
           ".........",
