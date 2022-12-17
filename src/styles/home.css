@@ -8,7 +8,7 @@
 
 .presVidsDisplay {
     position: relative;
-    padding-top: 5rem;
+    padding-top: 1rem;
     padding-bottom: 1rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -58,7 +58,6 @@ video {
     padding: 0;
 }
 
-/* CENTER */
 .homeToGame {
     position: absolute;
     top: -2rem;
@@ -67,6 +66,7 @@ video {
     height: 4rem;
     background-color: rgba(234, 178, 11, 1);
     margin-bottom: rem;
+    display: none;
 }
 
 .homeToGame:hover {
@@ -82,5 +82,20 @@ video {
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+}
+
+@media (min-height: 550px) {
+    .presVidsDisplay {
+        padding-top: 5rem;
+    }
+    .homeToGame {
+        display: flex;
+    }
+}
+
+@media (max-height: 420px) {
+    .presVidsDisplay {
+        border: solid transparent 4px;
     }
 }
