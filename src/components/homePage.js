@@ -34,6 +34,7 @@ const HomePage = ({ setBigScreen, setTheme, setSkip }) => {
           className="presVidDisplay"
           onClick={() => {
             navigate("/game/game");
+            setSkip(false);
             setTheme("dark");
           }}
         >

@@ -9,6 +9,7 @@ import LevelsSlide from "./levelsSlide";
 
 const GamePage = ({
   skip,
+  setSkip,
   level,
   setLevel,
   levelTitle,
@@ -472,17 +473,17 @@ const GamePage = ({
     } else if (skip === true) {
       const presLevel = {
         pattern: [
-          "......................",
-          "WWWWWWWWWWWWWWWWWWWWWW",
-          "WP...................W",
-          "W.W.W..........B.....W",
-          "W.W.W................E",
-          "W.WWW.p..............W",
-          "W.W.W................W",
-          "W.W.W................W",
-          "W....................W",
-          "WWWWWWWWWWWWWWWWWWWWWW",
-          "......................",
+          ".......................",
+          "WWWWWWWWWWWWWWWWWWWWWWW",
+          "W.....................W",
+          "W.W.W.WWW.W...W...WWW.W",
+          "W.WPW.W...W...W...W.W.E",
+          "W.WWW.WW..W...W...W.W.W",
+          "W.W.W.Wp..W...WB..W.W.W",
+          "W.W.W.WWW.WWW.WWW.WWW.W",
+          "W.....................W",
+          "WWWWWWWWWWWWWWWWWWWWWWW",
+          ".......................",
         ],
         name: "SALUTATIONS!",
         context: "CHOISISSEZ UN NIVEAU DANS LE MENU A GAUCHE DE L'éCRAN",
@@ -779,6 +780,8 @@ const GamePage = ({
         }
       >
         <LevelsSlide
+          skip={skip}
+          setSkip={setSkip}
           level={level}
           setLevel={setLevel}
           setLevelTitle={setLevelTitle}

@@ -5,6 +5,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 ///-- START --///
 const LevelsSlide = ({
   setBigScreen,
+  skip,
+  setSkip,
   levels,
   setLevel,
   setLevelTitle,
@@ -36,6 +38,7 @@ const LevelsSlide = ({
   //-- levelSetter
   const levelSetter = (lvl) => {
     if (lvl === "TUTO") {
+      setSkip(false);
       const tuto1 = {
         pattern: [
           ".........",

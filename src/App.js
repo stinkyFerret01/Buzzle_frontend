@@ -94,6 +94,7 @@ function App() {
               <GamePage
                 backend={backend}
                 skip={skip}
+                setSkip={setSkip}
                 level={level}
                 setLevel={setLevel}
                 levelTitle={levelTitle}
