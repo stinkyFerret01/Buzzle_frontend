@@ -479,9 +479,8 @@ const GamePage = ({
       setLevelContext(tuto1.context);
       setGame(["Ready?", "START"]);
     } else if (
-      (skip === true && level === "none") ||
-      level.slice(0, 4) === "TUTO" ||
-      levelTitle === "SALUTATIONS!"
+      skip === true &&
+      (level === "none" || level.slice(0, 4) === "TUTO")
     ) {
       const presLevel = {
         pattern: [
