@@ -450,13 +450,13 @@ const GamePage = ({
 
   //-- presLevel (défini le niveau par défault (en dur))
   useEffect(() => {
+    console.log("pres level");
     if (
       location.pathname === "/game/game" &&
       skip === false &&
       levelTitle !== "TUTO 1" &&
       levelTitle !== "TUTO 2" &&
-      levelTitle !== "TUTO 3" &&
-      levelTitle !== "SALUTATIONS!"
+      levelTitle !== "TUTO 3"
     ) {
       const tuto1 = {
         pattern: [
@@ -480,7 +480,8 @@ const GamePage = ({
       setGame(["Ready?", "START"]);
     } else if (
       skip === true &&
-      (level === "none" || level.slice(0, 4) === "TUTO")
+      level === "none" &&
+      levelTitle !== "SALUTATIONS!"
     ) {
       const presLevel = {
         pattern: [
@@ -520,6 +521,7 @@ const GamePage = ({
   //-- autoTuttoSetter
   useEffect(() => {
     const tutoSetter = () => {
+      console.log("auto tuto setter");
       const tuto1 = {
         pattern: [
           ".........",

@@ -8,7 +8,7 @@ import videoPlay from "./Media/presVid.mp4";
 import videoPlay2 from "./Media/presVidEdit.mp4";
 
 ///-- START --///
-const HomePage = ({ setBigScreen, setTheme, skip, setSkip, setLevelTitle }) => {
+const HomePage = ({ setBigScreen, setTheme, skip, setSkip, setLevel }) => {
   const navigate = useNavigate();
 
   //-- USEEFFECT
@@ -23,6 +23,7 @@ const HomePage = ({ setBigScreen, setTheme, skip, setSkip, setLevelTitle }) => {
         <button
           className="homeToGame"
           onClick={() => {
+            setLevel("none");
             navigate("/game/game");
             setTheme("dark");
             setSkip(true);
@@ -33,7 +34,6 @@ const HomePage = ({ setBigScreen, setTheme, skip, setSkip, setLevelTitle }) => {
         <div
           className="presVidDisplay"
           onClick={() => {
-            setLevelTitle("SALUTATIONS!");
             navigate("/game/game");
             setSkip(false);
             setTheme("dark");
