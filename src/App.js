@@ -34,6 +34,7 @@ function App() {
   const [displayWfr, setDisplayWfr] = useState("none");
   const [displayLevels, setDisplayLevels] = useState(false);
   const [bigScreen, setBigScreen] = useState(false);
+  const [skip, setSkip] = useState(false);
 
   //-- USEEFFECT
   //-- fetcher (requete au backend pour récupérer les niveaux)
@@ -80,7 +81,11 @@ function App() {
           <Route
             path="/"
             element={
-              <HomePage setBigScreen={setBigScreen} setTheme={setTheme} />
+              <HomePage
+                setBigScreen={setBigScreen}
+                setTheme={setTheme}
+                setSkip={setSkip}
+              />
             }
           />
           <Route
@@ -88,6 +93,7 @@ function App() {
             element={
               <GamePage
                 backend={backend}
+                skip={skip}
                 level={level}
                 setLevel={setLevel}
                 levelTitle={levelTitle}

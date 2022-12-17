@@ -8,7 +8,7 @@ import videoPlay from "./Media/presVid.mp4";
 import videoPlay2 from "./Media/presVidEdit.mp4";
 
 ///-- START --///
-const HomePage = ({ setBigScreen, setTheme }) => {
+const HomePage = ({ setBigScreen, setTheme, setSkip }) => {
   const navigate = useNavigate();
 
   //-- USEEFFECT
@@ -25,6 +25,7 @@ const HomePage = ({ setBigScreen, setTheme }) => {
           onClick={() => {
             navigate("/game/game");
             setTheme("dark");
+            setSkip(true);
           }}
         >
           <h3 style={{ fontSize: "18px" }}>PLAY BUZZLE NOW!</h3>
@@ -36,7 +37,7 @@ const HomePage = ({ setBigScreen, setTheme }) => {
             setTheme("dark");
           }}
         >
-          <h3>PLAY!</h3>
+          <h3>TUTO!</h3>
           <video width="220" height="130" loop autoPlay muted>
             <source src={videoPlay} type="video/mp4" />
           </video>

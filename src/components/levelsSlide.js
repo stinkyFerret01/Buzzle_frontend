@@ -103,7 +103,11 @@ const LevelsSlide = ({
           className={
             game[0] !== "Playing..." ? "burgerMenuSlide" : "burgerMenuSlide2"
           }
-          style={displayLevels ? { paddingLeft: "0.3rem" } : {}}
+          style={
+            displayLevels
+              ? { paddingLeft: "0.3rem", backgroundColor: "black" }
+              : {}
+          }
           onClick={() => {
             displayLevelsToggler();
           }}

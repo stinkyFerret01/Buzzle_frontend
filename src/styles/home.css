@@ -12,7 +12,7 @@
     padding-bottom: 1rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-    min-width: 22rem;
+    min-width: 24rem;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -42,7 +42,7 @@
 .presVidDisplay:hover {
     color: rgba(234, 178, 11);
     cursor: pointer;
-    box-shadow: 0 0 1rem rgba(234, 178, 11, 1);
+    box-shadow: 0 0 1rem orangered;
     background-color:  orangered;
 }
 
@@ -61,8 +61,8 @@ video {
 .homeToGame {
     position: absolute;
     top: -2rem;
-    left: calc(50% - 9rem);
-    width: 18rem;
+    left: calc(50% - 10rem);
+    width: 20rem;
     height: 4rem;
     background-color: rgba(234, 178, 11, 1);
     margin-bottom: rem;
@@ -71,7 +71,7 @@ video {
 
 .homeToGame:hover {
     background-color: orangered;
-    box-shadow: 0 0 1rem rgba(234, 178, 11, 1);
+    box-shadow: 0 0 1rem orangered;
 }
 
 @media (min-width: 501px) {

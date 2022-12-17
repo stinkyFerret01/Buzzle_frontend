@@ -8,6 +8,7 @@ import Pos from "./pos";
 import LevelsSlide from "./levelsSlide";
 
 const GamePage = ({
+  skip,
   level,
   setLevel,
   levelTitle,
@@ -445,6 +446,7 @@ const GamePage = ({
   useEffect(() => {
     if (
       location.pathname === "/game/game" &&
+      skip === false &&
       (level === edited[0] || level === "none")
     ) {
       const tuto1 = {
@@ -467,8 +469,32 @@ const GamePage = ({
       setLevelTitle(tuto1.name);
       setLevelContext(tuto1.context);
       setGame(["Ready?", "START"]);
+    } else if (skip === true) {
+      const presLevel = {
+        pattern: [
+          "......................",
+          "WWWWWWWWWWWWWWWWWWWWWW",
+          "WP...................W",
+          "W.W.W..........B.....W",
+          "W.W.W................E",
+          "W.WWW.p..............W",
+          "W.W.W................W",
+          "W.W.W................W",
+          "W....................W",
+          "WWWWWWWWWWWWWWWWWWWWWW",
+          "......................",
+        ],
+        name: "SALUTATIONS!",
+        context: "CHOISISSEZ UN NIVEAU DANS LE MENU A GAUCHE DE L'éCRAN",
+      };
+      setCops([]);
+      setLevel(presLevel.pattern);
+      setLevelTitle(presLevel.name);
+      setLevelContext(presLevel.context);
+      setGame(["Ready?", "START"]);
     }
   }, [
+    skip,
     level,
     setLevel,
     setLevelContext,
