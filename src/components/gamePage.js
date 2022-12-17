@@ -450,7 +450,6 @@ const GamePage = ({
 
   //-- presLevel (défini le niveau par défault (en dur))
   useEffect(() => {
-    console.log("pres level");
     if (
       location.pathname === "/game/game" &&
       skip === false &&
@@ -521,7 +520,6 @@ const GamePage = ({
   //-- autoTuttoSetter
   useEffect(() => {
     const tutoSetter = () => {
-      console.log("auto tuto setter");
       const tuto1 = {
         pattern: [
           ".........",

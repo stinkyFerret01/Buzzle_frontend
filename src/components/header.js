@@ -39,7 +39,6 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
   ///-- USEEFFECT --///
   useEffect(() => {
     const counterAdder = () => {
-      console.log(titleBgCounter);
       if (titleBgCounter !== 3) {
         setTitleBgCounter(titleBgCounter + 1);
       } else {
