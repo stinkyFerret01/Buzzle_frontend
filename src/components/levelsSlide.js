@@ -214,7 +214,7 @@ const LevelsSlide = ({
             </div>
             {levels.length === 0 ? (
               <div className="headerGameDivs">
-                <h3 className="loadingText">
+                <h3 className="loadingText" style={{ marginLeft: "2rem" }}>
                   NIVEAUX EN CHARGEMENT, CELA PEUT PRNDRE QUELQUES SECONDES...
                 </h3>
               </div>
