@@ -86,6 +86,7 @@ function App() {
                 setTheme={setTheme}
                 skip={skip}
                 setSkip={setSkip}
+                setLevelTitle={setLevelTitle}
               />
             }
           />

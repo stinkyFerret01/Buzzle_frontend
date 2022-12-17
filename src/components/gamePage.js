@@ -365,6 +365,11 @@ const GamePage = ({
   useEffect(() => {
     //-- baseBuilder construit le tableau du niveau choisi
     const baseBuilder = (lvl) => {
+      const contextInAndOut = () => {
+        setDisplayContext(false);
+      };
+      setDisplayContext(true);
+      setTimeout(contextInAndOut, 5000);
       let eBase = [];
       let basePlayer = [];
       let baseObjects = [];
@@ -445,14 +450,13 @@ const GamePage = ({
 
   //-- presLevel (défini le niveau par défault (en dur))
   useEffect(() => {
-    console.log(skip);
-    console.log(level.slice(0, 4));
     if (
       location.pathname === "/game/game" &&
       skip === false &&
       levelTitle !== "TUTO 1" &&
       levelTitle !== "TUTO 2" &&
-      levelTitle !== "TUTO 3"
+      levelTitle !== "TUTO 3" &&
+      levelTitle !== "SALUTATIONS!"
     ) {
       const tuto1 = {
         pattern: [
@@ -476,7 +480,8 @@ const GamePage = ({
       setGame(["Ready?", "START"]);
     } else if (
       (skip === true && level === "none") ||
-      level.slice(0, 4) === "TUTO"
+      level.slice(0, 4) === "TUTO" ||
+      levelTitle === "SALUTATIONS!"
     ) {
       const presLevel = {
         pattern: [
@@ -841,8 +846,9 @@ const GamePage = ({
             onClick={() => {
               contextToggler();
             }}
+            style={{ animation: "contextIn 0.2s linear" }}
           >
-            <h3 className="levelContextTitle">{levelTitle}:</h3>
+            <h3 className="levelContextTitle">{levelTitle}</h3>
             <h4 className="levelContextContext">{levelContext}</h4>
             {levelTitle === "TUTO 1" && (
               <h4 className="levelContextContext">
@@ -862,6 +868,7 @@ const GamePage = ({
             onClick={() => {
               contextToggler();
             }}
+            style={{ animation: "contextOut 0.2s linear" }}
           >
             <h3>{levelTitle}</h3>
           </button>

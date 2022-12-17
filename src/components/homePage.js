@@ -8,7 +8,7 @@ import videoPlay from "./Media/presVid.mp4";
 import videoPlay2 from "./Media/presVidEdit.mp4";
 
 ///-- START --///
-const HomePage = ({ setBigScreen, setTheme, skip, setSkip }) => {
+const HomePage = ({ setBigScreen, setTheme, skip, setSkip, setLevelTitle }) => {
   const navigate = useNavigate();
 
   //-- USEEFFECT
@@ -33,9 +33,9 @@ const HomePage = ({ setBigScreen, setTheme, skip, setSkip }) => {
         <div
           className="presVidDisplay"
           onClick={() => {
+            setLevelTitle("SALUTATIONS!");
             navigate("/game/game");
             setSkip(false);
-            // console.log(skip);
             setTheme("dark");
           }}
         >
