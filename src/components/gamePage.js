@@ -89,13 +89,13 @@ const GamePage = ({
   };
 
   //-- pad OptionToggler
-  const padOptionToggler = () => {
-    if (pad2 === true) {
-      setPad2(false);
-    } else {
-      setPad2(true);
-    }
-  };
+  // const padOptionToggler = () => {
+  //   if (pad2 === true) {
+  //     setPad2(false);
+  //   } else {
+  //     setPad2(true);
+  //   }
+  // };
 
   //-- difficultySetter
   const difficultySetter = (dif) => {
@@ -460,8 +460,7 @@ const GamePage = ({
           ".........",
         ],
         name: "TUTO 1",
-        context:
-          "POSEZ LA BOITE SUR LA PLAQUE DE PRESSION POUR SORTIR (UTILISEZ LES 'FLèCHES' POUR VOUS DéPLACER ET LA TOUCHE 'A' POUR INTERRAGIR",
+        context: "POSEZ LA BOITE SUR LA PLAQUE DE PRESSION POUR SORTIR",
       };
       setCops([]);
       setLevel(tuto1.pattern);
@@ -495,8 +494,7 @@ const GamePage = ({
           ".........",
         ],
         name: "TUTO 1",
-        context:
-          "POSEZ LA BOITE SUR LA PLAQUE DE PRESSION POUR SORTIR (UTILISEZ LES 'FLèCHES' POUR VOUS DéPLACER ET LA TOUCHE 'A' POUR INTERRAGIR",
+        context: "POSEZ LA BOITE SUR LA PLAQUE DE PRESSION POUR SORTIR",
       };
       const tuto2 = {
         pattern: [
@@ -801,6 +799,15 @@ const GamePage = ({
           >
             <h3 className="levelContextTitle">{levelTitle}:</h3>
             <h4 className="levelContextContext">{levelContext}</h4>
+            {levelTitle === "TUTO 1" && (
+              <h4 className="levelContextContext">
+                UTILISEZ LA TOUCHE <span className="keyInfoSpan">"ENTREé"</span>{" "}
+                POUR ARRéTER/DéMARRER LE JEU, LES{" "}
+                <span className="keyInfoSpan">"FLèCHES"</span> POUR VOUS
+                DéPLACER ET LA TOUCHE <span className="keyInfoSpan">"A"</span>{" "}
+                POUR INTéRRAGIR.
+              </h4>
+            )}
           </button>
         ) : (
           <button
@@ -923,16 +930,19 @@ const GamePage = ({
           <section className={pad2 ? "padContainer2" : "padContainer"}>
             <button
               className={pad2 ? "padActivity2" : "padActivity"}
+              style={{ paddingBottom: "0.5rem", paddingLeft: "0.6rem" }}
               onClick={() => handleKeyDown("pad", "a")}
-            ></button>
-            {bigScreen && (
+            >
+              <h2>A</h2>
+            </button>
+            {/* {bigScreen && (
               <button
                 className={pad2 ? "padOption2" : "padOption"}
                 onClick={() => {
                   padOptionToggler();
                 }}
               ></button>
-            )}
+            )} */}
             <div className="pad">
               <div className="padLigns">
                 <button

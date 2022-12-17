@@ -49,8 +49,7 @@ const LevelsSlide = ({
           ".........",
         ],
         name: "TUTO 1",
-        context:
-          "POSEZ LA BOITE SUR LA PLAQUE DE PRESSION POUR SORTIR (UTILISEZ LES 'FLèCHES' POUR VOUS DéPLACER ET LA TOUCHE 'A' POUR INTERRAGIR",
+        context: "POSEZ LA BOITE SUR LA PLAQUE DE PRESSION POUR SORTIR",
       };
       setLevel(tuto1.pattern);
       setLevelTitle(tuto1.name);
