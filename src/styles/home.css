@@ -49,7 +49,7 @@
 .presVidDisplay2:hover {
     color: rgba(234, 178, 11);
     cursor: pointer;
-    box-shadow: 0 0 1rem rgba(234, 178, 11, 1);
+    box-shadow: 0 0 1rem orangered;
     background-color:  orangered;
 }
 

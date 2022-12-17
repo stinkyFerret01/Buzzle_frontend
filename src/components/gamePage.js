@@ -369,7 +369,7 @@ const GamePage = ({
         setDisplayContext(false);
       };
       setDisplayContext(true);
-      setTimeout(contextInAndOut, 5000);
+      setTimeout(contextInAndOut, 3000);
       let eBase = [];
       let basePlayer = [];
       let baseObjects = [];
@@ -446,7 +446,7 @@ const GamePage = ({
       setBase(baseBuilder(level));
       setGame(["Ready?", "START"]);
     }
-  }, [level, setGame]);
+  }, [skip, level, setGame]);
 
   //-- presLevel (défini le niveau par défault (en dur))
   useEffect(() => {
