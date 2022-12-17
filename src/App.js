@@ -77,7 +77,12 @@ function App() {
           />
         )}
         <Routes>
-          <Route path="/" element={<HomePage setBigScreen={setBigScreen} />} />
+          <Route
+            path="/"
+            element={
+              <HomePage setBigScreen={setBigScreen} setTheme={setTheme} />
+            }
+          />
           <Route
             path="/game/:from"
             element={
