@@ -71,6 +71,14 @@
     pointer-events: none;
     min-width: 105%;
     max-height: 102%;
+    display: flex;
+}
+
+.titleBg2 {
+    pointer-events: none;
+    min-width: 105%;
+    max-height: 102%;
+    display: none;
 }
 
 /* OPTIONS */

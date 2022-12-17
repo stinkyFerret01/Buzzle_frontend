@@ -110,15 +110,21 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
             }
           }}
         >
-          {titleBgCounter === 1 && (
-            <img className="titleBg" src={titleBg1} alt="background spatial" />
-          )}
-          {titleBgCounter === 2 && (
-            <img className="titleBg" src={titleBg2} alt="background spatial" />
-          )}
-          {titleBgCounter === 3 && (
-            <img className="titleBg" src={titleBg3} alt="background spatial" />
-          )}
+          <img
+            className={titleBgCounter === 1 ? "titleBg" : "titleBg2"}
+            src={titleBg1}
+            alt="background spatial"
+          />
+          <img
+            className={titleBgCounter === 2 ? "titleBg" : "titleBg2"}
+            src={titleBg2}
+            alt="background spatial"
+          />
+          <img
+            className={titleBgCounter === 3 ? "titleBg" : "titleBg2"}
+            src={titleBg3}
+            alt="background spatial"
+          />
         </button>
       </section>
       <section className="headerOptions">
