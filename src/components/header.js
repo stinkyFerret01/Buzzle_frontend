@@ -11,7 +11,6 @@ import videoPlay2 from "./Media/presVidEdit.mp4";
 ///-- START --///
 const Header = ({ theme, setTheme, setDisplayAys, game }) => {
   ///-- STATES --///
-  const [titleBg, setTitleBg] = useState(0);
   const [titleBgCounter, setTitleBgCounter] = useState(1);
 
   const navigate = useNavigate();
@@ -40,7 +39,6 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
   ///-- USEEFFECT --///
   useEffect(() => {
     const counterAdder = () => {
-      console.log(titleBg);
       console.log(titleBgCounter);
       if (titleBgCounter !== 3) {
         setTitleBgCounter(titleBgCounter + 1);
@@ -49,17 +47,7 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
       }
     };
     setTimeout(counterAdder, 1000);
-  }, [titleBg, titleBgCounter]);
-
-  useEffect(() => {
-    if (titleBgCounter === 1) {
-      setTitleBg(titleBg1);
-    } else if (titleBgCounter === 2) {
-      setTitleBg(titleBg2);
-    } else if (titleBgCounter === 3) {
-      setTitleBg(titleBg3);
-    }
-  }, [titleBgCounter, titleBg]);
+  }, [titleBgCounter]);
 
   ///-- RENDER --///
   return (
@@ -122,7 +110,15 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
             }
           }}
         >
-          <img className="titleBg" src={titleBg} alt="background spatial" />
+          {titleBgCounter === 1 && (
+            <img className="titleBg" src={titleBg1} alt="background spatial" />
+          )}
+          {titleBgCounter === 2 && (
+            <img className="titleBg" src={titleBg2} alt="background spatial" />
+          )}
+          {titleBgCounter === 3 && (
+            <img className="titleBg" src={titleBg3} alt="background spatial" />
+          )}
         </button>
       </section>
       <section className="headerOptions">
