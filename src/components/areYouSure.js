@@ -39,7 +39,7 @@ const AreYouSure = ({
       <article className="ays">
         <h3>ATTENTION!</h3>
         <h4 className="noHovText">
-          SI VOUS JOUER, VOUS RISQUEZ DE PERDRE VOTRE PROGRESSION!
+          SI VOUS JOUEZ, VOUS RISQUEZ DE PERDRE VOTRE PROGRESSION!
         </h4>
         <div className="aysChoiceDisplayer">
           <button

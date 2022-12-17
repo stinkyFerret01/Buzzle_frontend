@@ -134,7 +134,7 @@ const LevelsSlide = ({
                 className="headerGameTitle"
                 onClick={() => gamDivDefiner("à tester")}
               >
-                <h3>NIVEAUX NON VERIFIE...</h3>
+                <h3>NIVEAUX NON VERIFIéS...</h3>
               </button>
             </div>
             <div>

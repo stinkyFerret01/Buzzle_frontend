@@ -26,7 +26,7 @@ const GamePage = ({
   setDisplayLevels,
 }) => {
   ///-- STATES --///
-  const [displayPad, setDisplayPad] = useState(false);
+  const [displayPad, setDisplayPad] = useState(true);
   const [pad2, setPad2] = useState(false);
   const [displayInfo, setDisplayInfo] = useState(false);
   const [base, setBase] = useState("loading");
@@ -313,6 +313,12 @@ const GamePage = ({
     //////------ PROBLEMO ------//////
     // eslint-disable-next-line
   }, [game, player, grid]);
+
+  useEffect(() => {
+    if (bigScreen === false) {
+      setPad2(false);
+    }
+  }, [bigScreen]);
 
   //-- actionDefiner (défini l'action possible)
   useEffect(() => {
@@ -919,12 +925,14 @@ const GamePage = ({
               className={pad2 ? "padActivity2" : "padActivity"}
               onClick={() => handleKeyDown("pad", "a")}
             ></button>
-            <button
-              className={pad2 ? "padOption2" : "padOption"}
-              onClick={() => {
-                padOptionToggler();
-              }}
-            ></button>
+            {bigScreen && (
+              <button
+                className={pad2 ? "padOption2" : "padOption"}
+                onClick={() => {
+                  padOptionToggler();
+                }}
+              ></button>
+            )}
             <div className="pad">
               <div className="padLigns">
                 <button

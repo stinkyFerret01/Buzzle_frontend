@@ -28,10 +28,7 @@ const WaitForResponse = ({ displayWfr, setDisplayWfr }) => {
     <section className="spreadOver">
       <article className="ays" style={style}>
         <h3>{text.title}</h3>
-        <h5>
-          {text.message}
-          {/* continuer sans attendre peut vous faire perdre votre progression */}
-        </h5>
+        <h5>{text.message}</h5>
         <button className="wfrContinue" onClick={() => setDisplayWfr("none")}>
           {text.button}
         </button>
