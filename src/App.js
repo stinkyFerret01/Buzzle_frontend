@@ -84,6 +84,7 @@ function App() {
               <HomePage
                 setBigScreen={setBigScreen}
                 setTheme={setTheme}
+                skip={skip}
                 setSkip={setSkip}
               />
             }

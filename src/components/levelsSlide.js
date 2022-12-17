@@ -59,6 +59,7 @@ const LevelsSlide = ({
       setLevelContext(tuto1.context);
       setDisplayContext(true);
     } else {
+      setSkip(true);
       setLevel(lvl.pattern);
       setLevelTitle(lvl.name);
       if (lvl.context) {

@@ -445,11 +445,9 @@ const GamePage = ({
 
   //-- presLevel (défini le niveau par défault (en dur))
   useEffect(() => {
-    if (
-      location.pathname === "/game/game" &&
-      skip === false &&
-      (level === edited[0] || level === "none")
-    ) {
+    console.log(skip);
+    console.log(level.slice(0, 4));
+    if (location.pathname === "/game/game" && skip === false) {
       const tuto1 = {
         pattern: [
           ".........",
@@ -470,7 +468,10 @@ const GamePage = ({
       setLevelTitle(tuto1.name);
       setLevelContext(tuto1.context);
       setGame(["Ready?", "START"]);
-    } else if (skip === true) {
+    } else if (
+      (skip === true && level === "none") ||
+      level.slice(0, 4) === "TUTO"
+    ) {
       const presLevel = {
         pattern: [
           ".......................",
@@ -499,6 +500,7 @@ const GamePage = ({
     level,
     setLevel,
     setLevelContext,
+    levelTitle,
     setLevelTitle,
     setGame,
     edited,
@@ -570,10 +572,18 @@ const GamePage = ({
         setGame(["Ready?", "START"]);
       }
     };
-    if (game[0] === "Win!" || game === "lost!") {
+    if ((game[0] === "Win!" || game === "lost!") && skip === false) {
       tutoSetter();
     }
-  }, [game, setGame, levelTitle, setLevel, setLevelContext, setLevelTitle]);
+  }, [
+    skip,
+    game,
+    setGame,
+    levelTitle,
+    setLevel,
+    setLevelContext,
+    setLevelTitle,
+  ]);
 
   //-- counterAdder
   //-- (PROBEMO dépendance player)
