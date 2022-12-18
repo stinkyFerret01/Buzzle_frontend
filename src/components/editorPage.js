@@ -329,7 +329,7 @@ const EditorPage = ({
       >
         {bigScreen === true ? (
           <button className="reduceScreen" onClick={screenToggler}>
-            <h3>X</h3>
+            <h2 className="reduceScreenX">x</h2>
           </button>
         ) : (
           <button className="enlargeScreen" onClick={screenToggler}>

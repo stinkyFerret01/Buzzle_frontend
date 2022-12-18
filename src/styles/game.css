@@ -223,8 +223,10 @@
 
 /* SCROLL PLAYER INTO VIEW */
 div[id^="player"] {
-    top: -100px;
-    right: -100px;
+    /* top: -50rem;
+    right: -50rem; */
+    /* left: -50%;
+    bottom: -50%; */
 }
 
   /* div[id^="player"] {
@@ -341,8 +343,7 @@ div[id^="player"] {
 }
 
 .commandInfoButton:hover {
-    color: white;
-    background-color: orangered;
+    color: orangered;
 }
 
 .keyInfoSpan {
@@ -366,8 +367,7 @@ div[id^="player"] {
 }
 
 .padButton:hover {
-    color: white;
-    background-color: orangered;
+    color: orangered;
 }
 
 .padMessage {

@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 ///-- START --///
 const LevelsSlide = ({
+  bigScreen,
   setBigScreen,
   setSkip,
   levels,
@@ -105,7 +106,10 @@ const LevelsSlide = ({
           : { display: "inherit" }
       }
     >
-      <div className={displayLevels ? "levelsSlide" : "levelsSlide2"}>
+      <div
+        className={displayLevels ? "levelsSlide" : "levelsSlide2"}
+        style={!bigScreen ? { top: "calc(100% - 10rem" } : {}}
+      >
         <button
           className={
             game[0] !== "Playing..." ? "burgerMenuSlide" : "burgerMenuSlide2"
@@ -219,8 +223,21 @@ const LevelsSlide = ({
             </div>
             {levels.length === 0 ? (
               <div className="headerGameDivs">
-                <h3 className="loadingText" style={{ marginLeft: "2rem" }}>
-                  NIVEAUX EN CHARGEMENT, CELA PEUT PRNDRE QUELQUES SECONDES...
+                <h3
+                  className="loadingText"
+                  style={{
+                    width: "8rem",
+                    height: "12rem",
+                    marginLeft: "1rem",
+                    textAlign: "center",
+                    marginRight: "1rem",
+                    backgroundColor: "rgba(0, 0, 0, 0.4)",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  RéCUPéRATION DES NIVEAUX, CELA PEUT PRENDRE QUELQUES
+                  SECONDES...
                 </h3>
               </div>
             ) : (

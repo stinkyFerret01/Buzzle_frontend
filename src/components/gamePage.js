@@ -811,6 +811,7 @@ const GamePage = ({
           game={game}
           levels={levels}
           setLevels={setLevels}
+          bigScreen={bigScreen}
           setBigScreen={setBigScreen}
           displayLevels={displayLevels}
           setDisplayLevels={setDisplayLevels}
