@@ -622,7 +622,7 @@ const EditorPage = ({
         </div>
         <div className="levelContextSelect">
           <h4 className="noHovText">DESCRIPTION DU NIVEAU</h4>
-          <input
+          <textarea
             className="levelContextInput"
             type="text"
             placeholder="ajoutez une description (optionel)"
@@ -636,18 +636,20 @@ const EditorPage = ({
           />
           <h5 className="noHovText">JUSQU'A 100 CARACTèRES!</h5>
         </div>
-        {editable !== "not ready" && (
-          <div className="levelTester">
-            <button className="levelTesterButton" onClick={levelTester}>
-              TESTER!
-            </button>
-            {editable === "ready to be edited" && (
-              <button className="levelEditerButton" onClick={() => editer()}>
-                EDITER!
+        <div className="testerContainer">
+          {editable !== "not ready" && (
+            <div className="levelTester">
+              <button className="levelTesterButton" onClick={levelTester}>
+                <h3>TESTER!</h3>
               </button>
-            )}
-          </div>
-        )}
+              {editable === "ready to be edited" && (
+                <button className="levelEditerButton" onClick={() => editer()}>
+                  <h3>EDITER!</h3>
+                </button>
+              )}
+            </div>
+          )}
+        </div>
         <button
           className="backToGameButton"
           onClick={() => {
