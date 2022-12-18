@@ -1,10 +1,27 @@
 .homePage {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.homePage2 {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 
 /* TOP */
+
+.homeMessage {
+    color: rgba(234, 178, 11, 1);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: black;
+    border: solid gray 4px;
+    border-radius: 8px;
+}
 
 .presVidsDisplay {
     position: relative;
@@ -24,7 +41,7 @@
 .presVidDisplay {
     width: 13.5rem;
     height: 10rem;
-    margin: 1rem;
+    margin: 0.5rem;
     background-color: rgba(234, 178, 11);
     display: flex;
     flex-direction: column;
@@ -34,9 +51,11 @@
 .presVidDisplay2 {
     width: 13.5rem;
     height: 10rem;
-    margin: 1rem;
+    margin: 0.5rem;
     background-color: rgba(234, 178, 11);
-    display: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .presVidDisplay:hover {
@@ -74,7 +93,7 @@ video {
     box-shadow: 0 0 1rem orangered;
 }
 
-@media (min-width: 501px) {
+@media (min-width: 500px) {
     .presVidsDisplay {
         flex-direction: row;
     }
@@ -87,15 +106,203 @@ video {
 
 @media (min-height: 550px) {
     .presVidsDisplay {
-        padding-top: 5rem;
+        padding-top: 3rem;
+        border: solid transparent 4px;
     }
     .homeToGame {
         display: flex;
     }
 }
 
-@media (max-height: 420px) {
+@media (max-height: 550px) {
     .presVidsDisplay {
         border: solid transparent 4px;
     }
+}
+
+.homeStinky {
+    color: orange;
+    animation: stinkyCharge 5s linear;
+}
+  
+.homeLetter11 {
+    color: rgba(100, 100, 100);
+    animation: letterCharge 5s infinite;
+}
+
+
+@keyframes letterCharge {
+    0%{
+        color:rgba(255, 166, 0, 0.2);
+       }
+       10%{
+        color:rgba(255, 166, 0, 0.2);
+       }
+       11%{
+        color: orange;
+       }
+       11.1%{
+        color:orange
+       }
+       11.2%{
+        color:rgba(255, 166, 0, 0.2);
+       }
+       17%{
+        color:rgba(255, 166, 0, 0.2);
+       }
+       17.1%{
+        color:orange
+       }
+       18.2%{
+        color:orange
+       }
+       18.3%{
+        color:rgba(255, 166, 0, 0.2);
+       }
+       19.1%{
+        color:rgba(255, 166, 0, 0.2);
+       }
+       19.2%{
+        color:orange
+       }
+       19.4%{
+        color:orange
+       }
+       19.5%{
+        color:rgba(255, 166, 0, 0.2);
+       }
+       19.7%{
+        color:rgba(255, 166, 0, 0.2);
+       }
+       19.8%{
+        color:orange
+       }
+       20.1%{
+        color:rgba(255, 166, 0, 0.5);
+       }
+       20.7% {
+        color:rgba(255, 166, 0, 0.2);
+       }
+       38%{
+        color:rgba(255, 166, 0, 0.2);
+       }
+       38.1%{
+        color:rgba(255, 166, 0, 0.5);
+       }
+       38.3%{
+        color:rgba(255, 166, 0, 0.5);
+       }
+       38.4%{
+        color:rgba(255, 166, 0, 0.2);
+       }
+       58.1%{
+        color:rgba(255, 166, 0, 0.2);
+       }
+       58.3%{
+        color:rgba(255, 166, 0, 0.5);
+       }
+       58.6%{
+        color:orange
+       }
+       58.4%{  
+        color:rgba(255, 166, 0, 0.2);
+    }
+       60.1%{  
+        color:rgba(255, 166, 0, 0.2);
+    }
+       60.2%{   
+        color:rgba(255, 166, 0, 0.5);
+    }
+       60.5%{ 
+        color:orange
+    }
+       70.6%{
+        color:orange
+       }
+       70.7%{
+        color:rgba(255, 166, 0, 0.2);
+       }
+       80.5%{
+        color:rgba(255, 166, 0, 0.2);
+       }
+       80.6%{ 
+        color:rgba(255, 166, 0, 0.5)
+    }
+       81.3%{ 
+        color:rgba(255, 166, 0, 0.791)
+    }
+       81.4%{  
+        color:rgba(255, 166, 0, 0.2);
+    }
+
+       100%{
+        color:rgba(255, 166, 0, 0.2);
+       }
+       
+}
+
+@keyframes stinkyCharge {
+    0%{
+        color:rgba(255, 166, 0, 0.2);
+       }
+       9%{
+        color:rgba(255, 166, 0, 0.2);
+       }
+       10%{
+        color:rgba(255, 166, 0, 0.261);
+       }
+       11%{
+        color: orange;
+       }
+       11.1%{
+        color:orange
+       }
+       11.2%{
+        color:rgba(255, 166, 0, 0.2);
+       }
+       17%{
+        color:rgba(255, 166, 0, 0.2);
+       }
+       18%{
+        color:orange
+       }
+       18.2%{
+        color:orange
+       }
+       18.3%{
+        color:rgba(255, 166, 0, 0.2);
+       }
+       19.1%{
+        color:rgba(255, 166, 0, 0.2);
+       }
+       19.2%{
+        color:orange
+       }
+       19.4%{
+        color:orange
+       }
+       19.5%{
+        color:rgba(255, 166, 0, 0.2);
+       }
+       19.6%{
+        color:rgba(255, 166, 0, 0.261);
+       }
+       58%{
+        color:orange
+       }
+       86.9%{
+        color:orange
+       }
+       87%{
+        color:rgba(255, 166, 0, 0.2);
+       }
+       87.3%{
+        color:rgba(255, 166, 0, 0.2);
+       }
+       87.5%{
+        color:orange
+       }
+       100%{
+        color:orange
+       }
 }

@@ -82,6 +82,7 @@ function App() {
             path="/"
             element={
               <HomePage
+                bigScreen={bigScreen}
                 setBigScreen={setBigScreen}
                 setTheme={setTheme}
                 skip={skip}
