@@ -169,7 +169,7 @@ const LevelsSlide = ({
             </div>
             <div>
               <button className="headerGameTitleInact" onClick={() => {}}>
-                <h3>SE CONNECTER (inactif)</h3>
+                <h3>CONNEXION (inactif)</h3>
               </button>
             </div>
           </div>

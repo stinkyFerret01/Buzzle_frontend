@@ -944,7 +944,7 @@ const GamePage = ({
         )}
         <div
           className={
-            bigScreen
+            bigScreen || !bigScreen
               ? game[0] === "Playing..."
                 ? "commandInfoLarge2"
                 : "commandInfoLarge"

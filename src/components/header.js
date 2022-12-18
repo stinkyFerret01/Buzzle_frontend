@@ -64,7 +64,7 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
       </section>
       <section className="headerConnectAndNav">
         <button className="headerConnectionButton" onClick={() => {}}>
-          <h3>SE CONNECTER (inactif)</h3>
+          <h3>CONNEXION (inactif)</h3>
         </button>
         <div className="headerNav">
           {location.pathname !== "/" && (
