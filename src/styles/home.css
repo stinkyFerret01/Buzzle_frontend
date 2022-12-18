@@ -83,7 +83,10 @@ video {
     left: calc(50% - 10rem);
     width: 20rem;
     height: 4rem;
-    background-color: rgba(234, 178, 11, 1);
+    /* background-color: rgba(234, 178, 11, 1); */
+    background: linear-gradient(-45deg, rgba(234, 178, 11, 1), rgba(234, 178, 11, 1), orangered, rgba(234, 178, 11, 1));
+    background-size: 400% 400%;
+	animation: gradient2 5s ease infinite;
     margin-bottom: rem;
     display: none;
 }
@@ -129,7 +132,6 @@ video {
     color: rgba(100, 100, 100);
     animation: letterCharge 5s infinite;
 }
-
 
 @keyframes letterCharge {
     0%{
@@ -305,4 +307,38 @@ video {
        100%{
         color:orange
        }
+}
+
+@keyframes gradient2 {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.welcomeSentence {
+    animation: wiggle 0.3s infinite
+}
+
+@keyframes wiggle {
+	0% {
+		transform: rotate(0deg);
+	}
+    25% {
+		transform: rotate(1deg);
+	}
+	50% {
+		transform: rotate(0);
+	}
+	75% {
+		transform: rotate(-1deg);
+	}
+    100% {
+        transform: rotate(0deg);
+    }
 }

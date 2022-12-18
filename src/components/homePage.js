@@ -94,7 +94,7 @@ const HomePage = ({
       </div>
       {bigScreen && (
         <div className="homeMessage">
-          <h3>{welcomeSentence}</h3>
+          <h3 className="welcomeSentence">{welcomeSentence}</h3>
         </div>
       )}
     </main>
