@@ -804,6 +804,7 @@ const GamePage = ({
           setSkip={setSkip}
           level={level}
           setLevel={setLevel}
+          levelTitle={levelTitle}
           setLevelTitle={setLevelTitle}
           setLevelContext={setLevelContext}
           setDisplayContext={setDisplayContext}
@@ -814,6 +815,7 @@ const GamePage = ({
           displayLevels={displayLevels}
           setDisplayLevels={setDisplayLevels}
           setDisplayAys={setDisplayAys}
+          setDisplayInfo={setDisplayInfo}
         />
         {location.pathname === "/game/game" && (
           <button
@@ -1062,26 +1064,28 @@ const GamePage = ({
         )}
         {game[0] !== "Playing..." && level !== "none" && (
           <article className="startPopper">
-            <div className="startButtonContainer">
-              <button
-                className="startButton"
-                onClick={() => {
-                  starter();
-                }}
-              >
-                {game[1]}
-              </button>
-              {game[0] === "Pause..." && (
+            {!displayLevels && (
+              <div className="startButtonContainer">
                 <button
                   className="startButton"
                   onClick={() => {
-                    starter("refresh");
+                    starter();
                   }}
                 >
-                  <h3>{game[2]}</h3>
+                  {game[1]}
                 </button>
-              )}
-            </div>
+                {game[0] === "Pause..." && (
+                  <button
+                    className="startButton"
+                    onClick={() => {
+                      starter("refresh");
+                    }}
+                  >
+                    <h3>{game[2]}</h3>
+                  </button>
+                )}
+              </div>
+            )}
           </article>
         )}
         {game[0] === "Playing..." && (

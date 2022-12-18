@@ -5,13 +5,14 @@ import { useNavigate, useLocation } from "react-router-dom";
 ///-- START --///
 const LevelsSlide = ({
   setBigScreen,
-  skip,
   setSkip,
   levels,
   setLevel,
+  levelTitle,
   setLevelTitle,
   setLevelContext,
   setDisplayContext,
+  setDisplayInfo,
   game,
   setDisplayAys,
   displayLevels,
@@ -76,6 +77,8 @@ const LevelsSlide = ({
     if (displayLevels === true) {
       setDisplayLevels(false);
     } else {
+      setDisplayContext(false);
+      setDisplayInfo(false);
       setDisplayLevels(true);
     }
   };
@@ -110,6 +113,8 @@ const LevelsSlide = ({
           style={
             displayLevels
               ? { paddingLeft: "0.3rem", backgroundColor: "black" }
+              : levelTitle === "SALUTATIONS!"
+              ? { animation: "pulseTitle 1s infinite" }
               : {}
           }
           onClick={() => {
