@@ -1084,6 +1084,11 @@ const GamePage = ({
             </div>
           </article>
         )}
+        {game[0] === "Playing..." && (
+          <div className="actionDisplayer">
+            <h3>{action}</h3>
+          </div>
+        )}
       </section>
     </main>
   );

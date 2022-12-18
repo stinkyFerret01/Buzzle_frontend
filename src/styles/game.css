@@ -875,3 +875,14 @@ div[id^="player"] {
         box-shadow: 0 0 0 16px rgba(234, 178, 11, 0.01);
     }
 }
+
+.actionDisplayer {
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 10rem);
+    width: 20rem;
+    height: 2.5rem;
+    color:  rgba(234, 178, 11);
+    display: flex;
+    justify-content: center;
+}
