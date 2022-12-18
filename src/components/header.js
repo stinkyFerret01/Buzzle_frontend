@@ -52,13 +52,16 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
   return (
     <header>
       <section className="headerSectionSides">
-        {vidSides1.map((vid, index) => {
+        {/* {vidSides1.map((vid, index) => {
           return (
             <video width="50" height="22" loop autoPlay muted key={index}>
               <source src={vid} type="video/mp4" />
             </video>
           );
-        })}
+        })} */}
+        <div className="simulWall">
+          <div className="simulPlayer"></div>
+        </div>
       </section>
       <section className="headerConnectAndNav">
         <button className="headerConnectionButton" onClick={() => {}}>

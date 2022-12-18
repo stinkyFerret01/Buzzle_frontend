@@ -468,7 +468,7 @@ div[id^="player"] {
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: contextOut 1s linear;
+    animation: contextOut 0.2s linear;
 }
 
 .contextButton:hover {
@@ -493,7 +493,7 @@ div[id^="player"] {
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: contexOut 1s linear;
+    animation: contexOut 0.2s linear;
 }
 
 .contextButton2:hover {
@@ -520,6 +520,7 @@ div[id^="player"] {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    animation: contextIn 0.2s linear;
 }
 
 .contextDisplayer2 {
@@ -541,6 +542,7 @@ div[id^="player"] {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    animation: contextIn 0.2s linear;
 }
 
 .contextDisplayer:hover {
@@ -862,5 +864,14 @@ div[id^="player"] {
        width: 10rem;
        left: calc(50% - 5rem);
        height: 2rem;
+    }
+}
+
+@keyframes pulseTitle {
+    from {
+        box-shadow: 0 0 0 0rem rgba(234, 178, 11);
+    }
+    to { 
+        box-shadow: 0 0 0 16px rgba(234, 178, 11, 0.01);
     }
 }

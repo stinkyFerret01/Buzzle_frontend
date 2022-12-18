@@ -462,7 +462,7 @@ const GamePage = ({
           ".........",
           "WWWWWWWWW",
           "WB..W...W",
-          "W.P.W.P.W",
+          "W...W.P.W",
           "WWHWW...E",
           "W.....p.W",
           "W.......W",
@@ -525,7 +525,7 @@ const GamePage = ({
           ".........",
           "WWWWWWWWW",
           "WB..W...W",
-          "W.P.W.P.W",
+          "W...W.P.W",
           "WWHWW...E",
           "W.....p.W",
           "W.......W",
@@ -845,7 +845,6 @@ const GamePage = ({
             onClick={() => {
               contextToggler();
             }}
-            style={{ animation: "contextIn 0.2s linear" }}
           >
             <h3 className="levelContextTitle">{levelTitle}</h3>
             <h4 className="levelContextContext">{levelContext}</h4>
@@ -867,7 +866,16 @@ const GamePage = ({
             onClick={() => {
               contextToggler();
             }}
-            style={{ animation: "contextOut 0.2s linear" }}
+            style={
+              levelTitle === "TUTO 1" ||
+              levelTitle === "TUTO 2" ||
+              levelTitle === "TUTO 3" ||
+              levelTitle === "SALUTATIONS!"
+                ? {
+                    animation: "pulseTitle 2s infinite",
+                  }
+                : {}
+            }
           >
             <h3>{levelTitle}</h3>
           </button>

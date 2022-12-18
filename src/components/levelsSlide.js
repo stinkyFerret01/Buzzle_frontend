@@ -44,7 +44,7 @@ const LevelsSlide = ({
           ".........",
           "WWWWWWWWW",
           "WB..W...W",
-          "W.P.W.P.W",
+          "W...W.P.W",
           "WWHWW...E",
           "W.....p.W",
           "W.......W",
