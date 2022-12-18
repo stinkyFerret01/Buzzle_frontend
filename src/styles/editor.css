@@ -243,6 +243,10 @@
     align-items: center;
 }
 
+.levelNameInput {
+    width: 90%;
+}
+
 .levelContextSelect {
     width: 100%;
     margin-top: 0.3rem;
@@ -254,7 +258,7 @@
 }
 
 .levelContextInput {
-    width: 80%;
+    width: 90%;
     resize: none;
     height:3rem
 }
