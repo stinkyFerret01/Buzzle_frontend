@@ -175,9 +175,12 @@
 }
 
 .simulWall {
+    position: relative;
     width: 2.1rem;
     height: 3.5rem;
     border: solid gray 0.7rem;
+    display: flex;
+    align-items: center;
     box-sizing: border-box;
 }
 
@@ -186,24 +189,77 @@
     height: 0.7rem;
     background-color: orange;
     border-radius: 50%;
-    animation: playerMoves 1s infinite;
 }
 
 @keyframes playerMoves {
 	0% {
-		margin-top: 0.7rem;
+		margin-bottom: 1.4rem;
+        margin-top: 0rem;
 	}
-	25% {
-        margin-top: 1.4rem;
-	}
-	50% {
-        margin-top: 0.7rem;
-	}
-    75%{
+    24%{
+        margin-bottom: 1.4rem;
         margin-top: 0rem;
     }
-    100%{
+	25% {
+        margin-bottom: 0.7rem;
         margin-top: 0.7rem;
+	}
+    49%{
+        margin-bottom: 0.7rem;
+        margin-top: 0.7rem;
+    }
+	50% {
+        margin-bottom: 0rem;
+        margin-top: 1.4rem;
+	}
+    74%{
+        margin-bottom: 0rem;
+        margin-top: 1.4rem;
+    }
+    75%{
+        margin-bottom: 0.7rem;
+        margin-top: 0.7rem;
+    }
+    100%{
+        margin-bottom: 0.7rem;
+        margin-top: 0.7rem;
+    }
+}
+
+.simulAgent {
+    width: 0.7rem;
+    height: 0.7rem;
+    background-color: rgb(54, 54, 251);
+    border-radius: 50%;
+    animation: playerMoves 1s infinite;
+}
+
+.simulBox {
+    position: absolute;
+    top: 0rem;
+    width: 0.7rem;
+    height: 0.7rem;
+    background-color: green;
+    border: solid black 1px;
+    box-sizing: border-box;
+    animation: boxMoves 1s infinite;
+}
+
+@keyframes boxMoves {
+	0% {
+		top: 0rem;
+	}
+	49%{
+        top: 0rem;
+    }
+	50% {
+       top: 1.4rem;
+	}
+    99%{
+        top: 1.4rem;
+    }
+    100%{
+       top: 0rem;
     }
 }
 

@@ -6,8 +6,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import titleBg1 from "./Media/backgroundTitle1.png";
 import titleBg2 from "./Media/backgroundTitle2.png";
 import titleBg3 from "./Media/backgroundTitle3.png";
-import videoPlay from "./Media/presVid.mp4";
-import videoPlay2 from "./Media/presVidEdit.mp4";
 ///-- START --///
 const Header = ({ theme, setTheme, setDisplayAys, game }) => {
   ///-- STATES --///
@@ -16,8 +14,8 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const vidSides1 = [videoPlay, videoPlay2, videoPlay, videoPlay2];
-  const vidSides2 = [videoPlay, videoPlay2, videoPlay, videoPlay2];
+  // const vidSides1 = [videoPlay, videoPlay2, videoPlay, videoPlay2];
+  // const vidSides2 = [videoPlay, videoPlay2, videoPlay, videoPlay2];
 
   ///-- FONCTIONS --///
   const navigater = (to) => {
@@ -61,6 +59,7 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
         })} */}
         <div className="simulWall">
           <div className="simulPlayer"></div>
+          <div className="simulBox"></div>
         </div>
       </section>
       <section className="headerConnectAndNav">
@@ -176,13 +175,16 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
         </button>
       </section>
       <section className="headerSectionSides">
-        {vidSides2.map((vid, index) => {
+        {/* {vidSides2.map((vid, index) => {
           return (
             <video width="50" height="22" loop autoPlay muted key={index}>
               <source src={vid} type="video/mp4" />
             </video>
           );
-        })}
+        })} */}
+        <div className="simulWall">
+          <div className="simulAgent"></div>
+        </div>
       </section>
       <section className="headerSection"></section>
     </header>
