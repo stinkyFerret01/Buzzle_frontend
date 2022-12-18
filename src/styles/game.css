@@ -887,3 +887,38 @@ div[id^="player"] {
     display: flex;
     justify-content: center;
 }
+
+.rotateScreen {
+    z-index: 4;
+    position: absolute;
+    bottom: 2rem;
+    left: 3rem;
+    width: 2rem;
+    height: 3.5rem;
+    background-color: black;
+    border: solid white 2px;
+    border-radius: 4px;
+    animation: rotScreen 1.5s infinite;
+    display: flex;
+}
+
+@keyframes rotScreen {
+    0%{
+        transform: rotate(0deg);
+    }
+    20% { 
+        transform: rotate(0deg);
+    }
+    80% {
+        transform: rotate(-90deg);
+    }
+    100% {
+        transform: rotate(-90deg);
+    }
+}
+
+@media (min-width: 501px) {
+    .rotateScreen {
+        display: none;
+    }
+}

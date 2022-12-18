@@ -1064,7 +1064,8 @@ const GamePage = ({
         )}
         {game[0] !== "Playing..." && level !== "none" && (
           <article className="startPopper">
-            {!displayLevels && (
+            {((!displayLevels && location.pathname === "/game/game") ||
+              location.pathname === "/game/editor") && (
               <div className="startButtonContainer">
                 <button
                   className="startButton"
@@ -1092,6 +1093,9 @@ const GamePage = ({
           <div className="actionDisplayer">
             <h3>{action}</h3>
           </div>
+        )}
+        {level.length - 2 < level[0].length && (
+          <div className="rotateScreen"></div>
         )}
       </section>
     </main>
