@@ -832,10 +832,17 @@ const GamePage = ({
           </button>
         )}
         <button
-          className={bigScreen ? "reduceScreen" : "enlargeScreen"}
+          className={
+            bigScreen
+              ? game[0] === "Playing..."
+                ? "reduceScreen2"
+                : "reduceScreen"
+              : "enlargeScreen"
+          }
           onClick={screenToggler}
         >
-          <h3 className="screenButton">{bigScreen ? "X" : "O"}</h3>
+          {bigScreen && <h2 className="reduceScreenX">x</h2>}
+          {!bigScreen && <h3 className="screenButton">O</h3>}
         </button>
         {displayContext ? (
           <button
@@ -935,15 +942,35 @@ const GamePage = ({
             </button>
           </div>
         )}
-        <div className={bigScreen ? "commandInfoLarge" : "commandInfo"}>
+        <div
+          className={
+            bigScreen
+              ? game[0] === "Playing..."
+                ? "commandInfoLarge2"
+                : "commandInfoLarge"
+              : "commandInfo"
+          }
+          style={
+            displayPad || displayInfo
+              ? {
+                  height: "1rem",
+                  width: "1.5rem",
+                  paddingBottom: "0.6rem",
+                }
+              : {}
+          }
+        >
           {displayPad === false && (
             <button
               className="commandInfoButton"
               onClick={() => {
                 infoToggler();
               }}
+              style={displayInfo ? { borderBlockColor: "transparent" } : {}}
             >
-              <h3>{displayInfo ? "X" : "KEY"}</h3>
+              <h3 style={{ pointerEvents: "none" }}>
+                {displayInfo ? "X" : "KEY"}
+              </h3>
             </button>
           )}
           {displayInfo === false && (
@@ -953,7 +980,9 @@ const GamePage = ({
                 padToggler();
               }}
             >
-              <h3>{displayPad ? "X" : "PAD"}</h3>
+              <h3 style={{ pointerEvents: "none" }}>
+                {displayPad ? "X" : "PAD"}
+              </h3>
             </button>
           )}
         </div>
@@ -981,8 +1010,11 @@ const GamePage = ({
               })}
             </div>
           ) : (
-            <div>
-              <h3 className="loadingText">CHARGEMENT DU NIVEAU</h3>
+            <div style={{ textAlign: "center" }}>
+              <h3 className="loadingText">AUCUN NIVEAU SéLECTIONNé</h3>
+              <h3 className="loadingText">
+                CHOISISSEZ EN UN DANS LE MENU A GAUCHE
+              </h3>
             </div>
           )}
           <div className="boardScrollerBlank"></div>
@@ -1042,6 +1074,16 @@ const GamePage = ({
             </div>
           </section>
         )}
+        {displayPad && game[0] === "Playing..." && (
+          <button
+            className="padPause"
+            onClick={() => {
+              starter();
+            }}
+          >
+            <h2>II</h2>
+          </button>
+        )}
         {displayInfo && (
           <section
             className="infoContainer"
@@ -1094,8 +1136,10 @@ const GamePage = ({
             <h3>{action}</h3>
           </div>
         )}
-        {level.length - 2 < level[0].length && (
-          <div className="rotateScreen"></div>
+        {level.length - 2 < level[0].length && bigScreen && (
+          <div className="rotateScreen">
+            <div className="rotateScreenContent"></div>
+          </div>
         )}
       </section>
     </main>

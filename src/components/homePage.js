@@ -26,6 +26,8 @@ const HomePage = ({
       "BETTER THAN TIC-TAC-TOE!",
       "TRY IT ON PC!",
       "THINK OUTSIDE THE BOX!",
+      "TRY IT ON MOBILE!",
+      "ARE YOU A ROBOT?",
     ];
     const sentenceDefiner = () => {
       let index = Math.floor(Math.random() * welcomeSentences.length);

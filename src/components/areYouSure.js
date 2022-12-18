@@ -48,10 +48,10 @@ const AreYouSure = ({
               continuer();
             }}
           >
-            <h3>continuer</h3>
+            <h3>CONTINUER</h3>
           </button>
           <button className="aysAbort" onClick={() => setDisplayAys("none")}>
-            <h3>anuler</h3>
+            <h3>ANNULER</h3>
           </button>
         </div>
       </article>

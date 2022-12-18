@@ -34,7 +34,7 @@
     background-color: orangered;
 }
 
-.reduceScreen {
+/* .reduceScreen {
     overflow: inherit;
     position: absolute; 
     z-index: 5;
@@ -44,6 +44,46 @@
     background-color: rgba(234, 178, 11);
     top: 0.5rem;
     left: 0.5rem;
+} */
+
+.reduceScreen {
+    z-index: 3;
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    width: 3rem;
+    height: 3rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding-bottom: 0.8rem;
+    padding-left: 0.6rem;
+    color: rgba(234, 178, 11);
+    background-color: transparent;
+    border: solid rgba(234, 178, 11) 4px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ 
+.reduceScreen2 {
+    z-index: 3;
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-bottom: 0.8rem;
+    padding-left: 0.6rem;
+    color: rgba(234, 178, 11,0.5);
+    background-color: transparent;
+    border: solid rgba(234, 178, 11,0.5) 4px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .reduceScreen:hover {
@@ -258,16 +298,50 @@ div[id^="player"] {
     bottom: 0.5rem;
     right: 0.5rem;
     width: 3.2rem;
-    background-color: aqua;
+}
+
+.commandInfoLarge {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    width: 3rem;
+    height: 3rem;
+    color: rgba(234, 178, 11);
+    /* padding-left: 0.6rem; */
+    padding-bottom: 0.5rem;
+    background-color: transparent;
+    border: solid rgba(234, 178, 11) 4px;
+    border-radius: 4px;
+}
+
+.commandInfoLarge2 {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    width: 3rem;
+    height: 3rem;
+    color: rgba(234, 178, 11,0.5);
+    /* padding-left: 0.6rem; */
+    padding-bottom: 0.5rem;
+    background-color: transparent;
+    border: solid rgba(234, 178, 11,0.5) 4px;
+    border-radius: 4px;
 }
 
 .commandInfoButton {
     width: 100%;
-    font-weight: bold;
-    background-color: rgba(234, 178, 11);
+    height: 1.9rem;
+    color: inherit;
+    /* font-weight: bold;
+    background-color: rgba(234, 178, 11); */
+    background-color: transparent;
+    border: solid transparent 0px;
+    border-bottom: solid rgba(234, 178, 11) 4px;
+    border-color: inherit;
 }
 
 .commandInfoButton:hover {
+    color: white;
     background-color: orangered;
 }
 
@@ -276,15 +350,24 @@ div[id^="player"] {
     color: orangered;
 }
 
+.keyInfoSpan:hover {
+    font-weight: bold;
+    color: rgba(234, 178, 11);
+}
+
 .padButton {
     width: 100%;
-    font-weight: bold;
-    background-color: rgba(234, 178, 11);
+    height: 1.6rem;
+    color: inherit;
+    /* font-weight: bold;
+    background-color: rgba(234, 178, 11); */
+    background-color: transparent;
+    border: solid transparent 0px;
 }
 
 .padButton:hover {
-    background-color: orangered;
     color: white;
+    background-color: orangered;
 }
 
 .padMessage {
@@ -401,6 +484,20 @@ div[id^="player"] {
     background-color: red;
 }
 
+.padPause {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    width: 3rem;
+    height: 3rem;
+    color: rgba(234, 178, 11,0.5);
+    padding-left: 0.6rem;
+    padding-bottom: 0.5rem;
+    background-color: transparent;
+    border: solid rgba(234, 178, 11,0.5) 4px;
+    border-radius: 4px;
+}
+
 .gameToEditButton {
     z-index: 3;
     position: absolute;
@@ -468,7 +565,7 @@ div[id^="player"] {
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: contextOut 0.2s linear;
+    /* animation: contextOut 0.2s linear; */
 }
 
 .contextButton:hover {
@@ -520,7 +617,7 @@ div[id^="player"] {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    animation: contextIn 0.2s linear;
+    /* animation: contextIn 0.2s linear; */
 }
 
 .contextDisplayer2 {
@@ -542,7 +639,7 @@ div[id^="player"] {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    animation: contextIn 0.2s linear;
+    /* animation: contextIn 0.2s linear; */
 }
 
 .contextDisplayer:hover {
