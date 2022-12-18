@@ -694,6 +694,7 @@ div[id^="player"] {
     height: 2.5rem;
     font-weight: bold;
     font-size: 0.8rem;
+    color:rgba(234, 178, 11);
     background-color: blue;
 }
 
