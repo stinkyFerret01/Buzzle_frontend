@@ -12,6 +12,7 @@ const LevelsSlide = ({
   levelTitle,
   setLevelTitle,
   setLevelContext,
+  cops,
   setDisplayContext,
   setDisplayInfo,
   game,
@@ -117,7 +118,7 @@ const LevelsSlide = ({
           style={
             displayLevels
               ? { paddingLeft: "0.3rem", backgroundColor: "black" }
-              : levelTitle === "SALUTATIONS!"
+              : levelTitle === "SALUTATIONS!" && cops.length === 0
               ? { animation: "pulseTitle 0.5s infinite" }
               : {}
           }

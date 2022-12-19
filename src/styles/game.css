@@ -1072,7 +1072,8 @@ div[id^="player"] {
     font-weight: bold;
     font-size: 1rem;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: transparent;
+    /* background-color: transparent; */
+    background-color: rgba(0, 0, 0, 0.4);
     border: solid orangered 4px;
     border-radius: 4px;
 }

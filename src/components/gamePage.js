@@ -40,6 +40,7 @@ const GamePage = ({
   const [difficulty, setDifficulty] = useState("medium");
   const [displayContext, setDisplayContext] = useState(true);
   const [displayInGameMsg, setDisplayInGameMsg] = useState("none");
+  const [displayRotate, setDisplayRotate] = useState(true);
   const [counter, setCounter] = useState(0);
   if (action === "OUAAATE!!") {
   }
@@ -385,11 +386,12 @@ const GamePage = ({
   useEffect(() => {
     //-- baseBuilder construit le tableau du niveau choisi
     const baseBuilder = (lvl) => {
-      const contextInAndOut = () => {
-        setDisplayContext(false);
-      };
-      setDisplayContext(true);
-      setTimeout(contextInAndOut, 3000);
+      setDisplayRotate(true);
+      // const contextInAndOut = () => {
+      //   setDisplayContext(false);
+      // };
+      // setDisplayContext(true);
+      // setTimeout(contextInAndOut, 3000);
       let eBase = [];
       let basePlayer = [];
       let baseObjects = [];
@@ -827,6 +829,7 @@ const GamePage = ({
           levelTitle={levelTitle}
           setLevelTitle={setLevelTitle}
           setLevelContext={setLevelContext}
+          cops={cops}
           setDisplayContext={setDisplayContext}
           game={game}
           levels={levels}
@@ -1169,11 +1172,23 @@ const GamePage = ({
             <h3>{action}</h3>
           </div>
         )}
-        {level.length - 2 < level[0].length && bigScreen && (
-          <div className="rotateScreen">
-            <div className="rotateScreenContent"></div>
-          </div>
-        )}
+        {level.length - 2 < level[0].length &&
+          bigScreen &&
+          displayLevels === false &&
+          game[0] !== "Playing..." &&
+          displayInfo === false &&
+          displayRotate &&
+          (displayInGameMsg === "none" ||
+            displayInGameMsg === "CONTACT ME") && (
+            <button
+              className="rotateScreen"
+              onClick={() => {
+                setDisplayRotate(false);
+              }}
+            >
+              <div className="rotateScreenContent"></div>
+            </button>
+          )}
         {displayInGameMsg !== "none" && (
           <button
             className={
