@@ -17,7 +17,7 @@ const WaitForResponse = ({ displayWfr, setDisplayWfr }) => {
   let style = {};
   if (displayWfr[0] === "edit request") {
     style = waitNews;
-  } else if (displayWfr[0] === "edit ok") {
+  } else if (displayWfr[0] === "edit ok" || displayWfr[0] === "levels ok") {
     style = goodNews;
   } else if (displayWfr[0] === "edit error") {
     style = badNews;
@@ -27,8 +27,8 @@ const WaitForResponse = ({ displayWfr, setDisplayWfr }) => {
   return (
     <section className="spreadOver">
       <article className="ays" style={style}>
-        <h3>{text.title}</h3>
-        <h5>{text.message}</h5>
+        <h3 className="noHovText">{text.title}</h3>
+        <h5 className="noHovText">{text.message}</h5>
         <button className="wfrContinue" onClick={() => setDisplayWfr("none")}>
           {text.button}
         </button>

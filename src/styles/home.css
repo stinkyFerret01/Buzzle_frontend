@@ -326,6 +326,10 @@ video {
     animation: wiggle 0.3s infinite
 }
 
+.welcomeSentence:hover {
+    cursor: default;
+}
+
 @keyframes wiggle {
 	0% {
 		transform: rotate(0deg);

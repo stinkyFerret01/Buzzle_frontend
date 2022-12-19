@@ -35,6 +35,7 @@ function App() {
   const [displayLevels, setDisplayLevels] = useState(false);
   const [bigScreen, setBigScreen] = useState(false);
   const [skip, setSkip] = useState(false);
+  const [displayLevelsNews, setDisplayLevelsNews] = useState(false);
 
   //-- USEEFFECT
   //-- fetcher (requete au backend pour récupérer les niveaux)
@@ -43,10 +44,20 @@ function App() {
       try {
         const response = await axios.get(`${backend}/levels`);
         setLevels(response.data.levels);
+        if (displayLevelsNews === true) {
+          setDisplayWfr([
+            "levels ok",
+            "CA Y EST!",
+            "LES NIVEAUX SONT DISPONIBLES! RETROUVEZ LES DANS LE MENU A GAUCHE DE LA PAGE GAME",
+            "FERMER",
+          ]);
+        }
       } catch (error) {}
     };
-    fetcher();
-  }, [backend, setLevels]);
+    if (levels.length === 0) {
+      fetcher();
+    }
+  }, [backend, levels, setLevels, displayLevelsNews]);
 
   //-- screenSetter
   useEffect(() => {
@@ -84,6 +95,7 @@ function App() {
               <HomePage
                 bigScreen={bigScreen}
                 setBigScreen={setBigScreen}
+                setDisplayLevelsNews={setDisplayLevelsNews}
                 setTheme={setTheme}
                 skip={skip}
                 setSkip={setSkip}

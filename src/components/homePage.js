@@ -12,7 +12,7 @@ const HomePage = ({
   bigScreen,
   setBigScreen,
   setTheme,
-  skip,
+  setDisplayLevelNews,
   setSkip,
   setLevel,
 }) => {
@@ -47,7 +47,7 @@ const HomePage = ({
     <main className={bigScreen ? "homePage" : "homePage2"}>
       {bigScreen && (
         <div className="homeMessage">
-          <h3>
+          <h3 className="noHovText">
             A{" "}
             <span className="homeStinky">
               STINKY FERR<span className="homeLetter11">E</span>T
@@ -64,6 +64,7 @@ const HomePage = ({
             navigate("/game/game");
             setTheme("dark");
             setSkip(true);
+            setDisplayLevelNews(true);
           }}
         >
           <h3 style={{ fontSize: "18px" }}>PLAY BUZZLE NOW!</h3>
@@ -74,6 +75,7 @@ const HomePage = ({
             navigate("/game/game");
             setSkip(false);
             setTheme("dark");
+            setDisplayLevelNews(true);
           }}
         >
           <h3>TUTO!</h3>
@@ -86,6 +88,7 @@ const HomePage = ({
           onClick={() => {
             navigate("/editor");
             setTheme("dark");
+            setDisplayLevelNews(true);
           }}
         >
           <h3>EDIT!</h3>

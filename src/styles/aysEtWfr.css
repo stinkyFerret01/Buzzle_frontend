@@ -7,14 +7,16 @@
     height: 12rem;
     min-height: 12rem;
     background-color: rgba(15, 10, 30);
-    border:solid  rgba(234, 178, 11) 4px;
-    color: aliceblue;
+    border:solid  black 4px;
+    border-radius: 4px;
+    color: black;
     padding: 0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+
   }
 
 .aysChoiceDisplayer {
@@ -28,11 +30,13 @@
 .wfrContinue {
     font-weight: bold;
     background-color: red;
+    margin-top: 1rem;
 }
 
 .aysContinue {
     color: red;
     font-weight: bold;
+    margin-top: 1rem;
 }
 
 .aysContinue:hover {
