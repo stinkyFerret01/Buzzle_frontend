@@ -87,7 +87,13 @@
 }
 
 .reduceScreen:hover {
-    background-color: orangered;
+   color: orangered;
+   border: solid orangered 4px;
+}
+
+.reduceScreen2:hover {
+    color: orangered;
+    border: solid orangered 4px;
 }
 
 .backToEdit {
@@ -151,14 +157,15 @@
     z-index: 3;
     /* position: absolute; */
     pointer-events: auto;
-    color:white;
+    color: black;
     font-weight: bold;
-    background-color: orangered;
-    animation: pulseStart 1.3s infinite;
+    margin: 0.5rem;
+    background-color: lime;
+    /* animation: pulseStart 1.3s infinite; */
 }
 
 .startButton:hover {
-    background-color: greenyellow;
+    background-color: orangered;
     color:black;
 }
 
@@ -296,16 +303,10 @@ div[id^="player"] {
 
 .commandInfoLarge {
     z-index: 4;
+    overflow: hidden;
     position: absolute;
-    bottom: 0.5rem;
     right: 0.5rem;
-    width: 3.2rem;
-}
-
-.commandInfoLarge {
-    position: absolute;
-    right: 1rem;
-    bottom: 1rem;
+    bottom: 0.5rem;
     width: 3rem;
     height: 3rem;
     color: rgba(234, 178, 11);
@@ -317,25 +318,36 @@ div[id^="player"] {
 }
 
 .commandInfoLarge2 {
+    z-index: 4;
+    overflow: hidden;
     position: absolute;
-    right: 1rem;
-    bottom: 1rem;
+    right: 0.5rem;
+    bottom: 0.5rem;
     width: 3rem;
     height: 3rem;
     color: rgba(234, 178, 11,0.5);
-    /* padding-left: 0.6rem; */
+    padding-left: -0.6rem;
     padding-bottom: 0.5rem;
     background-color: transparent;
     border: solid rgba(234, 178, 11,0.5) 4px;
     border-radius: 4px;
 }
 
+.commandInfoLarge:hover {
+    border: solid orangered 4px;
+}
+
+.commandInfoLarge2:hover {
+    border: solid orangered 4px;
+}
+
 .commandInfoButton {
+    overflow: hidden;
     width: 100%;
     height: 1.9rem;
     color: inherit;
-    /* font-weight: bold;
-    background-color: rgba(234, 178, 11); */
+    padding-left: 0.6rem;
+    padding-bottom: 0.8rem;
     background-color: transparent;
     border: solid transparent 0px;
     border-bottom: solid rgba(234, 178, 11) 4px;
@@ -360,8 +372,8 @@ div[id^="player"] {
     width: 100%;
     height: 1.6rem;
     color: inherit;
-    /* font-weight: bold;
-    background-color: rgba(234, 178, 11); */
+    padding-left: 0.6rem;
+    padding-bottom: 0.8rem;
     background-color: transparent;
     border: solid transparent 0px;
 }
@@ -498,6 +510,11 @@ div[id^="player"] {
     border-radius: 4px;
 }
 
+.padPause:hover {
+    color: orangered;
+    border: solid  orangered 4px;
+}
+
 .gameToEditButton {
     z-index: 3;
     position: absolute;
@@ -604,13 +621,13 @@ div[id^="player"] {
     top: 0.5rem;
     left: calc(50% - 7rem);
     width: 14rem;
-    /* height: 6rem; */
     font-size: 1rem;
     font-weight: bold;
     padding-top: 0.3rem;
     padding-bottom: 0.4rem;
     color: rgba(234, 178, 11);
-    background-color: transparent;
+    /* background-color: transparent; */
+    background-color: rgba(0, 0, 0, 0.4);
     border: solid rgba(234, 178, 11) 4px;
     border-radius: 4px;
     display: flex;
@@ -632,7 +649,8 @@ div[id^="player"] {
     padding-top: 0.3rem;
     padding-bottom: 0.4rem;
     color: rgba(234, 178, 11,0.5);
-    background-color: transparent;
+    /* background-color: transparent; */
+    background-color: rgba(0, 0, 0, 0.4);
     border: solid rgba(234, 178, 11,0.5) 4px;
     border-radius: 4px;
     display: flex;
@@ -643,6 +661,11 @@ div[id^="player"] {
 }
 
 .contextDisplayer:hover {
+    color: orangered;
+    border: solid orangered 4px;
+}
+
+.contextDisplayer2:hover {
     color: orangered;
     border: solid orangered 4px;
 }
@@ -697,6 +720,11 @@ div[id^="player"] {
 }
 
 .burgerMenuSlide:hover {
+    color: orangered;
+    border: solid orangered 4px;
+}
+
+.burgerMenuSlide2:hover {
     color: orangered;
     border: solid orangered 4px;
 }
@@ -967,10 +995,10 @@ div[id^="player"] {
 
 @keyframes pulseTitle {
     from {
-        box-shadow: 0 0 0 0rem rgba(234, 178, 11);
+        box-shadow: 0 0 0 0rem orangered;
     }
     to { 
-        box-shadow: 0 0 0 16px rgba(234, 178, 11, 0.01);
+        box-shadow: 0 0 0 16px rgba(255, 68, 0, 0.01);
     }
 }
 
@@ -1017,5 +1045,45 @@ div[id^="player"] {
 @media (min-width: 501px) {
     .rotateScreen {
         display: none;
+    }
+}
+
+.inGameMsg {
+    z-index: 4;
+    position: absolute;
+    left: calc(50% - 6rem);
+    bottom: 0.5rem;
+    width: 12rem;
+    color: orangered;
+    background-color: transparent;
+    border: solid orangered 4px;
+    border-radius: 4px;
+    animation: pulseInGameMsg 1s infinite;
+}
+
+.inGameMsg2 {
+    z-index: 4;
+    position: absolute;
+    left: calc(50% - 10rem);
+    bottom: 0.5rem;
+    padding: 0.5rem;
+    width: 20rem;
+    color: orangered;
+    font-weight: bold;
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: transparent;
+    border: solid orangered 4px;
+    border-radius: 4px;
+}
+
+@keyframes pulseInGameMsg {
+    from {
+        color: rgba(255, 68, 0, 0.4);
+        border: solid rgba(255, 68, 0, 0.4) 4px;
+    }
+    to { 
+        color: orangered;
+        border: solid orangered 4px;
     }
 }

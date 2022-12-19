@@ -169,7 +169,7 @@ const EditorPage = ({
       setLevel(edited[0]);
       setLevelTitle(name);
       setLevelContext(context);
-      setEditBase([base, lvlName, context]);
+      setEditBase([base, name, context]);
       navigate("/game/editor");
     }
   };

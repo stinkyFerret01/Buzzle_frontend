@@ -101,14 +101,14 @@ const LevelsSlide = ({
     <section
       onMouseLeave={() => setDisplayLevels(false)}
       style={
-        location.pathname !== "/game/game"
+        location.pathname !== "/game/game" || !bigScreen
           ? { display: "none" }
           : { display: "inherit" }
       }
     >
       <div
         className={displayLevels ? "levelsSlide" : "levelsSlide2"}
-        style={!bigScreen ? { top: "calc(100% - 10rem" } : {}}
+        style={!bigScreen ? { top: "calc(50% - 10rem" } : {}}
       >
         <button
           className={
@@ -118,7 +118,7 @@ const LevelsSlide = ({
             displayLevels
               ? { paddingLeft: "0.3rem", backgroundColor: "black" }
               : levelTitle === "SALUTATIONS!"
-              ? { animation: "pulseTitle 1s infinite" }
+              ? { animation: "pulseTitle 0.5s infinite" }
               : {}
           }
           onClick={() => {

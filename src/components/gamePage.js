@@ -39,6 +39,7 @@ const GamePage = ({
   const [action, setAction] = useState("");
   const [difficulty, setDifficulty] = useState("medium");
   const [displayContext, setDisplayContext] = useState(true);
+  const [displayInGameMsg, setDisplayInGameMsg] = useState("none");
   const [counter, setCounter] = useState(0);
   if (action === "OUAAATE!!") {
   }
@@ -64,12 +65,30 @@ const GamePage = ({
     }
   };
 
+  //-- inGameMsg
+  useEffect(() => {
+    if (game[0] === "Lost!" || game[0] === "Win!" || game[0] === "Pause...") {
+      setDisplayInGameMsg("CONTACT ME");
+    } else {
+      setDisplayInGameMsg("none");
+    }
+  }, [game]);
+
   //-- padToggler
   const padToggler = () => {
     if (displayPad === true) {
       setDisplayPad(false);
     } else {
       setDisplayPad(true);
+    }
+  };
+
+  //-- gameMessager
+  const gameMessager = () => {
+    if (displayInGameMsg === "CONTACT ME") {
+      setDisplayInGameMsg("lafonchristophe5@gmail.com");
+    } else {
+      setDisplayInGameMsg("none");
     }
   };
 
@@ -316,6 +335,7 @@ const GamePage = ({
     // eslint-disable-next-line
   }, [game, player, grid]);
 
+  //-- pad2 (optionel)
   useEffect(() => {
     if (bigScreen === false) {
       setPad2(false);
@@ -879,8 +899,7 @@ const GamePage = ({
             style={
               levelTitle === "TUTO 1" ||
               levelTitle === "TUTO 2" ||
-              levelTitle === "TUTO 3" ||
-              levelTitle === "SALUTATIONS!"
+              levelTitle === "TUTO 3"
                 ? {
                     animation: "pulseTitle 2s infinite",
                   }
@@ -969,9 +988,11 @@ const GamePage = ({
               }}
               style={displayInfo ? { borderBlockColor: "transparent" } : {}}
             >
-              <h3 style={{ pointerEvents: "none" }}>
-                {displayInfo ? "X" : "KEY"}
-              </h3>
+              {displayInfo ? (
+                <h2 className="noHovText">x</h2>
+              ) : (
+                <h3 className="noHovText">KEY</h3>
+              )}
             </button>
           )}
           {displayInfo === false && (
@@ -981,9 +1002,15 @@ const GamePage = ({
                 padToggler();
               }}
             >
-              <h3 style={{ pointerEvents: "none" }}>
-                {displayPad ? "X" : "PAD"}
-              </h3>
+              {displayPad ? (
+                <h2 className="noHovText" style={{ pointerEvents: "none" }}>
+                  x
+                </h2>
+              ) : (
+                <h3 className="noHovText" style={{ pointerEvents: "none" }}>
+                  PAD
+                </h3>
+              )}
             </button>
           )}
         </div>
@@ -1088,9 +1115,9 @@ const GamePage = ({
         {displayInfo && (
           <section
             className="infoContainer"
-            onMouseLeave={() => {
-              setDisplayInfo(false);
-            }}
+            // onMouseLeave={() => {
+            //   setDisplayInfo(false);
+            // }}
           >
             <h4 className="keyInfo">
               UTILISEZ LA TOUCHE <span className="keyInfoSpan">"ENTREé"</span>{" "}
@@ -1115,8 +1142,13 @@ const GamePage = ({
                   onClick={() => {
                     starter();
                   }}
+                  // style={
+                  //   game[1] === "START" || game[1] === "CONTINUER"
+                  //     ? { backgroundColor: "lime", color: "black" }
+                  //     : {}
+                  // }
                 >
-                  {game[1]}
+                  <h2>{game[1]}</h2>
                 </button>
                 {game[0] === "Pause..." && (
                   <button
@@ -1141,6 +1173,25 @@ const GamePage = ({
           <div className="rotateScreen">
             <div className="rotateScreenContent"></div>
           </div>
+        )}
+        {displayInGameMsg !== "none" && (
+          <button
+            className={
+              displayInGameMsg === "CONTACT ME" ? "inGameMsg" : "inGameMsg2"
+            }
+            onClick={() => {
+              gameMessager();
+            }}
+            // style={
+            //   displayInGameMsg === "CONTACT ME"
+            //     ? {
+            //         animation: "pulseInGameMsg 1s infinite",
+            //       }
+            //     : {}
+            // }
+          >
+            {displayInGameMsg}
+          </button>
         )}
       </section>
     </main>
