@@ -82,6 +82,7 @@ const LevelsSlide = ({
       setDisplayContext(false);
       setDisplayInfo(false);
       setDisplayLevels(true);
+      setBigScreen(true);
     }
   };
 
@@ -100,16 +101,16 @@ const LevelsSlide = ({
   ///-- RENDER --///
   return (
     <section
-      onMouseLeave={() => setDisplayLevels(false)}
+      // onMouseLeave={() => setDisplayLevels(false)}
       style={
-        location.pathname !== "/game/game" || !bigScreen
+        location.pathname !== "/game/game"
           ? { display: "none" }
           : { display: "inherit" }
       }
     >
       <div
         className={displayLevels ? "levelsSlide" : "levelsSlide2"}
-        style={!bigScreen ? { top: "calc(50% - 10rem" } : {}}
+        style={!bigScreen ? { top: "0" } : {}}
       >
         <button
           className={
@@ -237,8 +238,8 @@ const LevelsSlide = ({
                     alignItems: "center",
                   }}
                 >
-                  RéCUPéRATION DES NIVEAUX, CELA PEUT PRENDRE QUELQUES
-                  SECONDES...
+                  RéCUPéRATION DES NIVEAUX, CELA PEUT PRENDRE JUSQU'A 2
+                  MINUTES...
                 </h3>
               </div>
             ) : (
