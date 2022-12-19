@@ -87,6 +87,9 @@ const GamePage = ({
   //-- gameMessager
   const gameMessager = () => {
     if (displayInGameMsg === "CONTACT ME") {
+      setDisplayInfo(false);
+      setDisplayContext(false);
+      setDisplayLevels(false);
       setDisplayInGameMsg("lafonchristophe5@gmail.com");
     } else {
       setDisplayInGameMsg("none");

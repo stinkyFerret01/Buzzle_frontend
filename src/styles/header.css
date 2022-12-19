@@ -104,7 +104,34 @@
 .otherCreations {
     width: 50%;
     height: 100%;
+    background-color: blueviolet;
     box-sizing: border-box;
+    animation: buttonAlert 1s infinite
+}
+
+.otherCreations2 {
+    position: absolute;
+    width: 9.8rem;
+    height: 2.7rem;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@keyframes buttonAlert {
+	0% {
+       background-color: blue;
+       color: orange;
+    }
+    50% {
+        background-color: purple;
+        color: orange;
+    }
+    100% {
+        background-color: blue;
+        color: orange;
+    }
 }
 
 .creatorPromo {

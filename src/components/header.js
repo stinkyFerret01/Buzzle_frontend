@@ -10,6 +10,7 @@ import titleBg3 from "./Media/backgroundTitle3.png";
 const Header = ({ theme, setTheme, setDisplayAys, game }) => {
   ///-- STATES --///
   const [titleBgCounter, setTitleBgCounter] = useState(1);
+  const [contactMe, setContactMe] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -168,7 +169,26 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
               </a>
             </nav>
           </div>
-          <div className="otherCreations"></div>
+          {/* <button className="otherCreations"></button> */}
+          {!contactMe ? (
+            <button
+              className="otherCreations"
+              onClick={() => {
+                setContactMe(true);
+              }}
+            >
+              <h4>CONTACT CREATOR</h4>
+            </button>
+          ) : (
+            <button
+              className="otherCreations2"
+              onClick={() => {
+                setContactMe(false);
+              }}
+            >
+              lafonchristophe5 @gmail.com
+            </button>
+          )}
         </div>
         <button className="optionSite">
           <h3>OPTIONS (inactif)</h3>
