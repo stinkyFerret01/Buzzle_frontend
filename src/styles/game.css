@@ -758,8 +758,6 @@ div[id^="player"] {
 }
 
 .presTitlesContainer {
-    overflow: hidden;
-    overflow-y: scroll;
     width: 14rem;
     /* max-width: 100%; */
     height: 20rem;
