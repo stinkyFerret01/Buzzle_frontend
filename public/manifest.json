@@ -9,12 +9,12 @@
     }
     ,
     {
-      "src": "buzzleLog192.png",
+      "src": "buzzleLogo2192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "buzzleLog192.png",
+      "src": "buzzleLogo2512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
