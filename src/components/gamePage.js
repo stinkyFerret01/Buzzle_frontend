@@ -475,6 +475,10 @@ const GamePage = ({
 
   //-- presLevel (défini le niveau par défault (en dur))
   useEffect(() => {
+    const contextCloser = () => {
+      setDisplayContext(false);
+    };
+
     if (
       location.pathname === "/game/game" &&
       skip === false &&
@@ -501,6 +505,7 @@ const GamePage = ({
       setLevel(tuto1.pattern);
       setLevelTitle(tuto1.name);
       setLevelContext(tuto1.context);
+      setTimeout(contextCloser, 3000);
       setGame(["Ready?", "START"]);
     } else if (
       skip === true &&
