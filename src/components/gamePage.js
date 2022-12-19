@@ -61,6 +61,7 @@ const GamePage = ({
   const screenToggler = () => {
     if (bigScreen === true) {
       setBigScreen(false);
+      setDisplayLevels(false);
     } else {
       setBigScreen(true);
     }
