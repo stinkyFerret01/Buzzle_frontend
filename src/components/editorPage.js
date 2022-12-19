@@ -311,7 +311,11 @@ const EditorPage = ({
       className="editorPage"
       style={
         bigScreen
-          ? { height: "100vh", width: "100vw", maxWidth: "100vw" }
+          ? {
+              height: "100vh",
+              width: "100vw",
+              maxWidth: "100vw",
+            }
           : { width: "90%", maxWidth: "42.7rem" }
       }
     >
@@ -322,7 +326,8 @@ const EditorPage = ({
             ? {
                 height: "100vh",
                 width: "100vw",
-                maxWidth: "calc(100vw - 13rem)",
+                maxWidth: "calc(100vw - 12rem)",
+                border: "none",
               }
             : { width: "100%", maxWidth: "calc(100% - 13rem" }
         }
@@ -480,7 +485,11 @@ const EditorPage = ({
       </section>
       <section
         className="editShop"
-        style={bigScreen ? { height: "100vh", maxWidth: "100%" } : {}}
+        style={
+          bigScreen
+            ? { height: "100vh", maxWidth: "100%", marginLeft: "0" }
+            : {}
+        }
       >
         <button
           className="editToGameButton"
