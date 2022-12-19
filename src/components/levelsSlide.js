@@ -27,6 +27,56 @@ const LevelsSlide = ({
   const searchedLevels = levels.filter(
     (lvl) => lvl.name.toUpperCase().indexOf(searchLvl.toUpperCase()) >= 0
   );
+
+  const selection = [
+    {
+      pattern: [
+        "..............",
+        "WWWWWWWWWWWWWW",
+        "W...B.....WWWW",
+        "W...B.....W.WW",
+        "W.P.B.....p.kE",
+        "W...B..1..W.WW",
+        "W...B.....WWWW",
+        "WWWWWWWWWWWWWW",
+        "..............",
+      ],
+      name: "boxWall",
+      context: "il doit bien y avoir un moyen de sortir!!!",
+    },
+    {
+      pattern: [
+        ".........",
+        "WWWWWWWWW",
+        "WB..W...W",
+        "W...W.P.W",
+        "WWHWW...E",
+        "W.....p.W",
+        "W.......W",
+        "WWWWWWWWW",
+        ".........",
+      ],
+      name: "Maze",
+      context:
+        "quand je passe par la gauche, ca marche pas, et quand je passe par la droite, pareil!",
+    },
+    {
+      pattern: [
+        ".........",
+        "WWWWWWWWW",
+        "WB..W...W",
+        "W...W.P.W",
+        "WWHWW...E",
+        "W.....p.W",
+        "W.......W",
+        "WWWWWWWWW",
+        ".........",
+      ],
+      name: "Other",
+      context: "un autre niveau cool",
+    },
+  ];
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -223,9 +273,9 @@ const LevelsSlide = ({
               </button>
               <div className="headerGameTitle"></div>
             </div>
-            {levels.length === 0 ? (
+            {levels.length === 0 && gameDiv !== "selection" ? (
               <div className="headerGameDivs">
-                <h3
+                <h4
                   className="loadingText"
                   style={{
                     width: "8rem",
@@ -239,8 +289,16 @@ const LevelsSlide = ({
                   }}
                 >
                   RéCUPéRATION DES NIVEAUX, CELA PEUT PRENDRE JUSQU'A 2
-                  MINUTES...
-                </h3>
+                  MINUTES... éSSAYEZ NOTRE SELECTION POUR PATIENTER
+                </h4>
+                <button
+                  className="selectionButton"
+                  onClick={() => {
+                    setGameDiv("selection");
+                  }}
+                >
+                  <h3>SELECTION</h3>
+                </button>
               </div>
             ) : (
               <div className="headerGameDivs">
@@ -312,6 +370,23 @@ const LevelsSlide = ({
                           </button>
                         );
                       })}
+                  </div>
+                )}
+                {gameDiv === "selection" && (
+                  <div className="headerGameDiv">
+                    {selection.map((lvl, index) => {
+                      return (
+                        <button
+                          className="levelSelectorSelection"
+                          onClick={() => {
+                            levelSetter(lvl);
+                          }}
+                          key={index}
+                        >
+                          <h3>{lvl.name}</h3>
+                        </button>
+                      );
+                    })}
                   </div>
                 )}
               </div>

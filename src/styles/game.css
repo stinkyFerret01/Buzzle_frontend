@@ -846,7 +846,7 @@ div[id^="player"] {
 .headerGameDivs {
     height: 16.5rem;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     box-sizing: border-box;
 }
 
@@ -863,6 +863,24 @@ div[id^="player"] {
 
 .headerGameDiv::-webkit-scrollbar {
     display: none;
+}
+
+.selectionButton {
+    width: 9rem;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    background: linear-gradient(-45deg, rgb(11, 182, 234), rgb(167, 234, 11), rgb(220, 81, 30), rgb(234, 205, 80));
+    background-size: 300% 300%;
+	animation: gradient2 5s ease infinite;
+}
+
+.selectionButton:hover {
+    width: 9rem;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    background: linear-gradient(-45deg, rgb(118, 211, 239), rgb(213, 248, 133), rgb(250, 151, 115), rgb(250, 227, 126));
+    background-size: 200% 200%;
+    animation: gradient2 2s ease infinite;
 }
 
 .levelSelectorValid {
@@ -909,6 +927,25 @@ div[id^="player"] {
 
 .levelSelectorSearch:hover {
     background-color: rgb(32, 215, 32);
+}
+
+.levelSelectorSelection {
+    width: 9rem;
+    min-height: 2rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    background: linear-gradient(-45deg, rgb(11, 182, 234), rgb(167, 234, 11), rgb(220, 81, 30), rgb(234, 205, 80));
+    background-size: 300% 300%;
+    border-radius: 4px;
+	animation: gradient2 5s ease infinite;
+}
+
+.levelSelectorSelection:hover {
+    background: linear-gradient(-45deg, rgb(118, 211, 239), rgb(213, 248, 133), rgb(250, 151, 115), rgb(250, 227, 126));
+    background-size: 600% 600%;
+    animation: gradient2 2s ease infinite;
 }
 
 .levelSearchInput {

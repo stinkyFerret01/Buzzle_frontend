@@ -42,8 +42,6 @@ const GamePage = ({
   const [displayInGameMsg, setDisplayInGameMsg] = useState("none");
   const [displayRotate, setDisplayRotate] = useState(true);
   const [counter, setCounter] = useState(0);
-  if (action === "OUAAATE!!") {
-  }
 
   ///////////////////////////////////////////
   const titleRef = useRef();
