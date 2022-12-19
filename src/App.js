@@ -34,6 +34,7 @@ function App() {
   const [displayWfr, setDisplayWfr] = useState("none");
   const [displayLevels, setDisplayLevels] = useState(false);
   const [bigScreen, setBigScreen] = useState(false);
+  const [displayRotate, setDisplayRotate] = useState(true);
   const [skip, setSkip] = useState(false);
   const [displayLevelsNews, setDisplayLevelsNews] = useState(false);
 
@@ -127,6 +128,8 @@ function App() {
                 setDisplayLevels={setDisplayLevels}
                 bigScreen={bigScreen}
                 setBigScreen={setBigScreen}
+                displayRotate={displayRotate}
+                setDisplayRotate={setDisplayRotate}
               />
             }
           />
@@ -148,6 +151,8 @@ function App() {
                 setDisplayAys={setDisplayAys}
                 bigScreen={bigScreen}
                 setBigScreen={setBigScreen}
+                displayRotate={displayRotate}
+                setDisplayRotate={setDisplayRotate}
               />
             }
           />

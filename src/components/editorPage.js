@@ -25,6 +25,8 @@ const EditorPage = ({
   setDisplayAys,
   bigScreen,
   setBigScreen,
+  displayRotate,
+  setDisplayRotate,
 }) => {
   ///-- STATES --///
   const [ligns, setLigns] = useState(10);
@@ -175,12 +177,18 @@ const EditorPage = ({
   };
 
   ///-- USEEFFECT --///
+  //-- editBaseLoader
   useEffect(() => {
     if (editBase !== "none") {
       setLigns(editBase[0].length - 2);
       setColons(editBase[0][0].length);
     }
   }, [editBase]);
+
+  //-- displayRotate
+  useEffect(() => {
+    setDisplayRotate(true);
+  }, [setDisplayRotate]);
 
   //-- baseBuilder (construit la base)
   useEffect(() => {
@@ -668,6 +676,16 @@ const EditorPage = ({
           <h3 className="noHovText">RETOURNER JOUER!</h3>
         </button>
       </section>
+      {displayRotate && (
+        <button
+          className="rotateScreen"
+          onClick={() => {
+            setDisplayRotate(false);
+          }}
+        >
+          <div className="rotateScreenContent"></div>
+        </button>
+      )}
     </main>
   );
 };

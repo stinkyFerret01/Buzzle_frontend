@@ -24,6 +24,8 @@ const GamePage = ({
   edited,
   bigScreen,
   setBigScreen,
+  displayRotate,
+  setDisplayRotate,
   displayLevels,
   setDisplayLevels,
 }) => {
@@ -40,7 +42,6 @@ const GamePage = ({
   const [difficulty, setDifficulty] = useState("medium");
   const [displayContext, setDisplayContext] = useState(true);
   const [displayInGameMsg, setDisplayInGameMsg] = useState("none");
-  const [displayRotate, setDisplayRotate] = useState(true);
   const [counter, setCounter] = useState(0);
 
   ///////////////////////////////////////////
@@ -470,7 +471,7 @@ const GamePage = ({
       setBase(baseBuilder(level));
       setGame(["Ready?", "START"]);
     }
-  }, [skip, level, setGame]);
+  }, [skip, level, setGame, setDisplayRotate]);
 
   //-- presLevel (défini le niveau par défault (en dur))
   useEffect(() => {
