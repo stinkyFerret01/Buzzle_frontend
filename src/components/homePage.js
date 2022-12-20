@@ -4,8 +4,10 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 //-- import media
-import videoPlay from "./Media/presVid.mp4";
-import videoPlay2 from "./Media/presVidEdit.mp4";
+// import videoPlay from "./Media/presVid.mp4";
+// import videoPlay2 from "./Media/presVidEdit.mp4";
+import videoTuto from "./Media/videoTuto.mp4";
+import videoEdit from "./Media/videoEdit.mp4";
 
 ///-- START --///
 const HomePage = ({
@@ -80,7 +82,7 @@ const HomePage = ({
         >
           <h3>TUTO!</h3>
           <video width="220" height="130" loop autoPlay muted>
-            <source src={videoPlay} type="video/mp4" />
+            <source src={videoTuto} type="video/mp4" />
           </video>
         </div>
         <div
@@ -93,7 +95,7 @@ const HomePage = ({
         >
           <h3>EDIT!</h3>
           <video width="220" height="130" loop autoPlay muted>
-            <source src={videoPlay2} type="video/mp4" />
+            <source src={videoEdit} type="video/mp4" />
           </video>
         </div>
       </div>
