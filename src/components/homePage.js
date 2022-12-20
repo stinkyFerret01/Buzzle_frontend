@@ -91,6 +91,7 @@ const HomePage = ({
             navigate("/editor");
             setTheme("dark");
             setDisplayLevelNews(true);
+            setSkip(true);
           }}
         >
           <h3>EDIT!</h3>
