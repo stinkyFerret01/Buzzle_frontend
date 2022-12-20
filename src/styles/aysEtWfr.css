@@ -6,7 +6,7 @@
     min-width: 12rem;
     height: 12rem;
     min-height: 12rem;
-    background-color: rgba(15, 10, 30);
+    background-color: yellow;
     border:solid  black 4px;
     border-radius: 4px;
     color: black;
@@ -28,24 +28,30 @@
 }
 
 .wfrContinue {
+    height: 1.4rem;
     font-weight: bold;
     background-color: red;
     margin-top: 1rem;
 }
 
 .aysContinue {
-    color: red;
+    height: 1.4rem;
     font-weight: bold;
+    background-color: white;
     margin-top: 1rem;
 }
 
 .aysContinue:hover {
     color: white;
-    background-color: red;
+    background-color: black;
 }
 
 .aysAbort {
+    height: 1.4rem;
+    color: red;
+    background-color: white;
     font-weight: bold;
+    margin-top: 1rem;
 }
 
 .aysAbort:hover {
