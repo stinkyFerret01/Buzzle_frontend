@@ -14,6 +14,7 @@ import EditorPage from "./components/editorPage";
 import Footer from "./components/footer";
 import AreYouSure from "./components/areYouSure";
 import WaitForResponse from "./components/waitForResponse";
+import ConnectForm from "./components/connectForm";
 
 ///-- START --///
 function App() {
@@ -37,6 +38,7 @@ function App() {
   const [displayRotate, setDisplayRotate] = useState(true);
   const [skip, setSkip] = useState(false);
   const [displayLevelsNews, setDisplayLevelsNews] = useState(false);
+  const [displayConnectForm, setDisplayConnectForm] = useState(false);
 
   //-- USEEFFECT
   //-- fetcher (requete au backend pour récupérer les niveaux)
@@ -87,6 +89,8 @@ function App() {
             setDisplayAys={setDisplayAys}
             displayWfr={displayWfr}
             setDisplayWfr={setDisplayWfr}
+            displayConnectForm={displayConnectForm}
+            setDisplayConnectForm={setDisplayConnectForm}
           />
         )}
         <Routes>
@@ -171,6 +175,12 @@ function App() {
           <WaitForResponse
             displayWfr={displayWfr}
             setDisplayWfr={setDisplayWfr}
+          />
+        )}
+        {displayConnectForm === true && (
+          <ConnectForm
+            displayConnectForm={displayConnectForm}
+            setDisplayConnectForm={setDisplayConnectForm}
           />
         )}
       </Router>

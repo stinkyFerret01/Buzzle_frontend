@@ -7,7 +7,14 @@ import titleBg1 from "./Media/backgroundTitle1.png";
 import titleBg2 from "./Media/backgroundTitle2.png";
 import titleBg3 from "./Media/backgroundTitle3.png";
 ///-- START --///
-const Header = ({ theme, setTheme, setDisplayAys, game }) => {
+const Header = ({
+  theme,
+  setTheme,
+  setDisplayAys,
+  game,
+  displayConnectForm,
+  setDisplayConnectForm,
+}) => {
   ///-- STATES --///
   const [titleBgCounter, setTitleBgCounter] = useState(1);
   const [contactMe, setContactMe] = useState(false);
@@ -64,7 +71,12 @@ const Header = ({ theme, setTheme, setDisplayAys, game }) => {
         </div>
       </section>
       <section className="headerConnectAndNav">
-        <button className="headerConnectionButton" onClick={() => {}}>
+        <button
+          className="headerConnectionButton"
+          onClick={() => {
+            setDisplayConnectForm(true);
+          }}
+        >
           <h3>CONNEXION (inactif)</h3>
         </button>
         <div className="headerNav">
