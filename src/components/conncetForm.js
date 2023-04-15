@@ -9,6 +9,7 @@ const ConnectForm = ({ displayConnectForm, setDisplayConnectForm }) => {
       >
         <h3>ANNULER</h3>
       </button>
+      <form></form>
     </section>
   );
 };

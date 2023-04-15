@@ -14,7 +14,7 @@ import EditorPage from "./components/editorPage";
 import Footer from "./components/footer";
 import AreYouSure from "./components/areYouSure";
 import WaitForResponse from "./components/waitForResponse";
-import ConnectForm from "./components/connectForm";
+import ConnectForm from "./components/conncetForm";
 
 ///-- START --///
 function App() {
@@ -39,6 +39,7 @@ function App() {
   const [skip, setSkip] = useState(false);
   const [displayLevelsNews, setDisplayLevelsNews] = useState(false);
   const [displayConnectForm, setDisplayConnectForm] = useState(false);
+  const [displayAudio, setDisplayAudio] = useState(false);
 
   //-- USEEFFECT
   //-- fetcher (requete au backend pour récupérer les niveaux)
@@ -183,6 +184,21 @@ function App() {
             setDisplayConnectForm={setDisplayConnectForm}
           />
         )}
+        {displayAudio === true ||
+          (bigScreen === false && (
+            <div className="audio-wrapper">
+              <audio
+                width="10000"
+                className="audioPlayer"
+                src="../Audio/Stranger-things-124008.mp3"
+                type="audio/mp3"
+                controls
+                // muted
+                loop
+                autoPlay
+              />
+            </div>
+          ))}
       </Router>
     </div>
   );

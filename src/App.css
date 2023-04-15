@@ -6,8 +6,10 @@
 @import "styles/aysEtWfr.css";
 @import "styles/connectForm.css";
 @import "styles/fonts.css";
+@import "styles/footer.css";
 
 .App {
+  position: absolute;
   font-family:  'Pixeled', sans-serif;
   overflow: hidden;
   overflow-y: scroll;

@@ -16,7 +16,7 @@ const Footer = () => {
             hidden
           ></iframe> */}
       </div>
-      <audio
+      {/* <audio
         width="10000"
         className="audioPlayer"
         src="../Audio/Stranger-things-124008.mp3"
@@ -25,7 +25,7 @@ const Footer = () => {
         // muted
         loop
         autoPlay
-      />
+      /> */}
     </footer>
   );
 };
