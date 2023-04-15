@@ -40,6 +40,7 @@ function App() {
   const [displayLevelsNews, setDisplayLevelsNews] = useState(false);
   const [displayConnectForm, setDisplayConnectForm] = useState(false);
   const [displayAudio, setDisplayAudio] = useState(false);
+  displayAudio && setDisplayAudio(true);
 
   //-- USEEFFECT
   //-- fetcher (requete au backend pour récupérer les niveaux)
